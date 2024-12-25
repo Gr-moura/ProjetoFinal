@@ -13,15 +13,15 @@ class Estatisticas {
  public:
   Estatisticas() : vitorias(0), derrotas(0), empates(0) {}
 
-  void registrarVitoria() {}
-  void registrarDerrota() {}
-  void registrarEmpate() {}
+  void registrarVitoria();
+  void registrarDerrota();
+  void registrarEmpate();
 
-  int getVitorias() {}
-  int getDerrotas() {}
-  int getEmpates() {}
-  std::vector<char> getHistorico() const {}
-  void mostrarEstatisticas() {}
+  int getVitorias() const;
+  int getDerrotas() const;
+  int getEmpates() const;
+  std::vector<char> getHistorico() const;
+  void mostrarEstatisticas() const;
 };
 
 #endif
