@@ -1,20 +1,32 @@
-EXEC = vpl_execution
-
+CC = g++
+CFLAGS = -std=c++11 -Wall -Wextra -O2
 SRC_DIR = src
-BUILD_DIR = build
 INCLUDE_DIR = include
+OBJ_DIR = build
+BIN = main
 
-CXX = g++
-CXXFLAGS = -Wall -I$(INCLUDE_DIR)
+all: $(BIN)
 
-SRC_FILES = $(SRC_DIR)/main.cpp $(SRC_DIR)/list.cpp
-OBJ_FILES = $(BUILD_DIR)/main.o $(BUILD_DIR)/list.o
+$(BIN): $(OBJ_DIR)/main.o $(OBJ_DIR)/Ai.o $(OBJ_DIR)/JogoDaVelhaAi.o $(OBJ_DIR)/Lig4Ai.o $(OBJ_DIR)/Tabuleiro.o
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -o $@ $^
 
-$(EXEC): $(OBJ_FILES)
-	$(CXX) $(OBJ_FILES) -o $(EXEC)
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp $(INCLUDE_DIR)/Ai.hpp $(INCLUDE_DIR)/JogoDaVelhaAi.hpp $(INCLUDE_DIR)/Lig4Ai.hpp $(INCLUDE_DIR)/Tabuleiro.hpp
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(OBJ_DIR)/Ai.o: $(SRC_DIR)/Ai.cpp $(INCLUDE_DIR)/Ai.hpp
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
+$(OBJ_DIR)/JogoDaVelhaAi.o: $(SRC_DIR)/JogoDaVelhaAi.cpp $(INCLUDE_DIR)/JogoDaVelhaAi.hpp $(INCLUDE_DIR)/Ai.hpp
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
+$(OBJ_DIR)/Lig4Ai.o: $(SRC_DIR)/Lig4Ai.cpp $(INCLUDE_DIR)/Lig4Ai.hpp $(INCLUDE_DIR)/Ai.hpp
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
+$(OBJ_DIR)/Tabuleiro.o: $(SRC_DIR)/Tabuleiro.cpp $(INCLUDE_DIR)/Tabuleiro.hpp
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+
 
 clean:
-	rm -f $(BUILD_DIR)/*.o $(EXEC)
+	rm -rf $(OBJ_DIR) $(BIN)
+
+.PHONY: all clean
