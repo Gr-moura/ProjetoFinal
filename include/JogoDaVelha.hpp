@@ -7,6 +7,8 @@ class JogoDaVelha : public Jogos {
  public:
   JogoDaVelha(int tamanho);
 
-  bool checarVencedor() override;
-  bool checarJogada() override;
+  bool checarVencedor(std::vector<std::pair<int, int>>&, int) override;
+  bool checarDiagonal(std::vector<std::pair<int, int>>&, int);
+  bool checarColunas(std::vector<std::pair<int, int>>&, int);
+  bool checarLinhas(std::vector<std::pair<int, int>>&, int);
 };

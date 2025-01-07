@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+Estatisticas::Estatisticas() : vitorias(0), derrotas(0), empates(0) {}
+
 void Estatisticas::registrarVitoria() {
   vitorias++;
   historico.push_back('V');

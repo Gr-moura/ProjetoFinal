@@ -4,7 +4,7 @@ Reversi::Reversi(int tamanho) : n(tamanho) {
   tabuleiro.resize(n, std::vector<char>(n + 1, ' '));
 }
 
-void Reversi::Jogar() {}
+void Reversi::Jogar(Jogador& Jogador1, Jogador& Jogador2) {}
 
 bool Reversi::checarVencedor() {}
 

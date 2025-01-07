@@ -10,4 +10,5 @@ class Reversi : public Jogos {
   void Jogar(Jogador& Jogador1, Jogador& Jogador2) override;
   bool checarVencedor() override;
   bool checarJogada() override {}
+
 };

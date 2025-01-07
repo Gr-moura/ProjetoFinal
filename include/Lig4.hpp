@@ -7,6 +7,8 @@ class Lig4 : public Jogos {
  public:
   Lig4(int tamanho);
 
-  bool checarVencedor() override;
-  bool checarJogada() override;
+  bool checarVencedor(std::vector<std::pair<int, int>>&, int) override;
+  bool checarDiagonais(std::vector<std::pair<int, int>>&, int);
+  bool checarColunas(std::vector<std::pair<int, int>>&, int);
+  bool checarLinhas(std::vector<std::pair<int, int>>&, int);
 };

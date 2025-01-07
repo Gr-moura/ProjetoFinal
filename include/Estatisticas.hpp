@@ -11,8 +11,8 @@ class Estatisticas {
   std::vector<char> historico;
 
  public:
-  Estatisticas() : vitorias(0), derrotas(0), empates(0) {}
-
+  Estatisticas();
+  
   void registrarVitoria();
   void registrarDerrota();
   void registrarEmpate();

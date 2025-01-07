@@ -2,7 +2,6 @@
 #define JOGADOR_HPP
 
 #include <map>
-#include <sstream>
 #include <string>
 #include <unordered_map>
 
@@ -20,12 +19,14 @@ class Jogador {
 
  public:
   Jogador(const std::string&, const std::string&);
-  
+
   void registrarVitoria(const std::string&);
   void registrarDerrota(const std::string&);
   void registrarEmpate(const std::string&);
 
-  Estatisticas getEstatisticas(const std::string&) const;
+  std::string getApelido() const;
+  std::string getNome() const;
+  void mostrarEstatisticas(const std::string&) const;
 };
 
 #endif
