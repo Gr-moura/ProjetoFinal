@@ -1,11 +1,9 @@
 #include "Jogos.hpp"
-
 #include "Jogador.hpp"
 
 Jogos::~Jogos() {}
 
-std::string Jogos::gerarDivisoriaTabuleiro(
-    std::vector<std::vector<char>>& tabuleiro) {
+std::string Jogos::gerarDivisoriaTabuleiro(std::vector<std::vector<char>>& tabuleiro){
   std::string divisor;
   divisor.push_back('\n');
 
@@ -20,7 +18,7 @@ std::string Jogos::gerarDivisoriaTabuleiro(
   return divisor;
 }
 
-void Jogos::mostrarTabuleiro(std::vector<std::vector<char>>& tabuleiro) {
+void Jogos::mostrarTabuleiro() {
   for (int i = 0; i < tabuleiro.size(); i++) {
     for (int j = 0; j < tabuleiro[i].size(); j++) {
       if (j > 0) {

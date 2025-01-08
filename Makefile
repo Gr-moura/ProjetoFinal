@@ -1,6 +1,5 @@
 CC = g++
-CFLAGS = -std=c++11 -Wall -Wextra -O2
-SRC_DIR = src
+CFLAGS = -std=c++11 -Wall -Iinclude
 INCLUDE_DIR = include
 OBJ_DIR = build
 BIN = main
