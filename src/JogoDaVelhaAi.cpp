@@ -1,8 +1,20 @@
 #include "JogoDaVelhaAi.hpp"
 #include <iostream>
 
-#define INFINITY 1000000
+// COMENTEI TUDO PRA EVITAR PROBLEMA NA HORA DO MAKEFILE, TENDO EM VISTA Q NAO TA PRONTO RABELO!!!
 
+
+
+
+
+
+
+
+
+
+
+#define INFINITY 1000000
+/*
 // Implementation of the evaluateBoard function for JogoDaVelhaAi
 int JogoDaVelhaAi::evaluateBoard(const board_t &board) const
 {
@@ -87,3 +99,4 @@ bool JogoDaVelhaAi::isTerminalState(const board_t &board) const
     // Check if the board is full or if a player has won
     return getAvailableMoves(board).empty() || evaluateBoard(board) != 0;
 }
+*/

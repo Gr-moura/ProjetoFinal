@@ -8,7 +8,7 @@ std::string Jogos::gerarDivisoriaTabuleiro(){
   divisor.push_back('\n');
 
   if (!tabuleiro.empty()) {
-    int numCols = tabuleiro[0].size();
+    int numCols = static_cast<int>(static_cast<int>(tabuleiro.size()));
     for (int i = 0; i < numCols * 4 - 1; i++) {
       divisor.push_back('-');
     }
@@ -19,7 +19,7 @@ std::string Jogos::gerarDivisoriaTabuleiro(){
 }
 
 void Jogos::mostrarTabuleiro() {
-  for (int i = 0; i < tabuleiro.size(); i++) {
+  for (int i = 0; i < static_cast<int>(tabuleiro.size()); i++) {
     for (int j = 0; j < tabuleiro[i].size(); j++) {
       if (j > 0) {
         std::cout << "| " << tabuleiro[i][j] << " ";
@@ -27,7 +27,7 @@ void Jogos::mostrarTabuleiro() {
         std::cout << " " << tabuleiro[i][j] << " ";
       }
     }
-    if (i < tabuleiro.size() - 1) {
+    if (i < static_cast<int>(tabuleiro.size()) - 1) {
       std::cout << gerarDivisoriaTabuleiro();
     }
   }
@@ -113,8 +113,8 @@ void Jogos::Jogar(Jogador& Jogador1, Jogador& Jogador2) {
 }
 
 bool Jogos::checarJogada(int linha, int coluna) {
-  if (linha >= 0 and linha <= tabuleiro.size() and
-      coluna >= 0 and coluna <= tabuleiro[0].size()) {
+  if (linha >= 0 and linha <= static_cast<int>(tabuleiro.size()) and
+      coluna >= 0 and coluna <= static_cast<int>(static_cast<int>(tabuleiro.size()))) {
 
     if (tabuleiro[linha][coluna] != ' '){
       std::cout << "ERRO, Jogada inválida! A posição escolhida já foi ocupada!" << std::endl;

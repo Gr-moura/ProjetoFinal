@@ -6,10 +6,6 @@
 #include <unordered_map>
 
 #include "Estatisticas.hpp"
-#include "JogoDaVelha.hpp"
-#include "Jogos.hpp"
-#include "Lig4.hpp"
-#include "Reversi.hpp"
 
 class Jogador {
  private:

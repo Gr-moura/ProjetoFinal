@@ -1,4 +1,5 @@
 #include "Jogador.hpp"
+#include <iostream>
 
 Jogador::Jogador(const std::string& apelido, const std::string& nome)
     : apelido(apelido), nome(nome) {}

@@ -1,31 +1,31 @@
-CC = g++
-CFLAGS = -std=c++11 -Wall -Iinclude
+CXX = g++
+CXXFLAGS = -Iinclude -Wall -Wextra -std=c++17
+LDFLAGS =
+
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
 INCLUDE_DIR = include
-OBJ_DIR = build
-BIN = main
 
-all: $(BIN)
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-$(BIN): $(OBJ_DIR)/main.o $(OBJ_DIR)/Ai.o $(OBJ_DIR)/JogoDaVelhaAi.o $(OBJ_DIR)/Lig4Ai.o $(OBJ_DIR)/Tabuleiro.o
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -o $@ $^
+TARGET = $(BIN_DIR)/ProjetoFinal
 
-$(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp $(INCLUDE_DIR)/Ai.hpp $(INCLUDE_DIR)/JogoDaVelhaAi.hpp $(INCLUDE_DIR)/Lig4Ai.hpp $(INCLUDE_DIR)/Tabuleiro.hpp
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+all: $(TARGET)
 
-$(OBJ_DIR)/Ai.o: $(SRC_DIR)/Ai.cpp $(INCLUDE_DIR)/Ai.hpp
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+$(TARGET): $(OBJS)
+	@if not exist "$(BIN_DIR)" mkdir $(BIN_DIR)
+	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
+	@echo "Executable created at $(TARGET)"
 
-$(OBJ_DIR)/JogoDaVelhaAi.o: $(SRC_DIR)/JogoDaVelhaAi.cpp $(INCLUDE_DIR)/JogoDaVelhaAi.hpp $(INCLUDE_DIR)/Ai.hpp
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
-
-$(OBJ_DIR)/Lig4Ai.o: $(SRC_DIR)/Lig4Ai.cpp $(INCLUDE_DIR)/Lig4Ai.hpp $(INCLUDE_DIR)/Ai.hpp
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
-
-$(OBJ_DIR)/Tabuleiro.o: $(SRC_DIR)/Tabuleiro.cpp $(INCLUDE_DIR)/Tabuleiro.hpp
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
-
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@if not exist "$(OBJ_DIR)" mkdir $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ_DIR) $(BIN)
+	@if exist "$(OBJ_DIR)" rmdir /s /q $(OBJ_DIR)
+	@if exist "$(BIN_DIR)" rmdir /s /q $(BIN_DIR)
+	@echo "Cleaned up build files"
 
 .PHONY: all clean
