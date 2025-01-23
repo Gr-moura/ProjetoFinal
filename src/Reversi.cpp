@@ -6,6 +6,6 @@ Reversi::Reversi(int tamanho) : n(tamanho) {
 
 void Reversi::Jogar(Jogador& Jogador1, Jogador& Jogador2) {}
 
-bool Reversi::checarVencedor() {}
+bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos) {}
 
-bool Reversi::checarJogada() {}
+bool Reversi::checarJogada(int linha, int coluna) {}
