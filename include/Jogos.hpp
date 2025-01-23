@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <limits>
 
-class Jogador;
+#include "Jogador.hpp"
 
 class Jogos {
  protected:

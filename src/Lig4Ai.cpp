@@ -1,5 +1,15 @@
 #include "Lig4Ai.hpp"
 
+// COMENTEI TUDO PRA EVITAR PROBLEMA NA HORA DO MAKEFILE, TENDO EM VISTA Q NAO TA PRONTO RABELO!!!
+
+
+
+
+
+
+
+
+/*
 // Implementation of the evaluateBoard function for Lig4Ai
 int Lig4Ai::evaluateBoard(const board_t &board) const
 {
@@ -22,3 +32,4 @@ bool Lig4Ai::isTerminalState(const board_t &board) const
     // Placeholder for isTerminalState function implementation
     return false;
 }
+*/
