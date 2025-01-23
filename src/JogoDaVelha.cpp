@@ -4,21 +4,19 @@ JogoDaVelha::JogoDaVelha(int tamanho) : n(tamanho) {
   tabuleiro.resize(n, std::vector<char>(n, ' '));
 }
 
-bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>>& movimentos,
-                                 int tamanho) {
+bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>>& movimentos) {
   if (!movimentos.empty()) {
-    if (checarDiagonal(movimentos, tamanho) or
-        checarColunas(movimentos, tamanho) or
-        checarLinhas(movimentos, tamanho)) {
+    if (checarDiagonal(movimentos) or
+        checarColunas(movimentos) or
+        checarLinhas(movimentos)) {
       return true;
     }
   }
   return false;
 }
 
-bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>>& movimentos,
-                                 int tamanho) {
-  for (int i = 0; i < tamanho; i++) {
+bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>>& movimentos) {
+  for (int i = 0; i < tabuleiro.size(); i++) {
     auto it =
         std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, i));
     if (it == movimentos.end()) {
@@ -28,11 +26,10 @@ bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>>& movimentos,
   return true;
 }
 
-bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>>& movimentos,
-                                int tamanho) {
-  for (int j = 0; j < tamanho; j++) {
+bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>>& movimentos) {
+  for (int j = 0; j < tabuleiro.size(); j++) {
     bool colunaCompleta = true;
-    for (int i = 0; i < tamanho; i++) {
+    for (int i = 0; i < tabuleiro[0].size(); i++) {
       auto it =
           std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, j));
       if (it == movimentos.end()) {
@@ -47,11 +44,10 @@ bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>>& movimentos,
   return false;
 }
 
-bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>>& movimentos,
-                               int tamanho) {
-  for (int i = 0; i < tamanho; i++) {
+bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>>& movimentos) {
+  for (int i = 0; i < tabuleiro.size(); i++) {
     bool linhaCompleta = true;
-    for (int j = 0; j < tamanho; j++) {
+    for (int j = 0; j < tabuleiro[0].size(); j++) {
       auto it =
           std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, j));
       if (it == movimentos.end()) {

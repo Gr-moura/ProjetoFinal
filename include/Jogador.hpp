@@ -18,15 +18,15 @@ class Jogador {
   std::unordered_map<std::string, Estatisticas> estatisticasPorJogo;
 
  public:
-  Jogador(const std::string&, const std::string&);
+  Jogador(const std::string &apelido, const std::string &nome);
 
-  void registrarVitoria(const std::string&);
-  void registrarDerrota(const std::string&);
-  void registrarEmpate(const std::string&);
+  void registrarVitoria(const std::string &nomeJogo);
+  void registrarDerrota(const std::string &nomeJogo);
+  void registrarEmpate(const std::string &nomeJogo);
 
   std::string getApelido() const;
   std::string getNome() const;
-  void mostrarEstatisticas(const std::string&) const;
+  void mostrarEstatisticas(const std::string &nomeJogo) const;
 };
 
 #endif
