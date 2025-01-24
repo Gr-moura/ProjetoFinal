@@ -7,7 +7,7 @@
 
 int main(){
     Jogador jogador1("Super", "Gabriel"), jogador2("Pokow19", "Pedro");
-    JogoDaVelha veia;
+    JogoDaVelha veia(5);
 
     veia.mostrarTabuleiro();
     veia.Jogar(jogador1, jogador2);

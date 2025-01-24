@@ -63,14 +63,27 @@ void JogoDaVelha::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) {
 }
 
 bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &movimentos) {
-  for (int i = 0; i < static_cast<int>(tabuleiro.size()); i++) {
-    auto it =
-        std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, i));
-    if (it == movimentos.end()) {
-      return false;
-    }
+  int n = static_cast<int>(tabuleiro.size());
+  int contadorMainDiagonal = 0; 
+  int contadorAntiDiagonal = 0;
+
+  for (int i = 0; i < n; i++) {
+    if (std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, i)) != movimentos.end()) 
+      contadorMainDiagonal++;
   }
-  return true;
+
+  if (contadorMainDiagonal == n) 
+    return true;
+
+  for (int i = 0; i < n; i++) {
+    if (std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, n - 1 - i)) != movimentos.end())
+      contadorAntiDiagonal++;
+  }
+
+  if (contadorAntiDiagonal == n)
+    return true;
+
+  return false;
 }
 
 bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &movimentos) {
@@ -86,6 +99,7 @@ bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &movimentos) {
     }
     if (colunaCompleta) {
       return true;
+      std::cout << "COLUNA" << std::endl;
     }
   }
   return false;
@@ -104,6 +118,7 @@ bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &movimentos) {
     }
     if (linhaCompleta) {
       return true;
+      std::cout << "LINHA" << std::endl;
     }
   }
   return false;

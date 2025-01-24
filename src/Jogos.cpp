@@ -75,8 +75,11 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
 
       movimentosJogador1.push_back(jogada);
       turno = not turno;
-      if (checarVencedor(movimentosJogador1))
+      if (checarVencedor(movimentosJogador1)){
+        std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!"
+        << std::endl;
         jogoEmAndamento = false;
+      }
     }
     else {
       iniciarTurno(Jogador2);
@@ -86,8 +89,11 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
       mostrarTabuleiro();
 
       movimentosJogador2.push_back(jogada);
-      if (checarVencedor(movimentosJogador2))
+      if (checarVencedor(movimentosJogador2)){
         jogoEmAndamento = false;
+        std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!"
+        << std::endl;
+      }
       turno = not turno;
     }
     if (checarEmpate(contadorTurnos))
