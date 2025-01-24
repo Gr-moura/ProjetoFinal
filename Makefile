@@ -12,27 +12,29 @@ OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 TARGET = $(BIN_DIR)/ProjetoFinal
 
+# Detect OS
+ifeq ($(OS),Windows_NT)
+    MKDIR = if not exist "$(1)" mkdir "$(1)"
+    RMDIR = if exist "$(1)" rmdir /s /q "$(1)"
+else
+    MKDIR = mkdir -p $(1)
+    RMDIR = rm -rf $(1)
+endif
+
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	@if not exist "$(BIN_DIR)" mkdir $(BIN_DIR)
+	$(call MKDIR,$(BIN_DIR))
 	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 	@echo "Executable created at $(TARGET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@if not exist "$(OBJ_DIR)" mkdir $(OBJ_DIR)
+	$(call MKDIR,$(OBJ_DIR))
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	@if exist "$(OBJ_DIR)" rmdir /s /q $(OBJ_DIR)
-	@if exist "$(BIN_DIR)" rmdir /s /q $(BIN_DIR)
+	$(call RMDIR,$(OBJ_DIR))
+	$(call RMDIR,$(BIN_DIR))
 	@echo "Cleaned up build files"
 
-clean_UNIX:
-    @rm -rf $(OBJ_DIR)
-    @rm -rf $(BIN_DIR)
-    @echo "Cleaned up build files"
-	
-.PHONY: all clean clean_UNIX
-
-
+.PHONY: all clean
