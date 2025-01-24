@@ -1,3 +1,4 @@
+/*
 #include "Jogos.hpp"
 
 class Lig4 : public Jogos {
@@ -8,3 +9,4 @@ class Lig4 : public Jogos {
 
   bool checarVencedor(std::vector<std::pair<int, int>> &movimentos) override;
 };
+*/

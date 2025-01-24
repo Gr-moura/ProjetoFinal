@@ -1,3 +1,5 @@
+
+/*
 #include "Lig4.hpp"
 
 Lig4::Lig4(int tamanhoTabuleiro) {
@@ -11,3 +13,4 @@ Lig4::Lig4(){
 bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &movimentos){
   return true;
 }
+*/

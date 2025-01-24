@@ -1,4 +1,4 @@
-#include "Reversi.hpp"
+/*#include "Reversi.hpp"
 
 Reversi::Reversi(int tamanhoTabuleiro){
   tabuleiro.resize(tamanhoTabuleiro, std::vector<char>(tamanhoTabuleiro + 1, ' '));
@@ -18,3 +18,4 @@ bool Reversi::checarJogada(int linha, int coluna) {
     // Implementar;
     return true;
 }
+*/
