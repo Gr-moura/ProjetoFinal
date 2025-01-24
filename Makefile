@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Iinclude -Wall -Wextra -std=c++17
+CXXFLAGS = -Iinclude -Wall -Wextra -std=c++11
 LDFLAGS =
 
 SRC_DIR = src
@@ -28,4 +28,11 @@ clean:
 	@if exist "$(BIN_DIR)" rmdir /s /q $(BIN_DIR)
 	@echo "Cleaned up build files"
 
-.PHONY: all clean
+clean_UNIX:
+    @rm -rf $(OBJ_DIR)
+    @rm -rf $(BIN_DIR)
+    @echo "Cleaned up build files"
+	
+.PHONY: all clean clean_UNIX
+
+

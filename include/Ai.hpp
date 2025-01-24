@@ -1,12 +1,13 @@
 #ifndef MINIMAX_HPP
 #define MINIMAX_HPP
 
+#include <Jogos.hpp>
 #include <vector> // For managing board states and moves
 
 // Forward declaration of the Board class (if used)
 typedef std::vector<std::vector<char>> board_t;
 
-class Ai
+class Ai : public Jogos
 {
   public:
     Ai() : aiPlayer('O'), humanPlayer('X'), depth(9), isAiMaximizingPlayer(false) {}
