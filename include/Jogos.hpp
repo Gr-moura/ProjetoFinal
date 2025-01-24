@@ -16,15 +16,20 @@ class Jogos {
  protected:
   std::vector<std::vector<char>> tabuleiro;
 
+  virtual void marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) = 0;
+  virtual void inciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) = 0;
+  void iniciarTurno(Jogador &Jogador);
+
+  virtual bool sorteio(); 
+  virtual bool checarVencedor(std::vector<std::pair<int, int>> &movimentos) = 0;
+  virtual bool checarEmpate(int numeroJogadas);
+  std::string gerarDivisoriaTabuleiro();
+  virtual std::pair<int, int> lerJogada() = 0;
+
  public:
   virtual ~Jogos();
-
-  std::string gerarDivisoriaTabuleiro();
   virtual void mostrarTabuleiro();
-  bool sorteio(); 
   virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
-  virtual bool checarVencedor(std::vector<std::pair<int, int>> &movimentos) = 0;
-  virtual bool checarJogada(int linha, int coluna);
 };
 
 #endif

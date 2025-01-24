@@ -1,3 +1,4 @@
+/*
 #include "Jogos.hpp"
 
 class Reversi : public Jogos {
@@ -5,6 +6,7 @@ class Reversi : public Jogos {
   Reversi(int tamanhoTabuleiro);
   
   void Jogar(Jogador& Jogador1, Jogador& Jogador2) override;
-  bool checarVencedor(std::vector<std::pair<int, int>> &movimentos) override;
-  bool checarJogada(int linha, int coluna) override;
+  bool checarVencedor(std::vector<std::pair<int, int>> &jogadas) override;
 };
+
+*/

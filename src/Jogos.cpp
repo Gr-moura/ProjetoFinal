@@ -8,7 +8,7 @@ std::string Jogos::gerarDivisoriaTabuleiro(){
   divisor.push_back('\n');
 
   if (!tabuleiro.empty()) {
-    int numCols = static_cast<int>(static_cast<int>(tabuleiro.size()));
+    int numCols = static_cast<int>((tabuleiro.size()));
     for (int i = 0; i < numCols * 4 - 1; i++) {
       divisor.push_back('-');
     }
@@ -20,7 +20,7 @@ std::string Jogos::gerarDivisoriaTabuleiro(){
 
 void Jogos::mostrarTabuleiro() {
   for (int i = 0; i < static_cast<int>(tabuleiro.size()); i++) {
-    for (int j = 0; j < tabuleiro[i].size(); j++) {
+    for (int j = 0; j < static_cast<int>(tabuleiro[i].size()); j++) {
       if (j > 0) {
         std::cout << "| " << tabuleiro[i][j] << " ";
       } else {
@@ -34,98 +34,72 @@ void Jogos::mostrarTabuleiro() {
   std::cout << std::endl;
 }
 
+void Jogos::iniciarTurno(Jogador &Jogador) {
+  std::cout << "Turno de " << Jogador.getApelido() << "!" << std::endl;
+}
+
 bool Jogos::sorteio() {
   srand(std::time(0));
   bool sorteio = std::rand() % 2;
   return sorteio;
 }
 
-void Jogos::Jogar(Jogador& Jogador1, Jogador& Jogador2) {
-  bool turno = sorteio();
+bool Jogos::checarEmpate(int numeroJogadas) {
+  if (numeroJogadas >= (static_cast<int>(tabuleiro.size() * tabuleiro[0].size()))) {
+    std::cout << "O jogo finalizou com um EMPATE. Ninguem ganhou!"
+    << std::endl;
+    return true;
+  }
+  else
+    return false;
+}
+
+void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
   bool jogoEmAndamento = true;
+  bool turno = sorteio();
+  int contadorTurnos = 0;
   std::vector<std::pair<int, int>> movimentosJogador1;
   std::vector<std::pair<int, int>> movimentosJogador2;
 
-  if (turno)
-    std::cout << "O jogador " << Jogador1.getApelido() << " começará o jogo!" << std::endl;
-  else
-    std::cout << "O jogador " << Jogador2.getApelido() << "começará o jogo!" << std::endl;
+  std::pair<int, int> jogada;
+  inciarPartida(Jogador1, Jogador2, turno);
 
-  while (1) {
-    int linha, coluna, count = 0;
+  while (jogoEmAndamento) {
+    contadorTurnos++;
+    if (turno) {
+      iniciarTurno(Jogador1);
+      jogada = lerJogada();
 
-    if (turno) {  // a partir da 5 rodada checar vencedor
-      std::cout << "Turno de " << Jogador1.getApelido() << "!" << std::endl
-      << "Insira a posição que deseja fazer a jogada. O primeiro número para linha, e o segundo para coluna."
-      << std::endl;
+      marcarTabuleiro(jogada, turno);
+      mostrarTabuleiro();
 
-      do {
-        while (!(std::cin >> linha >> coluna)) {
-          std::cout << "Tipo de dado inválido. Por favor insira dois inteiros, separados por um espaço!" << std::endl;
-          std::cin.clear();
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-        }
-
-        if (checarJogada(linha - 1, coluna - 1)) {
-          tabuleiro[linha][coluna] = 'X';
-          movimentosJogador1.push_back(std::make_pair(linha, coluna));
-          mostrarTabuleiro();
-          
-          if (count >= 5) {
-            if (checarVencedor(movimentosJogador1)) {
-              std::cout << Jogador1.getApelido() << "ganhou o Jogo!"
-                        << std::endl;
-              jogoEmAndamento = false;
-            }
-          }
-        }
-    
-      } while (jogoEmAndamento);
-      turno = true;
+      movimentosJogador1.push_back(jogada);
+      turno = not turno;
+      if (checarVencedor(movimentosJogador1)){
+        std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!"
+        << std::endl;
+        jogoEmAndamento = false;
+      }
     }
     else {
-      std::cout << "Turno de " << Jogador2.getApelido() << "!" << std::endl;
+      iniciarTurno(Jogador2);
+      jogada = lerJogada();
+      
+      marcarTabuleiro(jogada, turno);
+      mostrarTabuleiro();
 
-      do {
-        while (!(std::cin >> linha >> coluna)) {
-          std::cout << "Tipo de dado inválido. Por favor insira dois inteiros, separados por um espaço!" << std::endl;
-          std::cin.clear();
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
-        }
-
-        if (checarJogada(linha, coluna)) {
-          tabuleiro[linha][coluna] = 'O';
-          movimentosJogador2.push_back(std::make_pair(linha, coluna));
-          mostrarTabuleiro();
-
-          if (count >= 5) {
-            if (checarVencedor(movimentosJogador2)) {
-              std::cout << Jogador2.getApelido() << "ganhou o Jogo!"
-                        << std::endl;
-              jogoEmAndamento = false;
-            }
-          }
-        }
-      } while (jogoEmAndamento);
-      turno = true;
+      movimentosJogador2.push_back(jogada);
+      if (checarVencedor(movimentosJogador2)){
+        jogoEmAndamento = false;
+        std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!"
+        << std::endl;
+      }
+      turno = not turno;
     }
+    if (checarEmpate(contadorTurnos))
+      jogoEmAndamento = false;
   }
+  
 }
 
-bool Jogos::checarJogada(int linha, int coluna) {
-  if (linha >= 0 and linha <= static_cast<int>(tabuleiro.size()) and
-      coluna >= 0 and coluna <= static_cast<int>(static_cast<int>(tabuleiro.size()))) {
-
-    if (tabuleiro[linha][coluna] != ' '){
-      std::cout << "ERRO, Jogada inválida! A posição escolhida já foi ocupada!" << std::endl;
-      return false;
-    }
-    else
-      return  true;
-  }
-  else{
-    std::cout << "ERRO, Jogada inválida! A posição escolhida é além dos limites do tabuleiro!" << std::endl;
-    return false;
-  }
-}
 // remover dependencies do makefile
