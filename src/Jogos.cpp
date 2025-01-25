@@ -61,7 +61,7 @@ bool Jogos::checarEmpate(int numeroJogadas) {
     return false;
 }
 
-bool checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int linha, int coluna) {
+bool Jogos::checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int linha, int coluna) {
   std::pair<int, int> jogada = {linha , coluna};
   if (std::find(jogadas.begin(), jogadas.end(), jogada) != jogadas.end())
     return  true;

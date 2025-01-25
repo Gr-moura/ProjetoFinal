@@ -62,11 +62,6 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
 
   std::pair<int, int> ultimaJogada = jogadas[jogadas.size() - 1];
 
-  // Precisamo checar a útima jogada, que está localizada ao final do array de Jogadas,
-  // caso o contador de Diagonais Main ou Anti atinja 4, retornar true,
-  // caso contrário falso.
-  // comparar a última jogada com todas as anteriores, assim não precisamos comparar todas as jogadas de uma vez;
-
   for (int i = ultimaJogada.first + 1, j = ultimaJogada.second + 1, contadorDeIteracoes = 0;
   contadorDeIteracoes < 3; i++, j++, contadorDeIteracoes++) {
     
@@ -80,7 +75,6 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
       break;
   }
 
-  // Comparando os próximos 3 termos na diagonal direita superior
   for (int i = ultimaJogada.first - 1, j = ultimaJogada.second - 1, contadorDeIteracoes = 0;
   contadorDeIteracoes < 3; i--, j--, contadorDeIteracoes++) {
     
@@ -128,9 +122,7 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
 
 bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas) {
   if (!jogadas.empty()) {
-    if (checarDiagonal(jogadas) or
-        checarColunas(jogadas) or
-        checarLinhas(jogadas))
+    if (checarDiagonal(jogadas))
       return true;
   }
   return false;
