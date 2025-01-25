@@ -67,19 +67,63 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
   // caso contrário falso.
   // comparar a última jogada com todas as anteriores, assim não precisamos comparar todas as jogadas de uma vez;
 
-
-  // Comparando os proximos 3 termos na diagonal a direita inferior
   for (int i = ultimaJogada.first + 1, j = ultimaJogada.second + 1, contadorDeIteracoes = 0;
-      contadorDeIteracoes < 3; i++, j++, contadorDeIteracoes++) {
+  contadorDeIteracoes < 3; i++, j++, contadorDeIteracoes++) {
     
     if (checarPosicaoValida(i, j)) {
-      // Checar se o jogador fez essa jogada, caso positivo contador main++;
+      if (checarJogadaExistente(jogadas, i, j))
+        contadorMainDiagonal++;
+      else
+        break;
     }
-    else {
-      // Break, pois a posicao nao existe, nao faz sentido continuar o loop.
+    else
+      break;
+  }
+
+  // Comparando os próximos 3 termos na diagonal direita superior
+  for (int i = ultimaJogada.first - 1, j = ultimaJogada.second - 1, contadorDeIteracoes = 0;
+  contadorDeIteracoes < 3; i--, j--, contadorDeIteracoes++) {
+    
+    if (checarPosicaoValida(i, j)) {
+      if (checarJogadaExistente(jogadas, i, j))
+        contadorMainDiagonal++;
+      else
+        break;
     }
+    else
+      break;
+  }
+
+  for (int i = ultimaJogada.first + 1, j = ultimaJogada.second - 1, contadorDeIteracoes = 0;
+  contadorDeIteracoes < 3; i++, j--, contadorDeIteracoes++) {
+    
+    if (checarPosicaoValida(i, j)) {
+      if (checarJogadaExistente(jogadas, i, j))
+        contadorAntiDiagonal++;
+      else
+        break;
+    }
+    else
+      break;
+  }
+
+  for (int i = ultimaJogada.first - 1, j = ultimaJogada.second + 1, contadorDeIteracoes = 0;
+  contadorDeIteracoes < 3; i--, j++, contadorDeIteracoes++) {
+    
+    if (checarPosicaoValida(i, j)) {
+      if (checarJogadaExistente(jogadas, i, j))
+        contadorAntiDiagonal++;
+      else
+        break;
+    }
+    else
+      break;
   }
   
+  if (contadorMainDiagonal  == 3 or contadorAntiDiagonal == 3)
+    return true;
+  else
+    return false;
 }
 
 bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas) {

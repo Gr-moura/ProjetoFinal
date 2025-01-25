@@ -7,7 +7,8 @@ class Lig4 : public Jogos {
   
  protected:
   void inciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
-    
+  
+
   bool checarDiagonal(std::vector<std::pair<int, int>> &jogadas);
   bool checarColunas(std::vector<std::pair<int, int>> &jogadas);
   bool checarLinhas(std::vector<std::pair<int, int>> &jogadas);
