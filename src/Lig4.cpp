@@ -55,8 +55,6 @@ std::pair<int, int> Lig4::lerJogada() {
 }
 
 bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
-  int numeroLinhasTabuleiro = static_cast<int>(tabuleiro.size());
-  int numeroColunasTabuleiro = static_cast<int>(tabuleiro[0].size());
   int contadorMainDiagonal = 0; 
   int contadorAntiDiagonal = 0;
 
@@ -114,16 +112,93 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
       break;
   }
   
-  if (contadorMainDiagonal  == 3 or contadorAntiDiagonal == 3)
+  if (contadorMainDiagonal  >= 3 or contadorAntiDiagonal >= 3)
     return true;
   else
     return false;
 }
 
+bool Lig4::checarLinhas(std::vector<std::pair<int, int>> &jogadas) {
+  int contadorLinhas = 0;
+
+  std::pair<int, int> ultimaJogada = jogadas[jogadas.size() - 1];
+
+  // Checar os próximos três elementos à direita.
+  for (int j = ultimaJogada.second + 1, contadorDeIteracoes = 0;
+  contadorDeIteracoes < 3; j++, contadorDeIteracoes++) {
+    
+    if (checarPosicaoValida(ultimaJogada.first, j)) {
+      if (checarJogadaExistente(jogadas, ultimaJogada.first, j))
+        contadorLinhas++;
+      else
+        break;
+    }
+    else
+      break;
+  }
+
+  // Checar os próximos três elementos à esquerda.
+  for (int j = ultimaJogada.second - 1, contadorDeIteracoes = 0;
+  contadorDeIteracoes < 3; j--, contadorDeIteracoes++) {
+    
+    if (checarPosicaoValida(ultimaJogada.first, j)) {
+      if (checarJogadaExistente(jogadas, ultimaJogada.first, j))
+        contadorLinhas++;
+      else
+        break;
+    }
+    else
+      break;
+  }
+}
+
+bool Lig4::checarColunas(std::vector<std::pair<int, int>> &jogadas) {
+  int contadorColunas = 0;
+
+  std::pair<int, int> ultimaJogada = jogadas[jogadas.size() - 1];
+
+  // Checar as próximas três casas acima.
+  for (int i = ultimaJogada.first + 1, contadorDeIteracoes = 0;
+  contadorDeIteracoes < 3; i++, contadorDeIteracoes++) {
+    
+    if (checarPosicaoValida(i, ultimaJogada.second)) {
+      if (checarJogadaExistente(jogadas, i, ultimaJogada.second))
+        contadorColunas++;
+      else
+        break;
+    }
+    else
+      break;
+  }
+
+  // Checar as próximas três casas abaixo.
+  for (int i = ultimaJogada.first - 1, contadorDeIteracoes = 0;
+  contadorDeIteracoes < 3; i--, contadorDeIteracoes++) {
+    
+    if (checarPosicaoValida(i, ultimaJogada.second)) {
+      if (checarJogadaExistente(jogadas, i, ultimaJogada.second))
+        contadorColunas++;
+      else
+        break;
+    }
+    else
+      break;
+  }
+  if (contadorColunas >= 3)
+    return true;
+  else
+    return false; 
+}
+
 bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas) {
   if (!jogadas.empty()) {
-    if (checarDiagonal(jogadas))
+    if (checarDiagonal(jogadas) or
+        checarLinhas(jogadas) or
+        checarColunas(jogadas))
       return true;
   }
   return false;
 }
+
+
+
