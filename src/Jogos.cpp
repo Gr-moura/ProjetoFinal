@@ -34,6 +34,13 @@ void Jogos::mostrarTabuleiro() {
   std::cout << std::endl;
 }
 
+void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) {
+  if (turno)
+    tabuleiro[jogada.first][jogada.second] = 'X';
+  else
+    tabuleiro[jogada.first][jogada.second] = 'O';
+}
+
 void Jogos::iniciarTurno(Jogador &Jogador) {
   std::cout << "Turno de " << Jogador.getApelido() << "!" << std::endl;
 }
@@ -49,6 +56,17 @@ bool Jogos::checarEmpate(int numeroJogadas) {
     std::cout << "O jogo finalizou com um EMPATE. Ninguem ganhou!"
     << std::endl;
     return true;
+  }
+  else
+    return false;
+}
+
+bool Jogos::checarPosicaoValida(int linha, int coluna) {
+  if (linha < static_cast<int>(tabuleiro.size()) and
+  linha >= 0 and
+  coluna < static_cast<int>(tabuleiro[0].size()) and
+  coluna >= 0) {
+    return true;  
   }
   else
     return false;
