@@ -2,6 +2,7 @@
 #include <iostream>
 
 #define INFINITY 1000000
+/*
 std::pair<int, int> Ai::getBestMove(const board_t &board)
 {
     std::pair<int, int> bestMove;
@@ -92,3 +93,4 @@ int Ai::minimax(const board_t &board, int depth, int alpha, int beta, bool isMax
 
     return 0;
 }
+*/
