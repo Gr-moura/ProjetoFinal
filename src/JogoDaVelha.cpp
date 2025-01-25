@@ -89,7 +89,6 @@ bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &jogadas) {
     }
     if (colunaCompleta) {
       return true;
-      std::cout << "COLUNA" << std::endl;
     }
   }
   return false;
@@ -108,7 +107,6 @@ bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &jogadas) {
     }
     if (linhaCompleta) {
       return true;
-      std::cout << "LINHA" << std::endl;
     }
   }
   return false;

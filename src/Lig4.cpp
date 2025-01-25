@@ -122,9 +122,7 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
 
 bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas) {
   if (!jogadas.empty()) {
-    if (checarDiagonal(jogadas) or
-        checarColunas(jogadas) or
-        checarLinhas(jogadas))
+    if (checarDiagonal(jogadas))
       return true;
   }
   return false;

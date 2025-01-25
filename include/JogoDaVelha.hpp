@@ -5,7 +5,6 @@ class JogoDaVelha : public Jogos {
   JogoDaVelha();
   JogoDaVelha(int tamanhoTabuleiro);
 protected:
-  void marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) override;
   void inciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
 
   std::pair<int, int> lerJogada() override;
