@@ -4,6 +4,9 @@
 
 Estatisticas::Estatisticas() : vitorias(0), derrotas(0), empates(0) {}
 
+Estatisticas::Estatisticas(int vitorias, int derrotas, int empates) :
+vitorias(vitorias), derrotas(derrotas), empates(empates) {}
+
 void Estatisticas::registrarVitoria() {
   vitorias++;
   historico.push_back('V');

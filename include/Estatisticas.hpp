@@ -12,6 +12,7 @@ class Estatisticas {
 
  public:
   Estatisticas();
+  Estatisticas(int vitorias, int derrotas, int empates);
   
   void registrarVitoria();
   void registrarDerrota();

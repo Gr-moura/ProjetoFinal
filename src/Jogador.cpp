@@ -4,6 +4,16 @@
 Jogador::Jogador(const std::string& apelido, const std::string& nome)
     : apelido(apelido), nome(nome) {}
 
+Jogador::Jogador(const std::string &apelido, const std::string &nome,
+          const int vitoriasJogoDaVelha, const int derrotasJogoDaVelha, const int empatesJogoDavelha,
+          const int vitoriasLig4, const int derrotasLig4, const int empatesLig4,
+          const int vitoriasReversi, const int derrotasReversi, const int empatesReversi
+  ) : apelido(apelido), nome(nome){
+  estatisticasPorJogo["Velha"] = Estatisticas(vitoriasJogoDaVelha, derrotasJogoDaVelha, empatesJogoDavelha);
+  estatisticasPorJogo["Lig4"] = Estatisticas(vitoriasLig4, derrotasLig4, empatesLig4);
+  estatisticasPorJogo["Reversi"] = Estatisticas(vitoriasReversi, derrotasReversi, empatesReversi);
+}
+
 void Jogador::registrarVitoria(const std::string& nomeJogo) {
   estatisticasPorJogo.at(nomeJogo).registrarVitoria();
 }

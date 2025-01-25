@@ -1,0 +1,10 @@
+Joao joaozinho 10 5 2 8 7 1 12 6 3
+Maria mari 15 2 3 10 5 0 9 4 1
+Carlos carlinhos 5 8 2 3 6 1 7 9 0
+Ana aninha 20 4 5 18 3 4 25 7 6
+Pedro pedrinho 8 9 1 12 10 2 14 11 3
+Julia juli 13 6 0 9 8 1 11 5 2
+Lucas lucao 7 5 2 6 4 1 8 3 0
+Clara clarinha 16 3 2 14 5 3 19 2 4
+Rafael rafa 4 12 1 5 10 2 6 8 0
+Fernanda nanda 11 7 3 8 6 1 10 5 2

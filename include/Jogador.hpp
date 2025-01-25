@@ -15,6 +15,10 @@ class Jogador {
 
  public:
   Jogador(const std::string &apelido, const std::string &nome);
+  Jogador(const std::string &apelido, const std::string &nome,
+          int vitoriasJogoDaVelha, int derrotasJogoDaVelha, int empatesJogoDavelha,
+          int vitoriasLig4, int derrotasLig4, int empatesLig4,
+          int vitoriasReversi, int derrotasReversi, int empatesReversi);
 
   void registrarVitoria(const std::string &nomeJogo);
   void registrarDerrota(const std::string &nomeJogo);

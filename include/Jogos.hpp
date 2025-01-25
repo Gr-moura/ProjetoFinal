@@ -9,6 +9,8 @@
 #include <ctime>
 #include <algorithm>
 #include <limits>
+#include <iostream>
+#include <fstream>
 
 #include "Jogador.hpp"
 
