@@ -52,13 +52,13 @@ std::pair<int, int> JogoDaVelha::lerJogada() {
   }    
 }
 
-bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &movimentos) {
+bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
   int numeroLinhasTabuleiro = static_cast<int>(tabuleiro.size());
   int contadorMainDiagonal = 0; 
   int contadorAntiDiagonal = 0;
 
   for (int i = 0; i < numeroLinhasTabuleiro; i++) {
-    if (std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, i)) != movimentos.end()) 
+    if (std::find(jogadas.begin(), jogadas.end(), std::make_pair(i, i)) != jogadas.end()) 
       contadorMainDiagonal++;
   }
 
@@ -66,7 +66,7 @@ bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &movimentos) {
     return true;
 
   for (int i = 0; i < numeroLinhasTabuleiro; i++) {
-    if (std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, numeroLinhasTabuleiro - 1 - i)) != movimentos.end())
+    if (std::find(jogadas.begin(), jogadas.end(), std::make_pair(i, numeroLinhasTabuleiro - 1 - i)) != jogadas.end())
       contadorAntiDiagonal++;
   }
 
@@ -76,13 +76,13 @@ bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &movimentos) {
   return false;
 }
 
-bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &movimentos) {
+bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &jogadas) {
   for (int j = 0; j < static_cast<int>(tabuleiro.size()); j++) {
     bool colunaCompleta = true;
     for (int i = 0; i < static_cast<int>(tabuleiro[0].size()); i++) {
       auto it =
-          std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, j));
-      if (it == movimentos.end()) {
+          std::find(jogadas.begin(), jogadas.end(), std::make_pair(i, j));
+      if (it == jogadas.end()) {
         colunaCompleta = false;
         break;
       }
@@ -95,13 +95,13 @@ bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &movimentos) {
   return false;
 }
 
-bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &movimentos) {
+bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &jogadas) {
   for (int i = 0; i < static_cast<int>(tabuleiro.size()); i++) {
     bool linhaCompleta = true;
     for (int j = 0; j < static_cast<int>(tabuleiro.size()); j++) {
       auto it =
-          std::find(movimentos.begin(), movimentos.end(), std::make_pair(i, j));
-      if (it == movimentos.end()) {
+          std::find(jogadas.begin(), jogadas.end(), std::make_pair(i, j));
+      if (it == jogadas.end()) {
         linhaCompleta = false;
         break;
       }
@@ -114,11 +114,11 @@ bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &movimentos) {
   return false;
 }
 
-bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &movimentos) {
-  if (!movimentos.empty()) {
-    if (checarDiagonal(movimentos) or
-        checarColunas(movimentos) or
-        checarLinhas(movimentos))
+bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &jogadas) {
+  if (!jogadas.empty()) {
+    if (checarDiagonal(jogadas) or
+        checarColunas(jogadas) or
+        checarLinhas(jogadas))
       return true;
   }
   return false;
