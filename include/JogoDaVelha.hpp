@@ -1,3 +1,6 @@
+#ifndef JOGODAVELHA_HPP
+#define JOGODAVELHA_HPP
+
 #include "Jogos.hpp"
 
 class JogoDaVelha : public Jogos
@@ -18,3 +21,5 @@ class JogoDaVelha : public Jogos
                         bool turno) override;
     bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override;
 };
+
+#endif

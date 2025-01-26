@@ -1,238 +1,179 @@
+
 #include "JogoDaVelhaAi.hpp"
 
-std::vector<std::pair<int, int>> JogoDaVelhaAi::getMovimentosDisponiveis(
-    const std::vector<std::vector<char>> &tabuleiro)
-{
-    std::vector<std::pair<int, int>> movimentosDisponiveis;
+TicTacToe::TicTacToe() : board(BOARD_SIZE, EMPTY), humanTurn(false) {}
 
-    for (int i = 0; i < TAB_ALTURA; i++)
+void TicTacToe::printBoard() const
+{
+    std::cout << "\n";
+    for (int i = 0; i < BOARD_SIZE; i++)
     {
-        for (int j = 0; j < TAB_LARGURA; j++)
+        std::cout << " " << board[i] << " ";
+        if (i % 3 != 2)
+            std::cout << "|";
+        if (i % 3 == 2 && i != BOARD_SIZE - 1)
+            std::cout << "\n-----------\n";
+    }
+    std::cout << "\n\n";
+}
+
+bool TicTacToe::checkWin(char player) const
+{
+    const int winCombos[8][3] = {
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Linhas
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Colunas
+        {0, 4, 8}, {2, 4, 6}             // Diagonais
+    };
+
+    for (auto &combo : winCombos)
+    {
+        if (board[combo[0]] == player && board[combo[1]] == player && board[combo[2]] == player)
         {
-            if (tabuleiro[i][j] == ' ')
+            return true;
+        }
+    }
+    return false;
+}
+
+bool TicTacToe::isBoardFull() const
+{
+    for (char c : board)
+    {
+        if (c == EMPTY)
+            return false;
+    }
+    return true;
+}
+
+int TicTacToe::minimax(bool isMaximizing)
+{
+    if (checkWin(PLAYER_X))
+        return 1;
+    if (checkWin(PLAYER_O))
+        return -1;
+    if (isBoardFull())
+        return 0;
+
+    if (isMaximizing)
+    {
+        int bestScore = INT_MIN;
+        for (int i = 0; i < BOARD_SIZE; i++)
+        {
+            if (board[i] == EMPTY)
             {
-                movimentosDisponiveis.push_back(std::make_pair(i, j));
+                board[i] = PLAYER_X;
+                int score = minimax(false);
+                board[i] = EMPTY;
+                bestScore = std::max(score, bestScore);
             }
         }
-    }
-
-    return movimentosDisponiveis;
-}
-
-int JogoDaVelhaAi::ganhadorDiagonal(const std::vector<std::vector<char>> &tabuleiro)
-{
-    int contadorDiagonalPrincipal = 0;
-    int contadorAntiDiagonal = 0;
-
-    for (int i = 0; i < TAB_ALTURA; i++)
-    {
-        if (tabuleiro[i][i] == 1)
-            contadorDiagonalPrincipal++;
-        else if (tabuleiro[i][i] == -1)
-            contadorDiagonalPrincipal--;
-    }
-
-    if (contadorDiagonalPrincipal == 3)
-        return 1;
-    else if (contadorDiagonalPrincipal == -3)
-        return -1;
-
-    for (int i = 0; i < TAB_ALTURA; i++)
-    {
-        if (tabuleiro[i][TAB_ALTURA - 1 - i] == 1)
-            contadorAntiDiagonal++;
-        else if (tabuleiro[i][TAB_ALTURA - 1 - i] == -1)
-            contadorAntiDiagonal--;
-    }
-
-    if (contadorAntiDiagonal == 3)
-        return 1;
-    else if (contadorAntiDiagonal == -3)
-        return -1;
-
-    return 0;
-}
-
-int JogoDaVelhaAi::ganhadorLinha(const std::vector<std::vector<char>> &tabuleiro)
-{
-    for (int i = 0; i < TAB_ALTURA; i++)
-    {
-        int contador = 0;
-        for (int j = 0; j < TAB_LARGURA; j++)
-        {
-            if (tabuleiro[i][j] == 1)
-                contador++;
-            else if (tabuleiro[i][j] == -1)
-                contador--;
-        }
-
-        if (contador == 3)
-            return 1;
-        else if (contador == -3)
-            return -1;
-    }
-
-    return 0;
-}
-
-int JogoDaVelhaAi::ganhadorColuna(const std::vector<std::vector<char>> &tabuleiro)
-{
-    for (int j = 0; j < TAB_LARGURA; j++)
-    {
-        int contador = 0;
-        for (int i = 0; i < TAB_ALTURA; i++)
-        {
-            if (tabuleiro[i][j] == 1)
-                contador++;
-            else if (tabuleiro[i][j] == -1)
-                contador--;
-        }
-
-        if (contador == 3)
-            return 1;
-        else if (contador == -3)
-            return -1;
-    }
-
-    return 0;
-}
-
-int JogoDaVelhaAi::getStaticValue(const std::vector<std::vector<char>> &tabuleiro)
-{
-
-    int resultadoDiagonal = ganhadorDiagonal(tabuleiro);
-    int resultadoLinha = ganhadorLinha(tabuleiro);
-    int resultadoColuna = ganhadorColuna(tabuleiro);
-
-    if (resultadoDiagonal == 1 || resultadoLinha == 1 || resultadoColuna == 1)
-        return 1;
-    else if (resultadoDiagonal == -1 || resultadoLinha == -1 || resultadoColuna == -1)
-        return -1;
-
-    return 0;
-}
-
-int JogoDaVelhaAi::minimax(std::vector<std::vector<char>> tabuleiro, int depth, int alpha, int beta,
-                           bool isMaximizingPlayer)
-{
-    int resultado = getStaticValue(tabuleiro);
-
-    if (depth == 0 or resultado)
-        return resultado;
-
-    std::vector<std::pair<int, int>> movimentos = getMovimentosDisponiveis(tabuleiro);
-
-    if (isMaximizingPlayer)
-    {
-        int maxEval = -1;
-
-        for (auto &movimento : movimentos)
-        {
-            tabuleiro[movimento.first][movimento.second] = 1;
-            int eval = minimax(tabuleiro, depth - 1, alpha, beta, isAiMaximizingPlayer);
-            tabuleiro[movimento.first][movimento.second] = 0;
-
-            maxEval = std::max(maxEval, eval);
-            alpha = std::max(alpha, eval);
-
-            if (maxEval == 1)
-                return maxEval;
-
-            if (beta <= alpha)
-                break;
-        }
-
-        return maxEval;
+        return bestScore;
     }
     else
     {
-        int minEval = 1;
-
-        for (auto &movimento : movimentos)
+        int bestScore = INT_MAX;
+        for (int i = 0; i < BOARD_SIZE; i++)
         {
-            tabuleiro[movimento.first][movimento.second] = -1;
-            int eval = minimax(tabuleiro, depth - 1, alpha, beta, isAiMaximizingPlayer);
-            tabuleiro[movimento.first][movimento.second] = 0;
-
-            minEval = std::min(minEval, eval);
-            beta = std::min(beta, eval);
-
-            if (minEval == -1)
-                return minEval;
-
-            if (beta <= alpha)
-                break;
+            if (board[i] == EMPTY)
+            {
+                board[i] = PLAYER_O;
+                int score = minimax(true);
+                board[i] = EMPTY;
+                bestScore = std::min(score, bestScore);
+            }
         }
-
-        return minEval;
+        return bestScore;
     }
 }
 
-std::pair<int, int> JogoDaVelhaAi::getMelhorMovimento()
+int TicTacToe::getBestMove()
 {
-    int melhorValor = -1;
-    std::pair<int, int> melhorMovimento = std::make_pair(-1, -1);
+    int bestScore = INT_MIN;
+    int bestMove = -1;
+    const int moveOrder[9] = {0, 2, 6, 8, 4, 1, 3, 5, 7};
 
-    std::vector<std::pair<int, int>> movimentos = getMovimentosDisponiveis(posicoesAtual);
-    std ::cout << "Movimentos disponiveis: " << movimentos.size() << std::endl;
-
-    for (auto &movimento : movimentos)
+    for (int i : moveOrder)
     {
-        posicoesAtual[movimento.first][movimento.second] = 1;
-        int valorMovimento = minimax(posicoesAtual, MAX_DEPTH, -1, 1, isAiMaximizingPlayer);
-        std ::cout << "Valor do movimento: " << valorMovimento << std::endl;
-
-        posicoesAtual[movimento.first][movimento.second] = 0;
-
-        if (valorMovimento >= melhorValor)
+        if (board[i] == EMPTY)
         {
-            melhorValor = valorMovimento;
-            melhorMovimento = movimento;
+            board[i] = PLAYER_X;
+            int score = minimax(false);
+            board[i] = EMPTY;
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestMove = i;
+            }
         }
     }
-
-    return melhorMovimento;
+    return bestMove;
 }
 
-void JogoDaVelhaAi::marcarTab()
+void TicTacToe::humanMove()
 {
-    std::pair<int, int> jogada;
-
-    std::cin >> jogada.first >> jogada.second;
-
-    posicoesAtual[jogada.first][jogada.second] = isAiMaximizingPlayer == 1 ? -1 : 1;
-
-    for (int i = 0; i < TAB_ALTURA; i++)
+    int move;
+    while (true)
     {
-        for (int j = 0; j < TAB_LARGURA; j++)
+        std::cout << "Sua vez (0-8): ";
+        std::cin >> move;
+        if (std::cin.fail() || move < 0 || move >= BOARD_SIZE || board[move] != EMPTY)
         {
-            if (posicoesAtual[i][j] == 1)
-                std::cout << "X ";
-            else if (posicoesAtual[i][j] == -1)
-                std::cout << "O ";
-            else
-                std::cout << "- ";
+            std::cout << "Movimento inválido! Tente novamente.\n";
+            std::cin.clear();
         }
-        std::cout << std::endl;
+        else
+        {
+            board[move] = PLAYER_O;
+            break;
+        }
     }
 }
 
-void JogoDaVelhaAi::marcarTabAi()
+void TicTacToe::aiMove()
 {
-    std::pair<int, int> melhorMovimento = getMelhorMovimento();
-    posicoesAtual[melhorMovimento.first][melhorMovimento.second] = isAiMaximizingPlayer == 1 ? 1 : -1;
+    int aiMove = getBestMove();
+    board[aiMove] = PLAYER_X;
+    std::cout << "IA escolheu a posição " << aiMove << "\n";
+}
 
-    for (int i = 0; i < TAB_ALTURA; i++)
+void TicTacToe::playGame()
+{
+    std::cout << "Posições:\n";
+    std::cout << " 0 | 1 | 2 \n";
+    std::cout << "-----------\n";
+    std::cout << " 3 | 4 | 5 \n";
+    std::cout << "-----------\n";
+    std::cout << " 6 | 7 | 8 \n\n";
+
+    while (true)
     {
-        for (int j = 0; j < TAB_LARGURA; j++)
+        printBoard();
+
+        if (checkWin(PLAYER_X))
         {
-            if (posicoesAtual[i][j] == 1)
-                std::cout << "X ";
-            else if (posicoesAtual[i][j] == -1)
-                std::cout << "O ";
-            else
-                std::cout << "- ";
+            std::cout << "IA venceu!\n";
+            break;
         }
-        std::cout << std::endl;
+        if (checkWin(PLAYER_O))
+        {
+            std::cout << "Você venceu! (Isso não deveria acontecer!)\n";
+            break;
+        }
+        if (isBoardFull())
+        {
+            std::cout << "Empate!\n";
+            break;
+        }
+
+        if (humanTurn)
+        {
+            humanMove();
+        }
+        else
+        {
+            aiMove();
+        }
+
+        humanTurn = !humanTurn;
     }
 }

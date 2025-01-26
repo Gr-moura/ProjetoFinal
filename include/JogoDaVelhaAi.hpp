@@ -1,40 +1,32 @@
-#ifndef JOGODAVELHAAI_H
-#define JOGODAVELHAAI_H
+#ifndef JOGODAVELHAAI_HPP
+#define JOGODAVELHAAI_HPP
 
-#include "Ai.hpp"
 #include "JogoDaVelha.hpp"
+#include <iostream>
+#include <vector>
 
-#define TAB_LARGURA 3
-#define TAB_ALTURA 3
-
-class JogoDaVelhaAi : public Ai
+const int BOARD_SIZE = 9;
+const char EMPTY = ' ';
+const char PLAYER_X = 'X';
+const char PLAYER_O = 'O';
+class TicTacToe
 {
-  private:
-    int MAX_DEPTH;
-    std::vector<std::vector<char>> posicoesAtual;
-    int isAiMaximizingPlayer = 1;
-
-    int ganhadorDiagonal(const std::vector<std::vector<char>> &tabuleiro);
-    int ganhadorLinha(const std::vector<std::vector<char>> &tabuleiro);
-    int ganhadorColuna(const std::vector<std::vector<char>> &tabuleiro);
-
-    int getStaticValue(const std::vector<std::vector<char>> &tabuleiro);
-
-    std::vector<std::pair<int, int>> getMovimentosDisponiveis(const std::vector<std::vector<char>> &tabuleiro);
-
   public:
+    TicTacToe();
+    void playGame();
     JogoDaVelha jogo;
-    JogoDaVelhaAi(int AiComeca) :
-        MAX_DEPTH(9), posicoesAtual(TAB_ALTURA, std::vector<char>(TAB_LARGURA, ' ')), isAiMaximizingPlayer(AiComeca)
-    {
-    }
 
-    int minimax(std::vector<std::vector<char>> tabuleiro, int depth, int alpha, int beta, bool isMaximizingPlayer);
+  private:
+    std::vector<char> board;
+    bool humanTurn;
 
-    std::pair<int, int> getMelhorMovimento();
-
-    void marcarTab();
-    void marcarTabAi();
+    void printBoard() const;
+    bool checkWin(char player) const;
+    bool isBoardFull() const;
+    int minimax(bool isMaximizing);
+    int getBestMove();
+    void humanMove();
+    void aiMove();
 };
 
-#endif // JOGODAVELHAAI_H
+#endif
