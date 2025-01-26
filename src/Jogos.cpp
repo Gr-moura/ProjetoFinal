@@ -70,7 +70,7 @@ bool Jogos::checarPosicaoValida(int linha, int coluna) {
     return false;
 }
 
-void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
+void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {  
   bool jogoEmAndamento = true;
   bool turno = sorteio();
   int contadorTurnos = 0;
