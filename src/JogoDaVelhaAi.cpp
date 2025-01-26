@@ -1,6 +1,7 @@
 #include "JogoDaVelhaAi.hpp"
 
-std::vector<std::pair<int, int>> JogoDaVelhaAi::getMovimentosDisponiveis(const std::vector<std::vector<int>> &tabuleiro)
+std::vector<std::pair<int, int>> JogoDaVelhaAi::getMovimentosDisponiveis(
+    const std::vector<std::vector<char>> &tabuleiro)
 {
     std::vector<std::pair<int, int>> movimentosDisponiveis;
 
@@ -8,7 +9,7 @@ std::vector<std::pair<int, int>> JogoDaVelhaAi::getMovimentosDisponiveis(const s
     {
         for (int j = 0; j < TAB_LARGURA; j++)
         {
-            if (tabuleiro[i][j] == 0)
+            if (tabuleiro[i][j] == ' ')
             {
                 movimentosDisponiveis.push_back(std::make_pair(i, j));
             }
@@ -18,7 +19,7 @@ std::vector<std::pair<int, int>> JogoDaVelhaAi::getMovimentosDisponiveis(const s
     return movimentosDisponiveis;
 }
 
-int JogoDaVelhaAi::ganhadorDiagonal(const std::vector<std::vector<int>> &tabuleiro)
+int JogoDaVelhaAi::ganhadorDiagonal(const std::vector<std::vector<char>> &tabuleiro)
 {
     int contadorDiagonalPrincipal = 0;
     int contadorAntiDiagonal = 0;
@@ -52,7 +53,7 @@ int JogoDaVelhaAi::ganhadorDiagonal(const std::vector<std::vector<int>> &tabulei
     return 0;
 }
 
-int JogoDaVelhaAi::ganhadorLinha(const std::vector<std::vector<int>> &tabuleiro)
+int JogoDaVelhaAi::ganhadorLinha(const std::vector<std::vector<char>> &tabuleiro)
 {
     for (int i = 0; i < TAB_ALTURA; i++)
     {
@@ -74,7 +75,7 @@ int JogoDaVelhaAi::ganhadorLinha(const std::vector<std::vector<int>> &tabuleiro)
     return 0;
 }
 
-int JogoDaVelhaAi::ganhadorColuna(const std::vector<std::vector<int>> &tabuleiro)
+int JogoDaVelhaAi::ganhadorColuna(const std::vector<std::vector<char>> &tabuleiro)
 {
     for (int j = 0; j < TAB_LARGURA; j++)
     {
@@ -96,8 +97,9 @@ int JogoDaVelhaAi::ganhadorColuna(const std::vector<std::vector<int>> &tabuleiro
     return 0;
 }
 
-int JogoDaVelhaAi::getStaticValue(const std::vector<std::vector<int>> &tabuleiro)
+int JogoDaVelhaAi::getStaticValue(const std::vector<std::vector<char>> &tabuleiro)
 {
+
     int resultadoDiagonal = ganhadorDiagonal(tabuleiro);
     int resultadoLinha = ganhadorLinha(tabuleiro);
     int resultadoColuna = ganhadorColuna(tabuleiro);
@@ -110,7 +112,7 @@ int JogoDaVelhaAi::getStaticValue(const std::vector<std::vector<int>> &tabuleiro
     return 0;
 }
 
-int JogoDaVelhaAi::minimax(std::vector<std::vector<int>> tabuleiro, int depth, int alpha, int beta,
+int JogoDaVelhaAi::minimax(std::vector<std::vector<char>> tabuleiro, int depth, int alpha, int beta,
                            bool isMaximizingPlayer)
 {
     int resultado = getStaticValue(tabuleiro);
@@ -218,7 +220,7 @@ void JogoDaVelhaAi::marcarTab()
 void JogoDaVelhaAi::marcarTabAi()
 {
     std::pair<int, int> melhorMovimento = getMelhorMovimento();
-    posicoesAtual[melhorMovimento.first][melhorMovimento.second] = isAiMaximizingPlayer == 1 ? 1 : -11;
+    posicoesAtual[melhorMovimento.first][melhorMovimento.second] = isAiMaximizingPlayer == 1 ? 1 : -1;
 
     for (int i = 0; i < TAB_ALTURA; i++)
     {
