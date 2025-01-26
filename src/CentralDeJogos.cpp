@@ -166,12 +166,17 @@ void CentralDeJogos::executarPartida() {
         return;
     }
 
-    if (jogoEscolhido == "R") {}
-        reversi.jogar(*posicaoJogador_01, *posicaoJogador_02);
-    else if (jogoEscolhido == "L") 
+    if (jogoEscolhido == "R") {
+        std::cout << "ola" << std::endl;
+        reversi.Jogar(*posicaoJogador_01, *posicaoJogador_02);
+    }
+    else if (jogoEscolhido == "L") {
         lig4.Jogar(*posicaoJogador_01, *posicaoJogador_02);
-    else if (jogoEscolhido == "V")
+    }
+    else if (jogoEscolhido == "V") {
         velha.Jogar(*posicaoJogador_01, *posicaoJogador_02);
-    else 
+    }
+    else { 
         std::cout << "ERRO: Insira o formato adequado [R|L|V], exemplo para jogar reversi: R" << std::endl;
+    }
 }

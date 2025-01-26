@@ -83,29 +83,29 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
   while (jogoEmAndamento) {
     contadorTurnos++;
     if (turno) {
-      iniciarTurno(Jogador1);
+      iniciarTurno(Jogador1); //jogadorX no reversi
       jogada = lerJogada();
 
       marcarTabuleiro(jogada, turno);
       mostrarTabuleiro();
 
       movimentosJogador1.push_back(jogada);
-      turno = not turno;
-      if (checarVencedor(movimentosJogador1, Jogador1, Jogador2)){
+      if (checarVencedor(movimentosJogador1, Jogador1, Jogador2, turno)){
         std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!"
         << std::endl;
         jogoEmAndamento = false;
       }
+      turno = not turno;
     }
     else {
-      iniciarTurno(Jogador2);
+      iniciarTurno(Jogador2); //jogadorO no reversi
       jogada = lerJogada();
       
       marcarTabuleiro(jogada, turno);
       mostrarTabuleiro();
 
       movimentosJogador2.push_back(jogada);
-      if (checarVencedor(movimentosJogador2, Jogador2, Jogador1)){
+      if (checarVencedor(movimentosJogador2, Jogador2, Jogador1, turno)){
         jogoEmAndamento = false;
         std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!"
         << std::endl;

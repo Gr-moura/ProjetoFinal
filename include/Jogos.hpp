@@ -26,7 +26,7 @@ class Jogos {
   virtual bool sorteio(); 
   virtual bool checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int linha, int coluna);
   virtual bool checarPosicaoValida(int linha, int coluna);
-  virtual bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) = 0;
+  virtual bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor, bool turno) = 0;
   virtual bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) = 0;
   std::string gerarDivisoriaTabuleiro();
   virtual std::pair<int, int> lerJogada() = 0;
