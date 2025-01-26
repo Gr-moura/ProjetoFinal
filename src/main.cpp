@@ -1,172 +1,80 @@
-#include <climits>
+#include <CentralDeJogos.hpp>
+
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 
-using namespace std;
-
-// Check if player has won
-bool checkWin(const vector<char> &board, char player)
+std::string validarEntrada()
 {
-    // All possible winning combinations
-    const int winCombos[8][3] = {
-        {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Rows
-        {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Columns
-        {0, 4, 8}, {2, 4, 6}             // Diagonals
-    };
-
-    for (auto &combo : winCombos)
+    std::string entrada;
+    while (not(std::cin >> entrada))
     {
-        if (board[combo[0]] == player && board[combo[1]] == player && board[combo[2]] == player)
-        {
-            return true;
-        }
+        std::cout << "ERRO, tipo de dado invalido. Por favor insira uma string." << std::endl;
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-    return false;
+    return entrada;
 }
 
-// Check if board is full
-bool isBoardFull(const vector<char> &board)
+void exibirMenu()
 {
-    for (char c : board)
-    {
-        if (c == ' ')
-            return false;
-    }
-    return true;
-}
-
-// Minimax implementation
-int minimax(vector<char> &board, bool isMaximizing)
-{
-    // Terminal states
-    if (checkWin(board, 'X'))
-        return 1;
-    if (checkWin(board, 'O'))
-        return -1;
-    if (isBoardFull(board))
-        return 0;
-
-    if (isMaximizing)
-    {
-        int bestScore = INT_MIN;
-        for (int i = 0; i < 9; i++)
-        {
-            if (board[i] == ' ')
-            {
-                board[i] = 'X';
-                int score = minimax(board, false);
-                board[i] = ' ';
-                bestScore = max(score, bestScore);
-            }
-        }
-        return bestScore;
-    }
-    else
-    {
-        int bestScore = INT_MAX;
-        for (int i = 0; i < 9; i++)
-        {
-            if (board[i] == ' ')
-            {
-                board[i] = 'O';
-                int score = minimax(board, true);
-                board[i] = ' ';
-                bestScore = min(score, bestScore);
-            }
-        }
-        return bestScore;
-    }
-}
-
-// Get AI's best move
-int getBestMove(vector<char> &board)
-{
-    int bestScore = INT_MIN;
-    int bestMove = -1;
-
-    // Move priorities (center first, then corners, then edges)
-    const int moveOrder[9] = {4, 0, 2, 6, 8, 1, 3, 5, 7};
-
-    for (int i : moveOrder)
-    {
-        if (board[i] == ' ')
-        {
-            board[i] = 'X';
-            int score = minimax(board, false);
-            board[i] = ' ';
-
-            if (score > bestScore)
-            {
-                bestScore = score;
-                bestMove = i;
-            }
-        }
-    }
-    return bestMove;
-}
-
-// Print board
-void printBoard(const vector<char> &board)
-{
-    for (int i = 0; i < 9; i++)
-    {
-        cout << board[i];
-        if (i % 3 != 2)
-            cout << "|";
-        if (i % 3 == 2 && i != 8)
-            cout << "\n-+-+-\n";
-    }
-    cout << "\n\n";
+    std::cout << "===== MENU =====" << std::endl;
+    std::cout << "CJ - Cadastrar Jogador" << std::endl;
+    std::cout << "RJ - Remover Jogador" << std::endl;
+    std::cout << "LJ - Listar Jogadores" << std::endl;
+    std::cout << "EP - Executar Partida" << std::endl;
+    std::cout << "FS - Finalizar Sistema" << std::endl;
+    std::cout << "================" << std::endl;
+    std::cout << "Digite sua opcao: ";
+    return;
 }
 
 int main()
 {
-    vector<char> board(9, ' ');
-    bool humanTurn = true; // AI plays first
+    CentralDeJogos central;
+    std::string comando;
 
-    while (true)
+    do
     {
-        printBoard(board);
+        exibirMenu();
+        comando = validarEntrada();
 
-        if (checkWin(board, 'X'))
+        if (comando == "CJ")
         {
-            cout << "AI wins!\n";
-            break;
+            std::string apelido, nome;
+            std::cout << "Digite o apelido do jogador: ";
+            std::cin >> apelido;
+            std::cout << "Digite o nome do jogador: ";
+            std::cin >> nome;
+            central.cadastrarJogador(apelido, nome);
         }
-        if (checkWin(board, 'O'))
+        else if (comando == "RJ")
         {
-            cout << "Human wins! (This should never happen!)\n";
-            break;
+            std::string apelido;
+            std::cout << "Digite o apelido do jogador a ser removido: ";
+            std::cin >> apelido;
+            central.removerJogador(apelido);
         }
-        if (isBoardFull(board))
+        else if (comando == "LJ")
         {
-            cout << "It's a tie!\n";
-            break;
+            std::cout << "Jogadores cadastrados:" << std::endl;
+            central.listarJogadores();
         }
-
-        if (humanTurn)
+        else if (comando == "EP")
         {
-            int move;
-            cout << "Enter your move (0-8): ";
-            cin >> move;
-
-            if (move < 0 || move >= 9 || board[move] != ' ')
-            {
-                cout << "Invalid move! Try again.\n";
-                continue;
-            }
-
-            board[move] = 'O';
+            std::cout << "Digite o nome do jogo que deseja jogar [R|L|V]: ";
+            central.executarPartida();
+        }
+        else if (comando == "FS")
+        {
+            std::cout << "Finalizando o sistema..." << std::endl;
+            break;
         }
         else
         {
-            int aiMove = getBestMove(board);
-            board[aiMove] = 'X';
-            cout << "AI chooses position " << aiMove << "\n";
+            std::cout << "Comando inválido! Tente novamente." << std::endl;
         }
-
-        humanTurn = !humanTurn;
-    }
+    } while (comando != "FS");
 
     return 0;
 }

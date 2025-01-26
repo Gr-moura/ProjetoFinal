@@ -7,15 +7,14 @@ class JogoDaVelha : public Jogos
     JogoDaVelha(int tamanhoTabuleiro);
 
   protected:
-    void marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) override;
     void iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
 
     std::pair<int, int> lerJogada() override;
 
-    bool checarDiagonal(std::vector<std::pair<int, int>> &movimentos);
-    bool checarColunas(std::vector<std::pair<int, int>> &movimentos);
-    bool checarLinhas(std::vector<std::pair<int, int>> &movimentos);
-    bool checarVencedor(std::vector<std::pair<int, int>> &movimentos) override;
-
-    friend class JogoDaVelhaAi; // Declara JogoDaVelhaAi como amiga
+    bool checarDiagonal(std::vector<std::pair<int, int>> &jogadas);
+    bool checarColunas(std::vector<std::pair<int, int>> &jogadas);
+    bool checarLinhas(std::vector<std::pair<int, int>> &jogadas);
+    bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor,
+                        bool turno) override;
+    bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override;
 };
