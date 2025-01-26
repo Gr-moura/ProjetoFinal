@@ -34,7 +34,7 @@ std::pair<int, int> Reversi::lerJogada(){
     int linha, coluna;
     bool entradaValida = false;
 
-    while(!entradaValida) {
+    while(not entradaValida) {
         std::cout << "Digite a linha e a coluna onde deseja jogar no tabuleiro, por favor. Sua jogada deve capturar ao menos 1 peca adversaria!" << std::endl;
         
         if(!(std::cin >> linha >> coluna)) {
@@ -43,7 +43,7 @@ std::pair<int, int> Reversi::lerJogada(){
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
-        if (checarPosicaoValida (linha - 1, coluna - 1) && tabuleiro[linha - 1][coluna - 1] == ' ') {
+        if (checarPosicaoValida (linha - 1, coluna - 1) and tabuleiro[linha - 1][coluna - 1] == ' ') {
             entradaValida = true;
             return {linha - 1, coluna - 1};
         }

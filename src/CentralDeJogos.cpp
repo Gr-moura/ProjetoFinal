@@ -5,7 +5,7 @@
     e incializa a lista de jogadores respectivamente, cada um com suas próprias estatísticas.
 */
 CentralDeJogos::CentralDeJogos() {
-    std::ifstream DadosJogadoresCadastrados("../data/DadosJogadoresCadastrados.txt");
+    std::ifstream DadosJogadoresCadastrados("data/DadosJogadoresCadastrados.txt");
     if (!DadosJogadoresCadastrados.is_open()) {
         std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados não foram carregados." << std::endl;
         return;
@@ -173,6 +173,7 @@ void CentralDeJogos::executarPartida() {
         lig4.Jogar(*posicaoJogador_01, *posicaoJogador_02);
     }
     else if (jogoEscolhido == "V") {
+        std::cout << "entrou";
         velha.Jogar(*posicaoJogador_01, *posicaoJogador_02);
     }
     else { 

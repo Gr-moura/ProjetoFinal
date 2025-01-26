@@ -94,7 +94,7 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
     if (turno) {
       iniciarTurno(Jogador1); //jogadorX no reversi
       jogada = lerJogada();
-
+      
       marcarTabuleiro(jogada, turno);
       mostrarTabuleiro();
 
