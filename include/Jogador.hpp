@@ -26,6 +26,10 @@ class Jogador {
 
   std::string getApelido() const;
   std::string getNome() const;
+  int getVitorias(std::string jogo);
+  int getDerrotas(std::string jogo);
+  int getEmpates(std::string jogo);
+
   void mostrarEstatisticas(const std::string &nomeJogo) const;
 };
 

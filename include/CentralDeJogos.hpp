@@ -9,18 +9,23 @@
 class CentralDeJogos {
 private:
     std::vector<Jogador> jogadoresCadastrados;
-    JogoDaVelha JogoDaVelha;
-    Lig4 ligue04;
+    JogoDaVelha velha;
+    Lig4 lig4;
 
     //Reversi reversi;
     //Jogo3 jogo3;
 
 public:
-    CentralDeJogos(); // Construtor deve puxar os dados do arquivo de Jogadores Cadastrados e adicionálos em "jogadoresCadastrados"
-    ~CentralDeJogos(); // Destrutor deve atualizar o arquivo de Jogadores Cadastrados
+    CentralDeJogos(); 
+    ~CentralDeJogos();
+
+    std::string validarEntrada();
+
+    bool buscarJogador(std::string &apelido);
 
     void cadastrarJogador(std::string &apelido, std::string &nome);
-    void removerJogador(std::string &apelido, std::string &nome);
+    void removerJogador(std::string &apelido);
+    void ordenarJogadores();
     void listarJogadores();
 
     void executarPartida();
