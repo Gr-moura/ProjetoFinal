@@ -8,7 +8,7 @@ Lig4::Lig4(){
   tabuleiro.resize(7, std::vector<char>(6, ' '));
 }
 
-void Lig4::inciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) {
+void Lig4::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) {
   if (turno) {
     std::cout << "Bem Vindo ao Ligue 4! O jogador " <<
     Jogador1.getApelido() << " comecara a partida!" <<
@@ -19,6 +19,7 @@ void Lig4::inciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) {
     Jogador2.getApelido() << "comecara a partida!" <<
     std::endl;
   }
+  mostrarTabuleiro();
 }
 
 std::pair<int, int> Lig4::lerJogada() {
@@ -50,8 +51,8 @@ std::pair<int, int> Lig4::lerJogada() {
       std::cout << "ERRO! A posicao escolhida nao esta dentro dos limites do tabuleiro. Escolha uma opcao valida!"
       << std::endl;
     }
-      
-  }    
+  }
+  return {0, 0};    
 }
 
 bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
@@ -150,6 +151,11 @@ bool Lig4::checarLinhas(std::vector<std::pair<int, int>> &jogadas) {
     else
       break;
   }
+
+  if (contadorLinhas >= 3)
+    return true;
+  else
+    return false;
 }
 
 bool Lig4::checarColunas(std::vector<std::pair<int, int>> &jogadas) {
@@ -190,14 +196,29 @@ bool Lig4::checarColunas(std::vector<std::pair<int, int>> &jogadas) {
     return false; 
 }
 
-bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas) {
+bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) {
   if (!jogadas.empty()) {
     if (checarDiagonal(jogadas) or
         checarLinhas(jogadas) or
-        checarColunas(jogadas))
-      return true;
+        checarColunas(jogadas)) {
+          vencedor.registrarVitoria("LIG4");
+          perdedor.registrarDerrota("LIG4");
+          return true;
+        }
   }
   return false;
+}
+
+bool Lig4::checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) {
+  if (numeroJogadas >= (static_cast<int>(tabuleiro.size() * tabuleiro[0].size()))) {
+    std::cout << "O jogo finalizou com um EMPATE. Ninguem ganhou!"
+    << std::endl;
+    jogador_01.registrarEmpate("LIG4");
+    jogador_02.registrarEmpate("LIG4");
+    return true;
+  }
+  else
+    return false;
 }
 
 

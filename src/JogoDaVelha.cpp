@@ -8,7 +8,7 @@ JogoDaVelha::JogoDaVelha(int tamanhoTabuleiro){
   tabuleiro.resize(tamanhoTabuleiro, std::vector<char>(tamanhoTabuleiro, ' '));
 }
 
-void JogoDaVelha::inciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) {
+void JogoDaVelha::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) {
   if (turno) {
     std::cout << "Bem Vindo ao Jogo da velha! O jogador " <<
     Jogador1.getApelido() << " comecara a partida!" <<
@@ -19,6 +19,7 @@ void JogoDaVelha::inciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turn
     Jogador2.getApelido() << "comecara a partida!" <<
     std::endl;
   }
+  mostrarTabuleiro();
 }
 
 std::pair<int, int> JogoDaVelha::lerJogada() {
@@ -47,9 +48,9 @@ std::pair<int, int> JogoDaVelha::lerJogada() {
     else {
       std::cout << "ERRO! A posicao escolhida nao esta dentro dos limites do tabuleiro. Escolha uma opcao valida!"
       << std::endl;
-    }
-      
-  }    
+    } 
+  }
+  return {0, 0};    
 }
 
 bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &jogadas) {
@@ -112,12 +113,27 @@ bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &jogadas) {
   return false;
 }
 
-bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &jogadas) {
+bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) {
   if (!jogadas.empty()) {
     if (checarDiagonal(jogadas) or
         checarColunas(jogadas) or
-        checarLinhas(jogadas))
+        checarLinhas(jogadas)) {
+      vencedor.registrarVitoria("VELHA");
+      perdedor.registrarDerrota("VELHA");
       return true;
+      }
   }
   return false;
+}
+
+bool JogoDaVelha::checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) {
+  if (numeroJogadas >= (static_cast<int>(tabuleiro.size() * tabuleiro[0].size()))) {
+    std::cout << "O jogo finalizou com um EMPATE. Ninguem ganhou!"
+    << std::endl;
+    jogador_01.registrarEmpate("VELHA");
+    jogador_02.registrarEmpate("VELHA");
+    return true;
+  }
+  else
+    return false;
 }
