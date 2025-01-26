@@ -11,9 +11,7 @@ private:
     std::vector<Jogador> jogadoresCadastrados;
     JogoDaVelha velha;
     Lig4 lig4;
-
-    //Reversi reversi;
-    //Jogo3 jogo3;
+    Reversi reversi;
 
 public:
     CentralDeJogos(); 
