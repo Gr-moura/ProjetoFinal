@@ -167,7 +167,6 @@ void CentralDeJogos::executarPartida() {
     }
 
     if (jogoEscolhido == "R") {
-        std::cout << "ola" << std::endl;
         reversi.Jogar(*posicaoJogador_01, *posicaoJogador_02);
     }
     else if (jogoEscolhido == "L") {

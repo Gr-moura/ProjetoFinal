@@ -20,10 +20,10 @@ Reversi::Reversi(int tamanhoTabuleiro) {
 
 void Reversi::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno){
     if(turno) {
-        std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador1.getApelido() << " começará a partida!" << std::endl;
+        std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador1.getApelido() << " começara a partida!" << std::endl;
     }
     else {
-        std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador2.getApelido() << " começará a partida!" << std::endl;
+        std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador2.getApelido() << " começara a partida!" << std::endl;
     }
 }
 
@@ -35,7 +35,7 @@ std::pair<int, int> Reversi::lerJogada(){
         std::cout << "Digite a linha e a coluna onde deseja jogar no tabuleiro, por favor." << std::endl;
         
         if(!(std::cin >> linha >> coluna)) {
-            std::cout << "Entrada inválida! Digite dois números inteiros, por favor." << std::endl;
+            std::cout << "ERRO: Entrada invalida! Digite dois numeros inteiros, por favor." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             continue;
@@ -45,7 +45,7 @@ std::pair<int, int> Reversi::lerJogada(){
             entradaValida = true;
         }
         else {
-            std::cout << "ERRO! A posição escolhida é inválida ou está ocupada. Tente novamente." << std::endl;
+            std::cout << "ERRO: A posição escolhida e invalida ou esta ocupada. Tente novamente." << std::endl;
         }
     }
 
@@ -71,7 +71,7 @@ void Reversi::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) {
         turno = !turno;
     }
     else {
-        std::cout << "Jogada inválida. Tente novamente." << std:: endl;
+        std::cout << "ERRO: Jogada invalida. Tente novamente." << std:: endl;
     }
 }
 
@@ -109,7 +109,7 @@ bool Reversi::movimentoValido(std::pair<int, int> &jogada, char jogador, std::ve
     return valido;
 }
 
-bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogador &jogadorX, Jogador &jogadorO, bool turno) {
+bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogador &jogador_1, Jogador &jogador_2, bool turno) {
     int contadorX = 0;
     int contadorO = 0;
 
@@ -127,24 +127,38 @@ bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogad
     if(contadorX == 0 || contadorO == 0 || movimentos.size() == tabuleiro.size() * tabuleiro[0].size()){
         std::cout << "Fim de jogo! X: " << contadorX << " | O: " << contadorO << std::endl;
         if(contadorX > contadorO){
-            std::cout << "O jogador X ganhou!" << std::endl;
-            jogadorX.registrarVitoria("REVERSI");
-            jogadorO.registrarDerrota("REVERSI");
+            
+            if (turno) {
+                std::cout << "O jogador "  << jogador_1.getApelido() <<" ganhou!" << std::endl;
+                jogador_1.registrarVitoria("REVERSI");
+                jogador_2.registrarDerrota("REVERSI");
+            }
+            else {
+                std::cout << "O jogador "  << jogador_2.getApelido() <<" ganhou!" << std::endl;
+                jogador_2.registrarVitoria("REVERSI");
+                jogador_1.registrarDerrota("REVERSI");
+            }
         }
-        else if(contadorX < contadorO){
+        else if(contadorO > contadorX){
             std::cout << "O jogador O ganhou!" << std::endl;
-            jogadorO.registrarVitoria("REVERSI");
-            jogadorX.registrarDerrota("REVERSI");
+            if (turno) {
+                std::cout << "O jogador "  << jogador_2.getApelido() <<" ganhou!" << std::endl;
+                jogador_2.registrarVitoria("REVERSI");
+                jogador_1.registrarDerrota("REVERSI");
+            }
+            else {
+                std::cout << "O jogador "  << jogador_1.getApelido() <<" ganhou!" << std::endl;
+                jogador_1.registrarVitoria("REVERSI");
+                jogador_2.registrarDerrota("REVERSI");
+            }
         }
         else {
             std::cout << "O jogo empatou!" << std::endl;
-            jogadorX.registrarEmpate("LIG4");
-            jogadorO.registrarEmpate("LIG4");
+            jogador_1.registrarEmpate("REVERSI");
+            jogador_2.registrarEmpate("REVERSI");
         }
-
         return true;
     }
-
     return false;
 }
 
