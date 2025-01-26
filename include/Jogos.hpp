@@ -19,6 +19,7 @@ class Jogos {
   std::vector<std::vector<char>> tabuleiro;
 
   virtual void marcarTabuleiro(std::pair<int, int> &jogada, bool &turno);
+  virtual void limparTabuleiro();
   virtual void iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) = 0;
   void iniciarTurno(Jogador &Jogador);
 

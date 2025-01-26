@@ -34,6 +34,15 @@ void Jogos::mostrarTabuleiro() {
   std::cout << std::endl;
 }
 
+void Jogos::limparTabuleiro() {
+  for (auto &linha : tabuleiro) {
+    for (auto &coluna : linha) {
+      coluna = ' ';
+    }
+  }
+  return;
+}
+
 void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) {
   if (turno)
     tabuleiro[jogada.first][jogada.second] = 'X';
@@ -94,6 +103,8 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
         std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!"
         << std::endl;
         jogoEmAndamento = false;
+        limparTabuleiro();
+        return;
       }
       turno = not turno;
     }
@@ -109,11 +120,16 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
         jogoEmAndamento = false;
         std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!"
         << std::endl;
+        limparTabuleiro();
+        return;
       }
       turno = not turno;
     }
-    if (checarEmpate(contadorTurnos, Jogador1, Jogador2))
+    if (checarEmpate(contadorTurnos, Jogador1, Jogador2)) {
       jogoEmAndamento = false;
+      limparTabuleiro();
+      return;
+    }
   }
   
 }
