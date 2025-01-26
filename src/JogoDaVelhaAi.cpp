@@ -166,6 +166,32 @@ int JogoDaVelhaAi::minimax(std::vector<std::vector<int>> tabuleiro, int depth, i
     }
 }
 
+std::pair<int, int> JogoDaVelhaAi::getMelhorMovimento()
+{
+    int melhorValor = -1;
+    std::pair<int, int> melhorMovimento = std::make_pair(-1, -1);
+
+    std::vector<std::pair<int, int>> movimentos = getMovimentosDisponiveis(posicoesAtual);
+    std ::cout << "Movimentos disponiveis: " << movimentos.size() << std::endl;
+
+    for (auto &movimento : movimentos)
+    {
+        posicoesAtual[movimento.first][movimento.second] = 1;
+        int valorMovimento = minimax(posicoesAtual, MAX_DEPTH, -1, 1, isAiMaximizingPlayer);
+        std ::cout << "Valor do movimento: " << valorMovimento << std::endl;
+
+        posicoesAtual[movimento.first][movimento.second] = 0;
+
+        if (valorMovimento >= melhorValor)
+        {
+            melhorValor = valorMovimento;
+            melhorMovimento = movimento;
+        }
+    }
+
+    return melhorMovimento;
+}
+
 void JogoDaVelhaAi::marcarTab()
 {
     std::pair<int, int> jogada;

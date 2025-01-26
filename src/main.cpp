@@ -1,4 +1,3 @@
-#include "JogoDaVelha.hpp"
 #include "JogoDaVelhaAi.hpp"
 #include "Lig4.hpp"
 
@@ -9,6 +8,12 @@
 int main()
 {
     JogoDaVelhaAi Ai(1);
+    Ai.marcarTabAi();
+    Ai.marcarTab();
+    Ai.marcarTabAi();
+    Ai.marcarTab();
+    Ai.marcarTabAi();
+    Ai.marcarTab();
     Ai.marcarTabAi();
     Ai.marcarTab();
 

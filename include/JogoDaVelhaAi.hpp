@@ -23,6 +23,7 @@ class JogoDaVelhaAi : public Ai
     std::vector<std::pair<int, int>> getMovimentosDisponiveis(const std::vector<std::vector<int>> &tabuleiro);
 
   public:
+    JogoDaVelha jogo;
     JogoDaVelhaAi(int AiComeca) :
         MAX_DEPTH(9), posicoesAtual(TAB_ALTURA, std::vector<int>(TAB_LARGURA, 0)), isAiMaximizingPlayer(AiComeca)
     {
