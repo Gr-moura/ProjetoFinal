@@ -70,7 +70,6 @@ export const PlayerSelection = () => {
         }
         if(playerNumber===2){
             //selecting player 2 and navigating to game selection
-            setPlayerNumber(1);
             navigate("/games", {state:{player1:player1, player2:{playerNick:playerNick, playerName:playerName}}});
         }
 
@@ -92,7 +91,7 @@ export const PlayerSelection = () => {
             console.log(instance.exports.play(1, 2));
             console.log(instance.exports.play(1, 3));
         });*/
-    }, [playerNumber]);
+    }, [playerNumber, navigate]);
 
     return (
         <div className="playerselectionbody">
