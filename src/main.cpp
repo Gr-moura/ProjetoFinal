@@ -4,17 +4,20 @@
 #include <stdexcept>
 #include <vector>
 
-std::string validarEntrada() {
+std::string validarEntrada()
+{
     std::string entrada;
-    while (not (std::cin >> entrada)) {
+    while (not(std::cin >> entrada))
+    {
         std::cout << "ERRO, tipo de dado invalido. Por favor insira uma string." << std::endl;
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     return entrada;
 }
 
-void exibirMenu() {
+void exibirMenu()
+{
     std::cout << "===== MENU =====" << std::endl;
     std::cout << "CJ - Cadastrar Jogador" << std::endl;
     std::cout << "RJ - Remover Jogador" << std::endl;
@@ -26,41 +29,49 @@ void exibirMenu() {
     return;
 }
 
-int main(){ 
+int main()
+{
     CentralDeJogos central;
     std::string comando;
 
-    do {
+    do
+    {
         exibirMenu();
         comando = validarEntrada();
 
-        if (comando == "CJ") {
+        if (comando == "CJ")
+        {
             std::string apelido, nome;
             std::cout << "Digite o apelido do jogador: ";
             std::cin >> apelido;
             std::cout << "Digite o nome do jogador: ";
             std::cin >> nome;
             central.cadastrarJogador(apelido, nome);
-        } 
-        else if (comando == "RJ") {
+        }
+        else if (comando == "RJ")
+        {
             std::string apelido;
             std::cout << "Digite o apelido do jogador a ser removido: ";
             std::cin >> apelido;
             central.removerJogador(apelido);
-        } 
-        else if (comando == "LJ") {
+        }
+        else if (comando == "LJ")
+        {
             std::cout << "Jogadores cadastrados:" << std::endl;
             central.listarJogadores();
-        } 
-        else if (comando == "EP") {
-            std::cout << "Digite o nome do jogo que deseja jogar [R|L|V]: ";
+        }
+        else if (comando == "EP")
+        {
+            std::cout << "Digite o nome do jogo que deseja jogar [R|L|V|A]: ";
             central.executarPartida();
-        } 
-        else if (comando == "FS") {
+        }
+        else if (comando == "FS")
+        {
             std::cout << "Finalizando o sistema..." << std::endl;
             break;
-        } 
-        else {
+        }
+        else
+        {
             std::cout << "Comando inválido! Tente novamente." << std::endl;
         }
     } while (comando != "FS");
