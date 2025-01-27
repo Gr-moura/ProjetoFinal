@@ -76,7 +76,7 @@ int JogoDaVelhaAi::getBestMove()
 {
     int bestScore = INT_MIN;
     int bestMove = -1;
-    const int moveOrder[9] = {0, 2, 6, 8, 4, 1, 3, 5, 7};
+    const std::vector<int> moveOrder = {0, 2, 6, 8, 4, 1, 3, 5, 7};
 
     for (int i : moveOrder)
     {
@@ -141,13 +141,13 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             break;
     }
 
-    int dificuldade = 2;
+    int dificuldade = 0;
     std::cout << "Qual será a dificuldade da AI?\n"
               << "Fácil (0)\nMédio (1)\nDifícil (2)" << std::endl;
 
     while (true)
     {
-        while (not(std::cin >> turno))
+        while (not(std::cin >> dificuldade))
         {
             std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
             std::cin.clear();
@@ -157,7 +157,13 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             break;
     }
 
-    MAX_DEPTH = (dificuldade + 1) * 3;
+    if (dificuldade == 0)
+        MAX_DEPTH = 0;
+    else if (dificuldade == 1)
+        MAX_DEPTH = 3;
+    else
+        MAX_DEPTH = 9;
+
     turno = !turno;
 
     int contadorTurnos = 0;
