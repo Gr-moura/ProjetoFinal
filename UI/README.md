@@ -21,11 +21,11 @@
 
 
 ## Como rodar?
-1- Instale o package managaer NPM na sua máquina
-2- Abra um terminal no diretório UI.
-2- Digite ```npm install``` e pressione enter
-3- No mesmo terminal, digite ```npm run dev```
-4- Copie o link resultante e cole-o em um navegador de sua escolha
-
+1- Instale o package managaer NPM na sua máquina  
+2- Abra um terminal no diretório UI  
+2- Digite ```npm install``` e pressione enter  
+3- No mesmo terminal, digite ```npm run dev```  
+4- Copie o link resultante e cole-o em um navegador de sua escolha  
+  
 IMPORTANTE: não feche a janela do terminal enquanto estiver usando a UI
 
