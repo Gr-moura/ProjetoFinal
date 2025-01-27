@@ -50,12 +50,6 @@ export const PlayerSelection = () => {
                     ties:0,
                     losses:0,
                 },
-                {
-                    gameName:"Jogo Extra",
-                    wins:0,
-                    ties:0,
-                    losses:0,
-                }
             ]
         });
         //saving new players to local storage
@@ -71,10 +65,6 @@ export const PlayerSelection = () => {
                 playerNick:playerNick,
                 playerName:playerName
             });
-            //removing selected player from the player list  
-            let updatedPlayerList = [...playerList];
-            updatedPlayerList = updatedPlayerList.filter((player)=>(player.playerNick!=playerNick));
-            setPlayerList(updatedPlayerList);
             //setting next player to be selected
             setPlayerNumber(2);
         }
@@ -90,14 +80,19 @@ export const PlayerSelection = () => {
     useEffect(() => {
         const players = localStorage.getItem("players");
         if(players){
-            setPlayerList(JSON.parse(players));
+            if(playerNumber==2){
+                setPlayerList(JSON.parse(players).filter((player)=>(player.playerNick!=player1?.playerNick)));
+            }
+            else{
+                setPlayerList(JSON.parse(players));
+            }
         }
         /*WebAssemblyBinary().then((instance)=>{
             console.log(instance.exports.play(1, 1));
             console.log(instance.exports.play(1, 2));
             console.log(instance.exports.play(1, 3));
         });*/
-    }, []);
+    }, [playerNumber]);
 
     return (
         <div className="playerselectionbody">

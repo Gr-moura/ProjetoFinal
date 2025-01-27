@@ -1,6 +1,6 @@
 .playerbannerbody{
     width: 200px;
-    height: 450px;
+    height: 370px;
     margin-left: 20px;
     margin-right: 20px;
     padding: 10px;
@@ -8,7 +8,11 @@
     overflow: hidden;
     transition: 0.3s ease;
 }
-.playerbannerbody:hover{
+
+.playerbannerouterbody{
+    transition: 0.3s ease;
+}
+.playerbannerouterbody:hover{
     transform: scale(1.1);
 }
 
@@ -40,7 +44,7 @@
     text-align: center;
     font-size: 500px;
     font-family: "Caveat", serif;
-    margin-top: -170px;
+    margin-top: -230px;
     margin-left: -65px;
 }
 

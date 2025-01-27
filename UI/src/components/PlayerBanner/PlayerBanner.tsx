@@ -14,6 +14,8 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
     const [newPlayerNickname, setNewPlayerNickname] = useState("");
     const [highlighted, setHighlighted] = useState(false);
 
+    const [hide, setHide] = useState(true);
+
     const handleClick = () => {
         if(playerType==="new" && !highlighted){
             setHighlighted(true);
@@ -28,11 +30,39 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
         handleSelectPlayer(newPlayerNickname, newPlayerName);
     }
 
+    const handleDeletePlayer = () => {
+        let players = localStorage.getItem("players");
+        if(players){
+            players = JSON.parse(players);
+            players = players.filter((player)=>(player.playerNick!=playerNick));
+            localStorage.setItem("players", JSON.stringify(players));
+            setHide(false);
+            return true;
+        }
+        return false;
+    }
+
     return (
-        <div className={"playerbannerbody"+(highlighted?" playerbannerhighlighted":"")} onClick={()=>handleClick()}>
+        <div className="playerbannerouterbody">
+                {(hide && playerType!="new") && (<button onClick={()=>handleDeletePlayer()} style={{
+                                position:"relative",
+                                top:"80px",
+                                marginLeft:"210px", 
+                                width:"20px", 
+                                height:"20px",
+                                border:0,
+                                borderRadius:"20px",
+                                backgroundColor:"#999999", 
+                                fontSize:"15px",
+                                color:"#202124",
+                                zIndex:"11"}}>🗑
+                </button>)}
+        {hide && (<div className={"playerbannerbody"+(highlighted?" playerbannerhighlighted":"")} onClick={()=>handleClick()}>
             <h3 className={"playernickname"+(highlighted?" playerbannerhighlighted":"")}>{playerNick}</h3>
             <div className="borderdiv"></div>
-            {playerType!="new" && playerType!="nameless" && (<a className="playername">Nome: {playerName}</a>)}
+            <div>
+                {playerType!="new" && playerType!="nameless" && (<a className="playername">Nome: {playerName}</a>)}
+            </div>
             {score && (<ul style={{marginTop:"20px"}}>
                 {score.map((item)=>(
                     <li style={{display:"flex", flexDirection:"column", marginBottom:"10px"}}>
@@ -67,6 +97,7 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
                     </div>
                 </div>
             )}
+        </div>)}
         </div>
     )
 }
