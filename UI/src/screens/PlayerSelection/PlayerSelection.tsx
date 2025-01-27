@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./PlayerSelection.css";
 import { PlayerBanner } from "../../components/PlayerBanner/PlayerBanner";
 import { useNavigate } from "react-router-dom";
+
+//import WebAssemblyBinary from "../../../cpp/wasm/teste.wasm?init";
 
 
 export interface playerType{
@@ -24,6 +26,7 @@ export const PlayerSelection = () => {
     const navigate = useNavigate();
 
     const handleCreatePlayer = (playerNick:string, playerName:string) => {
+        //creating a new player
         let updatedPlayerList = [...playerList];
         updatedPlayerList.push({
             playerNick:playerNick,
@@ -55,6 +58,9 @@ export const PlayerSelection = () => {
                 }
             ]
         });
+        //saving new players to local storage
+        localStorage.setItem("players", JSON.stringify(updatedPlayerList));
+        //rendering new players
         setPlayerList(updatedPlayerList);
     }
 
@@ -67,7 +73,7 @@ export const PlayerSelection = () => {
             });
             //removing selected player from the player list  
             let updatedPlayerList = [...playerList];
-            updatedPlayerList = updatedPlayerList.filter((player)=>(player.playerName!=playerName && player.playerNick!=playerNick));
+            updatedPlayerList = updatedPlayerList.filter((player)=>(player.playerNick!=playerNick));
             setPlayerList(updatedPlayerList);
             //setting next player to be selected
             setPlayerNumber(2);
@@ -79,6 +85,19 @@ export const PlayerSelection = () => {
         }
 
     }
+
+    //loading players from local storage
+    useEffect(() => {
+        const players = localStorage.getItem("players");
+        if(players){
+            setPlayerList(JSON.parse(players));
+        }
+        /*WebAssemblyBinary().then((instance)=>{
+            console.log(instance.exports.play(1, 1));
+            console.log(instance.exports.play(1, 2));
+            console.log(instance.exports.play(1, 3));
+        });*/
+    }, []);
 
     return (
         <div className="playerselectionbody">
@@ -99,12 +118,6 @@ export const PlayerSelection = () => {
                         playerType="new"
                         handleSelectPlayer={handleCreatePlayer}
                     />
-                    {playerNumber===2 && (<PlayerBanner 
-                        playerName="AI" 
-                        playerNick="AI" 
-                        playerType="nameless"
-                        handleSelectPlayer={handleSelectPlayer}
-                    />)}
                 </ul>
             </div>
         </div>
