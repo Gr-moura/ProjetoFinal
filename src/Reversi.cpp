@@ -30,7 +30,7 @@ void Reversi::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno){
     }
 }
 
-std::pair<int, int> Reversi::lerJogada(){
+std::pair<int, int> Reversi::lerJogadaReversi(bool turno){
     int linha, coluna;
     bool entradaValida = false;
 
@@ -43,13 +43,16 @@ std::pair<int, int> Reversi::lerJogada(){
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
-        if (checarPosicaoValida (linha - 1, coluna - 1) and tabuleiro[linha - 1][coluna - 1] == ' ') {
+        char jogador = turno ? 'X' : 'O';
+        std::vector<std::pair<int, int>> flips;
+        std::pair<int, int> jogada = {linha - 1, coluna - 1};
+
+        if (checarPosicaoValida (linha - 1, coluna - 1) and tabuleiro[linha - 1][coluna - 1] == ' ' and movimentoValido(jogada, jogador, flips)) {
             entradaValida = true;
             return {linha - 1, coluna - 1};
         }
         else {
             std::cout << "ERRO: A posicao escolhida e invalida ou esta ocupada. Tente novamente." << std::endl;
-            
         }
     }
 }

@@ -134,4 +134,60 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2) {
   
 }
 
+
+void Jogos::JogarReversi(Jogador &Jogador1, Jogador &Jogador2) {  
+  bool jogoEmAndamento = true;
+  bool turno = sorteio();
+  int contadorTurnos = 0;
+  std::vector<std::pair<int, int>> movimentosJogador1;
+  std::vector<std::pair<int, int>> movimentosJogador2;
+
+  std::pair<int, int> jogada;
+  iniciarPartida(Jogador1, Jogador2, turno);
+
+  while (jogoEmAndamento) {
+    contadorTurnos++;
+    if (turno) {
+      iniciarTurno(Jogador1); //jogadorX no reversi
+      jogada = lerJogadaReversi(turno);
+      
+      marcarTabuleiro(jogada, turno);
+      mostrarTabuleiro();
+
+      movimentosJogador1.push_back(jogada);
+      if (checarVencedor(movimentosJogador1, Jogador1, Jogador2, turno)){
+        std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!"
+        << std::endl;
+        jogoEmAndamento = false;
+        limparTabuleiro();
+        return;
+      }
+      turno = not turno;
+    }
+    else {
+      iniciarTurno(Jogador2); //jogadorO no reversi
+      jogada = lerJogadaReversi(turno);
+      
+      marcarTabuleiro(jogada, turno);
+      mostrarTabuleiro();
+
+      movimentosJogador2.push_back(jogada);
+      if (checarVencedor(movimentosJogador2, Jogador2, Jogador1, turno)){
+        jogoEmAndamento = false;
+        std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!"
+        << std::endl;
+        limparTabuleiro();
+        return;
+      }
+      turno = not turno;
+    }
+    if (checarEmpate(contadorTurnos, Jogador1, Jogador2)) {
+      jogoEmAndamento = false;
+      limparTabuleiro();
+      return;
+    }
+  }
+  
+}
+
 // remover dependencies do makefile

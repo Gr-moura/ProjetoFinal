@@ -31,11 +31,13 @@ class Jogos {
   virtual bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) = 0;
   std::string gerarDivisoriaTabuleiro();
   virtual std::pair<int, int> lerJogada() = 0;
+  virtual std::pair<int, int> lerJogadaReversi(bool turno);
 
  public:
   virtual ~Jogos();
   virtual void mostrarTabuleiro();
   virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
+  virtual void JogarReversi(Jogador &Jogador1, Jogador &Jogador2);
 };
 
 #endif

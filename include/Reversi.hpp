@@ -9,7 +9,7 @@ class Reversi : public Jogos {
   
  protected:
   void iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override; 
-  std::pair<int, int> lerJogada() override;
+  std::pair<int, int> lerJogadaReversi(bool turno) override;
   void marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) override;
   bool movimentoValido(std::pair<int, int> &jogada, char jogador, std::vector<std::pair<int, int>> &flips);
 

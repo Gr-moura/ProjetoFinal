@@ -167,7 +167,7 @@ void CentralDeJogos::executarPartida() {
     }
 
     if (jogoEscolhido == "R") {
-        reversi.Jogar(*posicaoJogador_01, *posicaoJogador_02);
+        reversi.JogarReversi(*posicaoJogador_01, *posicaoJogador_02);
     }
     else if (jogoEscolhido == "L") {
         lig4.Jogar(*posicaoJogador_01, *posicaoJogador_02);
