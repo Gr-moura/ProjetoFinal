@@ -1,0 +1,93 @@
+.menubannerbody{
+    padding: 0px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.highlighted{
+    position: absolute;
+    z-index: 10;
+}
+.hide{
+    opacity: 0;
+}
+
+.banner{
+    height: 400px;
+    width: 230px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #999999;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.menubannerbody:hover .banner{
+    margin-top: -65px;
+    transform: rotateY(180deg);
+}
+
+.gamename{
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 42px;
+    transition: transform 1s ease;
+}
+.menubannerbody:hover .gamename{
+    transform: rotateY(540deg);
+}
+
+.imagetextborder{
+    width: 230px;
+    z-index: 1;
+    border-bottom: 3px solid #999999;
+}
+.menubannerbody:hover .imagetextborder{
+    display: none;
+}
+
+.gameimage{
+    height: 100%;
+    margin: -10px;
+    margin-top: 0px;
+}
+.menubannerbody:hover .gameimage{
+    display: none;
+}
+
+.gamedescription{
+    padding: 15px;
+    text-align: justify;
+    font-family: "Caveat", serif;
+    display: none;
+}
+.menubannerbody:hover .gamedescription{
+    transform: rotateY(180deg);
+    display: flex;
+}
+
+.playbutton{
+    height: 55px;
+    width: 230px;
+    margin-top: -10px;
+    border: 3px solid #ef6f5b;
+    background-color: #202124;
+    opacity: 0;
+    transition: 0.3s;
+}
+.menubannerbody:hover .playbutton{
+    margin-top: 10px;
+    opacity: 100%;
+}
+.buttontext{
+    font-size: 30px;
+    color: #999999;
+}

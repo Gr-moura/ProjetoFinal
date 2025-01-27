@@ -1,0 +1,31 @@
+body{
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.playerselectionbody{
+    height: 100vh;
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #202124;
+    overflow: hidden;
+}
+
+.screentittle{
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.playerbannerdisplay{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    scrollbar-color: #202124 #202124;
+}

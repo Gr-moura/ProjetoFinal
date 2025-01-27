@@ -1,0 +1,67 @@
+.playerbannerbody{
+    width: 200px;
+    height: 450px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    border: 3px solid #999999;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+.playerbannerbody:hover{
+    transform: scale(1.1);
+}
+
+.hidden{
+    display: none;
+    opacity: 0;
+}
+.playerbannerhighlighted{
+    position: inherit;
+    transform: rotateY(180deg);
+}
+.playerbannerhighlighted:hover{
+    transform: rotateY(180deg);
+}
+
+.playernickname{
+    text-align: center;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+.borderdiv{
+    border-bottom: 3px solid #999999;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 10px;
+}
+
+.createplayerplus{
+    text-align: center;
+    font-size: 500px;
+    font-family: "Caveat", serif;
+    margin-top: -170px;
+    margin-left: -65px;
+}
+
+.newplayerinput{
+    margin-top: 3;
+    width: 97%;
+    padding: 3px;
+    color: #999999;
+    font-family: "Caveat", serif;
+    background-color: #202124;
+    border: 1px solid #999999;
+    z-index: 10;
+}
+
+.createnewplayerbutton{
+    width: 100%;
+    padding: 10px;
+    color: #202124;
+    background-color: #999999;
+    border: 0;
+    border-radius: 20px;
+    font-family: "Caveat", serif;
+    z-index: 10;
+}
