@@ -38,7 +38,7 @@ CentralDeJogos::CentralDeJogos()
 */
 CentralDeJogos::~CentralDeJogos()
 {
-    std::ofstream DadosJogadoresCadastrados("../data/DadosJogadoresCadastrados.txt");
+    std::ofstream DadosJogadoresCadastrados("data/DadosJogadoresCadastrados.txt");
     if (!DadosJogadoresCadastrados.is_open())
     {
         std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados não foram carregados." << std::endl;
@@ -161,12 +161,22 @@ void CentralDeJogos::executarPartida()
     std::cout << "Digite o apelido do jogador 1: ";
     std::string apelidoJogador_01 = validarEntrada();
 
-    std::cout << "Digite o apelido do jogador 2: ";
-    std::string apelidoJogador_02 = validarEntrada();
-
     auto posicaoJogador_01 = std::find_if(
         jogadoresCadastrados.begin(), jogadoresCadastrados.end(),
         [&apelidoJogador_01](const Jogador &jogador) { return jogador.getApelido() == apelidoJogador_01; });
+
+    if (jogoEscolhido == "A")
+    {
+        auto posicaoJogador_02 = std::find_if(jogadoresCadastrados.begin(), jogadoresCadastrados.end(),
+                                              [&](const Jogador &jogador) { return jogador.getApelido() == "AI"; });
+
+        Ai.Jogar(*posicaoJogador_01, *posicaoJogador_02);
+
+        return;
+    }
+
+    std::cout << "Digite o apelido do jogador 2: ";
+    std::string apelidoJogador_02 = validarEntrada();
 
     auto posicaoJogador_02 = std::find_if(
         jogadoresCadastrados.begin(), jogadoresCadastrados.end(),
@@ -192,6 +202,6 @@ void CentralDeJogos::executarPartida()
     }
     else
     {
-        std::cout << "ERRO: Insira o formato adequado [R|L|V], exemplo para jogar reversi: R" << std::endl;
+        std::cout << "ERRO: Insira o formato adequado [R|L|V|A], exemplo para jogar reversi: R" << std::endl;
     }
 }

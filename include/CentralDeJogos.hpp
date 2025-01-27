@@ -1,20 +1,23 @@
 #ifndef CENTRALDEJOGOS_HPP
 #define CENTRALDEJOGOS_HPP
 
-#include "Jogos.hpp"
 #include "JogoDaVelha.hpp"
+#include "JogoDaVelhaAi.hpp"
+#include "Jogos.hpp"
 #include "Lig4.hpp"
 #include "Reversi.hpp"
 
-class CentralDeJogos {
-private:
+class CentralDeJogos
+{
+  private:
     std::vector<Jogador> jogadoresCadastrados;
+    JogoDaVelhaAi Ai;
     JogoDaVelha velha;
     Lig4 lig4;
     Reversi reversi;
 
-public:
-    CentralDeJogos(); 
+  public:
+    CentralDeJogos();
     ~CentralDeJogos();
 
     std::string validarEntrada();

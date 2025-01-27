@@ -1,23 +1,8 @@
-
 #include "JogoDaVelhaAi.hpp"
 
-TicTacToe::TicTacToe() : board(BOARD_SIZE, EMPTY), humanTurn(false) {}
+JogoDaVelhaAi::JogoDaVelhaAi() : board(BOARD_SIZE, EMPTY) {}
 
-void TicTacToe::printBoard() const
-{
-    std::cout << "\n";
-    for (int i = 0; i < BOARD_SIZE; i++)
-    {
-        std::cout << " " << board[i] << " ";
-        if (i % 3 != 2)
-            std::cout << "|";
-        if (i % 3 == 2 && i != BOARD_SIZE - 1)
-            std::cout << "\n-----------\n";
-    }
-    std::cout << "\n\n";
-}
-
-bool TicTacToe::checkWin(char player) const
+bool JogoDaVelhaAi::checkWin(char player) const
 {
     const int winCombos[8][3] = {
         {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Linhas
@@ -35,7 +20,7 @@ bool TicTacToe::checkWin(char player) const
     return false;
 }
 
-bool TicTacToe::isBoardFull() const
+bool JogoDaVelhaAi::isBoardFull() const
 {
     for (char c : board)
     {
@@ -45,13 +30,13 @@ bool TicTacToe::isBoardFull() const
     return true;
 }
 
-int TicTacToe::minimax(bool isMaximizing)
+int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
 {
     if (checkWin(PLAYER_X))
         return 1;
     if (checkWin(PLAYER_O))
         return -1;
-    if (isBoardFull())
+    if (isBoardFull() or depth == 0)
         return 0;
 
     if (isMaximizing)
@@ -62,8 +47,9 @@ int TicTacToe::minimax(bool isMaximizing)
             if (board[i] == EMPTY)
             {
                 board[i] = PLAYER_X;
-                int score = minimax(false);
+                int score = minimax(false, depth - 1);
                 board[i] = EMPTY;
+
                 bestScore = std::max(score, bestScore);
             }
         }
@@ -77,7 +63,7 @@ int TicTacToe::minimax(bool isMaximizing)
             if (board[i] == EMPTY)
             {
                 board[i] = PLAYER_O;
-                int score = minimax(true);
+                int score = minimax(true, depth - 1);
                 board[i] = EMPTY;
                 bestScore = std::min(score, bestScore);
             }
@@ -86,7 +72,7 @@ int TicTacToe::minimax(bool isMaximizing)
     }
 }
 
-int TicTacToe::getBestMove()
+int JogoDaVelhaAi::getBestMove()
 {
     int bestScore = INT_MIN;
     int bestMove = -1;
@@ -97,83 +83,128 @@ int TicTacToe::getBestMove()
         if (board[i] == EMPTY)
         {
             board[i] = PLAYER_X;
-            int score = minimax(false);
+            int score = minimax(false, MAX_DEPTH);
             board[i] = EMPTY;
-            if (score > bestScore)
+
+            if (bestScore < score)
             {
                 bestScore = score;
                 bestMove = i;
+
+                if (bestScore == 1)
+                    break;
             }
         }
     }
     return bestMove;
 }
 
-void TicTacToe::humanMove()
+std::pair<int, int> JogoDaVelhaAi::humanMove(bool turno)
 {
-    int move;
-    while (true)
-    {
-        std::cout << "Sua vez (0-8): ";
-        std::cin >> move;
-        if (std::cin.fail() || move < 0 || move >= BOARD_SIZE || board[move] != EMPTY)
-        {
-            std::cout << "Movimento inválido! Tente novamente.\n";
-            std::cin.clear();
-        }
-        else
-        {
-            board[move] = PLAYER_O;
-            break;
-        }
-    }
+    std::pair<int, int> jogada = jogo.lerJogada();
+    int move = jogada.first * 3 + jogada.second;
+
+    board[move] = PLAYER_O;
+
+    jogo.marcarTabuleiro(jogada, turno);
+    return jogada;
 }
 
-void TicTacToe::aiMove()
+std::pair<int, int> JogoDaVelhaAi::aiMove(bool turno)
 {
     int aiMove = getBestMove();
     board[aiMove] = PLAYER_X;
-    std::cout << "IA escolheu a posição " << aiMove << "\n";
+
+    std::pair<int, int> jogada = {aiMove / 3, aiMove % 3};
+
+    jogo.marcarTabuleiro(jogada, turno);
+    return jogada;
 }
 
-void TicTacToe::playGame()
+void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
-    std::cout << "Posições:\n";
-    std::cout << " 0 | 1 | 2 \n";
-    std::cout << "-----------\n";
-    std::cout << " 3 | 4 | 5 \n";
-    std::cout << "-----------\n";
-    std::cout << " 6 | 7 | 8 \n\n";
+    bool jogoEmAndamento = true;
+
+    std::cout << "Bem vindo ao Jogo da velha! Qual jogador deverá começar a partida?\n"
+              << Jogador1.getApelido() << " (0)\nAI (1)" << std::endl;
+
+    bool turno;
+    while (true)
+    {
+        while (not(std::cin >> turno))
+        {
+            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        if (turno == 0 or turno == 1)
+            break;
+    }
+
+    int dificuldade = 2;
+    std::cout << "Qual será a dificuldade da AI?\n"
+              << "Fácil (0)\nMédio (1)\nDifícil (2)" << std::endl;
 
     while (true)
     {
-        printBoard();
+        while (not(std::cin >> turno))
+        {
+            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        if (dificuldade == 0 or dificuldade == 1 or dificuldade == 2)
+            break;
+    }
 
-        if (checkWin(PLAYER_X))
-        {
-            std::cout << "IA venceu!\n";
-            break;
-        }
-        if (checkWin(PLAYER_O))
-        {
-            std::cout << "Você venceu! (Isso não deveria acontecer!)\n";
-            break;
-        }
-        if (isBoardFull())
-        {
-            std::cout << "Empate!\n";
-            break;
-        }
+    MAX_DEPTH = (dificuldade + 1) * 3;
+    turno = !turno;
 
-        if (humanTurn)
+    int contadorTurnos = 0;
+    std::vector<std::pair<int, int>> movimentosJogador1;
+    std::vector<std::pair<int, int>> movimentosJogador2;
+
+    jogo.iniciarPartida(Jogador1, Jogador2, turno);
+
+    while (jogoEmAndamento)
+    {
+        contadorTurnos++;
+        if (turno)
         {
-            humanMove();
+            jogo.iniciarTurno(Jogador1);
+
+            movimentosJogador1.push_back(humanMove(turno));
+            jogo.mostrarTabuleiro();
+
+            if (jogo.checarVencedor(movimentosJogador1, Jogador1, Jogador2, turno))
+            {
+                std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!" << std::endl;
+                jogoEmAndamento = false;
+            }
+            turno = not turno;
         }
         else
         {
-            aiMove();
+            jogo.iniciarTurno(Jogador2);
+
+            movimentosJogador2.push_back(aiMove(turno));
+            jogo.mostrarTabuleiro();
+
+            if (jogo.checarVencedor(movimentosJogador2, Jogador2, Jogador1, turno))
+            {
+                jogoEmAndamento = false;
+                std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!" << std::endl;
+            }
+            turno = not turno;
         }
 
-        humanTurn = !humanTurn;
+        if (jogo.checarEmpate(contadorTurnos, Jogador1, Jogador2))
+            jogoEmAndamento = false;
+    }
+
+    if (!jogoEmAndamento)
+    {
+        jogo = JogoDaVelha();
+        board = std::vector<char>(BOARD_SIZE, EMPTY);
     }
 }

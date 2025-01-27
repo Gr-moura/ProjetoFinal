@@ -35,6 +35,8 @@ class Jogos
     virtual ~Jogos();
     virtual void mostrarTabuleiro();
     virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
+
+    friend class JogoDaVelhaAi;
 };
 
 #endif

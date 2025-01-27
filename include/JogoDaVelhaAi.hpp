@@ -2,6 +2,7 @@
 #define JOGODAVELHAAI_HPP
 
 #include "JogoDaVelha.hpp"
+#include "Jogos.hpp"
 #include <iostream>
 #include <vector>
 
@@ -9,24 +10,26 @@ const int BOARD_SIZE = 9;
 const char EMPTY = ' ';
 const char PLAYER_X = 'X';
 const char PLAYER_O = 'O';
-class TicTacToe
+class JogoDaVelhaAi
 {
   public:
-    TicTacToe();
+    JogoDaVelhaAi();
     void playGame();
-    JogoDaVelha jogo;
+    void Jogar(Jogador &Jogador1, Jogador &Jogador2);
 
   private:
-    std::vector<char> board;
-    bool humanTurn;
+    int MAX_DEPTH;
 
-    void printBoard() const;
+    JogoDaVelha jogo;
+    std::vector<char> board;
+
     bool checkWin(char player) const;
     bool isBoardFull() const;
-    int minimax(bool isMaximizing);
+    int minimax(bool isMaximizing, int depth);
     int getBestMove();
-    void humanMove();
-    void aiMove();
+
+    std::pair<int, int> humanMove(bool turno);
+    std::pair<int, int> aiMove(bool turno);
 };
 
 #endif

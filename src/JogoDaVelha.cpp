@@ -19,7 +19,7 @@ void JogoDaVelha::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &tur
     }
     else
     {
-        std::cout << "Bem Vindo ao Jogo da velha! O jogador " << Jogador2.getApelido() << "comecara a partida!"
+        std::cout << "Bem Vindo ao Jogo da velha! O jogador " << Jogador2.getApelido() << " comecara a partida!"
                   << std::endl;
     }
     mostrarTabuleiro();

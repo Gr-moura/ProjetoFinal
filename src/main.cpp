@@ -62,7 +62,7 @@ int main()
         }
         else if (comando == "EP")
         {
-            std::cout << "Digite o nome do jogo que deseja jogar [R|L|V]: ";
+            std::cout << "Digite o nome do jogo que deseja jogar [R|L|V|A]: ";
             central.executarPartida();
         }
         else if (comando == "FS")

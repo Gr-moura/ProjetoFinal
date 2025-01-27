@@ -20,6 +20,8 @@ class JogoDaVelha : public Jogos
     bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor,
                         bool turno) override;
     bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override;
+
+    friend class JogoDaVelhaAi;
 };
 
 #endif
