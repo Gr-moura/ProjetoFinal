@@ -54,18 +54,6 @@ void Jogos::limparTabuleiro()
     return;
 }
 
-void Jogos::limparTabuleiro()
-{
-    for (auto &linha : tabuleiro)
-    {
-        for (auto &coluna : linha)
-        {
-            coluna = ' ';
-        }
-    }
-    return;
-}
-
 void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
 {
     if (turno)
