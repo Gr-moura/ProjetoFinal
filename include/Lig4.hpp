@@ -12,7 +12,7 @@ class Lig4 : public Jogos {
   bool checarDiagonal(std::vector<std::pair<int, int>> &jogadas);
   bool checarColunas(std::vector<std::pair<int, int>> &jogadas);
   bool checarLinhas(std::vector<std::pair<int, int>> &jogadas);
-  bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor, bool turno) override;
+  bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) override;
   bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override;
   std::pair<int, int> lerJogada() override;
 };

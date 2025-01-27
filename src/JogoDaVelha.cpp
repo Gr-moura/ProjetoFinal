@@ -113,7 +113,7 @@ bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &jogadas) {
   return false;
 }
 
-bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor, bool turno) {
+bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) {
   if (!jogadas.empty()) {
     if (checarDiagonal(jogadas) or
         checarColunas(jogadas) or

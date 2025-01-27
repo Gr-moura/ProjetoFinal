@@ -55,6 +55,62 @@ std::pair<int, int> Reversi::lerJogadaReversi(bool turno){
             std::cout << "ERRO: A posicao escolhida e invalida ou esta ocupada. Tente novamente." << std::endl;
         }
     }
+    return {-1, -1};
+}
+
+void Reversi::JogarReversi(Jogador &Jogador1, Jogador &Jogador2) {  
+  bool jogoEmAndamento = true;
+  bool turno = sorteio();
+  int contadorTurnos = 0;
+  std::vector<std::pair<int, int>> movimentosJogador1;
+  std::vector<std::pair<int, int>> movimentosJogador2;
+
+  std::pair<int, int> jogada;
+  iniciarPartida(Jogador1, Jogador2, turno);
+
+  while (jogoEmAndamento) {
+    contadorTurnos++;
+    if (turno) {
+      iniciarTurno(Jogador1); //jogadorX no reversi
+      jogada = lerJogadaReversi(turno);
+      
+      marcarTabuleiro(jogada, turno);
+      mostrarTabuleiro();
+
+      movimentosJogador1.push_back(jogada);
+      if (checarVencedor(movimentosJogador1, Jogador1, Jogador2)){
+        std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!"
+        << std::endl;
+        jogoEmAndamento = false;
+        limparTabuleiro();
+        return;
+      }
+      turno = not turno;
+    }
+    else {
+      iniciarTurno(Jogador2); //jogadorO no reversi
+      jogada = lerJogadaReversi(turno);
+      
+      marcarTabuleiro(jogada, turno);
+      mostrarTabuleiro();
+
+      movimentosJogador2.push_back(jogada);
+      if (checarVencedor(movimentosJogador2, Jogador2, Jogador1)){
+        jogoEmAndamento = false;
+        std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!"
+        << std::endl;
+        limparTabuleiro();
+        return;
+      }
+      turno = not turno;
+    }
+    if (checarEmpate(contadorTurnos, Jogador1, Jogador2)) {
+      jogoEmAndamento = false;
+      limparTabuleiro();
+      return;
+    }
+  }
+  
 }
 
 void Reversi::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno) {
@@ -113,7 +169,7 @@ bool Reversi::movimentoValido(std::pair<int, int> &jogada, char jogador, std::ve
     return valido;
 }
 
-bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogador &jogador_1, Jogador &jogador_2, bool turno) {
+bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogador &jogador_1, Jogador &jogador_2) {
     int contadorX = 0;
     int contadorO = 0;
 
@@ -147,9 +203,5 @@ bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogad
         }
         return true;
     }
-    return false;
-}
-
-bool Reversi::checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) {
     return false;
 }

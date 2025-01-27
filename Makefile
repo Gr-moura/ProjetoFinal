@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Iinclude -Wall -Wextra -std=c++17
+CXXFLAGS = -Iinclude -Wall -Wextra -std=c++11 -Wno-unused-parameter
 LDFLAGS =
 
 SRC_DIR = src

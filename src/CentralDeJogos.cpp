@@ -38,7 +38,7 @@ CentralDeJogos::CentralDeJogos() {
     de acordo com as opções escolhidas pelo usuário;
 */
 CentralDeJogos::~CentralDeJogos() {
-    std::ofstream DadosJogadoresCadastrados("../data/DadosJogadoresCadastrados.txt");
+    std::ofstream DadosJogadoresCadastrados("data/DadosJogadoresCadastrados.txt");
     if (!DadosJogadoresCadastrados.is_open()) {
         std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados não foram carregados." << std::endl;
         return;
