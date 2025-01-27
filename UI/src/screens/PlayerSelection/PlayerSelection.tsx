@@ -26,6 +26,27 @@ export const PlayerSelection = () => {
     const navigate = useNavigate();
 
     const handleCreatePlayer = (playerNick:string, playerName:string) => {
+        //doesnt allow players with empty names or nickames
+        if(playerName=="" || playerNick==""){
+            alert("Por favor, preencha o nome e o apelido do jogador!");
+            return false;
+        }
+        //doesnt allow players with the same nickname
+        let samenickname = false;
+        playerList.forEach((player)=>{
+            if(player.playerNick==playerNick){
+                samenickname = true;
+            }
+        })
+        if(samenickname){
+            alert("Apelido já em uso!");
+            return false;
+        }
+        //player cant be AI
+        if(playerNick=="AI"){
+            alert("Esse apelido não pode ser usado!");
+            return false;
+        }
         //creating a new player
         let updatedPlayerList = [...playerList];
         updatedPlayerList.push({
@@ -56,6 +77,7 @@ export const PlayerSelection = () => {
         localStorage.setItem("players", JSON.stringify(updatedPlayerList));
         //rendering new players
         setPlayerList(updatedPlayerList);
+        return true;
     }
 
     const handleSelectPlayer = (playerNick:string, playerName:string) => {

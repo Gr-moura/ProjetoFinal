@@ -14,7 +14,7 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
     const [newPlayerNickname, setNewPlayerNickname] = useState("");
     const [highlighted, setHighlighted] = useState(false);
 
-    const [hide, setHide] = useState(true);
+    const [hide, setHide] = useState(false);
 
     const handleClick = () => {
         if(playerType==="new" && !highlighted){
@@ -32,11 +32,11 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
 
     const handleDeletePlayer = () => {
         let players = localStorage.getItem("players");
-        if(players){
+        if(players && playerType!="new"){
             players = JSON.parse(players);
             players = players.filter((player)=>(player.playerNick!=playerNick));
             localStorage.setItem("players", JSON.stringify(players));
-            setHide(false);
+            setHide(true);
             return true;
         }
         return false;
@@ -44,60 +44,48 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
 
     return (
         <div className="playerbannerouterbody">
-                {(hide && playerType!="new") && (<button onClick={()=>handleDeletePlayer()} style={{
-                                position:"relative",
-                                top:"80px",
-                                marginLeft:"210px", 
-                                width:"20px", 
-                                height:"20px",
-                                border:0,
-                                borderRadius:"20px",
-                                backgroundColor:"#999999", 
-                                fontSize:"15px",
-                                color:"#202124",
-                                zIndex:"11"}}>🗑
-                </button>)}
-        {hide && (<div className={"playerbannerbody"+(highlighted?" playerbannerhighlighted":"")} onClick={()=>handleClick()}>
-            <h3 className={"playernickname"+(highlighted?" playerbannerhighlighted":"")}>{playerNick}</h3>
-            <div className="borderdiv"></div>
-            <div>
-                {playerType!="new" && playerType!="nameless" && (<a className="playername">Nome: {playerName}</a>)}
-            </div>
-            {score && (<ul style={{marginTop:"20px"}}>
-                {score.map((item)=>(
-                    <li style={{display:"flex", flexDirection:"column", marginBottom:"10px"}}>
-                        <a>Jogo: {item.gameName}</a>
-                        <a>Vitórias: {item.wins.toString()}</a>
-                        <a>Empates: {item.ties.toString()}</a>
-                        <a>Derrotas: {item.losses.toString()}</a>
-                    </li>
-                ))}
-            </ul>)}
-            {playerType==="new" &&(
+            {!hide && (<button className={"deletebutton"+(playerType==="new"?" hideopacity":"")} onClick={()=>handleDeletePlayer()}>🗑</button>)}
+            {!hide && (<div className={"playerbannerbody"+(highlighted?" playerbannerhighlighted":"")} onClick={()=>handleClick()}>
+                <h3 className={"playernickname"+(highlighted?" playerbannerhighlighted":"")}>{playerNick}</h3>
+                <div className="borderdiv"></div>
                 <div>
-                    <div style={{position:"relative"}} className={highlighted?"playerbannerhighlighted":"hidden"}>
-                        <div style={{marginTop:"10px"}}>
-                            <a>Digite o seu nome: </a>
-                            <input className="newplayerinput" name="playername" 
-                                onChange={(event)=>setNewPlayerName(event.target.value)}
-                            />
-                        </div>
-                        <div style={{marginTop:"10px"}}>
-                            <a>Digite o seu apelido: </a>
-                            <input className="newplayerinput" name="playername" 
-                                onChange={(event)=>setNewPlayerNickname(event.target.value)}
-                            />
-                        </div>
-                        <div style={{marginTop:"100px",display:"flex", "alignItems":"center", "justifyContent":"center"}}>
-                            <button className="createnewplayerbutton" onClick={()=>handleCreateNewPlayer()}>Criar</button>
-                        </div>
-                    </div>
-                    <div style={{position:"relative", display:"flex", alignItems:"center", justifyContent:"center"}} className={highlighted?"hidden":""}>
-                        <a className="createplayerplus">+</a>
-                    </div>
+                    {playerType!="new" && playerType!="nameless" && (<a className="playername">Nome: {playerName}</a>)}
                 </div>
-            )}
-        </div>)}
+                {score && (<ul style={{marginTop:"20px"}}>
+                    {score.map((item)=>(
+                        <li style={{display:"flex", flexDirection:"column", marginBottom:"10px"}}>
+                            <a>Jogo: {item.gameName}</a>
+                            <a>Vitórias: {item.wins.toString()}</a>
+                            <a>Empates: {item.ties.toString()}</a>
+                            <a>Derrotas: {item.losses.toString()}</a>
+                        </li>
+                    ))}
+                </ul>)}
+                {playerType==="new" &&(
+                    <div>
+                        <div style={{position:"relative"}} className={highlighted?"playerbannerhighlighted":"hidden"}>
+                            <div style={{marginTop:"10px"}}>
+                                <a>Digite o seu nome: </a>
+                                <input className="newplayerinput" name="playername" 
+                                    onChange={(event)=>setNewPlayerName(event.target.value)}
+                                />
+                            </div>
+                            <div style={{marginTop:"10px"}}>
+                                <a>Digite o seu apelido: </a>
+                                <input className="newplayerinput" name="playername" 
+                                    onChange={(event)=>setNewPlayerNickname(event.target.value)}
+                                />
+                            </div>
+                            <div style={{marginTop:"100px",display:"flex", "alignItems":"center", "justifyContent":"center"}}>
+                                <button className="createnewplayerbutton" onClick={()=>handleCreateNewPlayer()}>Criar</button>
+                            </div>
+                        </div>
+                        <div style={{position:"relative", display:"flex", alignItems:"center", justifyContent:"center"}} className={highlighted?"hidden":""}>
+                            <a className="createplayerplus">+</a>
+                        </div>
+                    </div>
+                )}
+            </div>)}
         </div>
     )
 }
