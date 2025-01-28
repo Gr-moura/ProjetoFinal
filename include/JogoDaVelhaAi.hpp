@@ -1,16 +1,35 @@
-#ifndef JOGODAVELHAAI_H
-#define JOGODAVELHAAI_H
+#ifndef JOGODAVELHAAI_HPP
+#define JOGODAVELHAAI_HPP
 
-#include "Ai.hpp"
+#include "JogoDaVelha.hpp"
+#include "Jogos.hpp"
+#include <iostream>
+#include <vector>
 
-class JogoDaVelhaAi : public Ai
+const int BOARD_SIZE = 9;
+const char EMPTY = ' ';
+const char PLAYER_X = 'X';
+const char PLAYER_O = 'O';
+class JogoDaVelhaAi
 {
   public:
-    JogoDaVelhaAi() : Ai() {}
-    // Evaluate the current board state
-    int evaluateBoard(const board_t &board) const override;
-    std::vector<std::pair<int, int>> getAvailableMoves(const board_t &board) const override;
-    bool isTerminalState(const board_t &board) const override;
+    JogoDaVelhaAi();
+    void playGame();
+    void Jogar(Jogador &Jogador1, Jogador &Jogador2);
+
+  private:
+    int MAX_DEPTH;
+
+    JogoDaVelha jogo;
+    std::vector<char> board;
+
+    bool checkWin(char player) const;
+    bool isBoardFull() const;
+    int minimax(bool isMaximizing, int depth);
+    int getBestMove();
+
+    std::pair<int, int> humanMove(bool turno);
+    std::pair<int, int> aiMove(bool turno);
 };
 
-#endif // JOGODAVELHAAI_H
+#endif
