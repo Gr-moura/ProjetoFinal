@@ -1,0 +1,32 @@
+.dropdownbutton{
+    margin: 10;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(90, 90, 90);
+}
+
+.dropdownbody{
+}
+.dropdownitems{
+    display: flex;
+}
+.dropdownitemslist{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+.dropdownitem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+.dropdownitembutton{
+    border-radius: 10px;
+}
+
+ul{
+    list-style-type: none;
+}
