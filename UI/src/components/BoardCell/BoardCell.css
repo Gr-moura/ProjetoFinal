@@ -11,14 +11,15 @@
 }
 
 .cell.flip{
-    transform: rotateY(180deg);
 }
 
 .player1{
+    transform: rotateY(360deg);
     background-color: #8ceeb3;
     border: 0;
 }
 .player2{
+    transform: rotateY(180deg);
     background-color: #ef6f5b;
     border: 0;
 }

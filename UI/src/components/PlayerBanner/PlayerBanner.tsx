@@ -34,8 +34,10 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
         let players = localStorage.getItem("players");
         if(players && playerType!="new"){
             players = JSON.parse(players);
+            // @ts-ignore
             players = players.filter((player)=>(player.playerNick!=playerNick));
             localStorage.setItem("players", JSON.stringify(players));
+            window.location.reload();
             setHide(true);
             return true;
         }
@@ -53,7 +55,7 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
                 </div>
                 {score && (<ul style={{marginTop:"20px"}}>
                     {score.map((item)=>(
-                        <li style={{display:"flex", flexDirection:"column", marginBottom:"10px"}}>
+                        <li key={item.gameName} style={{display:"flex", flexDirection:"column", marginBottom:"10px"}}>
                             <a>Jogo: {item.gameName}</a>
                             <a>Vitórias: {item.wins.toString()}</a>
                             <a>Empates: {item.ties.toString()}</a>

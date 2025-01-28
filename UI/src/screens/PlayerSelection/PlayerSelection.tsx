@@ -26,6 +26,8 @@ export const PlayerSelection = () => {
     const navigate = useNavigate();
 
     const handleCreatePlayer = (playerNick:string, playerName:string) => {
+        // @ts-ignore
+        let updatedPlayerList = JSON.parse(localStorage.getItem("players"));
         //doesnt allow players with empty names or nickames
         if(playerName=="" || playerNick==""){
             alert("Por favor, preencha o nome e o apelido do jogador!");
@@ -33,7 +35,8 @@ export const PlayerSelection = () => {
         }
         //doesnt allow players with the same nickname
         let samenickname = false;
-        playerList.forEach((player)=>{
+        // @ts-ignore
+        updatedPlayerList.forEach((player)=>{
             if(player.playerNick==playerNick){
                 samenickname = true;
             }
@@ -48,7 +51,6 @@ export const PlayerSelection = () => {
             return false;
         }
         //creating a new player
-        let updatedPlayerList = [...playerList];
         updatedPlayerList.push({
             playerNick:playerNick,
             playerName:playerName,
@@ -60,7 +62,7 @@ export const PlayerSelection = () => {
                     losses:0
                 },
                 {
-                    gameName:"Ligue 4",
+                    gameName:"Ligue Quatro",
                     wins:0,
                     ties:0,
                     losses:0,
@@ -74,6 +76,7 @@ export const PlayerSelection = () => {
             ]
         });
         //saving new players to local storage
+        console.log(updatedPlayerList);
         localStorage.setItem("players", JSON.stringify(updatedPlayerList));
         //rendering new players
         setPlayerList(updatedPlayerList);
@@ -126,6 +129,7 @@ export const PlayerSelection = () => {
                             playerNick={item.playerNick}
                             score={item.score}
                             handleSelectPlayer={handleSelectPlayer}
+                            key={item.playerNick}
                         />
                     ))}
                     <PlayerBanner 

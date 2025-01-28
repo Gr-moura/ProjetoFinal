@@ -42,7 +42,7 @@ export const Menu = () => {
     const [selectedDificulty, setSelectedDificulty] = useState<number>(dificultieSettings[0].value);
 
     const [highlitActive, setHighlightActive] = useState<boolean>(false);
-    const [highlitedItems, setHighlitedItems] = useState<boolean[]>([false, false, false, false]);
+    const [highlitedItems, setHighlitedItems] = useState<boolean[]>([false, false, false]);
 
     const highlightItem = (id:number)=> {
         let updatedArray = [...highlitedItems];
@@ -81,8 +81,19 @@ export const Menu = () => {
     }
 
     useEffect(()=>{
-        console.log("dificulty change to:", selectedDificulty);
-    }, [selectedDificulty]);
+        if(highlitedItems[0]){
+            setSelectedHeight(3);
+            setSelectedWidht(3);
+        }
+        if(highlitedItems[1]){
+            setSelectedHeight(6);
+            setSelectedWidht(7);
+        }
+        if(highlitedItems[2]){
+            setSelectedHeight(8);
+            setSelectedWidht(8);
+        }
+    }, [highlitedItems]);
 
     return (
         <div className="menubody">
@@ -120,10 +131,10 @@ export const Menu = () => {
                 action={bannerAction}
             />
             {highlitActive && (
-                <div style={{marginTop:"22px", marginLeft:"-100px"}}>
+                <div style={{marginTop:"22px", marginLeft:"-50px"}}>
                     <div>
                         <a className="selectortitle">Jogadores:</a>
-                        <div style={{marginTop:"-10px",display:"flex", flexDirection:"row", alignItems:"center"}}>
+                        <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
                             <a className="menuplayername">{player1.playerNick}</a>
                             <a style={{marginRight:"5px", marginLeft:"5px"}}> vs </a>
                             <a className="menuplayername">{player2.playerNick}</a>
@@ -133,14 +144,14 @@ export const Menu = () => {
                         <a className="selectortitle">Selecione a dificuldade:</a>
                         <Selector items={dificultieSettings} setAction={setSelectedDificulty}/>
                     </div>)}
-                    <div>
+                    {/*<div>
                         <a className="selectortitle">Selecione o tamanho do tabuleiro:</a>
                         <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
                             <Selector items={boardsizeSettings} setAction={setSelectedWidht}/>
                             <a style={{marginRight:"5px", marginLeft:"5px"}}> por </a>
                             <Selector items={boardsizeSettings} setAction={setSelectedHeight}/>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
             )}
             {highlitActive && (
