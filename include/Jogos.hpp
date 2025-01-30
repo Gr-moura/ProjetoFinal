@@ -34,7 +34,7 @@ class Jogos
 
     std::string gerarDivisoriaTabuleiro();
 
-    virtual std::pair<int, int> lerJogada() { return {0, 0};};
+    virtual std::pair<int, int> lerJogada() { return {0, 0}; };
 
   public:
     virtual void mostrarTabuleiro();

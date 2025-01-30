@@ -88,8 +88,8 @@ bool BatalhaNaval::quantidadeBarcosDisponiveis(std::map<char, int> &countBarcos,
     return false;
 }
 
-void BatalhaNaval::inserirBarcos(std::vector<std::pair<int, int>> &barcosJogador, char tipo, int linhaInicial, int colunaInicial,
-                   int linhaFinal, int colunaFinal)
+void BatalhaNaval::inserirBarcos(std::vector<std::pair<int, int>> &barcosJogador, char tipo, int linhaInicial,
+                                 int colunaInicial, int linhaFinal, int colunaFinal)
 {
     if (colunaInicial > colunaFinal)
     {

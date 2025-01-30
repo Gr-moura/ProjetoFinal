@@ -21,9 +21,9 @@ CentralDeJogos::CentralDeJogos()
 
     while (std::getline(DadosJogadoresCadastrados, nome))
     {
-        if (!(DadosJogadoresCadastrados >> apelido >> vitoriasJogoDaVelha >> derrotasJogoDaVelha >> empatesJogoDaVelha >>
-              vitoriasLig4 >> derrotasLig4 >> empatesLig4 >> vitoriasReversi >> derrotasReversi >> empatesReversi >>
-              vitoriasBatalhaNaval >> derrotasBatalhaNaval >> empatesBatalhaNaval))
+        if (!(DadosJogadoresCadastrados >> apelido >> vitoriasJogoDaVelha >> derrotasJogoDaVelha >>
+              empatesJogoDaVelha >> vitoriasLig4 >> derrotasLig4 >> empatesLig4 >> vitoriasReversi >> derrotasReversi >>
+              empatesReversi >> vitoriasBatalhaNaval >> derrotasBatalhaNaval >> empatesBatalhaNaval))
         {
             std::cerr << "ERRO: arquivo de save corrompido, iniciando com o save zerado. " << nome << std::endl;
             break;
@@ -31,9 +31,9 @@ CentralDeJogos::CentralDeJogos()
 
         DadosJogadoresCadastrados.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        Jogador jogador(apelido, nome, vitoriasJogoDaVelha, derrotasJogoDaVelha, empatesJogoDaVelha, 
-                        vitoriasLig4, derrotasLig4, empatesLig4, vitoriasReversi, derrotasReversi, 
-                        empatesReversi, vitoriasBatalhaNaval, derrotasBatalhaNaval, empatesBatalhaNaval);
+        Jogador jogador(apelido, nome, vitoriasJogoDaVelha, derrotasJogoDaVelha, empatesJogoDaVelha, vitoriasLig4,
+                        derrotasLig4, empatesLig4, vitoriasReversi, derrotasReversi, empatesReversi,
+                        vitoriasBatalhaNaval, derrotasBatalhaNaval, empatesBatalhaNaval);
 
         jogadoresCadastrados.push_back(jogador);
     }
@@ -56,14 +56,15 @@ CentralDeJogos::~CentralDeJogos()
 
     for (Jogador &jogador : jogadoresCadastrados)
     {
-        DadosJogadoresCadastrados << jogador.getNome() << std::endl << jogador.getApelido() << " "
-                                  << jogador.getVitorias("VELHA") << " " << jogador.getDerrotas("VELHA") << " "
-                                  << jogador.getEmpates("VELHA") << " " << jogador.getVitorias("LIG4") << " "
-                                  << jogador.getDerrotas("LIG4") << " " << jogador.getEmpates("LIG4") << " "
-                                  << jogador.getVitorias("REVERSI") << " " << jogador.getDerrotas("REVERSI") << " "
-                                  << jogador.getEmpates("REVERSI") << " " << jogador.getVitorias("BATALHANAVAL") << " "
-                                  << jogador.getDerrotas("BATALHANAVAL") << " " << jogador.getEmpates("BATALHANAVAL")
-                                  << std::endl;;
+        DadosJogadoresCadastrados << jogador.getNome() << std::endl
+                                  << jogador.getApelido() << " " << jogador.getVitorias("VELHA") << " "
+                                  << jogador.getDerrotas("VELHA") << " " << jogador.getEmpates("VELHA") << " "
+                                  << jogador.getVitorias("LIG4") << " " << jogador.getDerrotas("LIG4") << " "
+                                  << jogador.getEmpates("LIG4") << " " << jogador.getVitorias("REVERSI") << " "
+                                  << jogador.getDerrotas("REVERSI") << " " << jogador.getEmpates("REVERSI") << " "
+                                  << jogador.getVitorias("BATALHANAVAL") << " " << jogador.getDerrotas("BATALHANAVAL")
+                                  << " " << jogador.getEmpates("BATALHANAVAL") << std::endl;
+        ;
     }
 
     DadosJogadoresCadastrados.close();
