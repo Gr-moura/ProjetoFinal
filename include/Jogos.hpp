@@ -15,11 +15,6 @@
 
 class Jogos
 {
-  public:
-    virtual void mostrarTabuleiro();
-    virtual void mostrarTabuleiro(const std::vector<std::vector<char>> &tabuleiro);
-    virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
-
   protected:
     std::vector<std::vector<char>> tabuleiro;
 
@@ -44,6 +39,7 @@ class Jogos
     virtual std::pair<int, int> lerJogada() { return {0, 0};};
 
   public:
+    virtual void mostrarTabuleiro(const std::vector<std::vector<char>> &tabuleiro);
     virtual void mostrarTabuleiro();
     virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
 };
