@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import "./WinOverlay.css";
 
+
+/**
+ * @interface WinOverlayProps
+ * @brief Propriedades do componente WinOverlay.
+ * @property {string} winnerplayer Nome do jogador vencedor.
+ * @property {string} wintype Tipo de vitória (ex: "win", "tie").
+ * @property {(arg0: boolean) => void} reset Função para reiniciar o jogo.
+ * @property {string} [className] Classe CSS adicional para personalização.
+ */
 interface WinOverlayProps{
     winnerplayer:string;
     wintype:string;
@@ -8,8 +17,18 @@ interface WinOverlayProps{
     className?:string;
 }
 
+
+/**
+ * @brief Componente que exibe uma sobreposição de vitória/empate.
+ * @param {WinOverlayProps} props Propriedades do componente.
+ * @return {JSX.Element} Retorna o componente de sobreposição de vitória/empate.
+ */
 export const WinOverlay = ({winnerplayer, wintype, reset, className}:WinOverlayProps) => {
-    //handles a request to play the game again
+
+    /**
+     * @brief Lida com a solicitação para jogar novamente.
+     * @details Chama a função `reset` para reiniciar o jogo.
+     */
     const handleRetryRequest = () => {
         reset(true);
     }

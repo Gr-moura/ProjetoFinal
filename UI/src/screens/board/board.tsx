@@ -11,6 +11,15 @@ import Ligue4Wasm from "../../../cpp/wasm/Ligue4.wasm?init";
 import ReversiWasm from "../../../cpp/wasm/Reversi.wasm?init";
 
 
+/**
+ * @interface boardProps
+ * @brief Propriedades do tabuleiro do jogo.
+ * @property {number} height Altura do tabuleiro.
+ * @property {number} widht Largura do tabuleiro.
+ * @property {string} gameName Nome do jogo.
+ * @property {number} dificulty Dificuldade do jogo.
+ * @property {string[]} playernames Nomes dos jogadores.
+ */
 interface boardProps{
     height:number,
     widht:number,
@@ -18,12 +27,23 @@ interface boardProps{
     dificulty:number
     playernames:string[];
 }
+
+/**
+ * @interface gameEndedType
+ * @brief Tipo que define o estado do jogo ao terminar.
+ * @property {string} wintype Tipo de vitória (ex: "win", "tie").
+ * @property {string} winnerplayer Nome do jogador vencedor.
+ */
 interface gameEndedType{
         wintype:string;
         winnerplayer:string;
 }
 
 
+/**
+ * @brief Componente principal do tabuleiro do jogo.
+ * @return {JSX.Element} Retorna o componente do tabuleiro.
+ */
 export const Board = ()=>{
     const location = useLocation();
     //@ts-ignore
@@ -37,13 +57,21 @@ export const Board = ()=>{
         wintype:"none",
     });
 
+    /**
+     * @brief Função para calcular o valor absoluto de um número.
+     * @param {number} a Número de entrada.
+     * @return {number} Valor absoluto de `a`.
+     */
     const abs = (a:number)=>{
         if(a<0) return -a;
         if(a>0) return a;
         return 1;
     }
 
-    //generating a array to register the clicked cells
+    /**
+     * @brief Gera um array para registrar as células clicadas.
+     * @details Inicializa o tabuleiro com zeros e configura o estado inicial do Reversi, se necessário.
+     */
     const generateClickArray = () => {
         let newArray:number[][] = [];
         for(let x=0; x<widht; x++){
@@ -52,18 +80,20 @@ export const Board = ()=>{
                 newArray[x].push(0);
             }
         }
-        //Reversi has a different starting board
+        // Reversi tem um tabuleiro inicial diferente
         if(gameName==="Reversi"){
             newArray[3][3] = 1;
             newArray[4][3] = 2;
             newArray[3][4] = 2;
             newArray[4][4] = 1;
         }
-        //updating board
+        // Atualiza o estado do tabuleiro
         setClickedCells(newArray);
     }
 
-    //chekcing to see if there was a tie because the bord is filled
+    /**
+     * @brief Verifica se houve um empate devido ao tabuleiro estar completamente preenchido.
+     */
     const checkForTie = () => {
         let boardfilled = true;
         clickedCells.forEach(column => {
@@ -81,6 +111,12 @@ export const Board = ()=>{
         } 
     }
 
+    /**
+     * @brief Salva a pontuação do jogador no localStorage.
+     * @param {string} playernick Nome do jogador.
+     * @param {string} type Tipo de pontuação (ex: "win", "tie", "loss").
+     * @return {boolean} Retorna `true` se a pontuação foi salva com sucesso, caso contrário `false`.
+     */
     const saveScore = (playernick:string, type:string)=>{
         let players = localStorage.getItem("players");
         if(players){
@@ -115,7 +151,10 @@ export const Board = ()=>{
         return false;
     }
 
-
+    /**
+     * @brief Verifica se houve uma vitória no Jogo da Velha.
+     * @param {number[][]} updatedClickArray Matriz atualizada das células clicadas.
+     */
     const checkForWinJOGODAVELHA = (updatedClickArray:number[][])=>{
         JogoDaVelhaWasm().then((instance)=>{
             for(let coluna=0; coluna<updatedClickArray.length; coluna++){
@@ -133,6 +172,12 @@ export const Board = ()=>{
         });
     }
 
+    /**
+     * @brief Atualiza as células do tabuleiro no Ligue 4.
+     * @param {number[][]} updatedClickArray Matriz atualizada das células clicadas.
+     * @param {{x: number, y: number}} position Posição da célula clicada.
+     * @return {boolean} Retorna `false` se a coluna estiver cheia, caso contrário `true`.
+     */
     const updateBoardCellsLIG4 = (updatedClickArray:number[][], position:{x:number, y:number})=>{
         let firstfreeposition = -1;
         for(let i=0; i<updatedClickArray[position.x].length; i++){
@@ -144,6 +189,10 @@ export const Board = ()=>{
         updatedClickArray[position.x][firstfreeposition] = playerTurn;
         setPlayerTurn(playerTurn==1? 2:1);
     }
+    /**
+     * @brief Verifica se houve uma vitória no Ligue 4.
+     * @param {number[][]} updatedClickArray Matriz atualizada das células clicadas.
+     */
     const checkForWinLIG4 = (updatedClickArray:number[][])=>{
         Ligue4Wasm().then((instance)=>{
             for(let coluna=0; coluna<updatedClickArray.length; coluna++){
@@ -161,8 +210,13 @@ export const Board = ()=>{
         })
     }
 
+    /**
+     * @brief Atualiza as células do tabuleiro no Reversi.
+     * @param {number[][]} updatedClickArray Matriz atualizada das células clicadas.
+     * @param {{x: number, y: number}} position Posição da célula clicada.
+     */
     const updateBoardCellsREVERSI = (updatedClickArray:number[][], position:{x:number, y:number})=>{
-        //updading wasm instance with past board plays
+        // Atualiza a instância WASM com as jogadas anteriores
         const updateREVERSIwasmInstance = (instance:any, updatedClickArray:number[][])=>{
             for(let coluna=0; coluna<updatedClickArray.length; coluna++){
                 for(let linha=0; linha<updatedClickArray[coluna].length; linha++){
@@ -173,7 +227,7 @@ export const Board = ()=>{
                 }
             }
         }
-        //checking if a move is valid, playing and fliping pieces
+        // Verifica se um movimento é válido, joga e vira as peças
         const validateREVERSIflip = (instance:any, position:{x:number, y:number}, updatedClickArray:number[][]) => {
             // @ts-ignore
             let anchorLine = instance.exports.movimentoValidoY(playerTurn, position.y, position.x);
@@ -182,7 +236,7 @@ export const Board = ()=>{
             if(anchorLine==-1 || anchorColumn==-1){
                 return false;
             }
-            // if move is valid, playing it and fliping other pieces
+            // Se o movimento for válido, joga e vira as peças
             else{
                 updatedClickArray[position.x][position.y] = playerTurn;
                 const direction = [
@@ -197,7 +251,7 @@ export const Board = ()=>{
             }
             return true;
         }
-        //calling a reversi instance
+        // Chama uma instância do Reversi
         ReversiWasm().then((instance)=>{
             let changeTurn=false;
             updateREVERSIwasmInstance(instance, updatedClickArray);
@@ -208,6 +262,10 @@ export const Board = ()=>{
             if(changeTurn) setPlayerTurn(playerTurn==1?2:1);
         })
     }
+    /**
+     * @brief Verifica se houve uma vitória no Reversi.
+     * @param {number[][]} updatedClickArray Matriz atualizada das células clicadas.
+     */
     const checkForWinREVERSI = (updatedClickArray:number[][])=>{
         ReversiWasm().then((instance)=>{
             for(let coluna=0; coluna<updatedClickArray.length; coluna++){
@@ -240,10 +298,13 @@ export const Board = ()=>{
         })
     }
 
-
+    /**
+     * @brief Manipula o clique em uma célula do tabuleiro.
+     * @param {{x: number, y: number}} position Posição da célula clicada.
+     */
     const handleClickedCell = (position:{x:number, y:number}) => {
         let updatedClickArray:number[][] = [...clickedCells];
-        //updating board cells
+        // Atualizando o estado do tabuleiro para cada jogo
         if(gameName==="Ligue Quatro"){
             updateBoardCellsLIG4(updatedClickArray, position);
             checkForWinLIG4(updatedClickArray);
@@ -258,10 +319,12 @@ export const Board = ()=>{
             setPlayerTurn(playerTurn==1? 2:1);
         }
         setClickedCells(updatedClickArray);
-        //checking if the game ended in tie (due to board filling up)
         checkForTie();
     }
 
+    /**
+     * @brief Efeito executado toda vez que um jogo é iniciado.
+     */
     useEffect(()=>{
         setReset(false);
         if(!reset){
@@ -272,15 +335,17 @@ export const Board = ()=>{
             generateClickArray();
         }
     }, [reset, widht, length]);
-
     
+    /**
+     * @brief Realiza a jogada da IA.
+     */
     const makeAImove = () => {
         setTimeout(()=>{
             JogoDaVelhaAIWasm().then((instance)=>{
-                //updating ai instance board
+                // Atualizando o tabuleiro da instância da IA
                 for(let column=0; column<clickedCells.length; column++){
                     for(let line=0; line<clickedCells[column].length; line++){
-                        //the ai uses a numbered board system (one number for each cell) instead of xy system used here
+                        // A IA usa um sistema de tabuleiro numerado (um número para cada célula) em vez do sistema xy usado aqui
                         if(clickedCells[column][line]==1){
                             console.log(column+line*clickedCells.length);
                             //@ts-ignore
@@ -303,7 +368,9 @@ export const Board = ()=>{
         }, 500);
     }
 
-    //making ai moves
+    /**
+     * @brief Quando o turno muda para o turno do jogador 2, realiza uma jogada da IA (se o jogador 2 é a IA)
+     */
     useEffect(()=>{
         if(playerTurn==2 && playernames[1]=="AI"){
             makeAImove();
