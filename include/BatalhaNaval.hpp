@@ -9,7 +9,7 @@ class BatalhaNaval : public Jogos
     BatalhaNaval();
 
   protected:
-    void iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
+    void anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
 
     bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) override;
     bool checarVencedor(std::vector<std::pair<int, int>> &jogadasAtacante, std::vector<std::pair<int, int>> &barcosOponente,Jogador &vencedor, Jogador &perdedor);

@@ -5,7 +5,7 @@ BatalhaNaval::BatalhaNaval()
     tabuleiro.resize(10, std::vector<char>(10, '~'));
 }
 
-void BatalhaNaval::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
+void BatalhaNaval::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
     if (turno)
     {
@@ -245,11 +245,11 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     std::vector<std::pair<int, int>> barcosJogador1;
     std::vector<std::pair<int, int>> barcosJogador2;
     bool jogoEmAndamento = true;
-    bool turno = sorteio();
+    bool turno = sorteioTurno();
     int contadorTurnos = 0;
 
     std::pair<int, int> jogada;
-    iniciarPartida(Jogador1, Jogador2, turno);
+    anunciarInicioPartida(Jogador1, Jogador2, turno);
 
     lerBarcos(barcosJogador1, Jogador1);
     std::system("cls");
@@ -261,7 +261,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         contadorTurnos++;
         if (turno)
         {
-            iniciarTurno(Jogador1); // jogadorX no reversi
+            anunciarTurnoJogador(Jogador1); // jogadorX no reversi
             jogada = lerJogada(tabuleiroJogadasJogador1);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador1, movimentosJogador1);
@@ -280,7 +280,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         }
         else
         {
-            iniciarTurno(Jogador2); // jogadorO no reversi
+            anunciarTurnoJogador(Jogador2); // jogadorO no reversi
             jogada = lerJogada(tabuleiroJogadasJogador2);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador2, movimentosJogador2);
