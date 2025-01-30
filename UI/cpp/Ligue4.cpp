@@ -2,7 +2,7 @@
 
 const int linhas = 6;
 const int colunas = 7;
-int tabuleiro[linhas][colunas];
+int tabuleiro[linhas][colunas]={0};
 
 extern "C"{
     EMSCRIPTEN_KEEPALIVE

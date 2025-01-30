@@ -138,6 +138,12 @@ export const PlayerSelection = () => {
                         playerType="new"
                         handleSelectPlayer={handleCreatePlayer}
                     />
+                    {playerNumber===2 && (<PlayerBanner
+                        playerName="AI"
+                        playerNick="AI"
+                        playerType="nameless"
+                        handleSelectPlayer={handleSelectPlayer}
+                    />)}
                 </ul>
             </div>
         </div>

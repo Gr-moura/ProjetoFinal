@@ -1,8 +1,8 @@
 #include <emscripten.h>
 
 const int linhas = 3;
-const int colunas =3;
-int tabuleiro[linhas][colunas];
+const int colunas = 3;
+int tabuleiro[linhas][colunas] = {0};
 
 extern "C"{
     EMSCRIPTEN_KEEPALIVE

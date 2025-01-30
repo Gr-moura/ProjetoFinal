@@ -22,9 +22,9 @@ export const Menu = () => {
     const {player1, player2}:MenuProps = location.state;
 
     const dificultieSettings = [
-        {name:"fácil", value:1, index:0},
-        {name:"médio", value:2, index:1},
-        {name:"difícil", value:3, index:2}
+        {name:"fácil", value:0, index:0},
+        {name:"médio", value:3, index:1},
+        {name:"difícil", value:9, index:2}
     ]
     const boardsizeSettings = [
         {name:"3", value:3, index:0},
@@ -41,8 +41,8 @@ export const Menu = () => {
     const [selectedWidht, setSelectedWidht] = useState<number>(boardsizeSettings[0].value);
     const [selectedDificulty, setSelectedDificulty] = useState<number>(dificultieSettings[0].value);
 
-    const [highlitActive, setHighlightActive] = useState<boolean>(false);
-    const [highlitedItems, setHighlitedItems] = useState<boolean[]>([false, false, false]);
+    const [highlitActive, setHighlightActive] = useState<boolean>(player2.playerName=="AI");
+    const [highlitedItems, setHighlitedItems] = useState<boolean[]>([player2.playerName=="AI", false, false]);
 
     const highlightItem = (id:number)=> {
         let updatedArray = [...highlitedItems];
@@ -154,7 +154,7 @@ export const Menu = () => {
                     </div>*/}
                 </div>
             )}
-            {highlitActive && (
+            {highlitActive && player2.playerName!="AI" && (
                 <div className="highlightdiv" onClick={() => unhighlightAll()}/>
             )}
         </div>
