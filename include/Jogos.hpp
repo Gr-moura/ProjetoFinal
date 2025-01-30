@@ -35,17 +35,13 @@ class Jogos
     virtual bool sorteioTurno();
     virtual bool checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int linha, int coluna);
     virtual bool checarPosicaoValida(int linha, int coluna);
-    
+
     virtual bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) = 0;
     virtual bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) = 0;
 
     std::string gerarDivisoriaTabuleiro();
 
-    virtual std::pair<int, int> lerJogada() { return {0, 0};};
-
-  public:
-    virtual void mostrarTabuleiro();
-    virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
+    virtual std::pair<int, int> lerJogada() { return {0, 0}; };
 };
 
 #endif
