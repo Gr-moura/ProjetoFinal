@@ -5,7 +5,7 @@ BatalhaNaval::BatalhaNaval()
     tabuleiro.resize(10, std::vector<char>(10, '~'));
 }
 
-void BatalhaNaval::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
+void BatalhaNaval::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
     if (turno)
     {
@@ -249,7 +249,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     int contadorTurnos = 0;
 
     std::pair<int, int> jogada;
-    iniciarPartida(Jogador1, Jogador2, turno);
+    anunciarInicioPartida(Jogador1, Jogador2, turno);
 
     lerBarcos(barcosJogador1, Jogador1);
     std::system("cls");
