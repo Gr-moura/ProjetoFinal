@@ -9,8 +9,6 @@ class Estatisticas
     int vitorias;
     int derrotas;
     int empates;
-    std::vector<char> historico;
-
   public:
     Estatisticas();
     Estatisticas(int vitorias, int derrotas, int empates);
