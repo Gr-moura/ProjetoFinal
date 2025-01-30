@@ -22,13 +22,13 @@ class JogoDaVelhaAi
     JogoDaVelha jogo;
     std::vector<char> tabuleiro;
 
-    bool checarVitoria(char player) const;
+    bool checarVitoria(char jogador) const;
     bool isTabuleiroCheio() const;
-    int minimax(bool isMaximizing, int depth);
+    int minimax(bool isMaximizador, int profundidade);
     int getMelhorMovimento();
 
-    std::pair<int, int> jogadaHumano(bool turno);
-    std::pair<int, int> jogadaAI(bool turno);
+    std::pair<int, int> jogarHumano(bool turno);
+    std::pair<int, int> jogarAI(bool turno);
 };
 
 #endif
