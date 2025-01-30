@@ -1,0 +1,43 @@
+\doxysection{Jogador.\+hpp}
+\hypertarget{_jogador_8hpp_source}{}\label{_jogador_8hpp_source}\index{include/Jogador.hpp@{include/Jogador.hpp}}
+\mbox{\hyperlink{_jogador_8hpp}{Ir para a documentação desse arquivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ JOGADOR\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ JOGADOR\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_estatisticas_8hpp}{Estatisticas.hpp}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jogador}{Jogador}}\ \{}
+\DoxyCodeLine{00011\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ std::string\ apelido;}
+\DoxyCodeLine{00013\ \ \ std::string\ nome;}
+\DoxyCodeLine{00014\ \ \ std::unordered\_map<std::string,\ Estatisticas>\ estatisticasPorJogo;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{class_jogador_a11932150131afc0c73286dc27c1c198c}{Jogador}}(\textcolor{keyword}{const}\ std::string\ \&apelido,\ \textcolor{keyword}{const}\ std::string\ \&nome);}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{class_jogador_a11932150131afc0c73286dc27c1c198c}{Jogador}}(\textcolor{keyword}{const}\ std::string\ \&apelido,\ \textcolor{keyword}{const}\ std::string\ \&nome,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ vitoriasJogoDaVelha,\ \textcolor{keywordtype}{int}\ derrotasJogoDaVelha,\ \textcolor{keywordtype}{int}\ empatesJogoDavelha,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ vitoriasLig4,\ \textcolor{keywordtype}{int}\ derrotasLig4,\ \textcolor{keywordtype}{int}\ empatesLig4,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ vitoriasReversi,\ \textcolor{keywordtype}{int}\ derrotasReversi,\ \textcolor{keywordtype}{int}\ empatesReversi,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ vitoriasBatalhaNaval,\ \textcolor{keywordtype}{int}\ derrotasBatalhaNaval,\ \textcolor{keywordtype}{int}\ empatesBatalhaNaval);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogador_a7a7d0415140788cf8b38fdfb5c545bbc}{registrarVitoria}}(\textcolor{keyword}{const}\ std::string\ \&nomeJogo);}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogador_a5c24f431c50eb0271b14013fab127b69}{registrarDerrota}}(\textcolor{keyword}{const}\ std::string\ \&nomeJogo);}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogador_a6e85fc2f218f63eb110b45ea553d63d5}{registrarEmpate}}(\textcolor{keyword}{const}\ std::string\ \&nomeJogo);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ std::string\ \mbox{\hyperlink{class_jogador_aab1dd73438da8f07e1b9b8b9df0a5eb4}{getApelido}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ \ \ std::string\ \mbox{\hyperlink{class_jogador_a56f68b57e7fb229f932ef60d2116833c}{getNome}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jogador_a23d74b18bafd93efeaa0e436c392e390}{getVitorias}}(std::string\ jogo);}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jogador_a9a2632e2528a0ead0ef6786c4acb9fbd}{getDerrotas}}(std::string\ jogo);}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jogador_ae4066f64d33d7d36894a3059f801ae0b}{getEmpates}}(std::string\ jogo);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogador_a381d9725ff377679bf1b6e11bf08dfd5}{mostrarEstatisticas}}(\textcolor{keyword}{const}\ std::string\ \&nomeJogo)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

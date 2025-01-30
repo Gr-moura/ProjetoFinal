@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projeto Final: Código-Fonte de include/CentralDeJogos.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projeto Final
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Busca',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">CentralDeJogos.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_central_de_jogos_8hpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CENTRALDEJOGOS_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CENTRALDEJOGOS_HPP</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_jogo_da_velha_8hpp.html">JogoDaVelha.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_jogo_da_velha_ai_8hpp.html">JogoDaVelhaAi.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_jogos_8hpp.html">Jogos.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_lig4_8hpp.html">Lig4.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="_reversi_8hpp.html">Reversi.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_central_de_jogos.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_central_de_jogos.html">CentralDeJogos</a></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    std::vector&lt;Jogador&gt; jogadoresCadastrados;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_class" href="class_jogo_da_velha_ai.html">JogoDaVelhaAi</a> Ai;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="class_jogo_da_velha.html">JogoDaVelha</a> velha;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="class_lig4.html">Lig4</a> lig4;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="class_reversi.html">Reversi</a> reversi;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_function" href="class_central_de_jogos.html#aa960ef1951f559054c3ff4adbdc6b9b1">CentralDeJogos</a>();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_function" href="class_central_de_jogos.html#aaf96a84f3be6aed617c08eeec7f04ead">~CentralDeJogos</a>();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    std::string <a class="code hl_function" href="class_central_de_jogos.html#aa440bf5120dcefa95926187f6775ea3c">validarEntrada</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_central_de_jogos.html#aabf6f2defd2eb04f6e9d110111001238">buscarJogador</a>(std::string &amp;apelido);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_central_de_jogos.html#a8656a55382a76eaf31e0363a310d5173">cadastrarJogador</a>(std::string &amp;apelido, std::string &amp;nome);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_central_de_jogos.html#a62bc3017ff82441fe904e236e0c83b0a">removerJogador</a>(std::string &amp;apelido);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_central_de_jogos.html#a233e54d00154be919735b7a281d07f9b">ordenarJogadores</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_central_de_jogos.html#a37356e4aee21d9fad7d2dee3f5f779a6">listarJogadores</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_central_de_jogos.html#a7c358ec61c94dde1463caccbc7bbd90a">executarPartida</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_jogo_da_velha_8hpp_html"><div class="ttname"><a href="_jogo_da_velha_8hpp.html">JogoDaVelha.hpp</a></div></div>
+<div class="ttc" id="a_jogo_da_velha_ai_8hpp_html"><div class="ttname"><a href="_jogo_da_velha_ai_8hpp.html">JogoDaVelhaAi.hpp</a></div></div>
+<div class="ttc" id="a_jogos_8hpp_html"><div class="ttname"><a href="_jogos_8hpp.html">Jogos.hpp</a></div></div>
+<div class="ttc" id="a_lig4_8hpp_html"><div class="ttname"><a href="_lig4_8hpp.html">Lig4.hpp</a></div></div>
+<div class="ttc" id="a_reversi_8hpp_html"><div class="ttname"><a href="_reversi_8hpp.html">Reversi.hpp</a></div></div>
+<div class="ttc" id="aclass_central_de_jogos_html"><div class="ttname"><a href="class_central_de_jogos.html">CentralDeJogos</a></div><div class="ttdef"><b>Definição</b> CentralDeJogos.hpp:11</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_a233e54d00154be919735b7a281d07f9b"><div class="ttname"><a href="class_central_de_jogos.html#a233e54d00154be919735b7a281d07f9b">CentralDeJogos::ordenarJogadores</a></div><div class="ttdeci">void ordenarJogadores()</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:131</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_a37356e4aee21d9fad7d2dee3f5f779a6"><div class="ttname"><a href="class_central_de_jogos.html#a37356e4aee21d9fad7d2dee3f5f779a6">CentralDeJogos::listarJogadores</a></div><div class="ttdeci">void listarJogadores()</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:140</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_a62bc3017ff82441fe904e236e0c83b0a"><div class="ttname"><a href="class_central_de_jogos.html#a62bc3017ff82441fe904e236e0c83b0a">CentralDeJogos::removerJogador</a></div><div class="ttdeci">void removerJogador(std::string &amp;apelido)</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:111</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_a7c358ec61c94dde1463caccbc7bbd90a"><div class="ttname"><a href="class_central_de_jogos.html#a7c358ec61c94dde1463caccbc7bbd90a">CentralDeJogos::executarPartida</a></div><div class="ttdeci">void executarPartida()</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:158</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_a8656a55382a76eaf31e0363a310d5173"><div class="ttname"><a href="class_central_de_jogos.html#a8656a55382a76eaf31e0363a310d5173">CentralDeJogos::cadastrarJogador</a></div><div class="ttdeci">void cadastrarJogador(std::string &amp;apelido, std::string &amp;nome)</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:96</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_aa440bf5120dcefa95926187f6775ea3c"><div class="ttname"><a href="class_central_de_jogos.html#aa440bf5120dcefa95926187f6775ea3c">CentralDeJogos::validarEntrada</a></div><div class="ttdeci">std::string validarEntrada()</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:65</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_aa960ef1951f559054c3ff4adbdc6b9b1"><div class="ttname"><a href="class_central_de_jogos.html#aa960ef1951f559054c3ff4adbdc6b9b1">CentralDeJogos::CentralDeJogos</a></div><div class="ttdeci">CentralDeJogos()</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:7</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_aabf6f2defd2eb04f6e9d110111001238"><div class="ttname"><a href="class_central_de_jogos.html#aabf6f2defd2eb04f6e9d110111001238">CentralDeJogos::buscarJogador</a></div><div class="ttdeci">bool buscarJogador(std::string &amp;apelido)</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:82</div></div>
+<div class="ttc" id="aclass_central_de_jogos_html_aaf96a84f3be6aed617c08eeec7f04ead"><div class="ttname"><a href="class_central_de_jogos.html#aaf96a84f3be6aed617c08eeec7f04ead">CentralDeJogos::~CentralDeJogos</a></div><div class="ttdeci">~CentralDeJogos()</div><div class="ttdef"><b>Definição</b> CentralDeJogos.cpp:39</div></div>
+<div class="ttc" id="aclass_jogo_da_velha_ai_html"><div class="ttname"><a href="class_jogo_da_velha_ai.html">JogoDaVelhaAi</a></div><div class="ttdef"><b>Definição</b> JogoDaVelhaAi.hpp:14</div></div>
+<div class="ttc" id="aclass_jogo_da_velha_html"><div class="ttname"><a href="class_jogo_da_velha.html">JogoDaVelha</a></div><div class="ttdef"><b>Definição</b> JogoDaVelha.hpp:7</div></div>
+<div class="ttc" id="aclass_lig4_html"><div class="ttname"><a href="class_lig4.html">Lig4</a></div><div class="ttdef"><b>Definição</b> Lig4.hpp:7</div></div>
+<div class="ttc" id="aclass_reversi_html"><div class="ttname"><a href="class_reversi.html">Reversi</a></div><div class="ttdef"><b>Definição</b> Reversi.hpp:5</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

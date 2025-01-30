@@ -1,0 +1,32 @@
+\doxysection{Jogo\+Da\+Velha.\+hpp}
+\hypertarget{_jogo_da_velha_8hpp_source}{}\label{_jogo_da_velha_8hpp_source}\index{include/JogoDaVelha.hpp@{include/JogoDaVelha.hpp}}
+\mbox{\hyperlink{_jogo_da_velha_8hpp}{Ir para a documentação desse arquivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ JOGODAVELHA\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ JOGODAVELHA\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_jogos_8hpp}{Jogos.hpp}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jogo_da_velha}{JogoDaVelha}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jogos}{Jogos}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_jogo_da_velha_a4cd8634f2b9f754fae92e2e6bc897c19}{JogoDaVelha}}();}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_jogo_da_velha_a4cd8634f2b9f754fae92e2e6bc897c19}{JogoDaVelha}}(\textcolor{keywordtype}{int}\ tamanhoTabuleiro);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_da_velha_ae681acb2ca98e100ce618de6751c796a}{anunciarInicioPartida}}(\mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador2,\ \textcolor{keywordtype}{bool}\ \&turno)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ std::pair<int,\ int>\ \mbox{\hyperlink{class_jogo_da_velha_aa7cfae1cc53ed2b6a0c83aba57444509}{lerJogada}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_da_velha_a1a34673ea9a973dd7cf891def4be3051}{checarDiagonal}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_da_velha_a6a3f56c0d66d65b6ffb0cbbe776faeb0}{checarColunas}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_da_velha_a9d64a747bbdae76ea22850ec3c3441f9}{checarLinhas}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_da_velha_ac21f8d08aeb4358128d264d22636ce55}{checarVencedor}}(std::vector<std::pair<int,\ int>>\ \&jogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&vencedor,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&perdedor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_da_velha_ac5db8a3e172423c03264cec58d2a5fdd}{checarEmpate}}(\textcolor{keywordtype}{int}\ numeroJogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_01,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_02)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jogo_da_velha_ai}{JogoDaVelhaAi}};}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
