@@ -1,15 +1,27 @@
 /**
  * @file JogoDaVelhaAi.cpp
- * @brief
+ * @brief Implementação da lógica do jogo da velha com IA usando o algoritmo Minimax.
  *
- *
- *
+ * Este arquivo contém a implementação das funções da classe JogoDaVelhaAi, incluindo
+ * a lógica de verificação da vitória, do empate, e do algoritmo Minimax para a IA.
  */
 
 #include "JogoDaVelhaAi.hpp"
 
+/**
+ * @brief Construtor que inicializa o tabuleiro com células vazias
+ */
 JogoDaVelhaAi::JogoDaVelhaAi() : tabuleiro(TABULEIRO_SIZE, VAZIO) {}
 
+/**
+ * @brief Verifica se o jogador especificado alcançou uma condição de vitória
+ *
+ * Checa todas as combinações possíveis de vitória (linhas, colunas e diagonais)
+ *
+ * @param player Jogador a ser verificado (JOGADOR_X ou JOGADOR_O)
+ * @return true Se o jogador tem três símbolos consecutivos em alguma linha/coluna/diagonal
+ * @return false Caso não haja vitória
+ */
 bool JogoDaVelhaAi::checarVitoria(char player) const
 {
     const int winCombos[8][3] = {
@@ -28,6 +40,12 @@ bool JogoDaVelhaAi::checarVitoria(char player) const
     return false;
 }
 
+/**
+ * @brief Verifica se todas as posições do tabuleiro estão ocupadas
+ *
+ * @return true Se não há mais espaços vazios no tabuleiro
+ * @return false Se há pelo menos um espaço vazio restante
+ */
 bool JogoDaVelhaAi::isTabuleiroCheio() const
 {
     for (char c : tabuleiro)
@@ -38,6 +56,16 @@ bool JogoDaVelhaAi::isTabuleiroCheio() const
     return true;
 }
 
+/**
+ * @brief Implementa o algoritmo Minimax para avaliação de jogadas
+ *
+ * Avalia recursivamente todas as jogadas possíveis até a profundidade máxima configurada,
+ * alternando entre jogadores de maximização (IA) e minimização (jogador humano)
+ *
+ * @param isMaximizing Indica se é o turno do jogador maximizador (IA)
+ * @param depth Profundidade atual da recursão
+ * @return int Valor heurístico da posição (1 para vitória IA, -1 para derrota, 0 para neutro)
+ */
 int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
 {
     if (checarVitoria(JOGADOR_X))
@@ -80,6 +108,15 @@ int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
     }
 }
 
+/**
+ * @brief Calcula a melhor jogada para a IA usando Minimax
+ *
+ * Utiliza uma ordem otimizada de verificação de movimentos (cantos primeiro, centro depois, bordas por último)
+ * para acelerar a busca pela jogada ideal e para evitar jogadas subótimas, uma vez que, como jogadores perfeitos
+ * sempre empatam, uma má ordenação dos movimentos pode dificultar a IA na escolha da melhor jogada.
+ *
+ * @return int Índice da melhor jogada no tabuleiro (0-8)
+ */
 int JogoDaVelhaAi::getMelhorMovimento()
 {
     int bestScore = -2;
@@ -107,6 +144,15 @@ int JogoDaVelhaAi::getMelhorMovimento()
     return bestMove;
 }
 
+/**
+ * @brief Processa e registra uma jogada do jogador humano
+ *
+ * A jogada é marcada no tabuleiro da AI e no objeto JogoDaVelha, uma vez que
+ * a exibição do jogo depende do estado do tabuleiro do objeto JogoDaVelha.
+ *
+ * @param turno Indica de qual jogador é o turno (não utilizado na implementação atual)
+ * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada
+ */
 std::pair<int, int> JogoDaVelhaAi::jogadaHumano(bool turno)
 {
     std::pair<int, int> jogada = jogo.lerJogada();
@@ -118,6 +164,15 @@ std::pair<int, int> JogoDaVelhaAi::jogadaHumano(bool turno)
     return jogada;
 }
 
+/**
+ * @brief Calcula e executa a jogada da IA
+ *
+ * A jogada é marcada no tabuleiro da AI e no objeto JogoDaVelha, uma vez que
+ * a exibição do jogo depende do estado do tabuleiro do objeto JogoDaVelha.
+ *
+ * @param turno Indica de qual jogador é o turno (não utilizado na implementação atual)
+ * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada
+ */
 std::pair<int, int> JogoDaVelhaAi::jogadaAI(bool turno)
 {
     int aiMove = getMelhorMovimento();
@@ -129,6 +184,18 @@ std::pair<int, int> JogoDaVelhaAi::jogadaAI(bool turno)
     return jogada;
 }
 
+/**
+ * @brief Controla o fluxo principal do jogo
+ *
+ * Gerencia todo o ciclo de vida do jogo, incluindo:
+ * - Configuração inicial de jogadores e dificuldade
+ * - Alternância de turnos entre jogadores
+ * - Verificação de condições de término (vitória/empate)
+ * - Reinicialização do jogo ao final
+ *
+ * @param Jogador1 Primeiro jogador (normalmente humano)
+ * @param Jogador2 Segundo jogador (normalmente IA)
+ */
 void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
