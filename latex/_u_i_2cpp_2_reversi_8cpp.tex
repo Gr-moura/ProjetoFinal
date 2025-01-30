@@ -1,0 +1,79 @@
+\doxysection{Referência do Arquivo UI/cpp/\+Reversi.cpp}
+\hypertarget{_u_i_2cpp_2_reversi_8cpp}{}\label{_u_i_2cpp_2_reversi_8cpp}\index{UI/cpp/Reversi.cpp@{UI/cpp/Reversi.cpp}}
+{\ttfamily \#include $<$emscripten.\+h$>$}\newline
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+EMSCRIPTEN\+\_\+\+KEEPALIVE void \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_a164abfef36ff52487d28f289fcf74718}{colocar\+No\+Tabuleiro}} (int linha, int coluna, int turno)
+\item 
+bool \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_a788f83a3174a20decaf10b7d38afd78d}{checar\+Posicao\+Valida}} (int linha, int coluna)
+\item 
+EMSCRIPTEN\+\_\+\+KEEPALIVE int \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_a69da1f7cb8da1dbc16f24ab7b6cae822}{movimento\+ValidoY}} (int turno, int linha, int coluna)
+\item 
+EMSCRIPTEN\+\_\+\+KEEPALIVE int \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_ab5500f62ce057a8cde7b858a41f2b9b7}{movimento\+ValidoX}} (int turno, int linha, int coluna)
+\item 
+EMSCRIPTEN\+\_\+\+KEEPALIVE int \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_ade02374381c87f0b5bd161e1eb682ed8}{checar\+Vencedor}} (int turno)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_abf31f5036d810afd0aaa1710d1356018}{linhas}} = 8
+\item 
+const int \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}{colunas}} = 8
+\item 
+int \mbox{\hyperlink{_u_i_2cpp_2_reversi_8cpp_a6bcf5c6f29c2e0f4db82d615cda2d345}{tabuleiro}} \mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_abf31f5036d810afd0aaa1710d1356018}{linhas}}\mbox{]}\mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}{colunas}}\mbox{]} =\{0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Funções}
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_a788f83a3174a20decaf10b7d38afd78d}\index{Reversi.cpp@{Reversi.cpp}!checarPosicaoValida@{checarPosicaoValida}}
+\index{checarPosicaoValida@{checarPosicaoValida}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{checarPosicaoValida()}{checarPosicaoValida()}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_a788f83a3174a20decaf10b7d38afd78d} 
+bool checar\+Posicao\+Valida (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_ade02374381c87f0b5bd161e1eb682ed8}\index{Reversi.cpp@{Reversi.cpp}!checarVencedor@{checarVencedor}}
+\index{checarVencedor@{checarVencedor}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{checarVencedor()}{checarVencedor()}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_ade02374381c87f0b5bd161e1eb682ed8} 
+EMSCRIPTEN\+\_\+\+KEEPALIVE int checar\+Vencedor (\begin{DoxyParamCaption}\item[{int}]{turno}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_a164abfef36ff52487d28f289fcf74718}\index{Reversi.cpp@{Reversi.cpp}!colocarNoTabuleiro@{colocarNoTabuleiro}}
+\index{colocarNoTabuleiro@{colocarNoTabuleiro}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{colocarNoTabuleiro()}{colocarNoTabuleiro()}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_a164abfef36ff52487d28f289fcf74718} 
+EMSCRIPTEN\+\_\+\+KEEPALIVE void colocar\+No\+Tabuleiro (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{, }\item[{int}]{turno}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_ab5500f62ce057a8cde7b858a41f2b9b7}\index{Reversi.cpp@{Reversi.cpp}!movimentoValidoX@{movimentoValidoX}}
+\index{movimentoValidoX@{movimentoValidoX}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{movimentoValidoX()}{movimentoValidoX()}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_ab5500f62ce057a8cde7b858a41f2b9b7} 
+EMSCRIPTEN\+\_\+\+KEEPALIVE int movimento\+ValidoX (\begin{DoxyParamCaption}\item[{int}]{turno}{, }\item[{int}]{linha}{, }\item[{int}]{coluna}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_a69da1f7cb8da1dbc16f24ab7b6cae822}\index{Reversi.cpp@{Reversi.cpp}!movimentoValidoY@{movimentoValidoY}}
+\index{movimentoValidoY@{movimentoValidoY}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{movimentoValidoY()}{movimentoValidoY()}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_a69da1f7cb8da1dbc16f24ab7b6cae822} 
+EMSCRIPTEN\+\_\+\+KEEPALIVE int movimento\+ValidoY (\begin{DoxyParamCaption}\item[{int}]{turno}{, }\item[{int}]{linha}{, }\item[{int}]{coluna}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variáveis}
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}\index{Reversi.cpp@{Reversi.cpp}!colunas@{colunas}}
+\index{colunas@{colunas}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{colunas}{colunas}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5} 
+const int colunas = 8}
+
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_abf31f5036d810afd0aaa1710d1356018}\index{Reversi.cpp@{Reversi.cpp}!linhas@{linhas}}
+\index{linhas@{linhas}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{linhas}{linhas}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_abf31f5036d810afd0aaa1710d1356018} 
+const int linhas = 8}
+
+\Hypertarget{_u_i_2cpp_2_reversi_8cpp_a6bcf5c6f29c2e0f4db82d615cda2d345}\index{Reversi.cpp@{Reversi.cpp}!tabuleiro@{tabuleiro}}
+\index{tabuleiro@{tabuleiro}!Reversi.cpp@{Reversi.cpp}}
+\doxysubsubsection{\texorpdfstring{tabuleiro}{tabuleiro}}
+{\footnotesize\ttfamily \label{_u_i_2cpp_2_reversi_8cpp_a6bcf5c6f29c2e0f4db82d615cda2d345} 
+int tabuleiro\mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_abf31f5036d810afd0aaa1710d1356018}{linhas}}\mbox{]}\mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}{colunas}}\mbox{]} =\{0\}}
+

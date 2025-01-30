@@ -1,18 +1,38 @@
+/**
+ * @file JogoDaVelhaAi.cpp
+ * @brief Implementação da lógica do jogo da velha com IA usando o algoritmo Minimax.
+ *
+ * Este arquivo contém a implementação das funções da classe JogoDaVelhaAi, incluindo
+ * a lógica de verificação da vitória, do empate, e do algoritmo Minimax para a IA.
+ */
+
 #include "JogoDaVelhaAi.hpp"
 
-JogoDaVelhaAi::JogoDaVelhaAi() : board(BOARD_SIZE, EMPTY) {}
+/**
+ * @brief Construtor que inicializa o tabuleiro com células vazias
+ */
+JogoDaVelhaAi::JogoDaVelhaAi() : tabuleiro(TABULEIRO_SIZE, VAZIO) {}
 
-bool JogoDaVelhaAi::checkWin(char player) const
+/**
+ * @brief Verifica se o jogador especificado alcançou uma condição de vitória
+ *
+ * Checa todas as combinações possíveis de vitória (linhas, colunas e diagonais)
+ *
+ * @param player Jogador a ser verificado (JOGADOR_X ou JOGADOR_O)
+ * @return true Se o jogador tem três símbolos consecutivos em alguma linha/coluna/diagonal
+ * @return false Caso não haja vitória
+ */
+bool JogoDaVelhaAi::checarVitoria(char jogador) const
 {
-    const int winCombos[8][3] = {
+    const int combinacoesVitoria[8][3] = {
         {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Linhas
         {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Colunas
         {0, 4, 8}, {2, 4, 6}             // Diagonais
     };
 
-    for (auto &combo : winCombos)
+    for (auto &combo : combinacoesVitoria)
     {
-        if (board[combo[0]] == player && board[combo[1]] == player && board[combo[2]] == player)
+        if (tabuleiro[combo[0]] == jogador && tabuleiro[combo[1]] == jogador && tabuleiro[combo[2]] == jogador)
         {
             return true;
         }
@@ -20,107 +40,162 @@ bool JogoDaVelhaAi::checkWin(char player) const
     return false;
 }
 
-bool JogoDaVelhaAi::isBoardFull() const
+/**
+ * @brief Verifica se todas as posições do tabuleiro estão ocupadas
+ *
+ * @return true Se não há mais espaços vazios no tabuleiro
+ * @return false Se há pelo menos um espaço vazio restante
+ */
+bool JogoDaVelhaAi::isTabuleiroCheio() const
 {
-    for (char c : board)
+    for (char c : tabuleiro)
     {
-        if (c == EMPTY)
+        if (c == VAZIO)
             return false;
     }
     return true;
 }
 
-int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
+/**
+ * @brief Implementa o algoritmo Minimax para avaliação de jogadas
+ *
+ * Avalia recursivamente todas as jogadas possíveis até a profundidade máxima configurada,
+ * alternando entre jogadores de maximização (IA) e minimização (jogador humano)
+ *
+ * @param isMaximizador Indica se é o turno do jogador maximizador (IA)
+ * @param profundidade Profundidade atual da recursão
+ * @return int Valor heurístico da posição (1 para vitória IA, -1 para derrota, 0 para neutro)
+ */
+int JogoDaVelhaAi::minimax(bool isMaximizador, int profundidade)
 {
-    if (checkWin(PLAYER_X))
+    if (checarVitoria(JOGADOR_X))
         return 1;
-    if (checkWin(PLAYER_O))
+    if (checarVitoria(JOGADOR_O))
         return -1;
-    if (isBoardFull() or depth == 0)
+    if (isTabuleiroCheio() or profundidade == 0)
         return 0;
 
-    if (isMaximizing)
+    if (isMaximizador)
     {
-        int bestScore = -2;
-        for (int i = 0; i < BOARD_SIZE; i++)
+        int melhorScore = -2;
+        for (int i = 0; i < TABULEIRO_SIZE; i++)
         {
-            if (board[i] == EMPTY)
+            if (tabuleiro[i] == VAZIO)
             {
-                board[i] = PLAYER_X;
-                int score = minimax(false, depth - 1);
-                board[i] = EMPTY;
+                tabuleiro[i] = JOGADOR_X;
+                int score = minimax(false, profundidade - 1);
+                tabuleiro[i] = VAZIO;
 
-                bestScore = std::max(score, bestScore);
+                melhorScore = std::max(score, melhorScore);
             }
         }
-        return bestScore;
+        return melhorScore;
     }
     else
     {
-        int bestScore = 2;
-        for (int i = 0; i < BOARD_SIZE; i++)
+        int melhorScore = 2;
+        for (int i = 0; i < TABULEIRO_SIZE; i++)
         {
-            if (board[i] == EMPTY)
+            if (tabuleiro[i] == VAZIO)
             {
-                board[i] = PLAYER_O;
-                int score = minimax(true, depth - 1);
-                board[i] = EMPTY;
-                bestScore = std::min(score, bestScore);
+                tabuleiro[i] = JOGADOR_O;
+                int score = minimax(true, profundidade - 1);
+                tabuleiro[i] = VAZIO;
+                melhorScore = std::min(score, melhorScore);
             }
         }
-        return bestScore;
+        return melhorScore;
     }
 }
 
-int JogoDaVelhaAi::getBestMove()
+/**
+ * @brief Calcula a melhor jogada para a IA usando Minimax
+ *
+ * Utiliza uma ordem otimizada de verificação de movimentos (cantos primeiro, centro depois, bordas por último)
+ * para acelerar a busca pela jogada ideal e para evitar jogadas subótimas, uma vez que, como jogadores perfeitos
+ * sempre empatam, uma má ordenação dos movimentos pode dificultar a IA na escolha da melhor jogada.
+ *
+ * @return int Índice da melhor jogada no tabuleiro (0-8)
+ */
+int JogoDaVelhaAi::getMelhorMovimento()
 {
-    int bestScore = -2;
-    int bestMove = -1;
-    const std::vector<int> moveOrder = {0, 2, 6, 8, 4, 1, 3, 5, 7};
+    int melhorScore = -2;
+    int melhorMovimento = -1;
+    const std::vector<int> ordemMovimentos = {0, 2, 6, 8, 4, 1, 3, 5, 7};
 
-    for (int i : moveOrder)
+    for (int i : ordemMovimentos)
     {
-        if (board[i] == EMPTY)
+        if (tabuleiro[i] == VAZIO)
         {
-            board[i] = PLAYER_X;
-            int score = minimax(false, MAX_DEPTH);
-            board[i] = EMPTY;
+            tabuleiro[i] = JOGADOR_X;
+            int score = minimax(false, MAX_PROFUNDIDADE);
+            tabuleiro[i] = VAZIO;
 
-            if (bestScore < score)
+            if (melhorScore < score)
             {
-                bestScore = score;
-                bestMove = i;
+                melhorScore = score;
+                melhorMovimento = i;
 
-                if (bestScore == 1)
+                if (melhorScore == 1)
                     break;
             }
         }
     }
-    return bestMove;
+    return melhorMovimento;
 }
 
-std::pair<int, int> JogoDaVelhaAi::humanMove(bool turno)
+/**
+ * @brief Processa e registra uma jogada do jogador humano
+ *
+ * A jogada é marcada no tabuleiro da AI e no objeto JogoDaVelha, uma vez que
+ * a exibição do jogo depende do estado do tabuleiro do objeto JogoDaVelha.
+ *
+ * @param turno Indica de qual jogador é o turno (não utilizado na implementação atual)
+ * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada
+ */
+std::pair<int, int> JogoDaVelhaAi::jogarHumano(bool turno)
 {
     std::pair<int, int> jogada = jogo.lerJogada();
     int move = jogada.first * 3 + jogada.second;
 
-    board[move] = PLAYER_O;
+    tabuleiro[move] = JOGADOR_O;
 
     jogo.marcarTabuleiro(jogada, turno);
     return jogada;
 }
 
-std::pair<int, int> JogoDaVelhaAi::aiMove(bool turno)
+/**
+ * @brief Calcula e executa a jogada da IA
+ *
+ * A jogada é marcada no tabuleiro da AI e no objeto JogoDaVelha, uma vez que
+ * a exibição do jogo depende do estado do tabuleiro do objeto JogoDaVelha.
+ *
+ * @param turno Indica de qual jogador é o turno (não utilizado na implementação atual)
+ * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada
+ */
+std::pair<int, int> JogoDaVelhaAi::jogarAI(bool turno)
 {
-    int aiMove = getBestMove();
-    board[aiMove] = PLAYER_X;
+    int jogadaAI = getMelhorMovimento();
+    tabuleiro[jogadaAI] = JOGADOR_X;
 
-    std::pair<int, int> jogada = {aiMove / 3, aiMove % 3};
+    std::pair<int, int> jogada = {jogadaAI / 3, jogadaAI % 3};
 
     jogo.marcarTabuleiro(jogada, turno);
     return jogada;
 }
 
+/**
+ * @brief Controla o fluxo principal do jogo
+ *
+ * Gerencia todo o ciclo de vida do jogo, incluindo:
+ * - Configuração inicial de jogadores e dificuldade
+ * - Alternância de turnos entre jogadores
+ * - Verificação de condições de término (vitória/empate)
+ * - Reinicialização do jogo ao final
+ *
+ * @param Jogador1 Primeiro jogador (normalmente humano)
+ * @param Jogador2 Segundo jogador (normalmente IA)
+ */
 void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
@@ -131,14 +206,24 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     bool turno;
     while (true)
     {
-        while (not(std::cin >> turno))
+        try
         {
-            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        }
-        if (turno == 0 or turno == 1)
+            if (!(std::cin >> turno))
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                throw std::invalid_argument("A entrada deve ser um número inteiro entre 0 e 1");
+            }
+            if (turno != 0 && turno != 1)
+            {
+                throw std::out_of_range("Valor fora do intervalo permitido");
+            }
             break;
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "Erro: " << e.what() << "\nDigite 0 ou 1: ";
+        }
     }
 
     int dificuldade = 0;
@@ -147,22 +232,32 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 
     while (true)
     {
-        while (not(std::cin >> dificuldade))
+        try
         {
-            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        }
-        if (dificuldade == 0 or dificuldade == 1 or dificuldade == 2)
+            if (not(std::cin >> dificuldade))
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                throw std::invalid_argument("A entrada deve ser um número inteiro entre 0 e 2");
+            }
+            if (dificuldade < 0 || dificuldade > 2)
+            {
+                throw std::out_of_range("Valor fora do intervalo permitido");
+            }
             break;
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "Erro: " << e.what() << "\nDigite 0, 1 ou 2: ";
+        }
     }
 
     if (dificuldade == 0)
-        MAX_DEPTH = 0;
+        MAX_PROFUNDIDADE = 0;
     else if (dificuldade == 1)
-        MAX_DEPTH = 3;
+        MAX_PROFUNDIDADE = 3;
     else
-        MAX_DEPTH = 9;
+        MAX_PROFUNDIDADE = 9;
 
     turno = !turno;
 
@@ -179,7 +274,7 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         {
             jogo.anunciarTurnoJogador(Jogador1);
 
-            movimentosJogador1.push_back(humanMove(turno));
+            movimentosJogador1.push_back(jogarHumano(turno));
             jogo.mostrarTabuleiro();
 
             if (jogo.checarVencedor(movimentosJogador1, Jogador1, Jogador2))
@@ -193,7 +288,7 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         {
             jogo.anunciarTurnoJogador(Jogador2);
 
-            movimentosJogador2.push_back(aiMove(turno));
+            movimentosJogador2.push_back(jogarAI(turno));
             jogo.mostrarTabuleiro();
 
             if (jogo.checarVencedor(movimentosJogador2, Jogador2, Jogador1))
@@ -211,6 +306,6 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     if (!jogoEmAndamento)
     {
         jogo = JogoDaVelha();
-        board = std::vector<char>(BOARD_SIZE, EMPTY);
+        tabuleiro = std::vector<char>(TABULEIRO_SIZE, VAZIO);
     }
 }

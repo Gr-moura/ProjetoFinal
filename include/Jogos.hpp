@@ -13,6 +13,42 @@
 
 #include "Jogador.hpp"
 
+/**
+ * @file Jogos.hpp
+ * @brief Definição da classe Jogos.
+ *
+ * Esta classe é uma classe base abstrata que define a interface comum para todos os jogos do sistema.
+ * Ela fornece métodos e atributos básicos para gerenciar partidas, como manipulação do tabuleiro,
+ * verificação de vitória e empate, e controle de turnos. Classes derivadas, como `JogoDaVelha`,
+ * `Lig4`, `Reversi` e `BatalhaNaval`, implementam as funcionalidades específicas de cada jogo.
+ *
+ * ## Funcionalidades Principais:
+ * - Gerenciamento de tabuleiros genéricos.
+ * - Controle de turnos entre jogadores.
+ * - Verificação de vitória e empate (a serem implementados pelas classes derivadas).
+ * - Exibição do tabuleiro e anúncio de turnos.
+ * - Sorteio de quem começa a partida.
+ *
+ * ## Métodos Virtuais Puros:
+ * - `checarVencedor`: Verifica se há um vencedor no jogo (deve ser implementado pelas classes derivadas).
+ * - `checarEmpate`: Verifica se o jogo terminou em empate (deve ser implementado pelas classes derivadas).
+ * - `anunciarInicioPartida`: Anuncia o início da partida e define o jogador que começa (deve ser implementado pelas classes derivadas).
+ *
+ * ## Métodos Virtuais:
+ * - `marcarTabuleiro`: Marca uma jogada no tabuleiro.
+ * - `limparTabuleiro`: Limpa o tabuleiro para uma nova partida.
+ * - `lerJogada`: Lê a jogada do jogador (pode ser sobrescrito pelas classes derivadas).
+ *
+ * ## Métodos Públicos:
+ * - `mostrarTabuleiro`: Exibe o tabuleiro atual.
+ * - `Jogar`: Inicia e gerencia uma partida entre dois jogadores.
+ *
+ * ## Integração com Outras Classes:
+ * - Utiliza a classe `Jogador` para representar os participantes do jogo.
+ * - Serve como base para classes de jogos específicos, como `JogoDaVelha`, `Lig4`, `Reversi` e `BatalhaNaval`.
+ *
+ * @see Jogador, JogoDaVelha, Lig4, Reversi, BatalhaNaval
+ */
 class Jogos
 {
   protected:

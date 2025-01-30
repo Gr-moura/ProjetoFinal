@@ -1,0 +1,79 @@
+\doxysection{Referência do Arquivo UI/cpp/\+Ligue4.cpp}
+\hypertarget{_ligue4_8cpp}{}\label{_ligue4_8cpp}\index{UI/cpp/Ligue4.cpp@{UI/cpp/Ligue4.cpp}}
+{\ttfamily \#include $<$emscripten.\+h$>$}\newline
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+EMSCRIPTEN\+\_\+\+KEEPALIVE bool \mbox{\hyperlink{_ligue4_8cpp_ae376240eef6def19ae239d1eac4a26ba}{checar\+Diagonal}} (int turno)
+\item 
+bool \mbox{\hyperlink{_ligue4_8cpp_a3a16ef7b975af5c4b3ab4c80a6f4e680}{checar\+Linhas}} (int turno)
+\item 
+bool \mbox{\hyperlink{_ligue4_8cpp_a12564fc1ca422d7a0898731a8c85ca58}{checar\+Colunas}} (int turno)
+\item 
+bool \mbox{\hyperlink{_ligue4_8cpp_ab3867e31f092e745ea99987ad2733868}{checar\+Vencedor}} (int turno)
+\item 
+EMSCRIPTEN\+\_\+\+KEEPALIVE bool \mbox{\hyperlink{_ligue4_8cpp_a5583c98e356e58e6f8b391da31064f7b}{jogar}} (int linha, int coluna, int turno)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{_ligue4_8cpp_abf31f5036d810afd0aaa1710d1356018}{linhas}} = 6
+\item 
+const int \mbox{\hyperlink{_ligue4_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}{colunas}} = 7
+\item 
+int \mbox{\hyperlink{_ligue4_8cpp_a6bcf5c6f29c2e0f4db82d615cda2d345}{tabuleiro}} \mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_abf31f5036d810afd0aaa1710d1356018}{linhas}}\mbox{]}\mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}{colunas}}\mbox{]} =\{0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Funções}
+\Hypertarget{_ligue4_8cpp_a12564fc1ca422d7a0898731a8c85ca58}\index{Ligue4.cpp@{Ligue4.cpp}!checarColunas@{checarColunas}}
+\index{checarColunas@{checarColunas}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{checarColunas()}{checarColunas()}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_a12564fc1ca422d7a0898731a8c85ca58} 
+bool checar\+Colunas (\begin{DoxyParamCaption}\item[{int}]{turno}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_ligue4_8cpp_ae376240eef6def19ae239d1eac4a26ba}\index{Ligue4.cpp@{Ligue4.cpp}!checarDiagonal@{checarDiagonal}}
+\index{checarDiagonal@{checarDiagonal}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{checarDiagonal()}{checarDiagonal()}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_ae376240eef6def19ae239d1eac4a26ba} 
+EMSCRIPTEN\+\_\+\+KEEPALIVE bool checar\+Diagonal (\begin{DoxyParamCaption}\item[{int}]{turno}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_ligue4_8cpp_a3a16ef7b975af5c4b3ab4c80a6f4e680}\index{Ligue4.cpp@{Ligue4.cpp}!checarLinhas@{checarLinhas}}
+\index{checarLinhas@{checarLinhas}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{checarLinhas()}{checarLinhas()}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_a3a16ef7b975af5c4b3ab4c80a6f4e680} 
+bool checar\+Linhas (\begin{DoxyParamCaption}\item[{int}]{turno}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_ligue4_8cpp_ab3867e31f092e745ea99987ad2733868}\index{Ligue4.cpp@{Ligue4.cpp}!checarVencedor@{checarVencedor}}
+\index{checarVencedor@{checarVencedor}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{checarVencedor()}{checarVencedor()}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_ab3867e31f092e745ea99987ad2733868} 
+bool checar\+Vencedor (\begin{DoxyParamCaption}\item[{int}]{turno}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_ligue4_8cpp_a5583c98e356e58e6f8b391da31064f7b}\index{Ligue4.cpp@{Ligue4.cpp}!jogar@{jogar}}
+\index{jogar@{jogar}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{jogar()}{jogar()}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_a5583c98e356e58e6f8b391da31064f7b} 
+EMSCRIPTEN\+\_\+\+KEEPALIVE bool jogar (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{, }\item[{int}]{turno}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variáveis}
+\Hypertarget{_ligue4_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}\index{Ligue4.cpp@{Ligue4.cpp}!colunas@{colunas}}
+\index{colunas@{colunas}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{colunas}{colunas}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5} 
+const int colunas = 7}
+
+\Hypertarget{_ligue4_8cpp_abf31f5036d810afd0aaa1710d1356018}\index{Ligue4.cpp@{Ligue4.cpp}!linhas@{linhas}}
+\index{linhas@{linhas}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{linhas}{linhas}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_abf31f5036d810afd0aaa1710d1356018} 
+const int linhas = 6}
+
+\Hypertarget{_ligue4_8cpp_a6bcf5c6f29c2e0f4db82d615cda2d345}\index{Ligue4.cpp@{Ligue4.cpp}!tabuleiro@{tabuleiro}}
+\index{tabuleiro@{tabuleiro}!Ligue4.cpp@{Ligue4.cpp}}
+\doxysubsubsection{\texorpdfstring{tabuleiro}{tabuleiro}}
+{\footnotesize\ttfamily \label{_ligue4_8cpp_a6bcf5c6f29c2e0f4db82d615cda2d345} 
+int tabuleiro\mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_abf31f5036d810afd0aaa1710d1356018}{linhas}}\mbox{]}\mbox{[}\mbox{\hyperlink{_u_i_2cpp_2_jogo_da_velha_8cpp_ab1394a248609e7c918a0c2e5ca85e5f5}{colunas}}\mbox{]} =\{0\}}
+

@@ -2,7 +2,27 @@
 #define JOGODAVELHA_HPP
 
 #include "Jogos.hpp"
-
+/**
+ * @file JogoDaVelha.hpp
+ * @brief Definição da classe JogoDaVelha.
+ *
+ * Esta classe representa o jogo da velha, um jogo de tabuleiro para dois jogadores. Ela herda da classe base `Jogos`
+ * e implementa as funcionalidades específicas do jogo da velha, como leitura de jogadas, verificação de vitória
+ * e empate, e anúncio do início da partida.
+ *
+ * ## Funcionalidades Principais:
+ * - Gerenciamento de partidas de jogo da velha.
+ * - Verificação de vitória (linhas, colunas ou diagonais completas).
+ * - Verificação de empate (tabuleiro cheio sem vencedor).
+ * - Anúncio do início da partida e alternância de turnos entre os jogadores.
+ *
+ * ## Integração com Outras Classes:
+ * - Herda da classe `Jogos`, que define a interface comum para todos os jogos.
+ * - Utiliza a classe `Jogador` para representar os jogadores participantes.
+ * - É amiga da classe `JogoDaVelhaAi`, permitindo acesso a métodos protegidos para implementação de inteligência artificial.
+ *
+ * @see Jogos, Jogador, JogoDaVelhaAi
+ */
 class JogoDaVelha : public Jogos
 {
   public:

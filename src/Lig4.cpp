@@ -1,15 +1,45 @@
+/**
+ * @file Lig4.cpp
+ * @brief Implementação dos métodos da classe Lig4.
+ *
+ * Este arquivo contém a implementação dos métodos da classe Lig4, que gerencia o jogo Lig4 (Connect Four),
+ * incluindo a inicialização do tabuleiro, leitura de jogadas, verificação de vitória e empate, e anúncio
+ * do início da partida.
+ */
+
 #include "Lig4.hpp"
 
+/**
+ * @brief Construtor parametrizado da classe Lig4.
+ *
+ * Inicializa o tabuleiro com um tamanho personalizado.
+ *
+ * @param tamanhoTabuleiro Tamanho do tabuleiro (ex: 7 para um tabuleiro 7x6).
+ */
 Lig4::Lig4(int tamanhoTabuleiro)
 {
     tabuleiro.resize(tamanhoTabuleiro, std::vector<char>(tamanhoTabuleiro + 1, ' '));
 }
 
+/**
+ * @brief Construtor padrão da classe Lig4.
+ *
+ * Inicializa o tabuleiro com tamanho padrão (7x6).
+ */
 Lig4::Lig4()
 {
     tabuleiro.resize(7, std::vector<char>(6, ' '));
 }
 
+/**
+ * @brief Anuncia o início da partida e define o jogador que começa.
+ *
+ * Exibe uma mensagem de boas-vindas e informa qual jogador começa a partida.
+ *
+ * @param Jogador1 Referência para o primeiro jogador.
+ * @param Jogador2 Referência para o segundo jogador.
+ * @param turno Referência para a variável que controla o turno dos jogadores.
+ */
 void Lig4::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
     if (turno)
@@ -23,6 +53,13 @@ void Lig4::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &tur
     mostrarTabuleiro();
 }
 
+/**
+ * @brief Lê a jogada do jogador atual.
+ *
+ * Solicita ao jogador que insira a coluna onde deseja inserir a peça e valida a entrada.
+ *
+ * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada válida.
+ */
 std::pair<int, int> Lig4::lerJogada()
 {
     std::cout << "Insira a coluna que deseja insirir a peca no tabuleiro." << std::endl;
@@ -61,6 +98,12 @@ std::pair<int, int> Lig4::lerJogada()
     return {0, 0};
 }
 
+/**
+ * @brief Verifica se há um vencedor nas diagonais do tabuleiro.
+ *
+ * @param jogadas Vetor de jogadas realizadas.
+ * @return bool True se houver um vencedor, False caso contrário.
+ */
 bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas)
 {
     int contadorMainDiagonal = 0;
@@ -134,6 +177,12 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas)
         return false;
 }
 
+/**
+ * @brief Verifica se há um vencedor nas linhas do tabuleiro.
+ *
+ * @param jogadas Vetor de jogadas realizadas.
+ * @return bool True se houver um vencedor, False caso contrário.
+ */
 bool Lig4::checarLinhas(std::vector<std::pair<int, int>> &jogadas)
 {
     int contadorLinhas = 0;
@@ -176,6 +225,12 @@ bool Lig4::checarLinhas(std::vector<std::pair<int, int>> &jogadas)
         return false;
 }
 
+/**
+ * @brief Verifica se há um vencedor nas colunas do tabuleiro.
+ *
+ * @param jogadas Vetor de jogadas realizadas.
+ * @return bool True se houver um vencedor, False caso contrário.
+ */
 bool Lig4::checarColunas(std::vector<std::pair<int, int>> &jogadas)
 {
     int contadorColunas = 0;
@@ -217,6 +272,14 @@ bool Lig4::checarColunas(std::vector<std::pair<int, int>> &jogadas)
         return false;
 }
 
+/**
+ * @brief Verifica se há um vencedor no jogo.
+ *
+ * @param jogadas Vetor de jogadas realizadas.
+ * @param vencedor Referência para o jogador vencedor.
+ * @param perdedor Referência para o jogador perdedor.
+ * @return bool True se houver um vencedor, False caso contrário.
+ */
 bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor)
 {
     if (!jogadas.empty())
@@ -231,6 +294,14 @@ bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &ve
     return false;
 }
 
+/**
+ * @brief Verifica se o jogo terminou em empate.
+ *
+ * @param numeroJogadas Número total de jogadas realizadas.
+ * @param jogador_01 Referência para o primeiro jogador.
+ * @param jogador_02 Referência para o segundo jogador.
+ * @return bool True se o jogo terminou em empate, False caso contrário.
+ */
 bool Lig4::checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02)
 {
     if (numeroJogadas >= (static_cast<int>(tabuleiro.size() * tabuleiro[0].size())))
