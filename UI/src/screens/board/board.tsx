@@ -5,6 +5,8 @@ import { BoardCell } from "../../components/BoardCell/BoardCell";
 import { WinOverlay } from "../../components/WinOverlay/WinOverlay";
 
 import JogoDaVelhaWasm from "../../../cpp/wasm/JogoDaVelha.wasm?init";
+import JogoDaVelhaAIWasm from "../../../cpp/wasm/JogoDaVelhaAi.wasm?init";
+
 import Ligue4Wasm from "../../../cpp/wasm/Ligue4.wasm?init";
 import ReversiWasm from "../../../cpp/wasm/Reversi.wasm?init";
 
@@ -199,13 +201,10 @@ export const Board = ()=>{
         ReversiWasm().then((instance)=>{
             let changeTurn=false;
             updateREVERSIwasmInstance(instance, updatedClickArray);
-            changeTurn = validateREVERSIflip(instance, position, updatedClickArray);
-            updateREVERSIwasmInstance(instance, updatedClickArray);
-            validateREVERSIflip(instance, position, updatedClickArray);
-            updateREVERSIwasmInstance(instance, updatedClickArray);
-            validateREVERSIflip(instance, position, updatedClickArray);
-            updateREVERSIwasmInstance(instance, updatedClickArray);
-            validateREVERSIflip(instance, position, updatedClickArray);
+            while(validateREVERSIflip(instance, position,updatedClickArray)){
+                changeTurn=true;
+                updateREVERSIwasmInstance(instance, updatedClickArray);
+            }
             if(changeTurn) setPlayerTurn(playerTurn==1?2:1);
         })
     }
@@ -221,7 +220,9 @@ export const Board = ()=>{
             }
             // @ts-ignore
             const winner = instance.exports.checarVencedor(playerTurn);
-            if(winner!=-1){
+            // @ts-ignore
+            const winner2 = instance.exports.checarVencedor(playerTurn==1?2:1);
+            if(winner!=-1 && winner2!=-1){
                 if(winner==0){
                     saveScore(playernames[0], "tie");
                     saveScore(playernames[1], "tie");
@@ -232,6 +233,9 @@ export const Board = ()=>{
                     saveScore(playernames[winner-1?0:1], "loss");
                     setGameEnded({winnerplayer:playernames[winner-1], wintype:"win"});
                 }
+            }
+            if(winner!=-1 && winner2==-1){
+                setPlayerTurn(playerTurn==1?2:1);
             }
         })
     }
@@ -260,10 +264,47 @@ export const Board = ()=>{
 
     useEffect(()=>{
         setReset(false);
-        setPlayerTurn(1);
+        setPlayerTurn(Math.random()<0.5?1:2);
         setGameEnded({winnerplayer:"none",wintype:"none"});
         generateClickArray();
-    }, [reset, widht, length])
+    }, [reset, widht, length]);
+
+    
+    const makeAImove = () => {
+        setTimeout(()=>{
+            JogoDaVelhaAIWasm().then((instance)=>{
+                //updating ai instance board
+                for(let column=0; column<clickedCells.length; column++){
+                    for(let line=0; line<clickedCells[column].length; line++){
+                        //the ai uses a numbered board system (one number for each cell) instead of xy system used here
+                        if(clickedCells[column][line]==1){
+                            console.log(column+line*clickedCells.length);
+                            //@ts-ignore
+                            instance.exports.colocarPeca(column+line*clickedCells.length, 2);
+                        }
+                        if(clickedCells[column][line]==2){
+                            console.log(column+line*clickedCells.length);
+                            //@ts-ignore
+                            instance.exports.colocarPeca(column+line*clickedCells.length, 1);
+                        }
+                    }
+                }
+                //@ts-ignore
+                let next_move = instance.exports.getBestMove(dificulty);
+                let position = {x:next_move%3, y:(next_move-next_move%3)/3}
+                console.log("Ai wants to play: ", position);
+                handleClickedCell(position);
+
+            });
+        }, 500);
+    }
+
+    //making ai moves
+    useEffect(()=>{
+        if(playerTurn==2 && playernames[1]=="AI"){
+            makeAImove();
+        }
+    }, [playerTurn]);
 
     return(
         <div className="boardbody">
@@ -281,7 +322,7 @@ export const Board = ()=>{
                                 <BoardCell 
                                     position={{x:index1, y:index2}} 
                                     clickedBy={clickedCells[index1][index2]!=0?"player"+clickedCells[index1][index2].toString():""} 
-                                    handleClickedCell={handleClickedCell}
+                                    handleClickedCell={playernames[1]=="AI" && playerTurn==2?()=>{}:handleClickedCell}
                                 />
                             </li>
                         ))}

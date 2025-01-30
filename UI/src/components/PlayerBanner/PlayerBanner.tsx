@@ -46,7 +46,7 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
 
     return (
         <div className="playerbannerouterbody">
-            {!hide && (<button className={"deletebutton"+(playerType==="new"?" hideopacity":"")} onClick={()=>handleDeletePlayer()}>🗑</button>)}
+            {!hide && (<button className={"deletebutton"+(playerType==="new"||playerType==="nameless"?" hideopacity":"")} onClick={()=>handleDeletePlayer()}>🗑</button>)}
             {!hide && (<div className={"playerbannerbody"+(highlighted?" playerbannerhighlighted":"")} onClick={()=>handleClick()}>
                 <h3 className={"playernickname"+(highlighted?" playerbannerhighlighted":"")}>{playerNick}</h3>
                 <div className="borderdiv"></div>
