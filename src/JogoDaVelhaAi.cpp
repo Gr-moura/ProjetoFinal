@@ -41,7 +41,7 @@ int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
 
     if (isMaximizing)
     {
-        int bestScore = INT_MIN;
+        int bestScore = -2;
         for (int i = 0; i < BOARD_SIZE; i++)
         {
             if (board[i] == EMPTY)
@@ -57,7 +57,7 @@ int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
     }
     else
     {
-        int bestScore = INT_MAX;
+        int bestScore = 2;
         for (int i = 0; i < BOARD_SIZE; i++)
         {
             if (board[i] == EMPTY)
@@ -74,7 +74,7 @@ int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
 
 int JogoDaVelhaAi::getBestMove()
 {
-    int bestScore = INT_MIN;
+    int bestScore = -2;
     int bestMove = -1;
     const std::vector<int> moveOrder = {0, 2, 6, 8, 4, 1, 3, 5, 7};
 
@@ -170,14 +170,14 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     std::vector<std::pair<int, int>> movimentosJogador1;
     std::vector<std::pair<int, int>> movimentosJogador2;
 
-    jogo.iniciarPartida(Jogador1, Jogador2, turno);
+    jogo.anunciarInicioPartida(Jogador1, Jogador2, turno);
 
     while (jogoEmAndamento)
     {
         contadorTurnos++;
         if (turno)
         {
-            jogo.iniciarTurno(Jogador1);
+            jogo.anunciarTurnoJogador(Jogador1);
 
             movimentosJogador1.push_back(humanMove(turno));
             jogo.mostrarTabuleiro();
@@ -191,7 +191,7 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         }
         else
         {
-            jogo.iniciarTurno(Jogador2);
+            jogo.anunciarTurnoJogador(Jogador2);
 
             movimentosJogador2.push_back(aiMove(turno));
             jogo.mostrarTabuleiro();

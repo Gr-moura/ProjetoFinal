@@ -8,7 +8,7 @@ Lig4::Lig4(){
   tabuleiro.resize(7, std::vector<char>(6, ' '));
 }
 
-void Lig4::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) {
+void Lig4::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) {
   if (turno) {
     std::cout << "Bem Vindo ao Ligue 4! O jogador " <<
     Jogador1.getApelido() << " comecara a partida!" <<
