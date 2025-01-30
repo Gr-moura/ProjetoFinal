@@ -206,14 +206,24 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     bool turno;
     while (true)
     {
-        while (not(std::cin >> turno))
+        try
         {
-            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        }
-        if (turno == 0 or turno == 1)
+            if (!(std::cin >> turno))
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                throw std::invalid_argument("A entrada deve ser um número inteiro entre 0 e 1");
+            }
+            if (turno != 0 && turno != 1)
+            {
+                throw std::out_of_range("Valor fora do intervalo permitido");
+            }
             break;
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "Erro: " << e.what() << "\nDigite 0 ou 1: ";
+        }
     }
 
     int dificuldade = 0;
@@ -222,14 +232,24 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 
     while (true)
     {
-        while (not(std::cin >> dificuldade))
+        try
         {
-            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        }
-        if (dificuldade == 0 or dificuldade == 1 or dificuldade == 2)
+            if (not(std::cin >> dificuldade))
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                throw std::invalid_argument("A entrada deve ser um número inteiro entre 0 e 2");
+            }
+            if (dificuldade < 0 || dificuldade > 2)
+            {
+                throw std::out_of_range("Valor fora do intervalo permitido");
+            }
             break;
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "Erro: " << e.what() << "\nDigite 0, 1 ou 2: ";
+        }
     }
 
     if (dificuldade == 0)
