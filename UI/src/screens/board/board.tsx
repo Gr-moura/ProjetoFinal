@@ -264,9 +264,13 @@ export const Board = ()=>{
 
     useEffect(()=>{
         setReset(false);
-        setPlayerTurn(Math.random()<0.5?1:2);
-        setGameEnded({winnerplayer:"none",wintype:"none"});
-        generateClickArray();
+        if(!reset){
+            const turn_choice = Math.random()<0.5?1:2;
+            console.log("escolha do turno", turn_choice);
+            setPlayerTurn(turn_choice);
+            setGameEnded({winnerplayer:"none",wintype:"none"});
+            generateClickArray();
+        }
     }, [reset, widht, length]);
 
     
