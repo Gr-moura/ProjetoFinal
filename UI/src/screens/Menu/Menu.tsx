@@ -3,7 +3,6 @@ import { MenuBanner } from "../../components/MenuBanner/MenuBanner"
 import jogodavelhaImage from "../../assets/jogodavelha.jpg"
 import connectfourImage from "../../assets/connectfour.jpg"
 import reversiImage from "../../assets/reversi.jpg"
-import lastGameImage from "../../assets/whoknows.jpg";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Selector } from "../../components/Selector/Selector";
@@ -60,6 +59,7 @@ export const Menu = () => {
      */
     const highlightItem = (id:number)=> {
         let updatedArray = [...highlitedItems];
+        //@ts-ignore
         updatedArray.forEach((item, index)=>{
             if(index===id) updatedArray[index] = true;
             else updatedArray[index] = false;
