@@ -1,0 +1,196 @@
+\doxysection{Referência da Classe Batalha\+Naval}
+\hypertarget{class_batalha_naval}{}\label{class_batalha_naval}\index{BatalhaNaval@{BatalhaNaval}}
+
+
+{\ttfamily \#include $<$Batalha\+Naval.\+hpp$>$}
+
+Diagrama de hierarquia da classe Batalha\+Naval\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_batalha_naval}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membros Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_batalha_naval_abd37f9b78e4d8fc029bd22b43220c26b}{Batalha\+Naval}} ()
+\item 
+void \mbox{\hyperlink{class_batalha_naval_a9940fb164f3e2261921997dd55e65664}{Jogar}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador2) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Membros Públicos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_jogos_a9fc8e1c2a4ec96ac074ccc75648e6611}{mostrar\+Tabuleiro}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Membros protegidos}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_batalha_naval_aeffb870e01fb143c5517e5220bf82d0d}{anunciar\+Inicio\+Partida}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador2, bool \&turno) override
+\item 
+bool \mbox{\hyperlink{class_batalha_naval_a1c62e30e753ab26fbaf6cd077d48c5ea}{checar\+Vencedor}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&vencedor, \mbox{\hyperlink{class_jogador}{Jogador}} \&perdedor) override
+\item 
+bool \mbox{\hyperlink{class_batalha_naval_a182f399247ff725add3b31c4727c3bd7}{checar\+Vencedor}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas\+Atacante, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Oponente, \mbox{\hyperlink{class_jogador}{Jogador}} \&vencedor, \mbox{\hyperlink{class_jogador}{Jogador}} \&perdedor)
+\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_batalha_naval_a96ae914d8d7ac973b180b18c118ebb72}{ler\+Jogada}} (std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&tabuleiro\+Jogador)
+\item 
+void \mbox{\hyperlink{class_batalha_naval_a0fd6de8a7b7480da023e8ffa1e655952}{ler\+Barcos}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador, \mbox{\hyperlink{class_jogador}{Jogador}} \&\mbox{\hyperlink{class_jogador}{Jogador}})
+\item 
+void \mbox{\hyperlink{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7}{inserir\+Barcos}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador, char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
+\item 
+bool \mbox{\hyperlink{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16}{quantidade\+Barcos\+Disponiveis}} (std\+::map$<$ char, int $>$ \&count\+Barcos, char tipo)
+\item 
+bool \mbox{\hyperlink{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa}{verificar\+Entrada}} (char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
+\item 
+bool \mbox{\hyperlink{class_batalha_naval_af865000871bc6c88abd01644e3d6087d}{verificar\+Tamanhodo\+Barco}} (char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
+\item 
+void \mbox{\hyperlink{class_batalha_naval_ab163d25b5e115f795104d57503604aa2}{checar\+Posicao\+Valida}} (std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&\mbox{\hyperlink{class_jogos_a68d2d3a0c403c75071bf21947cd6cf74}{tabuleiro}})
+\item 
+void \mbox{\hyperlink{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429}{marcar\+Tabuleiro}} (std\+::pair$<$ int, int $>$ \&jogada, bool \&turno, std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&tabuleiro\+Jogador, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador)
+\item 
+void \mbox{\hyperlink{class_batalha_naval_aa10477e8750bc32b5a992a8666506733}{mostrar\+Tabuleiro}} (const std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&tabuleiro\+Jogador)
+\item 
+bool \mbox{\hyperlink{class_batalha_naval_a59f6ad044c459087c9f6b7f859d37152}{checar\+Empate}} (int numero\+Jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+01, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+02) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Membros protegidos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_jogos_a8feefb43e61ada84aa118ede92ede15e}{marcar\+Tabuleiro}} (std\+::pair$<$ int, int $>$ \&jogada, bool \&turno)
+\item 
+virtual void \mbox{\hyperlink{class_jogos_aed97204178108a0959574cace64dff0e}{limpar\+Tabuleiro}} ()
+\item 
+void \mbox{\hyperlink{class_jogos_a039c8ce359a39ef11461ad95e0f9c393}{anunciar\+Turno\+Jogador}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&\mbox{\hyperlink{class_jogador}{Jogador}})
+\item 
+virtual bool \mbox{\hyperlink{class_jogos_af73e4c7abfd789f998757b0643679f95}{sorteio\+Turno}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_jogos_ac1b0ae22420d2e322a0d4f7eeadb7c7c}{checar\+Jogada\+Existente}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas, int linha, int coluna)
+\item 
+virtual bool \mbox{\hyperlink{class_jogos_acdae263574e320df5977849beda38fa8}{checar\+Posicao\+Valida}} (int linha, int coluna)
+\item 
+std\+::string \mbox{\hyperlink{class_jogos_a015fee5d5c9c4348c3a3561e03a33a24}{gerar\+Divisoria\+Tabuleiro}} ()
+\item 
+virtual std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_jogos_a4006744fbb717ba9357b2a7bf95cef14}{ler\+Jogada}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Outros membros herdados}
+\doxysubsection*{Atributos Protegidos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \mbox{\hyperlink{class_jogos_a68d2d3a0c403c75071bf21947cd6cf74}{tabuleiro}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Construtores e Destrutores}
+\Hypertarget{class_batalha_naval_abd37f9b78e4d8fc029bd22b43220c26b}\index{BatalhaNaval@{BatalhaNaval}!BatalhaNaval@{BatalhaNaval}}
+\index{BatalhaNaval@{BatalhaNaval}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{BatalhaNaval()}{BatalhaNaval()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_abd37f9b78e4d8fc029bd22b43220c26b} 
+Batalha\+Naval\+::\+Batalha\+Naval (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentação das funções}
+\Hypertarget{class_batalha_naval_aeffb870e01fb143c5517e5220bf82d0d}\index{BatalhaNaval@{BatalhaNaval}!anunciarInicioPartida@{anunciarInicioPartida}}
+\index{anunciarInicioPartida@{anunciarInicioPartida}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{anunciarInicioPartida()}{anunciarInicioPartida()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_aeffb870e01fb143c5517e5220bf82d0d} 
+void Batalha\+Naval\+::anunciar\+Inicio\+Partida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador1}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador2}{, }\item[{bool \&}]{turno}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \mbox{\hyperlink{class_jogos_a5d0ae196c41a3d29be5229ea4ea97daa}{Jogos}}.
+
+\Hypertarget{class_batalha_naval_a59f6ad044c459087c9f6b7f859d37152}\index{BatalhaNaval@{BatalhaNaval}!checarEmpate@{checarEmpate}}
+\index{checarEmpate@{checarEmpate}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{checarEmpate()}{checarEmpate()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a59f6ad044c459087c9f6b7f859d37152} 
+bool Batalha\+Naval\+::checar\+Empate (\begin{DoxyParamCaption}\item[{int}]{numero\+Jogadas}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{jogador\+\_\+01}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{jogador\+\_\+02}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \mbox{\hyperlink{class_jogos_a922fabb4f9102c3bae8bcb94d5a60dae}{Jogos}}.
+
+\Hypertarget{class_batalha_naval_ab163d25b5e115f795104d57503604aa2}\index{BatalhaNaval@{BatalhaNaval}!checarPosicaoValida@{checarPosicaoValida}}
+\index{checarPosicaoValida@{checarPosicaoValida}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{checarPosicaoValida()}{checarPosicaoValida()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_ab163d25b5e115f795104d57503604aa2} 
+void Batalha\+Naval\+::checar\+Posicao\+Valida (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&}]{tabuleiro}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_a1c62e30e753ab26fbaf6cd077d48c5ea}\index{BatalhaNaval@{BatalhaNaval}!checarVencedor@{checarVencedor}}
+\index{checarVencedor@{checarVencedor}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{checarVencedor()}{checarVencedor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a1c62e30e753ab26fbaf6cd077d48c5ea} 
+bool Batalha\+Naval\+::checar\+Vencedor (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{jogadas}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{vencedor}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{perdedor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implementa \mbox{\hyperlink{class_jogos_af036c69cae94b358043c4f4b4242020f}{Jogos}}.
+
+\Hypertarget{class_batalha_naval_a182f399247ff725add3b31c4727c3bd7}\index{BatalhaNaval@{BatalhaNaval}!checarVencedor@{checarVencedor}}
+\index{checarVencedor@{checarVencedor}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{checarVencedor()}{checarVencedor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a182f399247ff725add3b31c4727c3bd7} 
+bool Batalha\+Naval\+::checar\+Vencedor (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{jogadas\+Atacante}{, }\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Oponente}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{vencedor}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{perdedor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7}\index{BatalhaNaval@{BatalhaNaval}!inserirBarcos@{inserirBarcos}}
+\index{inserirBarcos@{inserirBarcos}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{inserirBarcos()}{inserirBarcos()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7} 
+void Batalha\+Naval\+::inserir\+Barcos (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Jogador}{, }\item[{char}]{tipo}{, }\item[{int}]{linha\+Inicial}{, }\item[{int}]{coluna\+Inicial}{, }\item[{int}]{linha\+Final}{, }\item[{int}]{coluna\+Final}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_a9940fb164f3e2261921997dd55e65664}\index{BatalhaNaval@{BatalhaNaval}!Jogar@{Jogar}}
+\index{Jogar@{Jogar}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{Jogar()}{Jogar()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a9940fb164f3e2261921997dd55e65664} 
+void Batalha\+Naval\+::\+Jogar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador1}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementa \mbox{\hyperlink{class_jogos_a922f7294a2cb6961e9f6290edc438f3e}{Jogos}}.
+
+\Hypertarget{class_batalha_naval_a0fd6de8a7b7480da023e8ffa1e655952}\index{BatalhaNaval@{BatalhaNaval}!lerBarcos@{lerBarcos}}
+\index{lerBarcos@{lerBarcos}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{lerBarcos()}{lerBarcos()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a0fd6de8a7b7480da023e8ffa1e655952} 
+void Batalha\+Naval\+::ler\+Barcos (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Jogador}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_a96ae914d8d7ac973b180b18c118ebb72}\index{BatalhaNaval@{BatalhaNaval}!lerJogada@{lerJogada}}
+\index{lerJogada@{lerJogada}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{lerJogada()}{lerJogada()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a96ae914d8d7ac973b180b18c118ebb72} 
+std\+::pair$<$ int, int $>$ Batalha\+Naval\+::ler\+Jogada (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&}]{tabuleiro\+Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429}\index{BatalhaNaval@{BatalhaNaval}!marcarTabuleiro@{marcarTabuleiro}}
+\index{marcarTabuleiro@{marcarTabuleiro}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{marcarTabuleiro()}{marcarTabuleiro()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429} 
+void Batalha\+Naval\+::marcar\+Tabuleiro (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, int $>$ \&}]{jogada}{, }\item[{bool \&}]{turno}{, }\item[{std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&}]{tabuleiro\+Jogador}{, }\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_aa10477e8750bc32b5a992a8666506733}\index{BatalhaNaval@{BatalhaNaval}!mostrarTabuleiro@{mostrarTabuleiro}}
+\index{mostrarTabuleiro@{mostrarTabuleiro}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{mostrarTabuleiro()}{mostrarTabuleiro()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_aa10477e8750bc32b5a992a8666506733} 
+void Batalha\+Naval\+::mostrar\+Tabuleiro (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&}]{tabuleiro\+Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16}\index{BatalhaNaval@{BatalhaNaval}!quantidadeBarcosDisponiveis@{quantidadeBarcosDisponiveis}}
+\index{quantidadeBarcosDisponiveis@{quantidadeBarcosDisponiveis}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{quantidadeBarcosDisponiveis()}{quantidadeBarcosDisponiveis()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16} 
+bool Batalha\+Naval\+::quantidade\+Barcos\+Disponiveis (\begin{DoxyParamCaption}\item[{std\+::map$<$ char, int $>$ \&}]{count\+Barcos}{, }\item[{char}]{tipo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa}\index{BatalhaNaval@{BatalhaNaval}!verificarEntrada@{verificarEntrada}}
+\index{verificarEntrada@{verificarEntrada}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{verificarEntrada()}{verificarEntrada()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa} 
+bool Batalha\+Naval\+::verificar\+Entrada (\begin{DoxyParamCaption}\item[{char}]{tipo}{, }\item[{int}]{linha\+Inicial}{, }\item[{int}]{coluna\+Inicial}{, }\item[{int}]{linha\+Final}{, }\item[{int}]{coluna\+Final}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_batalha_naval_af865000871bc6c88abd01644e3d6087d}\index{BatalhaNaval@{BatalhaNaval}!verificarTamanhodoBarco@{verificarTamanhodoBarco}}
+\index{verificarTamanhodoBarco@{verificarTamanhodoBarco}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{verificarTamanhodoBarco()}{verificarTamanhodoBarco()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_af865000871bc6c88abd01644e3d6087d} 
+bool Batalha\+Naval\+::verificar\+Tamanhodo\+Barco (\begin{DoxyParamCaption}\item[{char}]{tipo}{, }\item[{int}]{linha\+Inicial}{, }\item[{int}]{coluna\+Inicial}{, }\item[{int}]{linha\+Final}{, }\item[{int}]{coluna\+Final}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A documentação para essa classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_batalha_naval_8hpp}{Batalha\+Naval.\+hpp}}\item 
+src/\mbox{\hyperlink{_batalha_naval_8cpp}{Batalha\+Naval.\+cpp}}\end{DoxyCompactItemize}

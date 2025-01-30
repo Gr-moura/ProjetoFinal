@@ -1,0 +1,210 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {brazil}{}\relax 
+\contentsline {chapter}{\numberline {1}UI}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Objetivo}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Solução}{1}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}O worflow REACT}{1}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Telas}{2}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Componentes}{2}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Problemas encontrados durante o desenvolvimento}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Como executar o projeto com a UI?}{3}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Índice Hierárquico}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Hierarquia de Classes}{5}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Índice dos Componentes}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Lista de Classes}{7}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Índice dos Arquivos}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Lista de Arquivos}{9}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Classes}{11}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Referência da Classe Batalha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Naval}{11}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Construtores e Destrutores}{12}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}BatalhaNaval()}{12}{subsubsection.5.1.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Documentação das funções}{12}{subsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.1}anunciarInicioPartida()}{12}{subsubsection.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {5.1.2.2}checarEmpate()}{12}{subsubsection.5.1.2.2}%
+\contentsline {subsubsection}{\numberline {5.1.2.3}checarPosicaoValida()}{12}{subsubsection.5.1.2.3}%
+\contentsline {subsubsection}{\numberline {5.1.2.4}checarVencedor()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{13}{subsubsection.5.1.2.4}%
+\contentsline {subsubsection}{\numberline {5.1.2.5}checarVencedor()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{13}{subsubsection.5.1.2.5}%
+\contentsline {subsubsection}{\numberline {5.1.2.6}inserirBarcos()}{13}{subsubsection.5.1.2.6}%
+\contentsline {subsubsection}{\numberline {5.1.2.7}Jogar()}{13}{subsubsection.5.1.2.7}%
+\contentsline {subsubsection}{\numberline {5.1.2.8}lerBarcos()}{13}{subsubsection.5.1.2.8}%
+\contentsline {subsubsection}{\numberline {5.1.2.9}lerJogada()}{13}{subsubsection.5.1.2.9}%
+\contentsline {subsubsection}{\numberline {5.1.2.10}marcarTabuleiro()}{14}{subsubsection.5.1.2.10}%
+\contentsline {subsubsection}{\numberline {5.1.2.11}mostrarTabuleiro()}{14}{subsubsection.5.1.2.11}%
+\contentsline {subsubsection}{\numberline {5.1.2.12}quantidadeBarcosDisponiveis()}{14}{subsubsection.5.1.2.12}%
+\contentsline {subsubsection}{\numberline {5.1.2.13}verificarEntrada()}{14}{subsubsection.5.1.2.13}%
+\contentsline {subsubsection}{\numberline {5.1.2.14}verificarTamanhodoBarco()}{14}{subsubsection.5.1.2.14}%
+\contentsline {section}{\numberline {5.2}Referência da Classe Central\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}De\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogos}{14}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Construtores e Destrutores}{15}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}CentralDeJogos()}{15}{subsubsection.5.2.1.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}$\sim $CentralDeJogos()}{15}{subsubsection.5.2.1.2}%
+\contentsline {subsection}{\numberline {5.2.2}Documentação das funções}{15}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}buscarJogador()}{15}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}cadastrarJogador()}{15}{subsubsection.5.2.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.3}executarPartida()}{15}{subsubsection.5.2.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.2.4}listarJogadores()}{16}{subsubsection.5.2.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.2.5}ordenarJogadores()}{16}{subsubsection.5.2.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.2.6}removerJogador()}{16}{subsubsection.5.2.2.6}%
+\contentsline {subsubsection}{\numberline {5.2.2.7}validarEntrada()}{16}{subsubsection.5.2.2.7}%
+\contentsline {subsection}{\numberline {5.2.3}Atributos}{16}{subsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}Ai}{16}{subsubsection.5.2.3.1}%
+\contentsline {subsubsection}{\numberline {5.2.3.2}batalha}{16}{subsubsection.5.2.3.2}%
+\contentsline {subsubsection}{\numberline {5.2.3.3}jogadoresCadastrados}{16}{subsubsection.5.2.3.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.4}lig4}{16}{subsubsection.5.2.3.4}%
+\contentsline {subsubsection}{\numberline {5.2.3.5}reversi}{16}{subsubsection.5.2.3.5}%
+\contentsline {subsubsection}{\numberline {5.2.3.6}velha}{17}{subsubsection.5.2.3.6}%
+\contentsline {section}{\numberline {5.3}Referência da Classe Estatisticas}{17}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Construtores e Destrutores}{17}{subsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.1}Estatisticas()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{17}{subsubsection.5.3.1.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.2}Estatisticas()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{17}{subsubsection.5.3.1.2}%
+\contentsline {subsection}{\numberline {5.3.2}Documentação das funções}{18}{subsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.1}getDerrotas()}{18}{subsubsection.5.3.2.1}%
+\contentsline {subsubsection}{\numberline {5.3.2.2}getEmpates()}{18}{subsubsection.5.3.2.2}%
+\contentsline {subsubsection}{\numberline {5.3.2.3}getHistorico()}{18}{subsubsection.5.3.2.3}%
+\contentsline {subsubsection}{\numberline {5.3.2.4}getVitorias()}{18}{subsubsection.5.3.2.4}%
+\contentsline {subsubsection}{\numberline {5.3.2.5}mostrarEstatisticas()}{18}{subsubsection.5.3.2.5}%
+\contentsline {subsubsection}{\numberline {5.3.2.6}registrarDerrota()}{18}{subsubsection.5.3.2.6}%
+\contentsline {subsubsection}{\numberline {5.3.2.7}registrarEmpate()}{18}{subsubsection.5.3.2.7}%
+\contentsline {subsubsection}{\numberline {5.3.2.8}registrarVitoria()}{18}{subsubsection.5.3.2.8}%
+\contentsline {subsection}{\numberline {5.3.3}Atributos}{18}{subsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}derrotas}{18}{subsubsection.5.3.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}empates}{19}{subsubsection.5.3.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3.3}vitorias}{19}{subsubsection.5.3.3.3}%
+\contentsline {section}{\numberline {5.4}Referência da Classe Excecao\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Posicionamentode\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Barco}{19}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Documentação das funções}{19}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}what()}{19}{subsubsection.5.4.1.1}%
+\contentsline {section}{\numberline {5.5}Referência da Classe Excecao\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tipode\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Barco\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Invalido}{19}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Documentação das funções}{20}{subsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.1.1}what()}{20}{subsubsection.5.5.1.1}%
+\contentsline {section}{\numberline {5.6}Referência da Classe Jogador}{20}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Construtores e Destrutores}{20}{subsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.1.1}Jogador()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{20}{subsubsection.5.6.1.1}%
+\contentsline {subsubsection}{\numberline {5.6.1.2}Jogador()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{21}{subsubsection.5.6.1.2}%
+\contentsline {subsection}{\numberline {5.6.2}Documentação das funções}{21}{subsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.1}getApelido()}{21}{subsubsection.5.6.2.1}%
+\contentsline {subsubsection}{\numberline {5.6.2.2}getDerrotas()}{21}{subsubsection.5.6.2.2}%
+\contentsline {subsubsection}{\numberline {5.6.2.3}getEmpates()}{21}{subsubsection.5.6.2.3}%
+\contentsline {subsubsection}{\numberline {5.6.2.4}getNome()}{21}{subsubsection.5.6.2.4}%
+\contentsline {subsubsection}{\numberline {5.6.2.5}getVitorias()}{21}{subsubsection.5.6.2.5}%
+\contentsline {subsubsection}{\numberline {5.6.2.6}mostrarEstatisticas()}{21}{subsubsection.5.6.2.6}%
+\contentsline {subsubsection}{\numberline {5.6.2.7}registrarDerrota()}{22}{subsubsection.5.6.2.7}%
+\contentsline {subsubsection}{\numberline {5.6.2.8}registrarEmpate()}{22}{subsubsection.5.6.2.8}%
+\contentsline {subsubsection}{\numberline {5.6.2.9}registrarVitoria()}{22}{subsubsection.5.6.2.9}%
+\contentsline {subsection}{\numberline {5.6.3}Atributos}{22}{subsection.5.6.3}%
+\contentsline {subsubsection}{\numberline {5.6.3.1}apelido}{22}{subsubsection.5.6.3.1}%
+\contentsline {subsubsection}{\numberline {5.6.3.2}estatisticasPorJogo}{22}{subsubsection.5.6.3.2}%
+\contentsline {subsubsection}{\numberline {5.6.3.3}nome}{22}{subsubsection.5.6.3.3}%
+\contentsline {section}{\numberline {5.7}Referência da Classe Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha}{22}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Construtores e Destrutores}{23}{subsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.1.1}JogoDaVelha()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{23}{subsubsection.5.7.1.1}%
+\contentsline {subsubsection}{\numberline {5.7.1.2}JogoDaVelha()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{24}{subsubsection.5.7.1.2}%
+\contentsline {subsection}{\numberline {5.7.2}Documentação das funções}{24}{subsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.1}anunciarInicioPartida()}{24}{subsubsection.5.7.2.1}%
+\contentsline {subsubsection}{\numberline {5.7.2.2}checarColunas()}{24}{subsubsection.5.7.2.2}%
+\contentsline {subsubsection}{\numberline {5.7.2.3}checarDiagonal()}{24}{subsubsection.5.7.2.3}%
+\contentsline {subsubsection}{\numberline {5.7.2.4}checarEmpate()}{24}{subsubsection.5.7.2.4}%
+\contentsline {subsubsection}{\numberline {5.7.2.5}checarLinhas()}{24}{subsubsection.5.7.2.5}%
+\contentsline {subsubsection}{\numberline {5.7.2.6}checarVencedor()}{24}{subsubsection.5.7.2.6}%
+\contentsline {subsubsection}{\numberline {5.7.2.7}lerJogada()}{25}{subsubsection.5.7.2.7}%
+\contentsline {subsection}{\numberline {5.7.3}Documentação dos símbolos amigos e relacionados}{25}{subsection.5.7.3}%
+\contentsline {subsubsection}{\numberline {5.7.3.1}JogoDaVelhaAi}{25}{subsubsection.5.7.3.1}%
+\contentsline {section}{\numberline {5.8}Referência da Classe Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ai}{25}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Construtores e Destrutores}{26}{subsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.1.1}JogoDaVelhaAi()}{26}{subsubsection.5.8.1.1}%
+\contentsline {subsection}{\numberline {5.8.2}Documentação das funções}{26}{subsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.1}checarVitoria()}{26}{subsubsection.5.8.2.1}%
+\contentsline {subsubsection}{\numberline {5.8.2.2}getMelhorMovimento()}{26}{subsubsection.5.8.2.2}%
+\contentsline {subsubsection}{\numberline {5.8.2.3}isTabuleiroCheio()}{26}{subsubsection.5.8.2.3}%
+\contentsline {subsubsection}{\numberline {5.8.2.4}jogadaAI()}{27}{subsubsection.5.8.2.4}%
+\contentsline {subsubsection}{\numberline {5.8.2.5}jogadaHumano()}{28}{subsubsection.5.8.2.5}%
+\contentsline {subsubsection}{\numberline {5.8.2.6}Jogar()}{28}{subsubsection.5.8.2.6}%
+\contentsline {subsubsection}{\numberline {5.8.2.7}minimax()}{28}{subsubsection.5.8.2.7}%
+\contentsline {subsection}{\numberline {5.8.3}Atributos}{29}{subsection.5.8.3}%
+\contentsline {subsubsection}{\numberline {5.8.3.1}jogo}{29}{subsubsection.5.8.3.1}%
+\contentsline {subsubsection}{\numberline {5.8.3.2}MAX\_PROFUNDIDADE}{29}{subsubsection.5.8.3.2}%
+\contentsline {subsubsection}{\numberline {5.8.3.3}tabuleiro}{29}{subsubsection.5.8.3.3}%
+\contentsline {section}{\numberline {5.9}Referência da Classe Jogos}{29}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Documentação das funções}{30}{subsection.5.9.1}%
+\contentsline {subsubsection}{\numberline {5.9.1.1}anunciarInicioPartida()}{30}{subsubsection.5.9.1.1}%
+\contentsline {subsubsection}{\numberline {5.9.1.2}anunciarTurnoJogador()}{30}{subsubsection.5.9.1.2}%
+\contentsline {subsubsection}{\numberline {5.9.1.3}checarEmpate()}{30}{subsubsection.5.9.1.3}%
+\contentsline {subsubsection}{\numberline {5.9.1.4}checarJogadaExistente()}{30}{subsubsection.5.9.1.4}%
+\contentsline {subsubsection}{\numberline {5.9.1.5}checarPosicaoValida()}{31}{subsubsection.5.9.1.5}%
+\contentsline {subsubsection}{\numberline {5.9.1.6}checarVencedor()}{31}{subsubsection.5.9.1.6}%
+\contentsline {subsubsection}{\numberline {5.9.1.7}gerarDivisoriaTabuleiro()}{31}{subsubsection.5.9.1.7}%
+\contentsline {subsubsection}{\numberline {5.9.1.8}Jogar()}{31}{subsubsection.5.9.1.8}%
+\contentsline {subsubsection}{\numberline {5.9.1.9}lerJogada()}{31}{subsubsection.5.9.1.9}%
+\contentsline {subsubsection}{\numberline {5.9.1.10}limparTabuleiro()}{31}{subsubsection.5.9.1.10}%
+\contentsline {subsubsection}{\numberline {5.9.1.11}marcarTabuleiro()}{31}{subsubsection.5.9.1.11}%
+\contentsline {subsubsection}{\numberline {5.9.1.12}mostrarTabuleiro()}{32}{subsubsection.5.9.1.12}%
+\contentsline {subsubsection}{\numberline {5.9.1.13}sorteioTurno()}{32}{subsubsection.5.9.1.13}%
+\contentsline {subsection}{\numberline {5.9.2}Atributos}{32}{subsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.2.1}tabuleiro}{32}{subsubsection.5.9.2.1}%
+\contentsline {section}{\numberline {5.10}Referência da Classe Lig4}{32}{section.5.10}%
+\contentsline {subsection}{\numberline {5.10.1}Construtores e Destrutores}{33}{subsection.5.10.1}%
+\contentsline {subsubsection}{\numberline {5.10.1.1}Lig4()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{33}{subsubsection.5.10.1.1}%
+\contentsline {subsubsection}{\numberline {5.10.1.2}Lig4()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{33}{subsubsection.5.10.1.2}%
+\contentsline {subsection}{\numberline {5.10.2}Documentação das funções}{33}{subsection.5.10.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.1}anunciarInicioPartida()}{33}{subsubsection.5.10.2.1}%
+\contentsline {subsubsection}{\numberline {5.10.2.2}checarColunas()}{34}{subsubsection.5.10.2.2}%
+\contentsline {subsubsection}{\numberline {5.10.2.3}checarDiagonal()}{34}{subsubsection.5.10.2.3}%
+\contentsline {subsubsection}{\numberline {5.10.2.4}checarEmpate()}{34}{subsubsection.5.10.2.4}%
+\contentsline {subsubsection}{\numberline {5.10.2.5}checarLinhas()}{34}{subsubsection.5.10.2.5}%
+\contentsline {subsubsection}{\numberline {5.10.2.6}checarVencedor()}{34}{subsubsection.5.10.2.6}%
+\contentsline {subsubsection}{\numberline {5.10.2.7}lerJogada()}{34}{subsubsection.5.10.2.7}%
+\contentsline {section}{\numberline {5.11}Referência da Classe Reversi}{35}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Construtores e Destrutores}{36}{subsection.5.11.1}%
+\contentsline {subsubsection}{\numberline {5.11.1.1}Reversi()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{36}{subsubsection.5.11.1.1}%
+\contentsline {subsubsection}{\numberline {5.11.1.2}Reversi()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{36}{subsubsection.5.11.1.2}%
+\contentsline {subsection}{\numberline {5.11.2}Documentação das funções}{36}{subsection.5.11.2}%
+\contentsline {subsubsection}{\numberline {5.11.2.1}anunciarInicioPartida()}{36}{subsubsection.5.11.2.1}%
+\contentsline {subsubsection}{\numberline {5.11.2.2}checarEmpate()}{36}{subsubsection.5.11.2.2}%
+\contentsline {subsubsection}{\numberline {5.11.2.3}checarVencedor()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{36}{subsubsection.5.11.2.3}%
+\contentsline {subsubsection}{\numberline {5.11.2.4}checarVencedor()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{36}{subsubsection.5.11.2.4}%
+\contentsline {subsubsection}{\numberline {5.11.2.5}haMovimentosDisponiveis()}{37}{subsubsection.5.11.2.5}%
+\contentsline {subsubsection}{\numberline {5.11.2.6}jogadorInicial()}{37}{subsubsection.5.11.2.6}%
+\contentsline {subsubsection}{\numberline {5.11.2.7}Jogar()}{37}{subsubsection.5.11.2.7}%
+\contentsline {subsubsection}{\numberline {5.11.2.8}lerJogada()}{37}{subsubsection.5.11.2.8}%
+\contentsline {subsubsection}{\numberline {5.11.2.9}limparTabuleiro()}{37}{subsubsection.5.11.2.9}%
+\contentsline {subsubsection}{\numberline {5.11.2.10}marcarTabuleiro()}{37}{subsubsection.5.11.2.10}%
+\contentsline {subsubsection}{\numberline {5.11.2.11}movimentoValido()}{37}{subsubsection.5.11.2.11}%
+\contentsline {chapter}{\numberline {6}Arquivos}{39}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Batalha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Naval.hpp}{39}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Batalha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Naval.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{39}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Central\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}De\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogos.hpp}{40}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Central\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}De\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogos.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{40}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Estatisticas.hpp}{41}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Estatisticas.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{41}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogador.hpp}{41}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Jogador.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{42}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha.hpp}{42}{section.6.9}%
+\contentsline {section}{\numberline {6.10}Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{43}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ai.hpp}{43}{section.6.11}%
+\contentsline {subsection}{\numberline {6.11.1}Variáveis}{43}{subsection.6.11.1}%
+\contentsline {subsubsection}{\numberline {6.11.1.1}JOGADOR\_O}{43}{subsubsection.6.11.1.1}%
+\contentsline {subsubsection}{\numberline {6.11.1.2}JOGADOR\_X}{44}{subsubsection.6.11.1.2}%
+\contentsline {subsubsection}{\numberline {6.11.1.3}TABULEIRO\_SIZE}{44}{subsubsection.6.11.1.3}%
+\contentsline {subsubsection}{\numberline {6.11.1.4}VAZIO}{44}{subsubsection.6.11.1.4}%
+\contentsline {section}{\numberline {6.12}Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ai.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{44}{section.6.12}%
+\contentsline {section}{\numberline {6.13}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogos.hpp}{44}{section.6.13}%
+\contentsline {section}{\numberline {6.14}Jogos.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{45}{section.6.14}%
+\contentsline {section}{\numberline {6.15}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lig4.hpp}{45}{section.6.15}%
+\contentsline {section}{\numberline {6.16}Lig4.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{46}{section.6.16}%
+\contentsline {section}{\numberline {6.17}Referência do Arquivo include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Reversi.hpp}{46}{section.6.17}%
+\contentsline {section}{\numberline {6.18}Reversi.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{46}{section.6.18}%
+\contentsline {section}{\numberline {6.19}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Batalha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Naval.cpp}{47}{section.6.19}%
+\contentsline {section}{\numberline {6.20}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Central\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}De\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogos.cpp}{47}{section.6.20}%
+\contentsline {section}{\numberline {6.21}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Estatisticas.cpp}{47}{section.6.21}%
+\contentsline {section}{\numberline {6.22}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogador.cpp}{47}{section.6.22}%
+\contentsline {section}{\numberline {6.23}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha.cpp}{47}{section.6.23}%
+\contentsline {section}{\numberline {6.24}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogo\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Da\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Velha\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ai.cpp}{47}{section.6.24}%
+\contentsline {subsection}{\numberline {6.24.1}Descrição detalhada}{48}{subsection.6.24.1}%
+\contentsline {section}{\numberline {6.25}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Jogos.cpp}{48}{section.6.25}%
+\contentsline {section}{\numberline {6.26}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lig4.cpp}{48}{section.6.26}%
+\contentsline {section}{\numberline {6.27}Referência do Arquivo src/main.cpp}{48}{section.6.27}%
+\contentsline {subsection}{\numberline {6.27.1}Funções}{48}{subsection.6.27.1}%
+\contentsline {subsubsection}{\numberline {6.27.1.1}exibirMenu()}{48}{subsubsection.6.27.1.1}%
+\contentsline {subsubsection}{\numberline {6.27.1.2}main()}{48}{subsubsection.6.27.1.2}%
+\contentsline {subsubsection}{\numberline {6.27.1.3}validarEntrada()}{49}{subsubsection.6.27.1.3}%
+\contentsline {section}{\numberline {6.28}Referência do Arquivo src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Reversi.cpp}{49}{section.6.28}%
+\contentsline {section}{\numberline {6.29}Referência do Arquivo UI/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md}{49}{section.6.29}%
+\contentsline {chapter}{\'Indice Remissivo}{51}{section*.58}%

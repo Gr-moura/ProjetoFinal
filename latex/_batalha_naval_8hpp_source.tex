@@ -1,0 +1,58 @@
+\doxysection{Batalha\+Naval.\+hpp}
+\hypertarget{_batalha_naval_8hpp_source}{}\label{_batalha_naval_8hpp_source}\index{include/BatalhaNaval.hpp@{include/BatalhaNaval.hpp}}
+\mbox{\hyperlink{_batalha_naval_8hpp}{Ir para a documentação desse arquivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BATALHA\_NAVAL}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BATALHA\_NAVAL}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_jogos_8hpp}{Jogos.hpp}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_batalha_naval}{BatalhaNaval}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jogos}{Jogos}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_batalha_naval_abd37f9b78e4d8fc029bd22b43220c26b}{BatalhaNaval}}();}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_batalha_naval_a9940fb164f3e2261921997dd55e65664}{Jogar}}(\mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador2)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_batalha_naval_aeffb870e01fb143c5517e5220bf82d0d}{anunciarInicioPartida}}(\mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador2,\ \textcolor{keywordtype}{bool}\ \&turno)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_batalha_naval_a1c62e30e753ab26fbaf6cd077d48c5ea}{checarVencedor}}(std::vector<std::pair<int,\ int>>\ \&jogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&vencedor,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&perdedor)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00018\ \ \ \ \ \};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_batalha_naval_a1c62e30e753ab26fbaf6cd077d48c5ea}{checarVencedor}}(std::vector<std::pair<int,\ int>>\ \&jogadasAtacante,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::pair<int,\ int>>\ \&barcosOponente,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&vencedor,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&perdedor);}
+\DoxyCodeLine{00021\ \ \ \ \ std::pair<int,\ int>\ \mbox{\hyperlink{class_jogos_a4006744fbb717ba9357b2a7bf95cef14}{lerJogada}}(std::vector<std::vector<char>>\ \&tabuleiroJogador);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_batalha_naval_a0fd6de8a7b7480da023e8ffa1e655952}{lerBarcos}}(std::vector<std::pair<int,\ int>>\ \&barcosJogador,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&\mbox{\hyperlink{class_jogador}{Jogador}});}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7}{inserirBarcos}}(std::vector<std::pair<int,\ int>>\ \&barcosJogador,\ \textcolor{keywordtype}{char}\ tipo,\ \textcolor{keywordtype}{int}\ linhaInicial,\ \textcolor{keywordtype}{int}\ colunaInicial,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ linhaFinal,\ \textcolor{keywordtype}{int}\ colunaFinal);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16}{quantidadeBarcosDisponiveis}}(std::map<char,\ int>\ \&countBarcos,\ \textcolor{keywordtype}{char}\ tipo);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa}{verificarEntrada}}(\textcolor{keywordtype}{char}\ tipo,\ \textcolor{keywordtype}{int}\ linhaInicial,\ \textcolor{keywordtype}{int}\ colunaInicial,\ \textcolor{keywordtype}{int}\ linhaFinal,\ \textcolor{keywordtype}{int}\ colunaFinal);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_batalha_naval_af865000871bc6c88abd01644e3d6087d}{verificarTamanhodoBarco}}(\textcolor{keywordtype}{char}\ tipo,\ \textcolor{keywordtype}{int}\ linhaInicial,\ \textcolor{keywordtype}{int}\ colunaInicial,\ \textcolor{keywordtype}{int}\ linhaFinal,\ \textcolor{keywordtype}{int}\ colunaFinal);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_batalha_naval_ab163d25b5e115f795104d57503604aa2}{checarPosicaoValida}}(std::vector<std::vector<char>>\ \&\mbox{\hyperlink{class_jogos_a68d2d3a0c403c75071bf21947cd6cf74}{tabuleiro}});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429}{marcarTabuleiro}}(std::pair<int,\ int>\ \&jogada,\ \textcolor{keywordtype}{bool}\ \&turno,\ std::vector<std::vector<char>>\ \&tabuleiroJogador,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::pair<int,\ int>>\ \&barcosJogador);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogos_a9fc8e1c2a4ec96ac074ccc75648e6611}{mostrarTabuleiro}}(\textcolor{keyword}{const}\ std::vector<std::vector<char>>\ \&tabuleiroJogador);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_batalha_naval_a59f6ad044c459087c9f6b7f859d37152}{checarEmpate}}(\textcolor{keywordtype}{int}\ numeroJogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_01,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_02)\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \};}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_excecao_tipode_barco_invalido}{ExcecaoTipodeBarcoInvalido}}\ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{class_excecao_tipode_barco_invalido_abcfe97adb35849a484be9ce01fb83a14}{what}}()\ \textcolor{keyword}{const}\ throw()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ERRO!\ Tipo\ de\ barco\ invalido."{}};\ \}}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_excecao_posicionamentode_barco}{ExcecaoPosicionamentodeBarco}}\ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{class_excecao_posicionamentode_barco_a362d4c2461920c0766f7222601b7ac7a}{what}}()\ \textcolor{keyword}{const}\ throw()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00047\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ERRO!\ Barcos\ devem\ ser\ colocados\ horizontalmente\ ou\ verticalmente."{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

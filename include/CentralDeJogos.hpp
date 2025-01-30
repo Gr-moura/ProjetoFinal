@@ -1,6 +1,7 @@
 #ifndef CENTRALDEJOGOS_HPP
 #define CENTRALDEJOGOS_HPP
 
+#include "BatalhaNaval.hpp"
 #include "JogoDaVelha.hpp"
 #include "JogoDaVelhaAi.hpp"
 #include "Jogos.hpp"
@@ -11,10 +12,12 @@ class CentralDeJogos
 {
   private:
     std::vector<Jogador> jogadoresCadastrados;
+
     JogoDaVelhaAi Ai;
     JogoDaVelha velha;
     Lig4 lig4;
     Reversi reversi;
+    BatalhaNaval batalha;
 
   public:
     CentralDeJogos();

@@ -87,8 +87,8 @@ bool Jogos::checarPosicaoValida(int linha, int coluna)
 {
     try
     {
-        if (linha < static_cast<int>(tabuleiro.size()) and linha >= 0 and coluna < static_cast<int>(tabuleiro[0].size()) and
-        coluna >= 0)
+        if (linha < static_cast<int>(tabuleiro.size()) and linha >= 0 and
+            coluna < static_cast<int>(tabuleiro[0].size()) and coluna >= 0)
         {
             return true;
         }
@@ -97,13 +97,14 @@ bool Jogos::checarPosicaoValida(int linha, int coluna)
             throw std::out_of_range("");
         }
     }
-    catch(const std::out_of_range& e)
+    catch (const std::out_of_range &e)
     {
         return false;
     }
-    catch(...)
+    catch (...)
     {
-        std::cerr << "ERRO: um erro inesperado aconteceu, contate o desenvolvedor para a resolucao do problema." << std::endl;
+        std::cerr << "ERRO: um erro inesperado aconteceu, contate o desenvolvedor para a resolucao do problema."
+                  << std::endl;
         return false;
     }
     return false;
