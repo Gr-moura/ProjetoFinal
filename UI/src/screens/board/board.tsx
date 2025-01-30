@@ -220,7 +220,9 @@ export const Board = ()=>{
             }
             // @ts-ignore
             const winner = instance.exports.checarVencedor(playerTurn);
-            if(winner!=-1){
+            // @ts-ignore
+            const winner2 = instance.exports.checarVencedor(playerTurn==1?2:1);
+            if(winner!=-1 && winner2!=-1){
                 if(winner==0){
                     saveScore(playernames[0], "tie");
                     saveScore(playernames[1], "tie");
@@ -231,6 +233,9 @@ export const Board = ()=>{
                     saveScore(playernames[winner-1?0:1], "loss");
                     setGameEnded({winnerplayer:playernames[winner-1], wintype:"win"});
                 }
+            }
+            if(winner!=-1 && winner2==-1){
+                setPlayerTurn(playerTurn==1?2:1);
             }
         })
     }
