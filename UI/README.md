@@ -17,17 +17,17 @@ O diferencial que o usa do REACT proporciona é a capacidade de criar "component
 Além disso, o REACT proporciona diversos outros beneficios, como a renderização condicional (usando "state variables" é possível re-renderizar apenas as partes do site que sofreram mudanças, melhorando o desempenho da aplicação) e as "routes" (forma de navegar entre as páginas do site sem ter que recarregar a janela).
 
 ### Telas
-#### Seleção de jogadores (PlayerSelection)
+- #### Seleção de jogadores (PlayerSelection)
 A tela inicial da UI é a seleção de jogadores. Nela, você pode criar, selecionar e deletar jogadores.  
 Essa tela usa o "Local Storage" do navegador para guardar os dados dos jogadores e mostrá-los na tela (vitórias, derrotas e empates).  
-#### Seleção de jogos (Menu)
+- #### Seleção de jogos (Menu)
 Após a seleção de jogadores, uma tela para escolher os jogos é apresentada. Nessa tela, os jogadores também tem acesso a uma descrição de cada jogo.  
 Além disso é possível escolher a dificuldade da IA, caso o jogador 2 escolhido seja um bot.  
-#### Tabuleiro (Board)
+- #### Tabuleiro (Board)
 Essa tela renderiza de forma dinâmica um tabuleiro para cada jogo. Além disso, nela são chamadas as implementações das regras de cada jogo para verificar vitórias ou derrotas.  
 A tela controla a verificação de vitória e derrota, as jogadas (tanto do jogador como da IA), e as regras de cada jogo.  
 A verificação de vitória, derrota e as regras foram implementadas em C++ e conectadas à tela depois de serem compiladas em WASM (WebAssembly).
-#### Outras telas (DebugMenu)
+- #### Outras telas (DebugMenu)
 Por fim, a UI contém algumas telas que foram usadas para testar o código durante a fase de desenvolvimento, e não são acessíveis ao usuário.  
 
 ### Componentes
