@@ -36,6 +36,29 @@ void BatalhaNaval::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno,
     }
 }
 
+void BatalhaNaval::mostrarTabuleiro(const std::vector<std::vector<char>> &tabuleiroJogador)
+{
+    for (int i = 0; i < static_cast<int>(tabuleiroJogador.size()); i++)
+    {
+        for (int j = 0; j < static_cast<int>(tabuleiroJogador[i].size()); j++)
+        {
+            if (j > 0)
+            {
+                std::cout << "| " << tabuleiroJogador[i][j] << " ";
+            }
+            else
+            {
+                std::cout << " " << tabuleiroJogador[i][j] << " ";
+            }
+        }
+        if (i < static_cast<int>(tabuleiroJogador.size()) - 1)
+        {
+            std::cout << gerarDivisoriaTabuleiro();
+        }
+    }
+    std::cout << std::endl;
+}
+
 bool BatalhaNaval::quantidadeBarcosDisponiveis(std::map<char, int> &countBarcos, char tipo)
 {
     switch (tipo)
@@ -252,9 +275,9 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     anunciarInicioPartida(Jogador1, Jogador2, turno);
 
     lerBarcos(barcosJogador1, Jogador1);
-    std::system("cls");
+    std::cout << "\033[2J\033[1;1H";
     lerBarcos(barcosJogador2, Jogador2);
-    std::system("cls");
+    std::cout << "\033[2J\033[1;1H";
 
     while (jogoEmAndamento)
     {

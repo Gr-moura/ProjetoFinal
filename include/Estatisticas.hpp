@@ -9,6 +9,7 @@ class Estatisticas
     int vitorias;
     int derrotas;
     int empates;
+
   public:
     Estatisticas();
     Estatisticas(int vitorias, int derrotas, int empates);

@@ -45,7 +45,8 @@ int main()
             std::cout << "Digite o apelido do jogador: ";
             std::cin >> apelido;
             std::cout << "Digite o nome do jogador: ";
-            std::cin >> nome;
+            std::getchar();
+            std::getline(std::cin, nome);
             central.cadastrarJogador(apelido, nome);
         }
         else if (comando == "RJ")
@@ -62,7 +63,12 @@ int main()
         }
         else if (comando == "EP")
         {
-            std::cout << "Digite o nome do jogo que deseja jogar [R|L|V|A]: ";
+            std::cout << "Digite o nome do jogo que deseja jogar." << std::endl;
+            std::cout << "Jogo Da Velha:           (V)" << std::endl;
+            std::cout << "Jogo Da Velha contra IA: (A)" << std::endl;
+            std::cout << "Ligue 4:                 (L)" << std::endl;
+            std::cout << "Reversi:                 (R)" << std::endl;
+            std::cout << "Batalha Naval:           (B)" << std::endl;
             central.executarPartida();
         }
         else if (comando == "FS")
