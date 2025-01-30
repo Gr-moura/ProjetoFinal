@@ -1,4 +1,4 @@
-#include <CentralDeJogos.hpp>
+#include "CentralDeJogos.hpp"
 
 /**
  * @brief Construtor da classe CentralDeJogos.
@@ -261,6 +261,8 @@ void CentralDeJogos::listarJogadores()
 void CentralDeJogos::executarPartida()
 {
     std::string jogoEscolhido = validarEntrada();
+
+    std::cout << "\033[2J\033[1;1H";
 
     std::cout << "Digite o apelido do jogador 1: ";
     std::string apelidoJogador_01 = validarEntrada();
