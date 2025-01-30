@@ -15,10 +15,18 @@
 
 class Jogos
 {
+  public:
+    virtual void mostrarTabuleiro();
+    virtual void mostrarTabuleiro(const std::vector<std::vector<char>> &tabuleiro);
+    virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
+
   protected:
     std::vector<std::vector<char>> tabuleiro;
 
     virtual void marcarTabuleiro(std::pair<int, int> &jogada, bool &turno);
+    virtual void marcarTabuleiro(std::pair<int, int> &jogada, bool &turno,
+                                 std::vector<std::vector<char>> &tabuleiroJogador,
+                                 std::vector<std::pair<int, int>> &barcosJogador);
     virtual void limparTabuleiro();
     virtual void iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) = 0;
     void iniciarTurno(Jogador &Jogador);
@@ -32,10 +40,6 @@ class Jogos
     std::string gerarDivisoriaTabuleiro();
 
     virtual std::pair<int, int> lerJogada() = 0;
-
-  public:
-    virtual void mostrarTabuleiro();
-    virtual void Jogar(Jogador &Jogador1, Jogador &Jogador2);
 };
 
 #endif
