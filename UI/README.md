@@ -18,7 +18,7 @@ Além disso, o REACT proporciona diversos outros beneficios, como a renderizaç�
 
 ### Telas
 - #### Seleção de jogadores (PlayerSelection)
-&nbsp A tela inicial da UI é a seleção de jogadores. Nela, você pode criar, selecionar e deletar jogadores.  
+  A tela inicial da UI é a seleção de jogadores. Nela, você pode criar, selecionar e deletar jogadores.  
 Essa tela usa o "Local Storage" do navegador para guardar os dados dos jogadores e mostrá-los na tela (vitórias, derrotas e empates).  
 - #### Seleção de jogos (Menu)
 Após a seleção de jogadores, uma tela para escolher os jogos é apresentada. Nessa tela, os jogadores também tem acesso a uma descrição de cada jogo.  
