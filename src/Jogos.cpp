@@ -1,6 +1,20 @@
+/**
+ * @file Jogos.cpp
+ * @brief Implementação dos métodos da classe Jogos.
+ *
+ * Este arquivo contém a implementação dos métodos da classe Jogos, que fornece funcionalidades básicas
+ * para gerenciar partidas de jogos de tabuleiro, como exibição do tabuleiro, controle de turnos,
+ * validação de jogadas e execução de partidas.
+ */
+
 #include "Jogos.hpp"
 #include "Jogador.hpp"
 
+/**
+ * @brief Gera uma divisória para separar as linhas do tabuleiro.
+ *
+ * @return std::string Uma string contendo a divisória do tabuleiro.
+ */
 std::string Jogos::gerarDivisoriaTabuleiro()
 {
     std::string divisor;
@@ -19,6 +33,11 @@ std::string Jogos::gerarDivisoriaTabuleiro()
     return divisor;
 }
 
+/**
+ * @brief Exibe o tabuleiro atual.
+ *
+ * Mostra o estado atual do tabuleiro, incluindo as marcações dos jogadores.
+ */
 void Jogos::mostrarTabuleiro()
 {
     for (int i = 0; i < static_cast<int>(tabuleiro.size()); i++)
@@ -42,6 +61,11 @@ void Jogos::mostrarTabuleiro()
     std::cout << std::endl;
 }
 
+/**
+ * @brief Limpa o tabuleiro, preparando-o para uma nova partida.
+ *
+ * Todas as posições do tabuleiro são redefinidas como vazias (' ').
+ */
 void Jogos::limparTabuleiro()
 {
     for (auto &linha : tabuleiro)
@@ -54,6 +78,12 @@ void Jogos::limparTabuleiro()
     return;
 }
 
+/**
+ * @brief Marca uma jogada no tabuleiro.
+ *
+ * @param jogada Coordenadas (linha, coluna) da jogada.
+ * @param turno Indica o turno do jogador (true para jogador 1, false para jogador 2).
+ */
 void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
 {
     if (turno)
@@ -62,11 +92,21 @@ void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
         tabuleiro[jogada.first][jogada.second] = 'O';
 }
 
+/**
+ * @brief Anuncia o turno do jogador atual.
+ *
+ * @param Jogador Referência para o jogador cujo turno será anunciado.
+ */
 void Jogos::anunciarTurnoJogador(Jogador &Jogador)
 {
     std::cout << "Turno de " << Jogador.getApelido() << "!" << std::endl;
 }
 
+/**
+ * @brief Sorteia qual jogador começa a partida.
+ *
+ * @return bool True se o jogador 1 começar, False se o jogador 2 começar.
+ */
 bool Jogos::sorteioTurno()
 {
     srand(std::time(0));
@@ -74,6 +114,14 @@ bool Jogos::sorteioTurno()
     return sorteioTurno;
 }
 
+/**
+ * @brief Verifica se uma jogada já foi realizada.
+ *
+ * @param jogadas Vetor de jogadas realizadas.
+ * @param linha Linha da jogada a ser verificada.
+ * @param coluna Coluna da jogada a ser verificada.
+ * @return bool True se a jogada já foi realizada, False caso contrário.
+ */
 bool Jogos::checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int linha, int coluna)
 {
     std::pair<int, int> jogada = {linha, coluna};
@@ -83,6 +131,13 @@ bool Jogos::checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int
         return false;
 }
 
+/**
+ * @brief Verifica se uma posição no tabuleiro é válida.
+ *
+ * @param linha Linha da posição a ser verificada.
+ * @param coluna Coluna da posição a ser verificada.
+ * @return bool True se a posição for válida, False caso contrário.
+ */
 bool Jogos::checarPosicaoValida(int linha, int coluna)
 {
     try
@@ -110,6 +165,15 @@ bool Jogos::checarPosicaoValida(int linha, int coluna)
     return false;
 }
 
+/**
+ * @brief Executa uma partida entre dois jogadores.
+ *
+ * Gerencia o fluxo da partida, alternando turnos entre os jogadores, validando jogadas,
+ * verificando vitórias e empates, e exibindo o tabuleiro.
+ *
+ * @param Jogador1 Referência para o primeiro jogador.
+ * @param Jogador2 Referência para o segundo jogador.
+ */
 void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
@@ -126,7 +190,7 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         contadorTurnos++;
         if (turno)
         {
-            anunciarTurnoJogador(Jogador1); // jogadorX no reversi
+            anunciarTurnoJogador(Jogador1);
             jogada = lerJogada();
 
             marcarTabuleiro(jogada, turno);
@@ -144,7 +208,7 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         }
         else
         {
-            anunciarTurnoJogador(Jogador2); // jogadorO no reversi
+            anunciarTurnoJogador(Jogador2);
             jogada = lerJogada();
 
             marcarTabuleiro(jogada, turno);
@@ -168,5 +232,3 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         }
     }
 }
-
-// remover dependencies do makefile
