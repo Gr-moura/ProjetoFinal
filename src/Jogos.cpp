@@ -104,7 +104,9 @@ bool Jogos::checarPosicaoValida(int linha, int coluna)
     catch(...)
     {
         std::cerr << "ERRO: um erro inesperado aconteceu, contate o desenvolvedor para a resolucao do problema." << std::endl;
+        return false;
     }
+    return false;
 }
 
 void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)

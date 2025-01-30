@@ -190,11 +190,10 @@ bool Reversi::movimentoValido(std::pair<int, int> &jogada, char jogador, std::ve
 }
 
 bool Reversi::haMovimentosDisponiveis(char jogador) {
-    char oponente = (jogador == 'X') ? 'O' : 'X';
     std::vector<std::pair<int, int>> flips;
 
-    for(int i = 0; i < tabuleiro.size(); i++) {
-        for(int j = 0; j < tabuleiro[i].size(); j++) {
+    for(int i = 0; i < static_cast<int>(tabuleiro.size()); i++) {
+        for(int j = 0; j < static_cast<int>(tabuleiro[i].size()); j++) {
             std::pair<int, int> jogada = {i, j};
             if(tabuleiro[i][j] == ' ' && movimentoValido(jogada, jogador, flips)){
                 return true;
@@ -206,8 +205,8 @@ bool Reversi::haMovimentosDisponiveis(char jogador) {
 
 void Reversi::limparTabuleiro() {
     for(auto &linha : tabuleiro) {
-        for(char c : linha) {
-            c = ' ';
+        for(auto &posicao : linha) {
+            posicao = ' ';
         }
     }
 

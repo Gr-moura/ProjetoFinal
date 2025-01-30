@@ -18,6 +18,7 @@ class Reversi : public Jogos {
   bool haMovimentosDisponiveis(char Jogador);
 
   void limparTabuleiro() override;
+  bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor) { return false;};
   bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &jogador1, Jogador &Jogador2, bool &PrimeiroJogador);
   bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override { return false; };
 };
