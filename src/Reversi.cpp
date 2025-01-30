@@ -18,7 +18,7 @@ Reversi::Reversi(int tamanhoTabuleiro) {
     tabuleiro[meio][meio] = 'X';
 }
 
-void Reversi::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno){
+void Reversi::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno){
 
     mostrarTabuleiro();
 
@@ -30,7 +30,7 @@ void Reversi::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno){
     }
 }
 
-std::pair<int, int> Reversi::lerJogadaReversi(bool turno){
+std::pair<int, int> Reversi::lerJogada(bool turno){
     int linha, coluna;
     bool entradaValida = false;
 
@@ -58,21 +58,21 @@ std::pair<int, int> Reversi::lerJogadaReversi(bool turno){
     return {-1, -1};
 }
 
-void Reversi::JogarReversi(Jogador &Jogador1, Jogador &Jogador2) {  
+void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2) {  
   bool jogoEmAndamento = true;
-  bool turno = sorteio();
+  bool turno = sorteioTurno();
   int contadorTurnos = 0;
   std::vector<std::pair<int, int>> movimentosJogador1;
   std::vector<std::pair<int, int>> movimentosJogador2;
 
   std::pair<int, int> jogada;
-  iniciarPartida(Jogador1, Jogador2, turno);
+  anunciarInicioPartida(Jogador1, Jogador2, turno);
 
   while (jogoEmAndamento) {
     contadorTurnos++;
     if (turno) {
-      iniciarTurno(Jogador1); //jogadorX no reversi
-      jogada = lerJogadaReversi(turno);
+      anunciarTurnoJogador(Jogador1); //jogadorX no reversi
+      jogada = lerJogada(turno);
       
       marcarTabuleiro(jogada, turno);
       mostrarTabuleiro();
@@ -88,8 +88,8 @@ void Reversi::JogarReversi(Jogador &Jogador1, Jogador &Jogador2) {
       turno = not turno;
     }
     else {
-      iniciarTurno(Jogador2); //jogadorO no reversi
-      jogada = lerJogadaReversi(turno);
+      anunciarTurnoJogador(Jogador2); //jogadorO no reversi
+      jogada = lerJogada(turno);
       
       marcarTabuleiro(jogada, turno);
       mostrarTabuleiro();

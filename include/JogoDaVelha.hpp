@@ -10,7 +10,7 @@ class JogoDaVelha : public Jogos
     JogoDaVelha(int tamanhoTabuleiro);
 
   protected:
-    void iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
+    void anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
 
     std::pair<int, int> lerJogada() override;
 

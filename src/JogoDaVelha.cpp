@@ -10,7 +10,7 @@ JogoDaVelha::JogoDaVelha(int tamanhoTabuleiro)
     tabuleiro.resize(tamanhoTabuleiro, std::vector<char>(tamanhoTabuleiro, ' '));
 }
 
-void JogoDaVelha::iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
+void JogoDaVelha::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
     if (turno)
     {

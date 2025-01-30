@@ -62,16 +62,16 @@ void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
         tabuleiro[jogada.first][jogada.second] = 'O';
 }
 
-void Jogos::iniciarTurno(Jogador &Jogador)
+void Jogos::anunciarTurnoJogador(Jogador &Jogador)
 {
     std::cout << "Turno de " << Jogador.getApelido() << "!" << std::endl;
 }
 
-bool Jogos::sorteio()
+bool Jogos::sorteioTurno()
 {
     srand(std::time(0));
-    bool sorteio = std::rand() % 2;
-    return sorteio;
+    bool sorteioTurno = std::rand() % 2;
+    return sorteioTurno;
 }
 
 bool Jogos::checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int linha, int coluna)
@@ -85,32 +85,45 @@ bool Jogos::checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int
 
 bool Jogos::checarPosicaoValida(int linha, int coluna)
 {
-    if (linha < static_cast<int>(tabuleiro.size()) and linha >= 0 and coluna < static_cast<int>(tabuleiro[0].size()) and
-        coluna >= 0)
+    try
     {
-        return true;
+        if (linha < static_cast<int>(tabuleiro.size()) and linha >= 0 and coluna < static_cast<int>(tabuleiro[0].size()) and
+        coluna >= 0)
+        {
+            return true;
+        }
+        else
+        {
+            throw std::out_of_range("");
+        }
     }
-    else
+    catch(const std::out_of_range& e)
+    {
         return false;
+    }
+    catch(...)
+    {
+        std::cerr << "ERRO: um erro inesperado aconteceu, contate o desenvolvedor para a resolucao do problema." << std::endl;
+    }
 }
 
 void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
-    bool turno = sorteio();
+    bool turno = sorteioTurno();
     int contadorTurnos = 0;
     std::vector<std::pair<int, int>> movimentosJogador1;
     std::vector<std::pair<int, int>> movimentosJogador2;
 
     std::pair<int, int> jogada;
-    iniciarPartida(Jogador1, Jogador2, turno);
+    anunciarInicioPartida(Jogador1, Jogador2, turno);
 
     while (jogoEmAndamento)
     {
         contadorTurnos++;
         if (turno)
         {
-            iniciarTurno(Jogador1); // jogadorX no reversi
+            anunciarTurnoJogador(Jogador1); // jogadorX no reversi
             jogada = lerJogada();
 
             marcarTabuleiro(jogada, turno);
@@ -128,7 +141,7 @@ void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         }
         else
         {
-            iniciarTurno(Jogador2); // jogadorO no reversi
+            anunciarTurnoJogador(Jogador2); // jogadorO no reversi
             jogada = lerJogada();
 
             marcarTabuleiro(jogada, turno);
