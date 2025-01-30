@@ -45,7 +45,9 @@ Além disso, o REACT proporciona diversos outros beneficios, como a renderizaç�
   Cada contúdo do seletor é um objeto, que contém um nome (mostrado ao usuário), um valor (usado no código e guardado na variável de "state") e um "index" (referente a ordem que os conteúdos aparecerão no seletor).  
 - #### "Overlay" de vitória (WinOverlay)
   Um "overlay" semi-transparente que aparece sobre o tabuleiro quando um jogo acaba.  
-  Exibe o nome do vencedor (ou "Empate") e duas opções: Voltar à tela de seleção de jogadores ou jogar novamente.  
+  Exibe o nome do vencedor (ou "Empate") e duas opções: Voltar à tela de seleção de jogadores ou jogar novamente.
+- #### Outros componentes (dropdown)
+  Alguns outros componentes foram uasdos apenas nas telas não acessíveis para o usuário.
 
 
 ## Problemas encontrados durante o desenvolvimento
