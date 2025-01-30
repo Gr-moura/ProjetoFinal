@@ -65,7 +65,7 @@ bool BatalhaNaval::quantidadeBarcosDisponiveis(std::map<char, int> &countBarcos,
     return false;
 }
 
-void inserirBarcos(std::vector<std::pair<int, int>> &barcosJogador, char tipo, int linhaInicial, int colunaInicial,
+void BatalhaNaval::inserirBarcos(std::vector<std::pair<int, int>> &barcosJogador, char tipo, int linhaInicial, int colunaInicial,
                    int linhaFinal, int colunaFinal)
 {
     if (colunaInicial > colunaFinal)
@@ -261,7 +261,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         contadorTurnos++;
         if (turno)
         {
-            anunciarTurnoJogador(Jogador1); // jogadorX no reversi
+            anunciarTurnoJogador(Jogador1);
             jogada = lerJogada(tabuleiroJogadasJogador1);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador1, movimentosJogador1);
@@ -280,7 +280,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         }
         else
         {
-            anunciarTurnoJogador(Jogador2); // jogadorO no reversi
+            anunciarTurnoJogador(Jogador2);
             jogada = lerJogada(tabuleiroJogadasJogador2);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador2, movimentosJogador2);
