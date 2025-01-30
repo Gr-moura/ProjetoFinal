@@ -58,7 +58,7 @@ std::pair<int, int> Reversi::lerJogadaReversi(bool turno){
     return {-1, -1};
 }
 
-void Reversi::JogarReversi(Jogador &Jogador1, Jogador &Jogador2) {  
+void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2) {  
   bool jogoEmAndamento = true;
   bool turno = sorteio();
   int contadorTurnos = 0;

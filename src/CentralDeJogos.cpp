@@ -71,6 +71,7 @@ std::string CentralDeJogos::validarEntrada()
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
+
     return entrada;
 }
 
@@ -171,7 +172,6 @@ void CentralDeJogos::executarPartida()
                                               [&](const Jogador &jogador) { return jogador.getApelido() == "AI"; });
 
         Ai.Jogar(*posicaoJogador_01, *posicaoJogador_02);
-
         return;
     }
 
@@ -190,7 +190,7 @@ void CentralDeJogos::executarPartida()
 
     if (jogoEscolhido == "R")
     {
-        reversi.JogarReversi(*posicaoJogador_01, *posicaoJogador_02);
+        reversi.Jogar(*posicaoJogador_01, *posicaoJogador_02);
     }
     else if (jogoEscolhido == "L")
     {

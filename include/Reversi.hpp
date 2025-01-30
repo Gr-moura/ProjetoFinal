@@ -6,7 +6,7 @@ class Reversi : public Jogos {
   public:
     Reversi();
     Reversi(int tamanhoTabuleiro);
-    void JogarReversi(Jogador &Jogador1, Jogador &Jogador2);
+    void Jogar(Jogador &Jogador1, Jogador &Jogador2) override;
  protected:
   void iniciarPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override; 
 

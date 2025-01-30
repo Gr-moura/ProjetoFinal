@@ -4,7 +4,7 @@ ian2 ianerrado 0 0 0 0 0 0 0 0 0
 Alexandre junior 0 0 0 1 0 0 0 0 0
 Kenji k 0 0 0 0 1 0 0 0 0
 Ian nagi 8 9 1 12 10 2 14 11 3
-Pedro pokow 15 2 3 10 5 0 9 4 1
+Pedro pokow 15 2 3 11 5 0 9 4 1
 Gabriel rin 20 4 5 18 3 4 25 7 6
-Gabriel super 5 8 2 4 6 1 7 9 0
+Gabriel super 5 8 2 4 7 1 7 9 0
 Ulisses ulas 10 5 2 8 7 1 12 6 3
