@@ -17,15 +17,24 @@ CentralDeJogos::CentralDeJogos()
     int vitoriasJogoDaVelha, derrotasJogoDaVelha, empatesJogoDaVelha;
     int vitoriasLig4, derrotasLig4, empatesLig4;
     int vitoriasReversi, derrotasReversi, empatesReversi;
-    // int vitoriasJogo3, derrotasJogo3, empatesJogo3;
+    int vitoriasBatalhaNaval, derrotasBatalhaNaval, empatesBatalhaNaval;
 
-    while (DadosJogadoresCadastrados >> nome >> apelido >> vitoriasJogoDaVelha >> derrotasJogoDaVelha >>
-           empatesJogoDaVelha >> vitoriasLig4 >> derrotasLig4 >> empatesLig4 >> vitoriasReversi >> derrotasReversi >>
-           empatesReversi)
+    while (std::getline(DadosJogadoresCadastrados, nome))
     {
+        if (!(DadosJogadoresCadastrados >> apelido >> vitoriasJogoDaVelha >> derrotasJogoDaVelha >> empatesJogoDaVelha >>
+              vitoriasLig4 >> derrotasLig4 >> empatesLig4 >> vitoriasReversi >> derrotasReversi >> empatesReversi >>
+              vitoriasBatalhaNaval >> derrotasBatalhaNaval >> empatesBatalhaNaval))
+        {
+            std::cerr << "ERRO: arquivo de save corrompido, iniciando com o save zerado. " << nome << std::endl;
+            break;
+        }
 
-        Jogador jogador(apelido, nome, vitoriasJogoDaVelha, derrotasJogoDaVelha, empatesJogoDaVelha, vitoriasLig4,
-                        derrotasLig4, empatesLig4, vitoriasReversi, derrotasReversi, empatesReversi);
+        DadosJogadoresCadastrados.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        Jogador jogador(apelido, nome, vitoriasJogoDaVelha, derrotasJogoDaVelha, empatesJogoDaVelha, 
+                        vitoriasLig4, derrotasLig4, empatesLig4, vitoriasReversi, derrotasReversi, 
+                        empatesReversi, vitoriasBatalhaNaval, derrotasBatalhaNaval, empatesBatalhaNaval);
+
         jogadoresCadastrados.push_back(jogador);
     }
 
@@ -47,12 +56,14 @@ CentralDeJogos::~CentralDeJogos()
 
     for (Jogador &jogador : jogadoresCadastrados)
     {
-        DadosJogadoresCadastrados << jogador.getNome() << " " << jogador.getApelido() << " "
+        DadosJogadoresCadastrados << jogador.getNome() << std::endl << jogador.getApelido() << " "
                                   << jogador.getVitorias("VELHA") << " " << jogador.getDerrotas("VELHA") << " "
                                   << jogador.getEmpates("VELHA") << " " << jogador.getVitorias("LIG4") << " "
                                   << jogador.getDerrotas("LIG4") << " " << jogador.getEmpates("LIG4") << " "
                                   << jogador.getVitorias("REVERSI") << " " << jogador.getDerrotas("REVERSI") << " "
-                                  << jogador.getEmpates("REVERSI") << std::endl;
+                                  << jogador.getEmpates("REVERSI") << " " << jogador.getVitorias("BATALHANAVAL") << " "
+                                  << jogador.getDerrotas("BATALHANAVAL") << " " << jogador.getEmpates("BATALHANAVAL")
+                                  << std::endl;;
     }
 
     DadosJogadoresCadastrados.close();
@@ -146,6 +157,7 @@ void CentralDeJogos::listarJogadores()
         jogador.mostrarEstatisticas("VELHA");
         jogador.mostrarEstatisticas("LIG4");
         jogador.mostrarEstatisticas("REVERSI");
+        jogador.mostrarEstatisticas("BATALHANAVAL");
         std::cout << std::endl;
     }
     return;
@@ -198,11 +210,14 @@ void CentralDeJogos::executarPartida()
     }
     else if (jogoEscolhido == "V")
     {
-        std::cout << "entrou";
         velha.Jogar(*posicaoJogador_01, *posicaoJogador_02);
+    }
+    else if (jogoEscolhido == "B")
+    {
+        batalha.Jogar(*posicaoJogador_01, *posicaoJogador_02);
     }
     else
     {
-        std::cout << "ERRO: Insira o formato adequado [R|L|V|A], exemplo para jogar reversi: R" << std::endl;
+        std::cout << "ERRO: Insira o formato adequado [R|L|V|B|A], exemplo para jogar reversi: R" << std::endl;
     }
 }
