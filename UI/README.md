@@ -1,23 +1,21 @@
-# Tabletop Renderer (por @pl1an)
+# UI
 
 
-## Oque é?
-É uma UI básica feita para renderizar jogos simples, no estilo de GO, Reversi e Ligue 4.
+## Objetivo
+O objetivo da UI do projeto é melhorar a experiância do usuárioa ao interagir com o código em c++.  
+O código em c++ pode ser tanto rodado usando a UI como diretamente no terminal. Para executar o código com a UI, siga as instruções disponóveis mais a frente.  
 
 
-## Capacidades
-- Registra perfis de jogadores (onde salvar os perfis em questão fica a cargo de uma implementação posterior)
-- Registra "scores" para cada perfil e cada jogo (onde serão salvos dependerá de uma integração posterior)
-- Componentes para gerar um menu simples com fotos e descrições dos jogos
-- O tabuleiro e a dificuldade do oponente (caso o oponente não seja outro jogador) podem ser customizados no menu
-- Fornece uma tela de resultado (vitória, derrota ou empate) com botões para retornar a seleção de usuário ou jogar novamente
+## Solução
+A solução usada para desenvolver a UI foi o REACT. Usando código em javascript, desenvolvemos uma interface gráfica para o projeto que pode ser executada diretamente em qualquer navegador.  
+Podemos dividir, de uma forma geral, a UI entre telas e componentes.  
+### O worflow REACT
+O react trabalha usando html, css, e javascript para criar páginas web.  
+O diferencial que o usa do REACT proporciona é a capacidade de criar "componentes": Funções que podem ser chamadas como tags html. A criação de componentes proporciona uma facilidade imensa em criar partes reutilizáveis para o site.  
+Além disso, o REACT proporciona diversos outros beneficios, como a renderização condicional (usando "state variables" é possível re-renderizar apenas as partes do site que sofreram mudanças, melhorando o desempenho da aplicação) e as routes (forma de navegar entre as páginas do site sem ter que recarregar a janela).
+### Telas
+#### Seleção de jogadores
 
-
-## Limitações
-- Suporta apenas jogos com dois tipos de peça diferentes
-- Jogos com inputs mais complicados (ex: certas peças não podem ser colocadas em certas casas no tabuleiro em x situações) requerem implementação adicional
-- É apenas uma UI. Apesar de ter exemplos de jogos, não implementa nenhuma lógica para os jogos
-- O local de armazenamento dos dados de cada perfil e seus "scores" não foi implementado.
 
 
 ## Como rodar?
@@ -27,5 +25,4 @@
 3- No mesmo terminal, digite ```npm run dev```  
 4- Copie o link resultante e cole-o em um navegador de sua escolha  
   
-IMPORTANTE: não feche a janela do terminal enquanto estiver usando a UI
-
+IMPORTANTE: não feche a janela do terminal enquanto estiver usando a UI  
