@@ -1,0 +1,63 @@
+.winoverlaybody{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.771);
+    overflow: hidden;
+    transition: 0.3s;
+}
+.hidden{
+    z-index: -1;
+    opacity: 0;
+}
+
+h2{
+    color: #b1b1b1;
+    font-size: 100px;
+    font-family: "Caveat", serif;
+    z-index: 10;
+}
+.menubutton, .retrybutton{
+    position: absolute;
+    top: 0;
+    width: 48vw;
+    height: 100vh;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 0;
+}
+
+.menubutton{
+    left: 0vw;
+    background-color: rgba(255, 0, 0, 0);
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, left 0.3s ease;
+    z-index: 1;
+}
+.menubutton:hover{
+    left: 5vw;
+    background-color: #ef6f5bac;
+    transform: scale(1.5);
+    z-index: 0;
+}
+
+.retrybutton{
+    left: 50vw;
+    background-color: rgba(255, 0, 0, 0);
+    transition: transform 0.3s ease, left 0.3s ease;
+    z-index: 1;
+}
+.retrybutton:hover{
+    left: 45vw;
+    background-color: #8ceeb3b1;
+    transform: scale(1.5);
+    z-index: 0;
+}
+
+.retrytext, .menutext{
+    color: #b1b1b1;
+}

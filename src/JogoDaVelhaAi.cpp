@@ -1,102 +1,216 @@
 #include "JogoDaVelhaAi.hpp"
-#include <iostream>
 
-// COMENTEI TUDO PRA EVITAR PROBLEMA NA HORA DO MAKEFILE, TENDO EM VISTA Q NAO TA PRONTO RABELO!!!
+JogoDaVelhaAi::JogoDaVelhaAi() : board(BOARD_SIZE, EMPTY) {}
 
-
-
-
-
-
-
-
-
-
-
-#define INFINITY 1000000
-/*
-// Implementation of the evaluateBoard function for JogoDaVelhaAi
-int JogoDaVelhaAi::evaluateBoard(const board_t &board) const
+bool JogoDaVelhaAi::checkWin(char player) const
 {
-    // Return a positive score if the AI is winning, negative if losing, and 0 for a draw or ongoing game
-    int score = 0;
+    const int winCombos[8][3] = {
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Linhas
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Colunas
+        {0, 4, 8}, {2, 4, 6}             // Diagonais
+    };
 
-    // Check rows
-    for (int i = 0; i < 3; ++i)
+    for (auto &combo : winCombos)
     {
-        if (board[i][0] == board[i][1] && board[i][1] == board[i][2])
+        if (board[combo[0]] == player && board[combo[1]] == player && board[combo[2]] == player)
         {
-            if (board[i][0] == aiPlayer && isAiMaximizingPlayer)
-            {
-                return +INFINITY;
-            }
-
-            return -INFINITY;
+            return true;
         }
     }
-
-    // Check columns
-    for (int i = 0; i < 3; ++i)
-    {
-        if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
-        {
-            if (board[0][i] == aiPlayer && isAiMaximizingPlayer)
-            {
-                return +INFINITY;
-            }
-
-            return -INFINITY;
-        }
-    }
-
-    // Check diagonal
-    if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
-    {
-        if (board[0][0] == aiPlayer && isAiMaximizingPlayer)
-        {
-            return +INFINITY;
-        }
-
-        return -INFINITY;
-    }
-
-    // Check anti-diagonal
-    if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
-    {
-        if (board[0][2] == aiPlayer && isAiMaximizingPlayer)
-        {
-            return +INFINITY;
-        }
-
-        return -INFINITY;
-    }
-
-    return score;
+    return false;
 }
 
-// Implementation of the getAvailableMoves function for JogoDaVelhaAi
-std::vector<std::pair<int, int>> JogoDaVelhaAi::getAvailableMoves(const board_t &board) const
+bool JogoDaVelhaAi::isBoardFull() const
 {
-    std::vector<std::pair<int, int>> availableMoves;
-
-    // Iterate over the board to find empty cells
-    for (int i = 0; i < board.size(); ++i)
+    for (char c : board)
     {
-        for (int j = 0; j < board[i].size(); ++j)
+        if (c == EMPTY)
+            return false;
+    }
+    return true;
+}
+
+int JogoDaVelhaAi::minimax(bool isMaximizing, int depth)
+{
+    if (checkWin(PLAYER_X))
+        return 1;
+    if (checkWin(PLAYER_O))
+        return -1;
+    if (isBoardFull() or depth == 0)
+        return 0;
+
+    if (isMaximizing)
+    {
+        int bestScore = INT_MIN;
+        for (int i = 0; i < BOARD_SIZE; i++)
         {
-            if (board[i][j] == '-')
+            if (board[i] == EMPTY)
             {
-                availableMoves.push_back(std::make_pair(i, j));
+                board[i] = PLAYER_X;
+                int score = minimax(false, depth - 1);
+                board[i] = EMPTY;
+
+                bestScore = std::max(score, bestScore);
+            }
+        }
+        return bestScore;
+    }
+    else
+    {
+        int bestScore = INT_MAX;
+        for (int i = 0; i < BOARD_SIZE; i++)
+        {
+            if (board[i] == EMPTY)
+            {
+                board[i] = PLAYER_O;
+                int score = minimax(true, depth - 1);
+                board[i] = EMPTY;
+                bestScore = std::min(score, bestScore);
+            }
+        }
+        return bestScore;
+    }
+}
+
+int JogoDaVelhaAi::getBestMove()
+{
+    int bestScore = INT_MIN;
+    int bestMove = -1;
+    const std::vector<int> moveOrder = {0, 2, 6, 8, 4, 1, 3, 5, 7};
+
+    for (int i : moveOrder)
+    {
+        if (board[i] == EMPTY)
+        {
+            board[i] = PLAYER_X;
+            int score = minimax(false, MAX_DEPTH);
+            board[i] = EMPTY;
+
+            if (bestScore < score)
+            {
+                bestScore = score;
+                bestMove = i;
+
+                if (bestScore == 1)
+                    break;
             }
         }
     }
-
-    return availableMoves;
+    return bestMove;
 }
 
-bool JogoDaVelhaAi::isTerminalState(const board_t &board) const
+std::pair<int, int> JogoDaVelhaAi::humanMove(bool turno)
 {
-    // Check if the board is full or if a player has won
-    return getAvailableMoves(board).empty() || evaluateBoard(board) != 0;
+    std::pair<int, int> jogada = jogo.lerJogada();
+    int move = jogada.first * 3 + jogada.second;
+
+    board[move] = PLAYER_O;
+
+    jogo.marcarTabuleiro(jogada, turno);
+    return jogada;
 }
-*/
+
+std::pair<int, int> JogoDaVelhaAi::aiMove(bool turno)
+{
+    int aiMove = getBestMove();
+    board[aiMove] = PLAYER_X;
+
+    std::pair<int, int> jogada = {aiMove / 3, aiMove % 3};
+
+    jogo.marcarTabuleiro(jogada, turno);
+    return jogada;
+}
+
+void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
+{
+    bool jogoEmAndamento = true;
+
+    std::cout << "Bem vindo ao Jogo da velha! Qual jogador deverá começar a partida?\n"
+              << Jogador1.getApelido() << " (0)\nAI (1)" << std::endl;
+
+    bool turno;
+    while (true)
+    {
+        while (not(std::cin >> turno))
+        {
+            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        if (turno == 0 or turno == 1)
+            break;
+    }
+
+    int dificuldade = 0;
+    std::cout << "Qual será a dificuldade da AI?\n"
+              << "Fácil (0)\nMédio (1)\nDifícil (2)" << std::endl;
+
+    while (true)
+    {
+        while (not(std::cin >> dificuldade))
+        {
+            std::cout << "ERRO, tipo de dado invalido. Por favor insira somente um inteiro." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        if (dificuldade == 0 or dificuldade == 1 or dificuldade == 2)
+            break;
+    }
+
+    if (dificuldade == 0)
+        MAX_DEPTH = 0;
+    else if (dificuldade == 1)
+        MAX_DEPTH = 3;
+    else
+        MAX_DEPTH = 9;
+
+    turno = !turno;
+
+    int contadorTurnos = 0;
+    std::vector<std::pair<int, int>> movimentosJogador1;
+    std::vector<std::pair<int, int>> movimentosJogador2;
+
+    jogo.iniciarPartida(Jogador1, Jogador2, turno);
+
+    while (jogoEmAndamento)
+    {
+        contadorTurnos++;
+        if (turno)
+        {
+            jogo.iniciarTurno(Jogador1);
+
+            movimentosJogador1.push_back(humanMove(turno));
+            jogo.mostrarTabuleiro();
+
+            if (jogo.checarVencedor(movimentosJogador1, Jogador1, Jogador2))
+            {
+                std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!" << std::endl;
+                jogoEmAndamento = false;
+            }
+            turno = not turno;
+        }
+        else
+        {
+            jogo.iniciarTurno(Jogador2);
+
+            movimentosJogador2.push_back(aiMove(turno));
+            jogo.mostrarTabuleiro();
+
+            if (jogo.checarVencedor(movimentosJogador2, Jogador2, Jogador1))
+            {
+                jogoEmAndamento = false;
+                std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!" << std::endl;
+            }
+            turno = not turno;
+        }
+
+        if (jogo.checarEmpate(contadorTurnos, Jogador1, Jogador2))
+            jogoEmAndamento = false;
+    }
+
+    if (!jogoEmAndamento)
+    {
+        jogo = JogoDaVelha();
+        board = std::vector<char>(BOARD_SIZE, EMPTY);
+    }
+}
