@@ -3,9 +3,14 @@ import "./PlayerSelection.css";
 import { PlayerBanner } from "../../components/PlayerBanner/PlayerBanner";
 import { useNavigate } from "react-router-dom";
 
-//import WebAssemblyBinary from "../../../cpp/wasm/teste.wasm?init";
 
-
+/**
+ * @interface playerType
+ * @brief Define o tipo de um jogador.
+ * @property {string} playerNick Apelido do jogador.
+ * @property {string} playerName Nome do jogador.
+ * @property {Array<{gameName: string, wins: number, ties: number, losses: number}>} score Pontuação do jogador em diferentes jogos.
+ */
 export interface playerType{
     playerNick:string;
     playerName:string;
@@ -18,6 +23,10 @@ export interface playerType{
 }
 
 
+/**
+ * @brief Componente de seleção de jogadores.
+ * @return {JSX.Element} Retorna o componente de seleção de jogadores.
+ */
 export const PlayerSelection = () => {
     const [playerList, setPlayerList] = useState<playerType[]>([]);
     const [playerNumber, setPlayerNumber] = useState(1);
@@ -25,15 +34,21 @@ export const PlayerSelection = () => {
 
     const navigate = useNavigate();
 
+    /**
+     * @brief Cria um novo jogador e o adiciona à lista de jogadores e ao localStorage.
+     * @param {string} playerNick Apelido do jogador.
+     * @param {string} playerName Nome do jogador.
+     * @return {boolean} Retorna `true` se o jogador foi criado com sucesso, caso contrário `false`.
+     */
     const handleCreatePlayer = (playerNick:string, playerName:string) => {
         // @ts-ignore
         let updatedPlayerList = JSON.parse(localStorage.getItem("players"));
-        //doesnt allow players with empty names or nickames
+        // Não permite jogadores com nome ou apelido vazio
         if(playerName=="" || playerNick==""){
             alert("Por favor, preencha o nome e o apelido do jogador!");
             return false;
         }
-        //doesnt allow players with the same nickname
+        // Não permite jogadores com o mesmo apelido
         let samenickname = false;
         // @ts-ignore
         updatedPlayerList.forEach((player)=>{
@@ -45,12 +60,12 @@ export const PlayerSelection = () => {
             alert("Apelido já em uso!");
             return false;
         }
-        //player cant be AI
+        // O jogador não pode ser "AI"
         if(playerNick=="AI"){
             alert("Esse apelido não pode ser usado!");
             return false;
         }
-        //creating a new player
+        // Criando um novo jogador
         updatedPlayerList.push({
             playerNick:playerNick,
             playerName:playerName,
@@ -75,47 +90,51 @@ export const PlayerSelection = () => {
                 },
             ]
         });
-        //saving new players to local storage
+        // Salvando novo jogador no localStorage
         console.log(updatedPlayerList);
         localStorage.setItem("players", JSON.stringify(updatedPlayerList));
-        //rendering new players
+        // Renderizando novos jogadores na tela - atualizando lista de jogadores mostrada
         setPlayerList(updatedPlayerList);
         return true;
     }
 
+    /**
+     * @brief Seleciona um jogador e avança para a próxima etapa.
+     * @param {string} playerNick Apelido do jogador selecionado.
+     * @param {string} playerName Nome do jogador selecionado.
+     */
     const handleSelectPlayer = (playerNick:string, playerName:string) => {
         if(playerNumber===1){
-            //selecting player 1
+            // Selecionando jogador 1
             setPlayer1({
                 playerNick:playerNick,
                 playerName:playerName
             });
-            //setting next player to be selected
+            // Próxima etapa: Selecionar jogador 2
             setPlayerNumber(2);
         }
+        // Ao selecionar jogador 2, navega para a escolha de jogos
         if(playerNumber===2){
-            //selecting player 2 and navigating to game selection
             navigate("/games", {state:{player1:player1, player2:{playerNick:playerNick, playerName:playerName}}});
         }
 
     }
 
-    //loading players from local storage
+    /**
+     * @brief Carrega os jogadores do localStorage.
+     * @details Filtra a lista de jogadores se o jogador 1 já tiver sido selecionado.
+     *///loading players from local storage
     useEffect(() => {
         const players = localStorage.getItem("players");
         if(players){
             if(playerNumber==2){
+                //@ts-ignore
                 setPlayerList(JSON.parse(players).filter((player)=>(player.playerNick!=player1?.playerNick)));
             }
             else{
                 setPlayerList(JSON.parse(players));
             }
         }
-        /*WebAssemblyBinary().then((instance)=>{
-            console.log(instance.exports.play(1, 1));
-            console.log(instance.exports.play(1, 2));
-            console.log(instance.exports.play(1, 3));
-        });*/
     }, [playerNumber, navigate]);
 
     return (

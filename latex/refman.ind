@@ -10,11 +10,11 @@
   \item {anunciarInicioPartida}
     \subitem {BatalhaNaval}, \hyperpage{12}
     \subitem {JogoDaVelha}, \hyperpage{24}
-    \subitem {Jogos}, \hyperpage{30}
+    \subitem {Jogos}, \hyperpage{29}
     \subitem {Lig4}, \hyperpage{33}
-    \subitem {Reversi}, \hyperpage{36}
+    \subitem {Reversi}, \hyperpage{35}
   \item {anunciarTurnoJogador}
-    \subitem {Jogos}, \hyperpage{30}
+    \subitem {Jogos}, \hyperpage{29}
   \item {apelido}
     \subitem {Jogador}, \hyperpage{22}
 
@@ -37,6 +37,8 @@
     \subitem {quantidadeBarcosDisponiveis}, \hyperpage{14}
     \subitem {verificarEntrada}, \hyperpage{14}
     \subitem {verificarTamanhodoBarco}, \hyperpage{14}
+  \item {board}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{51}
   \item {buscarJogador}
     \subitem {CentralDeJogos}, \hyperpage{15}
 
@@ -63,32 +65,54 @@
     \subitem {velha}, \hyperpage{16}
   \item {checarColunas}
     \subitem {JogoDaVelha}, \hyperpage{24}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
     \subitem {Lig4}, \hyperpage{33}
+    \subitem {Ligue4.cpp}, \hyperpage{52}
   \item {checarDiagonal}
     \subitem {JogoDaVelha}, \hyperpage{24}
-    \subitem {Lig4}, \hyperpage{34}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
+    \subitem {Lig4}, \hyperpage{33}
+    \subitem {Ligue4.cpp}, \hyperpage{52}
   \item {checarEmpate}
     \subitem {BatalhaNaval}, \hyperpage{12}
     \subitem {JogoDaVelha}, \hyperpage{24}
     \subitem {Jogos}, \hyperpage{30}
-    \subitem {Lig4}, \hyperpage{34}
-    \subitem {Reversi}, \hyperpage{36}
+    \subitem {Lig4}, \hyperpage{33}
+    \subitem {Reversi}, \hyperpage{35}
   \item {checarJogadaExistente}
     \subitem {Jogos}, \hyperpage{30}
   \item {checarLinhas}
     \subitem {JogoDaVelha}, \hyperpage{24}
-    \subitem {Lig4}, \hyperpage{34}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
+    \subitem {Lig4}, \hyperpage{33}
+    \subitem {Ligue4.cpp}, \hyperpage{52}
   \item {checarPosicaoValida}
     \subitem {BatalhaNaval}, \hyperpage{12}
     \subitem {Jogos}, \hyperpage{30}
+    \subitem {Reversi.cpp}, \hyperpage{53}
   \item {checarVencedor}
     \subitem {BatalhaNaval}, \hyperpage{12, 13}
     \subitem {JogoDaVelha}, \hyperpage{24}
-    \subitem {Jogos}, \hyperpage{31}
-    \subitem {Lig4}, \hyperpage{34}
-    \subitem {Reversi}, \hyperpage{36}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
+    \subitem {Jogos}, \hyperpage{30}
+    \subitem {Lig4}, \hyperpage{33}
+    \subitem {Ligue4.cpp}, \hyperpage{52}
+    \subitem {Reversi}, \hyperpage{35, 36}
+    \subitem {Reversi.cpp}, \hyperpage{53}
   \item {checarVitoria}
     \subitem {JogoDaVelhaAi}, \hyperpage{26}
+  \item {checkWin}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{50}
+  \item {colocarNoTabuleiro}
+    \subitem {Reversi.cpp}, \hyperpage{54}
+  \item {colocarPeca}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{50}
+  \item {columns}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{51}
+  \item {colunas}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
+    \subitem {Ligue4.cpp}, \hyperpage{53}
+    \subitem {Reversi.cpp}, \hyperpage{54}
 
   \indexspace
 
@@ -126,9 +150,11 @@
   \indexspace
 
   \item {gerarDivisoriaTabuleiro}
-    \subitem {Jogos}, \hyperpage{31}
+    \subitem {Jogos}, \hyperpage{30}
   \item {getApelido}
     \subitem {Jogador}, \hyperpage{21}
+  \item {getBestMove}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{51}
   \item {getDerrotas}
     \subitem {Estatisticas}, \hyperpage{18}
     \subitem {Jogador}, \hyperpage{21}
@@ -163,15 +189,13 @@
   \item {include/Reversi.hpp}, \hyperpage{46}
   \item {inserirBarcos}
     \subitem {BatalhaNaval}, \hyperpage{13}
+  \item {isBoardFull}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{51}
   \item {isTabuleiroCheio}
     \subitem {JogoDaVelhaAi}, \hyperpage{26}
 
   \indexspace
 
-  \item {jogadaAI}
-    \subitem {JogoDaVelhaAi}, \hyperpage{26}
-  \item {jogadaHumano}
-    \subitem {JogoDaVelhaAi}, \hyperpage{28}
   \item {Jogador}, \hyperpage{20}
     \subitem {apelido}, \hyperpage{22}
     \subitem {estatisticasPorJogo}, \hyperpage{22}
@@ -193,14 +217,21 @@
   \item {jogadoresCadastrados}
     \subitem {CentralDeJogos}, \hyperpage{16}
   \item {jogadorInicial}
-    \subitem {Reversi}, \hyperpage{37}
+    \subitem {Reversi}, \hyperpage{36}
   \item {Jogar}
     \subitem {BatalhaNaval}, \hyperpage{13}
-    \subitem {JogoDaVelhaAi}, \hyperpage{28}
-    \subitem {Jogos}, \hyperpage{31}
-    \subitem {Reversi}, \hyperpage{37}
+    \subitem {JogoDaVelhaAi}, \hyperpage{26}
+    \subitem {Jogos}, \hyperpage{30}
+    \subitem {Reversi}, \hyperpage{36}
+  \item {jogar}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
+    \subitem {Ligue4.cpp}, \hyperpage{52}
+  \item {jogarAI}
+    \subitem {JogoDaVelhaAi}, \hyperpage{27}
+  \item {jogarHumano}
+    \subitem {JogoDaVelhaAi}, \hyperpage{27}
   \item {jogo}
-    \subitem {JogoDaVelhaAi}, \hyperpage{29}
+    \subitem {JogoDaVelhaAi}, \hyperpage{28}
   \item {JogoDaVelha}, \hyperpage{22}
     \subitem {anunciarInicioPartida}, \hyperpage{24}
     \subitem {checarColunas}, \hyperpage{24}
@@ -211,39 +242,57 @@
     \subitem {JogoDaVelha}, \hyperpage{23}
     \subitem {JogoDaVelhaAi}, \hyperpage{25}
     \subitem {lerJogada}, \hyperpage{24}
+  \item {JogoDaVelha.cpp}
+    \subitem {checarColunas}, \hyperpage{49}
+    \subitem {checarDiagonal}, \hyperpage{49}
+    \subitem {checarLinhas}, \hyperpage{49}
+    \subitem {checarVencedor}, \hyperpage{49}
+    \subitem {colunas}, \hyperpage{49}
+    \subitem {jogar}, \hyperpage{49}
+    \subitem {linhas}, \hyperpage{49}
+    \subitem {tabuleiro}, \hyperpage{49}
   \item {JogoDaVelhaAi}, \hyperpage{25}
     \subitem {checarVitoria}, \hyperpage{26}
     \subitem {getMelhorMovimento}, \hyperpage{26}
     \subitem {isTabuleiroCheio}, \hyperpage{26}
-    \subitem {jogadaAI}, \hyperpage{26}
-    \subitem {jogadaHumano}, \hyperpage{28}
-    \subitem {Jogar}, \hyperpage{28}
-    \subitem {jogo}, \hyperpage{29}
+    \subitem {Jogar}, \hyperpage{26}
+    \subitem {jogarAI}, \hyperpage{27}
+    \subitem {jogarHumano}, \hyperpage{27}
+    \subitem {jogo}, \hyperpage{28}
     \subitem {JogoDaVelha}, \hyperpage{25}
     \subitem {JogoDaVelhaAi}, \hyperpage{26}
-    \subitem {MAX\_PROFUNDIDADE}, \hyperpage{29}
+    \subitem {MAX\_PROFUNDIDADE}, \hyperpage{28}
     \subitem {minimax}, \hyperpage{28}
-    \subitem {tabuleiro}, \hyperpage{29}
+    \subitem {tabuleiro}, \hyperpage{28}
+  \item {JogoDaVelhaAi.cpp}
+    \subitem {board}, \hyperpage{51}
+    \subitem {checkWin}, \hyperpage{50}
+    \subitem {colocarPeca}, \hyperpage{50}
+    \subitem {columns}, \hyperpage{51}
+    \subitem {getBestMove}, \hyperpage{51}
+    \subitem {isBoardFull}, \hyperpage{51}
+    \subitem {lines}, \hyperpage{51}
+    \subitem {minimax}, \hyperpage{51}
   \item {JogoDaVelhaAi.hpp}
     \subitem {JOGADOR\_O}, \hyperpage{43}
     \subitem {JOGADOR\_X}, \hyperpage{43}
     \subitem {TABULEIRO\_SIZE}, \hyperpage{44}
     \subitem {VAZIO}, \hyperpage{44}
   \item {Jogos}, \hyperpage{29}
-    \subitem {anunciarInicioPartida}, \hyperpage{30}
-    \subitem {anunciarTurnoJogador}, \hyperpage{30}
+    \subitem {anunciarInicioPartida}, \hyperpage{29}
+    \subitem {anunciarTurnoJogador}, \hyperpage{29}
     \subitem {checarEmpate}, \hyperpage{30}
     \subitem {checarJogadaExistente}, \hyperpage{30}
     \subitem {checarPosicaoValida}, \hyperpage{30}
-    \subitem {checarVencedor}, \hyperpage{31}
-    \subitem {gerarDivisoriaTabuleiro}, \hyperpage{31}
-    \subitem {Jogar}, \hyperpage{31}
-    \subitem {lerJogada}, \hyperpage{31}
+    \subitem {checarVencedor}, \hyperpage{30}
+    \subitem {gerarDivisoriaTabuleiro}, \hyperpage{30}
+    \subitem {Jogar}, \hyperpage{30}
+    \subitem {lerJogada}, \hyperpage{30}
     \subitem {limparTabuleiro}, \hyperpage{31}
     \subitem {marcarTabuleiro}, \hyperpage{31}
     \subitem {mostrarTabuleiro}, \hyperpage{31}
-    \subitem {sorteioTurno}, \hyperpage{32}
-    \subitem {tabuleiro}, \hyperpage{32}
+    \subitem {sorteioTurno}, \hyperpage{31}
+    \subitem {tabuleiro}, \hyperpage{31}
 
   \indexspace
 
@@ -252,23 +301,38 @@
   \item {lerJogada}
     \subitem {BatalhaNaval}, \hyperpage{13}
     \subitem {JogoDaVelha}, \hyperpage{24}
-    \subitem {Jogos}, \hyperpage{31}
-    \subitem {Lig4}, \hyperpage{34}
-    \subitem {Reversi}, \hyperpage{37}
-  \item {Lig4}, \hyperpage{32}
+    \subitem {Jogos}, \hyperpage{30}
+    \subitem {Lig4}, \hyperpage{33}
+    \subitem {Reversi}, \hyperpage{36}
+  \item {Lig4}, \hyperpage{31}
     \subitem {anunciarInicioPartida}, \hyperpage{33}
     \subitem {checarColunas}, \hyperpage{33}
-    \subitem {checarDiagonal}, \hyperpage{34}
-    \subitem {checarEmpate}, \hyperpage{34}
-    \subitem {checarLinhas}, \hyperpage{34}
-    \subitem {checarVencedor}, \hyperpage{34}
-    \subitem {lerJogada}, \hyperpage{34}
-    \subitem {Lig4}, \hyperpage{33}
+    \subitem {checarDiagonal}, \hyperpage{33}
+    \subitem {checarEmpate}, \hyperpage{33}
+    \subitem {checarLinhas}, \hyperpage{33}
+    \subitem {checarVencedor}, \hyperpage{33}
+    \subitem {lerJogada}, \hyperpage{33}
+    \subitem {Lig4}, \hyperpage{32}
   \item {lig4}
     \subitem {CentralDeJogos}, \hyperpage{16}
+  \item {Ligue4.cpp}
+    \subitem {checarColunas}, \hyperpage{52}
+    \subitem {checarDiagonal}, \hyperpage{52}
+    \subitem {checarLinhas}, \hyperpage{52}
+    \subitem {checarVencedor}, \hyperpage{52}
+    \subitem {colunas}, \hyperpage{53}
+    \subitem {jogar}, \hyperpage{52}
+    \subitem {linhas}, \hyperpage{53}
+    \subitem {tabuleiro}, \hyperpage{53}
   \item {limparTabuleiro}
     \subitem {Jogos}, \hyperpage{31}
-    \subitem {Reversi}, \hyperpage{37}
+    \subitem {Reversi}, \hyperpage{36}
+  \item {lines}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{51}
+  \item {linhas}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
+    \subitem {Ligue4.cpp}, \hyperpage{53}
+    \subitem {Reversi.cpp}, \hyperpage{54}
   \item {listarJogadores}
     \subitem {CentralDeJogos}, \hyperpage{15}
 
@@ -283,11 +347,12 @@
   \item {marcarTabuleiro}
     \subitem {BatalhaNaval}, \hyperpage{13}
     \subitem {Jogos}, \hyperpage{31}
-    \subitem {Reversi}, \hyperpage{37}
+    \subitem {Reversi}, \hyperpage{36}
   \item {MAX\_PROFUNDIDADE}
-    \subitem {JogoDaVelhaAi}, \hyperpage{29}
+    \subitem {JogoDaVelhaAi}, \hyperpage{28}
   \item {minimax}
     \subitem {JogoDaVelhaAi}, \hyperpage{28}
+    \subitem {JogoDaVelhaAi.cpp}, \hyperpage{51}
   \item {mostrarEstatisticas}
     \subitem {Estatisticas}, \hyperpage{18}
     \subitem {Jogador}, \hyperpage{21}
@@ -296,6 +361,10 @@
     \subitem {Jogos}, \hyperpage{31}
   \item {movimentoValido}
     \subitem {Reversi}, \hyperpage{37}
+  \item {movimentoValidoX}
+    \subitem {Reversi.cpp}, \hyperpage{54}
+  \item {movimentoValidoY}
+    \subitem {Reversi.cpp}, \hyperpage{54}
 
   \indexspace
 
@@ -325,48 +394,64 @@
     \subitem {Jogador}, \hyperpage{22}
   \item {removerJogador}
     \subitem {CentralDeJogos}, \hyperpage{16}
-  \item {Reversi}, \hyperpage{35}
-    \subitem {anunciarInicioPartida}, \hyperpage{36}
-    \subitem {checarEmpate}, \hyperpage{36}
-    \subitem {checarVencedor}, \hyperpage{36}
+  \item {Reversi}, \hyperpage{34}
+    \subitem {anunciarInicioPartida}, \hyperpage{35}
+    \subitem {checarEmpate}, \hyperpage{35}
+    \subitem {checarVencedor}, \hyperpage{35, 36}
     \subitem {haMovimentosDisponiveis}, \hyperpage{36}
-    \subitem {jogadorInicial}, \hyperpage{37}
-    \subitem {Jogar}, \hyperpage{37}
-    \subitem {lerJogada}, \hyperpage{37}
-    \subitem {limparTabuleiro}, \hyperpage{37}
-    \subitem {marcarTabuleiro}, \hyperpage{37}
+    \subitem {jogadorInicial}, \hyperpage{36}
+    \subitem {Jogar}, \hyperpage{36}
+    \subitem {lerJogada}, \hyperpage{36}
+    \subitem {limparTabuleiro}, \hyperpage{36}
+    \subitem {marcarTabuleiro}, \hyperpage{36}
     \subitem {movimentoValido}, \hyperpage{37}
-    \subitem {Reversi}, \hyperpage{36}
+    \subitem {Reversi}, \hyperpage{35}
   \item {reversi}
     \subitem {CentralDeJogos}, \hyperpage{16}
+  \item {Reversi.cpp}
+    \subitem {checarPosicaoValida}, \hyperpage{53}
+    \subitem {checarVencedor}, \hyperpage{53}
+    \subitem {colocarNoTabuleiro}, \hyperpage{54}
+    \subitem {colunas}, \hyperpage{54}
+    \subitem {linhas}, \hyperpage{54}
+    \subitem {movimentoValidoX}, \hyperpage{54}
+    \subitem {movimentoValidoY}, \hyperpage{54}
+    \subitem {tabuleiro}, \hyperpage{54}
 
   \indexspace
 
   \item {sorteioTurno}
-    \subitem {Jogos}, \hyperpage{32}
+    \subitem {Jogos}, \hyperpage{31}
   \item {src/BatalhaNaval.cpp}, \hyperpage{47}
   \item {src/CentralDeJogos.cpp}, \hyperpage{47}
   \item {src/Estatisticas.cpp}, \hyperpage{47}
   \item {src/Jogador.cpp}, \hyperpage{47}
-  \item {src/JogoDaVelha.cpp}, \hyperpage{47}
-  \item {src/JogoDaVelhaAi.cpp}, \hyperpage{47}
-  \item {src/Jogos.cpp}, \hyperpage{48}
-  \item {src/Lig4.cpp}, \hyperpage{48}
+  \item {src/JogoDaVelha.cpp}, \hyperpage{48}
+  \item {src/JogoDaVelhaAi.cpp}, \hyperpage{50}
+  \item {src/Jogos.cpp}, \hyperpage{47}
+  \item {src/Lig4.cpp}, \hyperpage{47}
   \item {src/main.cpp}, \hyperpage{48}
-  \item {src/Reversi.cpp}, \hyperpage{49}
+  \item {src/Reversi.cpp}, \hyperpage{53}
 
   \indexspace
 
   \item {tabuleiro}
-    \subitem {JogoDaVelhaAi}, \hyperpage{29}
-    \subitem {Jogos}, \hyperpage{32}
+    \subitem {JogoDaVelha.cpp}, \hyperpage{49}
+    \subitem {JogoDaVelhaAi}, \hyperpage{28}
+    \subitem {Jogos}, \hyperpage{31}
+    \subitem {Ligue4.cpp}, \hyperpage{53}
+    \subitem {Reversi.cpp}, \hyperpage{54}
   \item {TABULEIRO\_SIZE}
     \subitem {JogoDaVelhaAi.hpp}, \hyperpage{44}
 
   \indexspace
 
   \item {UI}, \hyperpage{1}
-  \item {UI/README.md}, \hyperpage{49}
+  \item {UI/cpp/JogoDaVelha.cpp}, \hyperpage{48}
+  \item {UI/cpp/JogoDaVelhaAi.cpp}, \hyperpage{50}
+  \item {UI/cpp/Ligue4.cpp}, \hyperpage{51}
+  \item {UI/cpp/Reversi.cpp}, \hyperpage{53}
+  \item {UI/README.md}, \hyperpage{54}
 
   \indexspace
 

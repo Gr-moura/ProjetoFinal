@@ -1,5 +1,5 @@
 import {DebugMenu} from "./screens/DebugMenu/DebugMenu";
-import {Board} from "./screens/Board/Board";
+import {Board} from "./screens/board/board";
 import { Menu } from "./screens/Menu/Menu";
 import { PlayerSelection } from "./screens/PlayerSelection/PlayerSelection";
 

@@ -14,17 +14,17 @@ void \mbox{\hyperlink{class_jogo_da_velha_ai_af5f79ccd478e8cf524ea4b5912715191}{
 \doxysubsubsection*{Membros privados}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{class_jogo_da_velha_ai_a333648b7f2c99d593528e86a7f705b0c}{checar\+Vitoria}} (char player) const
+bool \mbox{\hyperlink{class_jogo_da_velha_ai_a3eb100d4b9aade3b670ad26dd71929eb}{checar\+Vitoria}} (char jogador) const
 \begin{DoxyCompactList}\small\item\em Verifica se o jogador especificado alcançou uma condição de vitória. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_jogo_da_velha_ai_ab815938c88378fc8b158fe39bf55bea1}{is\+Tabuleiro\+Cheio}} () const
 \begin{DoxyCompactList}\small\item\em Verifica se todas as posições do tabuleiro estão ocupadas. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_jogo_da_velha_ai_ad2a6c2dd5c535ad80aecaf2b00be7a55}{minimax}} (bool is\+Maximizing, int depth)
+int \mbox{\hyperlink{class_jogo_da_velha_ai_af86c96e526c9572e6ab611ea970994bc}{minimax}} (bool is\+Maximizador, int profundidade)
 \begin{DoxyCompactList}\small\item\em Implementa o algoritmo Minimax para avaliação de jogadas. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_jogo_da_velha_ai_a060349bfb3fba661d04b3df48e3c6fe8}{get\+Melhor\+Movimento}} ()
 \begin{DoxyCompactList}\small\item\em Calcula a melhor jogada para a IA usando Minimax. \end{DoxyCompactList}\item 
-std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_jogo_da_velha_ai_a596b71ef0143fa0d842d652f62e5e4c5}{jogada\+Humano}} (bool turno)
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_jogo_da_velha_ai_aaa48632a3f5d257456b4eacaf751a396}{jogar\+Humano}} (bool turno)
 \begin{DoxyCompactList}\small\item\em Processa e registra uma jogada do jogador humano. \end{DoxyCompactList}\item 
-std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_jogo_da_velha_ai_a17aed0c6353d4d4ea995125433f65ad1}{jogada\+AI}} (bool turno)
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_jogo_da_velha_ai_a6313c5a3273b1aeb17ea017d01f80f14}{jogar\+AI}} (bool turno)
 \begin{DoxyCompactList}\small\item\em Calcula e executa a jogada da IA. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
@@ -51,11 +51,11 @@ Construtor que inicializa o tabuleiro com células vazias.
 
 
 \doxysubsection{Documentação das funções}
-\Hypertarget{class_jogo_da_velha_ai_a333648b7f2c99d593528e86a7f705b0c}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!checarVitoria@{checarVitoria}}
+\Hypertarget{class_jogo_da_velha_ai_a3eb100d4b9aade3b670ad26dd71929eb}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!checarVitoria@{checarVitoria}}
 \index{checarVitoria@{checarVitoria}!JogoDaVelhaAi@{JogoDaVelhaAi}}
 \doxysubsubsection{\texorpdfstring{checarVitoria()}{checarVitoria()}}
-{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_a333648b7f2c99d593528e86a7f705b0c} 
-bool Jogo\+Da\+Velha\+Ai\+::checar\+Vitoria (\begin{DoxyParamCaption}\item[{char}]{player}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_a3eb100d4b9aade3b670ad26dd71929eb} 
+bool Jogo\+Da\+Velha\+Ai\+::checar\+Vitoria (\begin{DoxyParamCaption}\item[{char}]{jogador}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -103,46 +103,6 @@ true Se não há mais espaços vazios no tabuleiro
 
 false Se há pelo menos um espaço vazio restante 
 \end{DoxyReturn}
-\Hypertarget{class_jogo_da_velha_ai_a17aed0c6353d4d4ea995125433f65ad1}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!jogadaAI@{jogadaAI}}
-\index{jogadaAI@{jogadaAI}!JogoDaVelhaAi@{JogoDaVelhaAi}}
-\doxysubsubsection{\texorpdfstring{jogadaAI()}{jogadaAI()}}
-{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_a17aed0c6353d4d4ea995125433f65ad1} 
-std\+::pair$<$ int, int $>$ Jogo\+Da\+Velha\+Ai\+::jogada\+AI (\begin{DoxyParamCaption}\item[{bool}]{turno}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Calcula e executa a jogada da IA. 
-
-A jogada é marcada no tabuleiro da AI e no objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}, uma vez que a exibição do jogo depende do estado do tabuleiro do objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}.
-
-
-\begin{DoxyParams}{Parâmetros}
-{\em turno} & Indica de qual jogador é o turno (não utilizado na implementação atual) \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Retorna}
-std\+::pair$<$int, int$>$ Coordenadas (linha, coluna) da jogada 
-\end{DoxyReturn}
-\Hypertarget{class_jogo_da_velha_ai_a596b71ef0143fa0d842d652f62e5e4c5}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!jogadaHumano@{jogadaHumano}}
-\index{jogadaHumano@{jogadaHumano}!JogoDaVelhaAi@{JogoDaVelhaAi}}
-\doxysubsubsection{\texorpdfstring{jogadaHumano()}{jogadaHumano()}}
-{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_a596b71ef0143fa0d842d652f62e5e4c5} 
-std\+::pair$<$ int, int $>$ Jogo\+Da\+Velha\+Ai\+::jogada\+Humano (\begin{DoxyParamCaption}\item[{bool}]{turno}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-Processa e registra uma jogada do jogador humano. 
-
-A jogada é marcada no tabuleiro da AI e no objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}, uma vez que a exibição do jogo depende do estado do tabuleiro do objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}.
-
-
-\begin{DoxyParams}{Parâmetros}
-{\em turno} & Indica de qual jogador é o turno (não utilizado na implementação atual) \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Retorna}
-std\+::pair$<$int, int$>$ Coordenadas (linha, coluna) da jogada 
-\end{DoxyReturn}
 \Hypertarget{class_jogo_da_velha_ai_af5f79ccd478e8cf524ea4b5912715191}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!Jogar@{Jogar}}
 \index{Jogar@{Jogar}!JogoDaVelhaAi@{JogoDaVelhaAi}}
 \doxysubsubsection{\texorpdfstring{Jogar()}{Jogar()}}
@@ -168,11 +128,51 @@ Gerencia todo o ciclo de vida do jogo, incluindo\+:
 {\em Jogador2} & Segundo jogador (normalmente IA) \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_jogo_da_velha_ai_ad2a6c2dd5c535ad80aecaf2b00be7a55}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!minimax@{minimax}}
+\Hypertarget{class_jogo_da_velha_ai_a6313c5a3273b1aeb17ea017d01f80f14}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!jogarAI@{jogarAI}}
+\index{jogarAI@{jogarAI}!JogoDaVelhaAi@{JogoDaVelhaAi}}
+\doxysubsubsection{\texorpdfstring{jogarAI()}{jogarAI()}}
+{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_a6313c5a3273b1aeb17ea017d01f80f14} 
+std\+::pair$<$ int, int $>$ Jogo\+Da\+Velha\+Ai\+::jogar\+AI (\begin{DoxyParamCaption}\item[{bool}]{turno}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calcula e executa a jogada da IA. 
+
+A jogada é marcada no tabuleiro da AI e no objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}, uma vez que a exibição do jogo depende do estado do tabuleiro do objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em turno} & Indica de qual jogador é o turno (não utilizado na implementação atual) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+std\+::pair$<$int, int$>$ Coordenadas (linha, coluna) da jogada 
+\end{DoxyReturn}
+\Hypertarget{class_jogo_da_velha_ai_aaa48632a3f5d257456b4eacaf751a396}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!jogarHumano@{jogarHumano}}
+\index{jogarHumano@{jogarHumano}!JogoDaVelhaAi@{JogoDaVelhaAi}}
+\doxysubsubsection{\texorpdfstring{jogarHumano()}{jogarHumano()}}
+{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_aaa48632a3f5d257456b4eacaf751a396} 
+std\+::pair$<$ int, int $>$ Jogo\+Da\+Velha\+Ai\+::jogar\+Humano (\begin{DoxyParamCaption}\item[{bool}]{turno}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Processa e registra uma jogada do jogador humano. 
+
+A jogada é marcada no tabuleiro da AI e no objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}, uma vez que a exibição do jogo depende do estado do tabuleiro do objeto \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em turno} & Indica de qual jogador é o turno (não utilizado na implementação atual) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+std\+::pair$<$int, int$>$ Coordenadas (linha, coluna) da jogada 
+\end{DoxyReturn}
+\Hypertarget{class_jogo_da_velha_ai_af86c96e526c9572e6ab611ea970994bc}\index{JogoDaVelhaAi@{JogoDaVelhaAi}!minimax@{minimax}}
 \index{minimax@{minimax}!JogoDaVelhaAi@{JogoDaVelhaAi}}
 \doxysubsubsection{\texorpdfstring{minimax()}{minimax()}}
-{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_ad2a6c2dd5c535ad80aecaf2b00be7a55} 
-int Jogo\+Da\+Velha\+Ai\+::minimax (\begin{DoxyParamCaption}\item[{bool}]{is\+Maximizing}{, }\item[{int}]{depth}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \label{class_jogo_da_velha_ai_af86c96e526c9572e6ab611ea970994bc} 
+int Jogo\+Da\+Velha\+Ai\+::minimax (\begin{DoxyParamCaption}\item[{bool}]{is\+Maximizador}{, }\item[{int}]{profundidade}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -182,9 +182,9 @@ Avalia recursivamente todas as jogadas possíveis até a profundidade máxima co
 
 
 \begin{DoxyParams}{Parâmetros}
-{\em is\+Maximizing} & Indica se é o turno do jogador maximizador (IA) \\
+{\em is\+Maximizador} & Indica se é o turno do jogador maximizador (IA) \\
 \hline
-{\em depth} & Profundidade atual da recursão \\
+{\em profundidade} & Profundidade atual da recursão \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Retorna}
@@ -216,4 +216,4 @@ std\+::vector$<$char$>$ Jogo\+Da\+Velha\+Ai\+::tabuleiro\hspace{0.3cm}{\ttfamily
 A documentação para essa classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_jogo_da_velha_ai_8hpp}{Jogo\+Da\+Velha\+Ai.\+hpp}}\item 
-src/\mbox{\hyperlink{_jogo_da_velha_ai_8cpp}{Jogo\+Da\+Velha\+Ai.\+cpp}}\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{src_2_jogo_da_velha_ai_8cpp}{Jogo\+Da\+Velha\+Ai.\+cpp}}\end{DoxyCompactItemize}

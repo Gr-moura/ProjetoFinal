@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export const DebugMenu = ()=>{
   const [selected_width, setWidht] = useState(0);
   const [selected_height, setHeight] = useState(0);
+  //@ts-ignore
   const [selected_players, setPlayerNumber] = useState(2);
 
   const xlist = []

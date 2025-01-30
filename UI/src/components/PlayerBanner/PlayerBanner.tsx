@@ -3,12 +3,24 @@ import "./PlayerBanner.css";
 import { playerType } from "../../screens/PlayerSelection/PlayerSelection";
 
 
+/**
+ * @interface playerBannerProps
+ * @brief Propriedades do componente PlayerBanner.
+ * @extends playerType
+ * @property {(playerNick: string, playerName: string) => void} handleSelectPlayer Função chamada ao selecionar um jogador.
+ * @property {string} [playerType] Tipos para customização adicional do banner (ex: "new" para banner de criar jogador, "nameless" para jogador sem nome).
+ */
 interface playerBannerProps extends playerType{
     handleSelectPlayer:(playerNick:string, playerName:string)=>void;
     playerType?:string;
 }
 
 
+/**
+ * @brief Componente que representa um banner de jogador.
+ * @param {playerBannerProps} props Propriedades do componente.
+ * @return {JSX.Element} Retorna o componente do banner do jogador.
+ */
 export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer, playerType}:playerBannerProps) => {
     const [newPlayerName, setNewPlayerName] = useState("");
     const [newPlayerNickname, setNewPlayerNickname] = useState("");
@@ -16,6 +28,10 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
 
     const [hide, setHide] = useState(false);
 
+    /**
+     * @brief Manipula o clique no banner.
+     * @details Se o jogador for do tipo "new" e não estiver destacado, destaca o banner. Caso contrário, chama a função `handleSelectPlayer`.
+     */
     const handleClick = () => {
         if(playerType==="new" && !highlighted){
             setHighlighted(true);
@@ -25,11 +41,20 @@ export const PlayerBanner = ({playerNick, playerName, score, handleSelectPlayer,
         }
     }
 
+    /**
+     * @brief Cria um novo jogador.
+     * @details Chama a função `handleSelectPlayer` com os dados do novo jogador e remove o destaque do banner.
+     */
     const handleCreateNewPlayer = () => {
         setHighlighted(false);
         handleSelectPlayer(newPlayerNickname, newPlayerName);
     }
 
+    /**
+     * @brief Remove um jogador da lista.
+     * @details Filtra o jogador da lista salva no localStorage e recarrega a página.
+     * @return {boolean} Retorna `true` se o jogador foi removido com sucesso, caso contrário `false`.
+     */
     const handleDeletePlayer = () => {
         let players = localStorage.getItem("players");
         if(players && playerType!="new"){

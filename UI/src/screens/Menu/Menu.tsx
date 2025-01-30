@@ -3,19 +3,28 @@ import { MenuBanner } from "../../components/MenuBanner/MenuBanner"
 import jogodavelhaImage from "../../assets/jogodavelha.jpg"
 import connectfourImage from "../../assets/connectfour.jpg"
 import reversiImage from "../../assets/reversi.jpg"
-import lastGameImage from "../../assets/whoknows.jpg";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Selector } from "../../components/Selector/Selector";
 import { playerType } from "../PlayerSelection/PlayerSelection";
 
 
+/**
+ * @interface MenuProps
+ * @brief Propriedades do menu.
+ * @property {playerType} player1 Informações do jogador 1.
+ * @property {playerType} player2 Informações do jogador 2.
+ */
 interface MenuProps{
     player1:playerType;
     player2:playerType;
 }
 
 
+/**
+ * @brief Componente principal do menu.
+ * @return {JSX.Element} Retorna o componente do menu.
+ */
 export const Menu = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -44,8 +53,13 @@ export const Menu = () => {
     const [highlitActive, setHighlightActive] = useState<boolean>(player2.playerName=="AI");
     const [highlitedItems, setHighlitedItems] = useState<boolean[]>([player2.playerName=="AI", false, false]);
 
+    /**
+     * @brief Destaca um item do menu.
+     * @param {number} id Índice do item a ser destacado.
+     */
     const highlightItem = (id:number)=> {
         let updatedArray = [...highlitedItems];
+        //@ts-ignore
         updatedArray.forEach((item, index)=>{
             if(index===id) updatedArray[index] = true;
             else updatedArray[index] = false;
@@ -54,6 +68,9 @@ export const Menu = () => {
         setHighlightActive(true);
     }
 
+    /**
+     * @brief Remove o destaque de todos os itens do menu.
+     */
     const unhighlightAll = () => {
         let updatedArray = [...highlitedItems];
         updatedArray.forEach((item, index)=>{
@@ -63,6 +80,11 @@ export const Menu = () => {
         setHighlightActive(false);
     }
     
+    /**
+     * @brief Ação ao clicar em um banner do menu.
+     * @param {number} id Índice do banner clicado.
+     * @param {string} gameName Nome do jogo associado ao banner.
+     */
     const bannerAction = (id:number, gameName:string) => {
         if(highlitedItems[id]){
             console.log(selectedDificulty, selectedHeight, selectedWidht);
@@ -80,6 +102,9 @@ export const Menu = () => {
         }
     }
 
+    /**
+     * @brief Ajusta o tamanho do tabuleiro com base no jogo selecionado.
+     */
     useEffect(()=>{
         if(highlitedItems[0]){
             setSelectedHeight(3);
