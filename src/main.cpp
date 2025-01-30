@@ -29,6 +29,32 @@ void exibirMenu()
     return;
 }
 
+
+/**
+ * @file main.cpp
+ * @brief Função principal do sistema de gerenciamento de jogos.
+ *
+ * Este arquivo contém a função `main`, que é o ponto de entrada do programa. A função gerencia
+ * a interação com o usuário, exibindo um menu de opções e executando as funcionalidades
+ * correspondentes, como cadastrar jogadores, remover jogadores, listar jogadores e executar partidas.
+ *
+ * ## Fluxo do Programa:
+ * 1. Exibe um menu de opções para o usuário.
+ * 2. Lê a entrada do usuário e valida o comando.
+ * 3. Executa a funcionalidade correspondente ao comando:
+ *    - **CJ**: Cadastra um novo jogador.
+ *    - **RJ**: Remove um jogador existente.
+ *    - **LJ**: Lista todos os jogadores cadastrados.
+ *    - **EP**: Executa uma partida em um dos jogos disponíveis.
+ *    - **FS**: Finaliza o sistema.
+ * 4. Repete o processo até que o usuário escolha a opção de finalizar o sistema.
+ *
+ * ## Dependências:
+ * - Utiliza a classe `CentralDeJogos` para gerenciar jogadores e partidas.
+ * - Utiliza funções auxiliares como `validarEntrada` e `exibirMenu` para interação com o usuário.
+ *
+ * @see CentralDeJogos
+ */
 int main()
 {
     CentralDeJogos central;
