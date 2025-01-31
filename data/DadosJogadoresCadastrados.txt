@@ -1,5 +1,5 @@
 AI
-AI 0 1 0 0 0 0 0 0 0 0 0 0
+AI 0 1 1 0 0 0 0 0 0 0 0 0
 Ian Paleta
 ian 0 0 0 0 0 0 0 0 0 0 0 0
 Arthur Kenji
@@ -7,6 +7,6 @@ kenji 0 0 0 0 0 0 0 0 0 0 0 0
 Miguel Bertucci
 miguelzin 0 0 0 0 0 0 0 0 0 0 0 0
 Gabriel Moura
-rabelo 0 0 0 0 0 0 0 0 0 0 0 0
+rabelo 0 0 0 1 1 0 0 0 0 0 0 0
 Gabriel Machado
-super 1 0 0 0 0 0 0 0 0 0 0 0
+super 1 0 1 1 1 0 0 0 0 0 0 0

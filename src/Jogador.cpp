@@ -13,8 +13,8 @@
  *
  * Inicializa o jogador com um apelido e nome, e cria estatísticas zeradas para todos os jogos disponíveis.
  *
- * @param apelido Apelido único do jogador.
- * @param nome Nome completo do jogador.
+ * @param apelido Apelido único do jogador
+ * @param nome Nome completo do jogador
  */
 Jogador::Jogador(const std::string &apelido, const std::string &nome) : apelido(apelido), nome(nome)
 {
@@ -29,20 +29,20 @@ Jogador::Jogador(const std::string &apelido, const std::string &nome) : apelido(
  *
  * Inicializa o jogador com um apelido, nome e estatísticas pré-definidas para todos os jogos disponíveis.
  *
- * @param apelido Apelido único do jogador.
- * @param nome Nome completo do jogador.
- * @param vitoriasJogoDaVelha Número de vitórias no Jogo da Velha.
- * @param derrotasJogoDaVelha Número de derrotas no Jogo da Velha.
- * @param empatesJogoDavelha Número de empates no Jogo da Velha.
- * @param vitoriasLig4 Número de vitórias no Lig4.
- * @param derrotasLig4 Número de derrotas no Lig4.
- * @param empatesLig4 Número de empates no Lig4.
- * @param vitoriasReversi Número de vitórias no Reversi.
- * @param derrotasReversi Número de derrotas no Reversi.
- * @param empatesReversi Número de empates no Reversi.
- * @param vitoriasBatalhaNaval Número de vitórias no Batalha Naval.
- * @param derrotasBatalhaNaval Número de derrotas no Batalha Naval.
- * @param empatesBatalhaNaval Número de empates no Batalha Naval.
+ * @param apelido Apelido único do jogador
+ * @param nome Nome completo do jogador
+ * @param vitoriasJogoDaVelha Número de vitórias no Jogo da Velha
+ * @param derrotasJogoDaVelha Número de derrotas no Jogo da Velha
+ * @param empatesJogoDavelha Número de empates no Jogo da Velha
+ * @param vitoriasLig4 Número de vitórias no Lig4
+ * @param derrotasLig4 Número de derrotas no Lig4
+ * @param empatesLig4 Número de empates no Lig4
+ * @param vitoriasReversi Número de vitórias no Reversi
+ * @param derrotasReversi Número de derrotas no Reversi
+ * @param empatesReversi Número de empates no Reversi
+ * @param vitoriasBatalhaNaval Número de vitórias no Batalha Naval
+ * @param derrotasBatalhaNaval Número de derrotas no Batalha Naval
+ * @param empatesBatalhaNaval Número de empates no Batalha Naval
  */
 Jogador::Jogador(const std::string &apelido, const std::string &nome, const int vitoriasJogoDaVelha,
                  const int derrotasJogoDaVelha, const int empatesJogoDavelha, const int vitoriasLig4,
@@ -59,7 +59,7 @@ Jogador::Jogador(const std::string &apelido, const std::string &nome, const int 
 /**
  * @brief Registra uma vitória para o jogador em um jogo específico.
  *
- * @param nomeJogo Nome do jogo no qual a vitória será registrada (ex: "VELHA", "LIG4").
+ * @param nomeJogo Nome do jogo no qual a vitória será registrada (ex: "VELHA", "LIG4")
  */
 void Jogador::registrarVitoria(const std::string &nomeJogo)
 {
@@ -69,7 +69,7 @@ void Jogador::registrarVitoria(const std::string &nomeJogo)
 /**
  * @brief Registra um empate para o jogador em um jogo específico.
  *
- * @param nomeJogo Nome do jogo no qual o empate será registrado (ex: "VELHA", "LIG4").
+ * @param nomeJogo Nome do jogo no qual o empate será registrado (ex: "VELHA", "LIG4")
  */
 void Jogador::registrarEmpate(const std::string &nomeJogo)
 {
@@ -79,7 +79,7 @@ void Jogador::registrarEmpate(const std::string &nomeJogo)
 /**
  * @brief Registra uma derrota para o jogador em um jogo específico.
  *
- * @param nomeJogo Nome do jogo no qual a derrota será registrada (ex: "VELHA", "LIG4").
+ * @param nomeJogo Nome do jogo no qual a derrota será registrada (ex: "VELHA", "LIG4")
  */
 void Jogador::registrarDerrota(const std::string &nomeJogo)
 {
@@ -89,7 +89,7 @@ void Jogador::registrarDerrota(const std::string &nomeJogo)
 /**
  * @brief Retorna o apelido do jogador.
  *
- * @return std::string Apelido do jogador.
+ * @return std::string Apelido do jogador
  */
 std::string Jogador::getApelido() const
 {
@@ -99,7 +99,7 @@ std::string Jogador::getApelido() const
 /**
  * @brief Retorna o apelido do jogador.
  *
- * @return std::string Apelido do jogador.
+ * @return std::string Apelido do jogador
  */
 std::string Jogador::getNome() const
 {
@@ -109,7 +109,7 @@ std::string Jogador::getNome() const
 /**
  * @brief Retorna o nome do jogador.
  *
- * @return std::string Nome do jogador.
+ * @return std::string Nome do jogador
  */
 int Jogador::getVitorias(std::string jogo)
 {
@@ -119,8 +119,8 @@ int Jogador::getVitorias(std::string jogo)
 /**
  * @brief Retorna o número de empates do jogador em um jogo específico.
  *
- * @param jogo Nome do jogo (ex: "VELHA", "LIG4").
- * @return int Número de empates no jogo especificado.
+ * @param jogo Nome do jogo (ex: "VELHA", "LIG4")
+ * @return int Número de empates no jogo especificado
  */
 int Jogador::getDerrotas(std::string jogo)
 {
@@ -130,8 +130,8 @@ int Jogador::getDerrotas(std::string jogo)
 /**
  * @brief Retorna o número de empates do jogador em um jogo específico.
  *
- * @param jogo Nome do jogo (ex: "VELHA", "LIG4").
- * @return int Número de empates no jogo especificado.
+ * @param jogo Nome do jogo (ex: "VELHA", "LIG4")
+ * @return int Número de empates no jogo especificado
  */
 int Jogador::getEmpates(std::string jogo)
 {
@@ -141,7 +141,7 @@ int Jogador::getEmpates(std::string jogo)
 /**
  * @brief Exibe as estatísticas do jogador em um jogo específico.
  *
- * @param nomeJogo Nome do jogo (ex: "VELHA", "LIG4").
+ * @param nomeJogo Nome do jogo (ex: "VELHA", "LIG4")
  */
 void Jogador::mostrarEstatisticas(const std::string &nomeJogo) const
 {

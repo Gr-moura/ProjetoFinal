@@ -24,7 +24,7 @@ JogoDaVelha::JogoDaVelha()
  *
  * Inicializa o tabuleiro com um tamanho personalizado e todas as posições vazias.
  *
- * @param tamanhoTabuleiro Tamanho do tabuleiro (ex: 3 para um tabuleiro 3x3).
+ * @param tamanhoTabuleiro Tamanho do tabuleiro (ex: 3 para um tabuleiro 3x3)
  */
 JogoDaVelha::JogoDaVelha(int tamanhoTabuleiro)
 {
@@ -60,7 +60,7 @@ void JogoDaVelha::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bo
  *
  * Solicita ao jogador que insira as coordenadas da jogada (linha e coluna) e valida a entrada.
  *
- * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada válida.
+ * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada válida
  */
 std::pair<int, int> JogoDaVelha::lerJogada()
 {
@@ -101,8 +101,8 @@ std::pair<int, int> JogoDaVelha::lerJogada()
 /**
  * @brief Verifica se há um vencedor nas diagonais do tabuleiro.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ * @return bool True se houver um vencedor, False caso contrário
  */
 bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &jogadas)
 {
@@ -135,8 +135,10 @@ bool JogoDaVelha::checarDiagonal(std::vector<std::pair<int, int>> &jogadas)
 /**
  * @brief Verifica se há um vencedor nas colunas do tabuleiro.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ *
+ * @return true Se houver um vencedor
+ * @return false Se não houver um vencedor
  */
 bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &jogadas)
 {
@@ -163,8 +165,10 @@ bool JogoDaVelha::checarColunas(std::vector<std::pair<int, int>> &jogadas)
 /**
  * @brief Verifica se há um vencedor nas linhas do tabuleiro.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ *
+ * @return true Se houver um vencedor
+ * @return false Se não houver um vencedor
  */
 bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &jogadas)
 {
@@ -191,10 +195,12 @@ bool JogoDaVelha::checarLinhas(std::vector<std::pair<int, int>> &jogadas)
 /**
  * @brief Verifica se há um vencedor no jogo.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @param vencedor Referência para o jogador vencedor.
- * @param perdedor Referência para o jogador perdedor.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ * @param vencedor Referência para o jogador vencedor
+ * @param perdedor Referência para o jogador perdedor
+ *
+ * @return true Se houver um vencedor
+ * @return false Se não houver um vencedor
  */
 bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor)
 {
@@ -213,10 +219,12 @@ bool JogoDaVelha::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Joga
 /**
  * @brief Verifica se o jogo terminou em empate.
  *
- * @param numeroJogadas Número total de jogadas realizadas.
- * @param jogador_01 Referência para o primeiro jogador.
- * @param jogador_02 Referência para o segundo jogador.
- * @return bool True se o jogo terminou em empate, False caso contrário.
+ * @param numeroJogadas Número total de jogadas realizadas
+ * @param jogador_01 Referência para o primeiro jogador
+ * @param jogador_02 Referência para o segundo jogador
+ *
+ * @return true Se o jogo terminou em empate
+ * @return false Se o jogo não terminou em empate
  */
 bool JogoDaVelha::checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02)
 {

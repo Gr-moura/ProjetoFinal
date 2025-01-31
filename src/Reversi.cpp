@@ -4,7 +4,6 @@
  */
 #include "Reversi.hpp"
 
-
 /**
  * @brief Construtor padrão da classe Reversi.
  * Inicializa o tabuleiro com o tamanho padrão 8x8 e configura as peças iniciais.
@@ -18,10 +17,9 @@ Reversi::Reversi()
     tabuleiro[4][4] = 'X';
 }
 
-
 /**
  * @brief Construtor da classe Reversi com tamanho personalizado do tabuleiro.
- * @param tamanhoTabuleiro Tamanho do tabuleiro (deve ser par).
+ * @param tamanhoTabuleiro Tamanho do tabuleiro (deve ser par)
  */
 Reversi::Reversi(int tamanhoTabuleiro)
 {
@@ -34,13 +32,12 @@ Reversi::Reversi(int tamanhoTabuleiro)
     tabuleiro[meio][meio] = 'X';
 }
 
-
 /**
  * @brief Anuncia o início da partida e mostra o tabuleiro inicial.
  * @param Jogador1 Referência para o primeiro jogador declarado.
  * @param Jogador2 Referência para o segundo jogador declarado.
- * @param turno Indica qual jogador começará a partida. Caso turno seja "true", 
- * então o Jogador1 irá ter a primeira jogada sendo 'X', caso contrário, o Jogador2 tem o primeiro movimento e é o 'O'.
+ * @param turno Indica qual jogador começará a partida e irá ser o 'X'. Caso turno seja "true",
+ * será o Jogador1, caso contrário, será o Jogador2.
  */
 void Reversi::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
@@ -63,12 +60,11 @@ void Reversi::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &
     }
 }
 
-
 /**
  * @brief Lê a jogada do jogador atual.
- * @param turno Indica o turno do jogador (true para 'X', false para 'O').
- * @return Um par de inteiros representando a posição da jogada, a qual será 
- * avaliado pelos métodos: "checarPosicaoValida" e "movimentoValido".
+ * @param turno Herança da classe Jogos, não é utilizado no Reversi.
+ * @return Um par de inteiros representando a posição da jogada, a qual será
+ * avaliado pelos métodos: "checarPosicaoValida" e "movimentoValido"
  */
 std::pair<int, int> Reversi::lerJogada(bool turno)
 {
@@ -106,7 +102,6 @@ std::pair<int, int> Reversi::lerJogada(bool turno)
     return {-1, -1};
 }
 
-
 /**
  * @brief Método principal para executar o jogo.
  * @param Jogador1 Referência para o Jogador1 (primeiro a ser declarado para jogar).
@@ -126,8 +121,10 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     while (jogoEmAndamento)
     {
         ContadorTurnos++;
-        bool movimentosJogadorAtual = (ContadorTurnos % 2 == 1) ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
-        bool movimentosOutroJogador = !(ContadorTurnos % 2 == 1)  ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
+        bool movimentosJogadorAtual =
+            (ContadorTurnos % 2 == 1) ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
+        bool movimentosOutroJogador =
+            !(ContadorTurnos % 2 == 1) ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
 
         if (!movimentosJogadorAtual && !movimentosOutroJogador)
         {
@@ -139,17 +136,17 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 
         if (!movimentosJogadorAtual)
         {
-            std::cout << "Jogador " << ((ContadorTurnos % 2 == 1)  ? Jogador1.getApelido() : Jogador2.getApelido())
+            std::cout << "Jogador " << ((ContadorTurnos % 2 == 1) ? Jogador1.getApelido() : Jogador2.getApelido())
                       << " nao tem movimentos validos. Turno passado para o proximo jogador." << std::endl;
             turno = !turno;
             continue;
         }
 
-        if ((ContadorTurnos % 2 == 1) )
+        if ((ContadorTurnos % 2 == 1))
         {
             anunciarTurnoJogador(Jogador1); // jogadorX no reversi
             bool aux = (ContadorTurnos % 2 == 1);
-            jogada = lerJogada((ContadorTurnos % 2 == 1) );
+            jogada = lerJogada((ContadorTurnos % 2 == 1));
 
             marcarTabuleiro(jogada, aux);
             mostrarTabuleiro();
@@ -160,7 +157,7 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         else
         {
             anunciarTurnoJogador(Jogador2); // jogadorO no reversi
-            jogada = lerJogada((ContadorTurnos % 2 == 1) );
+            jogada = lerJogada((ContadorTurnos % 2 == 1));
             bool aux = (ContadorTurnos % 2 == 1);
 
             marcarTabuleiro(jogada, aux);
@@ -179,11 +176,10 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     }
 }
 
-
 /**
  * @brief Marca a jogada no tabuleiro e atualiza as peças, flipando as peças capturadas, caso o movimento seja válido.
- * @param jogada Par de inteiros representando a posição da jogada.
- * @param turno Indica o turno do jogador (true para 'X', false para 'O').
+ * @param jogada Par de inteiros representando a posição da jogada
+ * @param turno Herança da classe Jogos, não é utilizado no Reversi.
  */
 void Reversi::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
 {
@@ -213,13 +209,16 @@ void Reversi::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
     }
 }
 
-
 /**
  * @brief Verifica se uma jogada é válida. É um método extremamente importante, determinando a boa execução da partida.
- * @param jogada Par de inteiros representando a posição da jogada.
- * @param jogador Caractere representando o jogador ('X' ou 'O').
- * @param flips Vetor de pares de inteiros para armazenar as peças a serem viradas, ou seja, é o vetor que contém as peças capturadas.
- * @return true se a jogada for válida, false caso contrário.
+ *
+ * @param jogada Par de inteiros representando a posição da jogada
+ * @param jogador Caractere representando o jogador ('X' ou 'O')
+ * @param flips Vetor de pares de inteiros para armazenar as peças a serem viradas, ou seja, é o vetor que contém as
+ * peças capturadas
+ *
+ * @return true Se a jogada for válida
+ * @return false Se a jogada for inválida
  */
 bool Reversi::movimentoValido(std::pair<int, int> &jogada, char jogador, std::vector<std::pair<int, int>> &flips)
 {
@@ -257,11 +256,14 @@ bool Reversi::movimentoValido(std::pair<int, int> &jogada, char jogador, std::ve
     return valido;
 }
 
-
 /**
- * @brief Verifica se há movimentos disponíveis para um jogador, ou seja, se há movimentos que capturam ao menos uma peça do adversário.
- * @param jogador Caractere representando o jogador ('X' ou 'O').
- * @return true se houver movimentos disponíveis, false caso contrário.
+ * @brief Verifica se há movimentos disponíveis para um jogador, ou seja, se há movimentos que capturam ao menos uma
+ * peça do adversário.
+ *
+ * @param jogador Caractere representando o jogador ('X' ou 'O')
+ *
+ * @return true Se houver movimentos disponíveis
+ * @return false Se não houver movimentos disponíveis
  */
 bool Reversi::haMovimentosDisponiveis(char jogador)
 {
@@ -280,7 +282,6 @@ bool Reversi::haMovimentosDisponiveis(char jogador)
     }
     return false;
 }
-
 
 /**
  * @brief Limpa o tabuleiro e recoloca as peças iniciais.
@@ -304,14 +305,16 @@ void Reversi::limparTabuleiro()
     ContadorTurnos = 0;
 }
 
-
 /**
  * @brief Verifica o vencedor da partida e atualiza os registros dos jogadores envolvidos na partida.
- * @param movimentos Vetor de pares de inteiros representando as jogadas do jogador.
- * @param jogador_1 Referência para o Jogador1.
- * @param jogador_2 Referência para o Jogador2.
- * @param PrimeiroJogador Indica qual jogador começou a partida.
- * @return true se houver um vencedor ou caso ocorra empate, false se a partida não acabou.
+ *
+ * @param movimentos Vetor de pares de inteiros representando as jogadas do jogador
+ * @param jogador_1 Referência para o Jogador1
+ * @param jogador_2 Referência para o Jogador2
+ * @param PrimeiroJogador Indica qual jogador começou a partida
+ *
+ * @return true se houver um vencedor ou caso ocorra empat
+ * @return false Se a partida ainda não acabou
  */
 bool Reversi::checarVencedor()
 {
@@ -338,7 +341,7 @@ bool Reversi::checarVencedor()
     if (contadorX == 0 || contadorO == 0 || semMovimentos)
     {
         std::cout << "Fim de jogo! X: " << contadorX << " | O: " << contadorO << std::endl;
-    
+
         if (contadorX > contadorO)
         {
             std::cout << "O jogador dos X ganhou!" << std::endl;

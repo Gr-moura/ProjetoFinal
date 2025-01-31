@@ -39,6 +39,9 @@ CentralDeJogos::CentralDeJogos()
     if (!DadosJogadoresCadastrados.is_open())
     {
         std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados nao foram carregados." << std::endl;
+        // É obrigatório que o sistema tenha um jogador do tipo AI;
+        Jogador AI("AI", "AI");
+        jogadoresCadastrados.push_back(AI);
         return;
     }
 
@@ -65,6 +68,13 @@ CentralDeJogos::CentralDeJogos()
                         vitoriasBatalhaNaval, derrotasBatalhaNaval, empatesBatalhaNaval);
 
         jogadoresCadastrados.push_back(jogador);
+    }
+    auto posicaoAI = std::find_if(jogadoresCadastrados.begin(), jogadoresCadastrados.end(),
+                                  [&](const Jogador &jogador) { return jogador.getApelido() == "AI"; });
+    if (posicaoAI == jogadoresCadastrados.end())
+    {
+        Jogador AI("AI", "AI");
+        jogadoresCadastrados.push_back(AI);
     }
 
     DadosJogadoresCadastrados.close();
@@ -109,7 +119,7 @@ CentralDeJogos::~CentralDeJogos()
     std::ofstream DadosJogadoresCadastrados("data/DadosJogadoresCadastrados.txt");
     if (!DadosJogadoresCadastrados.is_open())
     {
-        std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados nao foram carregados." << std::endl;
+        std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados nao foram salvos." << std::endl;
         return;
     }
 
@@ -157,7 +167,9 @@ std::string CentralDeJogos::validarEntrada()
  * ao apelido de algum jogador na lista.
  *
  * @param apelido O apelido do jogador a ser buscado.
- * @return bool True se o jogador for encontrado, False caso contrário.
+ *
+ * @return true Se o jogador for encontrado
+ * @return false Se o jogador não for encontrado
  */
 bool CentralDeJogos::buscarJogador(std::string &apelido)
 {
@@ -175,8 +187,8 @@ bool CentralDeJogos::buscarJogador(std::string &apelido)
  * Este método verifica se o jogador já está cadastrado (pelo apelido) e, caso não esteja,
  * cria um novo jogador e o adiciona à lista de jogadores cadastrados.
  *
- * @param apelido O apelido do jogador a ser cadastrado.
- * @param nome O nome do jogador a ser cadastrado.
+ * @param apelido O apelido do jogador a ser cadastrado
+ * @param nome O nome do jogador a ser cadastrado
  */
 void CentralDeJogos::cadastrarJogador(std::string &apelido, std::string &nome)
 {
@@ -196,7 +208,7 @@ void CentralDeJogos::cadastrarJogador(std::string &apelido, std::string &nome)
  * Este método busca um jogador pelo apelido e, caso encontrado, o remove da lista de jogadores cadastrados.
  * Se o jogador não for encontrado, exibe uma mensagem de erro.
  *
- * @param apelido O apelido do jogador a ser removido.
+ * @param apelido O apelido do jogador a ser removido
  */
 void CentralDeJogos::removerJogador(std::string &apelido)
 {

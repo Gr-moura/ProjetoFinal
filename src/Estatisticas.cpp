@@ -21,12 +21,15 @@ Estatisticas::Estatisticas() : vitorias(0), derrotas(0), empates(0) {}
  *
  * Inicializa as estatísticas com os valores fornecidos para vitórias, derrotas e empates.
  *
- * @param vitorias Número inicial de vitórias.
- * @param derrotas Número inicial de derrotas.
+ * @param vitorias Número inicial de vitórias
+ * @param derrotas Número inicial de derrotas
  * @param empates Número inicial de empates.
+ *
  */
 Estatisticas::Estatisticas(int vitorias, int derrotas, int empates) :
-    vitorias(vitorias), derrotas(derrotas), empates(empates) {}
+    vitorias(vitorias), derrotas(derrotas), empates(empates)
+{
+}
 
 /**
  * @brief Registra uma vitória.
@@ -61,7 +64,7 @@ void Estatisticas::registrarEmpate()
 /**
  * @brief Retorna o número de vitórias.
  *
- * @return int Número de vitórias.
+ * @return int Número de vitórias
  */
 int Estatisticas::getVitorias() const
 {
@@ -81,7 +84,7 @@ int Estatisticas::getDerrotas() const
 /**
  * @brief Retorna o número de empates.
  *
- * @return int Número de empates.
+ * @return int Número de empates
  */
 int Estatisticas::getEmpates() const
 {
