@@ -39,6 +39,9 @@ CentralDeJogos::CentralDeJogos()
     if (!DadosJogadoresCadastrados.is_open())
     {
         std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados nao foram carregados." << std::endl;
+        // É obrigatório que o sistema tenha um jogador do tipo AI;
+        Jogador AI("AI", "AI");
+        jogadoresCadastrados.push_back(AI);
         return;
     }
 
@@ -65,6 +68,13 @@ CentralDeJogos::CentralDeJogos()
                         vitoriasBatalhaNaval, derrotasBatalhaNaval, empatesBatalhaNaval);
 
         jogadoresCadastrados.push_back(jogador);
+    }
+    auto posicaoAI = std::find_if(jogadoresCadastrados.begin(), jogadoresCadastrados.end(),
+                                            [&](const Jogador &jogador) { return jogador.getApelido() == "AI"; });
+    if (posicaoAI == jogadoresCadastrados.end())
+    {
+        Jogador AI("AI", "AI");
+        jogadoresCadastrados.push_back(AI);
     }
 
     DadosJogadoresCadastrados.close();
@@ -109,7 +119,7 @@ CentralDeJogos::~CentralDeJogos()
     std::ofstream DadosJogadoresCadastrados("data/DadosJogadoresCadastrados.txt");
     if (!DadosJogadoresCadastrados.is_open())
     {
-        std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados nao foram carregados." << std::endl;
+        std::cerr << "ERRO! Nao foi possivel abrir o arquivo de dados. Os dados nao foram salvos." << std::endl;
         return;
     }
 
