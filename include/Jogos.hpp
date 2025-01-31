@@ -32,7 +32,8 @@
  * ## Métodos Virtuais Puros:
  * - `checarVencedor`: Verifica se há um vencedor no jogo (deve ser implementado pelas classes derivadas).
  * - `checarEmpate`: Verifica se o jogo terminou em empate (deve ser implementado pelas classes derivadas).
- * - `anunciarInicioPartida`: Anuncia o início da partida e define o jogador que começa (deve ser implementado pelas classes derivadas).
+ * - `anunciarInicioPartida`: Anuncia o início da partida e define o jogador que começa (deve ser implementado pelas
+ * classes derivadas).
  *
  * ## Métodos Virtuais:
  * - `marcarTabuleiro`: Marca uma jogada no tabuleiro.
