@@ -60,6 +60,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             jogada = lerJogada(tabuleiroJogadasJogador1);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador1, barcosJogador2);
+            std::cout << "Tabuleiro de Jogadas do Jogador: " << Jogador1.getApelido() << std::endl;
             mostrarTabuleiro(tabuleiroJogadasJogador1);
 
             movimentosJogador1.push_back(jogada);
@@ -79,6 +80,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             jogada = lerJogada(tabuleiroJogadasJogador2);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador2, barcosJogador1);
+            std::cout << "Tabuleiro de Jogadas do Jogador: " << Jogador2.getApelido() << std::endl;
             mostrarTabuleiro(tabuleiroJogadasJogador2);
 
             movimentosJogador2.push_back(jogada);
@@ -254,6 +256,63 @@ bool BatalhaNaval::verificarEntrada(char tipo, int linhaInicial, int colunaInici
 }
 
 /**
+ * @brief Verifica se o novo barco está sobrepondo outro barco já posicionado.
+ *
+ * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador.
+ * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
+ * @param linhaInicial Linha inicial do barco.
+ * @param colunaInicial Coluna inicial do barco.
+ * @param linhaFinal Linha final do barco.
+ * @param colunaFinal Coluna final do barco.
+ * @return `true` se houver sobreposição, `false` caso contrário.
+ */
+bool BatalhaNaval::verificarSobreposicao(const std::vector<std::pair<int, int>> &barcosJogador, char tipo,
+                                         int linhaInicial, int colunaInicial, int linhaFinal, int colunaFinal)
+{
+    if (colunaInicial > colunaFinal)
+    {
+        std::swap(colunaInicial, colunaFinal);
+    }
+    if (linhaInicial > linhaFinal)
+    {
+        std::swap(linhaInicial, linhaFinal);
+    }
+
+    bool barcoHorizontal = (linhaInicial == linhaFinal);
+    int tamanhoBarco = getTamanhoBarco(tipo);
+
+    if (tamanhoBarco == -1)
+    {
+        return false; // Tipo de barco inválido
+    }
+
+    if (barcoHorizontal)
+    {
+        for (int colunas = colunaInicial; colunas < colunaInicial + tamanhoBarco; ++colunas)
+        {
+            std::pair<int, int> posicao = {linhaInicial - 1, colunas - 1};
+            if (std::find(barcosJogador.begin(), barcosJogador.end(), posicao) != barcosJogador.end())
+            {
+                return true; // Há sobreposição
+            }
+        }
+    }
+    else
+    {
+        for (int linhas = linhaInicial; linhas < linhaInicial + tamanhoBarco; ++linhas)
+        {
+            std::pair<int, int> posicao = {linhas - 1, colunaInicial - 1};
+            if (std::find(barcosJogador.begin(), barcosJogador.end(), posicao) != barcosJogador.end())
+            {
+                return true; // Há sobreposição
+            }
+        }
+    }
+
+    return false; // Não há sobreposição
+}
+
+/**
  * @brief Retorna o tamanho de um barco com base no tipo usando um switch-case básico.
  *
  * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
@@ -303,8 +362,9 @@ void BatalhaNaval::lerBarcos(std::vector<std::pair<int, int>> &barcosJogador, Jo
     for (int barcosLidos = 0; barcosLidos < 10; barcosLidos++)
     {
         std::cin >> tipo >> linhaInicial >> colunaInicial >> linhaFinal >> colunaFinal;
-        if (verificarEntrada(tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal) and
-            quantidadeBarcosDisponiveis(countBarcos, tipo))
+        if (verificarEntrada(tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal) &&
+            quantidadeBarcosDisponiveis(countBarcos, tipo) &&
+            !verificarSobreposicao(barcosJogador, tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal))
         {
             inserirBarcos(barcosJogador, tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal);
             countBarcos[tipo]++;
@@ -312,7 +372,7 @@ void BatalhaNaval::lerBarcos(std::vector<std::pair<int, int>> &barcosJogador, Jo
         else
         {
             std::cout << "Insira novamente com parametros validos, atente-se tambem a quantidade especifica de cada "
-                         "tipo de barco."
+                         "tipo de barco e a nao sobreposicao de barcos."
                       << std::endl;
             barcosLidos--;
         }
