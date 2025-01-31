@@ -36,7 +36,6 @@ class BatalhaNaval : public Jogos
     
     std::pair<int, int> lerJogada(std::vector<std::vector<char>> &tabuleiroJogador);
     bool verificarEntrada(char tipo, int linhaInicial, int colunaInicial, int linhaFinal, int colunaFinal);
-    void checarPosicaoValida(std::vector<std::vector<char>> &tabuleiro);
     bool verificarSobreposicao(const std::vector<std::pair<int, int>> &barcosJogador, char tipo,
                                          int linhaInicial, int colunaInicial, int linhaFinal, int colunaFinal);
 

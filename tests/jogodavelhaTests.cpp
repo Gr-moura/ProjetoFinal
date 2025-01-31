@@ -7,7 +7,7 @@
 #include <string>
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "./includes/doctest.h"
+#include "doctest.h"
 #include "JogoDaVelha.hpp"
 #include "Jogador.hpp"
 

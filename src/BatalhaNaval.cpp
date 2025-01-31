@@ -68,8 +68,6 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             {
                 std::cout << "O jogador " << Jogador1.getApelido() << " ganhou o jogo!" << std::endl;
                 jogoEmAndamento = false;
-                Jogador1.registrarVitoria("BATALHANAVAL");
-                Jogador2.registrarDerrota("BATALHANAVAL");
                 return;
             }
             turno = not turno;
@@ -88,8 +86,6 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             {
                 std::cout << "O jogador " << Jogador2.getApelido() << " ganhou o jogo!" << std::endl;
                 jogoEmAndamento = false;
-                Jogador2.registrarVitoria("BATALHANAVAL");
-                Jogador1.registrarDerrota("BATALHANAVAL");
                 return;
             }
             turno = not turno;
@@ -146,6 +142,8 @@ bool BatalhaNaval::checarVencedor(std::vector<std::pair<int, int>> &jogadasAtaca
             return false; // Ainda há barcos não atingidos
         }
     }
+    vencedor.registrarVitoria("BATALHANAVAL");
+    perdedor.registrarDerrota("BATALHANAVAL");
     return true; // Todos os barcos foram atingidos
 }
 
@@ -170,7 +168,7 @@ std::pair<int, int> BatalhaNaval::lerJogada(std::vector<std::vector<char>> &tabu
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
-        if (Jogos::checarPosicaoValida(linha - 1, coluna - 1))
+        if (checarPosicaoValida(linha - 1, coluna - 1))
         {
             if (tabuleiroJogador[linha - 1][coluna - 1] == '~')
             {
@@ -391,16 +389,16 @@ bool BatalhaNaval::quantidadeBarcosDisponiveis(std::map<char, int> &countBarcos,
 {
     switch (tipo)
     {
-    case 'P': // Porta-Aviões (1 permitido)
+    case 'P': 
         return countBarcos['P'] < 1;
-    case 'E': // Encouraçados (2 permitidos)
+    case 'E': 
         return countBarcos['E'] < 2;
-    case 'C': // Contratorpedeiros (3 permitidos)
+    case 'C': 
         return countBarcos['C'] < 3;
-    case 'S': // Submarinos (4 permitidos)
+    case 'S': 
         return countBarcos['S'] < 4;
     default:
-        return false; // Tipo inválido
+        return false;
     }
 }
 
