@@ -11,7 +11,6 @@ class Reversi : public Jogos
 
   protected:
     void anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno) override;
-    bool jogadorInicial(bool &turno);
 
     std::pair<int, int> lerJogada(bool turno);
 
@@ -24,9 +23,12 @@ class Reversi : public Jogos
     {
         return false;
     };
-    bool checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &jogador1, Jogador &Jogador2,
-                        bool &PrimeiroJogador);
+    bool checarVencedor();
     bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override { return false; };
+
+    Jogador *JogadorX = nullptr;
+    Jogador *JogadorO = nullptr;
+    int ContadorTurnos = 0;
 };
 
 #endif

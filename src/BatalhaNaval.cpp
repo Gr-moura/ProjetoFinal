@@ -19,20 +19,8 @@ BatalhaNaval::BatalhaNaval()
  * até a determinação do vencedor. Ele coordena as ações dos dois jogadores, alternando seus turnos
  * e verificando se algum deles atingiu a condição de vitória.
  *
- * O jogo começa com o sorteio de quem iniciará a partida. Em seguida, cada jogador posiciona seus
- * barcos no tabuleiro. Após o posicionamento, os jogadores alternam turnos para atacar as posições
- * do tabuleiro do oponente. O jogo continua até que todos os barcos de um jogador sejam afundados,
- * momento em que o oponente é declarado vencedor.
- *
- * Os tabuleiros mostrados durante a execução do código dizem respeito ao tabuleiro dos ataques, porque
- * caso o tabuleiro dos barcos de cada jogador aparecesse, a ideia de 2 jogadores no mesmo computador
- * seria impossível,
- *
- * Durante o jogo, o tabuleiro de cada jogador é exibido após cada jogada, mostrando os acertos ('X')
- * e os erros ('O'). O método também registra as vitórias e derrotas dos jogadores ao final da partida.
- *
- * @param Jogador1 Referência para o primeiro jogador.
- * @param Jogador2 Referência para o segundo jogador.
+ * @param Jogador1 Referência para o primeiro jogador
+ * @param Jogador2 Referência para o segundo jogador
  *
  * @details O fluxo do jogo é o seguinte:
  * 1. Inicializa os tabuleiros de jogadas e os vetores de barcos para ambos os jogadores.
@@ -109,9 +97,10 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 
 /**
  * @brief Anuncia o início da partida de Batalha Naval entre dois jogadores e quem irá começar.
- * @param Jogador1 Referência para o primeiro jogador.
- * @param Jogador2 Referência para o segundo jogador.
- * @param turno Referência para a variável que controla o turno dos jogadores.
+ *
+ * @param Jogador1 Referência para o primeiro jogador
+ * @param Jogador2 Referência para o segundo jogador
+ * @param turno Referência para a variável que controla o turno dos jogadores
  */
 void BatalhaNaval::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
@@ -131,15 +120,18 @@ void BatalhaNaval::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, b
 
 /**
  * @brief Verifica se há um vencedor com base nas jogadas do atacante e nos barcos do oponente.
+ *
  * Há um iterador que passa por todos os barcos do jogador inimigo e os compara com as jogadas do atacante,
  * caso algum barco não seja encontrado, o retorno é falso e o jogo continua, caso contrário a vitória e a derrota são
  * contabilizadas nos respectivos jogadores e o jogo termina com o print do vencedor.
  *
- * @param jogadasAtacante Vetor de pares de inteiros representando as jogadas do atacante.
- * @param barcosOponente Vetor de pares de inteiros representando os barcos do oponente.
- * @param vencedor Referência para o jogador que venceu.
- * @param perdedor Referência para o jogador que perdeu.
- * @return Retorna `true` se houver um vencedor, `false` caso contrário.
+ * @param jogadasAtacante Vetor de pares de inteiros representando as jogadas do atacante
+ * @param barcosOponente Vetor de pares de inteiros representando os barcos do oponente
+ * @param vencedor Referência para o jogador que venceu
+ * @param perdedor Referência para o jogador que perdeu
+ *
+ * @return true Se há um vencedor
+ * @return false Se não há um vencedor
  */
 bool BatalhaNaval::checarVencedor(std::vector<std::pair<int, int>> &jogadasAtacante,
                                   std::vector<std::pair<int, int>> &barcosOponente, Jogador &vencedor,
@@ -157,11 +149,10 @@ bool BatalhaNaval::checarVencedor(std::vector<std::pair<int, int>> &jogadasAtaca
 
 /**
  * @brief Lê a jogada do jogador, verificando se a posição é válida e se o tipo de dado inserido é o desejado.
- * A inserção é feita usando (-1) nas posições para corrigir o erro entre a entrada real [1-10] e a divisão do tabuleiro
- * [0,9].abort
+ * A inserção é feita usando (-1) nas posições para corrigir o erro proporcionado pela entrada do usuário.
  *
- * @param tabuleiroJogador Matriz de caracteres representando o tabuleiro do jogador.
- * @return Par de inteiros representando a jogada (linha, coluna).
+ * @param tabuleiroJogador Matriz de caracteres representando o tabuleiro do jogador
+ * @return Par de inteiros representando a jogada (linha, coluna)
  */
 std::pair<int, int> BatalhaNaval::lerJogada(std::vector<std::vector<char>> &tabuleiroJogador)
 {
@@ -204,12 +195,13 @@ std::pair<int, int> BatalhaNaval::lerJogada(std::vector<std::vector<char>> &tabu
  * lerBarcos e funciona com um sistema de try-catch-throw, usando também de exceptions personalizadas para
  * deixar os erros mais evidentes no caso de que algum deles aconteça.
  *
- * @param tipo Caractere representando o tipo de barco.
- * @param linhaInicial Inteiro representando a linha inicial do barco.
- * @param colunaInicial Inteiro representando a coluna inicial do barco.
- * @param linhaFinal Inteiro representando a linha final do barco.
- * @param colunaFinal Inteiro representando a coluna final do barco.
- * @return Retorna `true` se a entrada for válida, `false` caso contrário.
+ * @param tipo Caractere representando o tipo de barco
+ * @param linhaInicial Inteiro representando a linha inicial do barco
+ * @param colunaInicial Inteiro representando a coluna inicial do barco
+ * @param linhaFinal Inteiro representando a linha final do barco
+ * @param colunaFinal Inteiro representando a coluna final do barco
+ *
+ * @return Retorna `true` se a entrada for válida, `false` caso contrário
  */
 bool BatalhaNaval::verificarEntrada(char tipo, int linhaInicial, int colunaInicial, int linhaFinal, int colunaFinal)
 {
@@ -399,7 +391,8 @@ bool BatalhaNaval::verificarTamanhodoBarco(char tipo, int linhaInicial, int colu
 /**
  * @brief Insere os barcos no vetor de barcos do jogador. Ele implementa o mesmo sistema de swap de Inicial e Final,
  * a inserção é feita percorrendo os limites superiores e inferiores obtidos na entrada do jogador, e introduz todas as
- * posições ocupadas por barcos no vector com o (-1), para garantir a correspondência entre o sistema do vector e a entrada.abort
+ * posições ocupadas por barcos no vector com o (-1), para garantir a correspondência entre o sistema do vector e a
+ * entrada.abort
  *
  * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador.
  * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
@@ -445,9 +438,9 @@ void BatalhaNaval::inserirBarcos(std::vector<std::pair<int, int>> &barcosJogador
 }
 
 /**
- * @brief Exibe o tabuleiro do jogador no console, e recebe um parâmetro tabuleiro, diferentemente da classe Pai Jogos, porque
- * há 2 tabuleiros durante a execução do jogo, e precisamos printar ambos a cada rodada, por isso, foi necessário sobrecarregar o
- * método para usar o parâmetro em questão.
+ * @brief Exibe o tabuleiro do jogador no console, e recebe um parâmetro tabuleiro, diferentemente da classe Pai Jogos,
+ * porque há 2 tabuleiros durante a execução do jogo, e precisamos printar ambos a cada rodada, por isso, foi necessário
+ * sobrecarregar o método para usar o parâmetro em questão.
  *
  * @param tabuleiroJogador Matriz de caracteres representando o tabuleiro do jogador.
  */
@@ -475,9 +468,9 @@ void BatalhaNaval::mostrarTabuleiro(const std::vector<std::vector<char>> &tabule
 }
 
 /**
- * @brief Marca o tabuleiro com a jogada realizada, indicando acerto ('X') ou erro ('O'). A função 
- * usa da iteração no vetor de posições barcos do inimigo e a comparação com a jogada da respectiva rodada. Caso a jogada
- * seja igual a alguma das posições, é sinalizado o acerto.
+ * @brief Marca o tabuleiro com a jogada realizada, indicando acerto ('X') ou erro ('O'). A função
+ * usa da iteração no vetor de posições barcos do inimigo e a comparação com a jogada da respectiva rodada. Caso a
+ * jogada seja igual a alguma das posições, é sinalizado o acerto.
  *
  * @param jogada Par de inteiros representando a jogada (linha, coluna).
  * @param turno Referência para a variável que controla o turno dos jogadores.
