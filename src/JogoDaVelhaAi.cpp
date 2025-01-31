@@ -195,6 +195,9 @@ std::pair<int, int> JogoDaVelhaAi::jogarAI(bool turno)
  *
  * @param Jogador1 Primeiro jogador (normalmente humano)
  * @param Jogador2 Segundo jogador (normalmente IA)
+ *
+ * @throws std::invalid_argument Se entrada numérica inválida
+ * @throws std::out_of_range Se valores fora dos intervalos permitidos
  */
 void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {

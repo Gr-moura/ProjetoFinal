@@ -1,5 +1,14 @@
+/**
+ * @file Reversi.hpp
+ * @brief Definição da classe Reversi e seus métodos para o jogo Reversi.
+ */
 #include "Reversi.hpp"
 
+
+/**
+ * @brief Construtor padrão da classe Reversi.
+ * Inicializa o tabuleiro com o tamanho padrão 8x8 e configura as peças iniciais.
+ */
 Reversi::Reversi()
 {
     tabuleiro.resize(8, std::vector<char>(8, ' '));
@@ -9,6 +18,11 @@ Reversi::Reversi()
     tabuleiro[4][4] = 'X';
 }
 
+
+/**
+ * @brief Construtor da classe Reversi com tamanho personalizado do tabuleiro.
+ * @param tamanhoTabuleiro Tamanho do tabuleiro (deve ser par).
+ */
 Reversi::Reversi(int tamanhoTabuleiro)
 {
     tabuleiro.resize(tamanhoTabuleiro, std::vector<char>(tamanhoTabuleiro, ' '));
@@ -20,6 +34,14 @@ Reversi::Reversi(int tamanhoTabuleiro)
     tabuleiro[meio][meio] = 'X';
 }
 
+
+/**
+ * @brief Anuncia o início da partida e mostra o tabuleiro inicial.
+ * @param Jogador1 Referência para o primeiro jogador declarado.
+ * @param Jogador2 Referência para o segundo jogador declarado.
+ * @param turno Indica qual jogador começará a partida. Caso turno seja "true", 
+ * então o Jogador1 irá ter a primeira jogada sendo 'X', caso contrário, o Jogador2 tem o primeiro movimento e é o 'O'.
+ */
 void Reversi::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
 
@@ -29,14 +51,25 @@ void Reversi::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &
     {
         std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador1.getApelido()
                   << " comecara a partida com as pecas 'X'!" << std::endl;
+        JogadorX = &Jogador1;
+        JogadorO = &Jogador2;
     }
     else
     {
         std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador2.getApelido()
-                  << " comecara a partida com as pecas 'O'!" << std::endl;
+                  << " comecara a partida com as pecas 'X'!" << std::endl;
+        JogadorX = &Jogador2;
+        JogadorO = &Jogador1;
     }
 }
 
+
+/**
+ * @brief Lê a jogada do jogador atual.
+ * @param turno Indica o turno do jogador (true para 'X', false para 'O').
+ * @return Um par de inteiros representando a posição da jogada, a qual será 
+ * avaliado pelos métodos: "checarPosicaoValida" e "movimentoValido".
+ */
 std::pair<int, int> Reversi::lerJogada(bool turno)
 {
     int linha, coluna;
@@ -55,7 +88,7 @@ std::pair<int, int> Reversi::lerJogada(bool turno)
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
-        char jogador = turno ? 'X' : 'O';
+        char jogador = (ContadorTurnos % 2 == 1) ? 'X' : 'O';
         std::vector<std::pair<int, int>> flips;
         std::pair<int, int> jogada = {linha - 1, coluna - 1};
 
@@ -73,83 +106,71 @@ std::pair<int, int> Reversi::lerJogada(bool turno)
     return {-1, -1};
 }
 
-bool Reversi::jogadorInicial(bool &turno)
-{
-    bool Primeirojogador = turno;
-    std::cout << "!!!!!!! PrimeiroJogador é: " << Primeirojogador << std::endl;
-    return Primeirojogador;
-}
 
+/**
+ * @brief Método principal para executar o jogo.
+ * @param Jogador1 Referência para o Jogador1 (primeiro a ser declarado para jogar).
+ * @param Jogador2 Referência para o Jogador2 (segundo a ser declarado para jogar).
+ */
 void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
     bool turno = sorteioTurno();
-    int contadorTurnos = 0;
+    ContadorTurnos = 0;
     std::vector<std::pair<int, int>> movimentosJogador1;
     std::vector<std::pair<int, int>> movimentosJogador2;
 
     std::pair<int, int> jogada;
     anunciarInicioPartida(Jogador1, Jogador2, turno);
-    bool PrimeiroJogador = jogadorInicial(turno);
 
     while (jogoEmAndamento)
     {
-        contadorTurnos++;
-        bool movimentosJogadorAtual = turno ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
-        bool movimentosOutroJogador = !turno ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
+        ContadorTurnos++;
+        bool movimentosJogadorAtual = (ContadorTurnos % 2 == 1) ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
+        bool movimentosOutroJogador = !(ContadorTurnos % 2 == 1)  ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
 
         if (!movimentosJogadorAtual && !movimentosOutroJogador)
         {
             std::cout << "Nao ha nenhum movimento possivel a ser realizado. Partida encerrada!" << std::endl;
-            checarVencedor(movimentosJogador1, Jogador1, Jogador2, PrimeiroJogador);
+            checarVencedor();
             limparTabuleiro();
             return;
         }
 
         if (!movimentosJogadorAtual)
         {
-            std::cout << "Jogador " << (turno ? Jogador1.getApelido() : Jogador2.getApelido())
+            std::cout << "Jogador " << ((ContadorTurnos % 2 == 1)  ? Jogador1.getApelido() : Jogador2.getApelido())
                       << " nao tem movimentos validos. Turno passado para o proximo jogador." << std::endl;
             turno = !turno;
             continue;
         }
 
-        if (turno)
+        if ((ContadorTurnos % 2 == 1) )
         {
             anunciarTurnoJogador(Jogador1); // jogadorX no reversi
-            jogada = lerJogada(turno);
+            bool aux = (ContadorTurnos % 2 == 1);
+            jogada = lerJogada((ContadorTurnos % 2 == 1) );
 
-            marcarTabuleiro(jogada, turno);
+            marcarTabuleiro(jogada, aux);
             mostrarTabuleiro();
 
             movimentosJogador1.push_back(jogada);
-            if (checarVencedor(movimentosJogador1, Jogador1, Jogador2, PrimeiroJogador))
-            {
-                jogoEmAndamento = false;
-                limparTabuleiro();
-                return;
-            }
             turno = not turno;
         }
         else
         {
             anunciarTurnoJogador(Jogador2); // jogadorO no reversi
-            jogada = lerJogada(turno);
+            jogada = lerJogada((ContadorTurnos % 2 == 1) );
+            bool aux = (ContadorTurnos % 2 == 1);
 
-            marcarTabuleiro(jogada, turno);
+            marcarTabuleiro(jogada, aux);
             mostrarTabuleiro();
 
             movimentosJogador2.push_back(jogada);
-            if (checarVencedor(movimentosJogador2, Jogador1, Jogador2, PrimeiroJogador))
-            {
-                jogoEmAndamento = false;
-                limparTabuleiro();
-                return;
-            }
             turno = not turno;
         }
 
-        if (checarEmpate(contadorTurnos, Jogador1, Jogador2))
+        if (checarEmpate(ContadorTurnos, Jogador1, Jogador2))
         {
             jogoEmAndamento = false;
             limparTabuleiro();
@@ -158,10 +179,16 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
     }
 }
 
+
+/**
+ * @brief Marca a jogada no tabuleiro e atualiza as peças, flipando as peças capturadas, caso o movimento seja válido.
+ * @param jogada Par de inteiros representando a posição da jogada.
+ * @param turno Indica o turno do jogador (true para 'X', false para 'O').
+ */
 void Reversi::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
 {
     char jogador;
-    if (turno)
+    if (ContadorTurnos % 2 == 1)
     {
         jogador = 'X';
     }
@@ -186,6 +213,14 @@ void Reversi::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
     }
 }
 
+
+/**
+ * @brief Verifica se uma jogada é válida. É um método extremamente importante, determinando a boa execução da partida.
+ * @param jogada Par de inteiros representando a posição da jogada.
+ * @param jogador Caractere representando o jogador ('X' ou 'O').
+ * @param flips Vetor de pares de inteiros para armazenar as peças a serem viradas, ou seja, é o vetor que contém as peças capturadas.
+ * @return true se a jogada for válida, false caso contrário.
+ */
 bool Reversi::movimentoValido(std::pair<int, int> &jogada, char jogador, std::vector<std::pair<int, int>> &flips)
 {
     flips.clear();
@@ -222,6 +257,12 @@ bool Reversi::movimentoValido(std::pair<int, int> &jogada, char jogador, std::ve
     return valido;
 }
 
+
+/**
+ * @brief Verifica se há movimentos disponíveis para um jogador, ou seja, se há movimentos que capturam ao menos uma peça do adversário.
+ * @param jogador Caractere representando o jogador ('X' ou 'O').
+ * @return true se houver movimentos disponíveis, false caso contrário.
+ */
 bool Reversi::haMovimentosDisponiveis(char jogador)
 {
     std::vector<std::pair<int, int>> flips;
@@ -240,6 +281,10 @@ bool Reversi::haMovimentosDisponiveis(char jogador)
     return false;
 }
 
+
+/**
+ * @brief Limpa o tabuleiro e recoloca as peças iniciais.
+ */
 void Reversi::limparTabuleiro()
 {
     for (auto &linha : tabuleiro)
@@ -255,10 +300,20 @@ void Reversi::limparTabuleiro()
     tabuleiro[3][4] = 'O';
     tabuleiro[4][3] = 'O';
     tabuleiro[4][4] = 'X';
+
+    ContadorTurnos = 0;
 }
 
-bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogador &jogador_1, Jogador &jogador_2,
-                             bool &PrimeiroJogador)
+
+/**
+ * @brief Verifica o vencedor da partida e atualiza os registros dos jogadores envolvidos na partida.
+ * @param movimentos Vetor de pares de inteiros representando as jogadas do jogador.
+ * @param jogador_1 Referência para o Jogador1.
+ * @param jogador_2 Referência para o Jogador2.
+ * @param PrimeiroJogador Indica qual jogador começou a partida.
+ * @return true se houver um vencedor ou caso ocorra empate, false se a partida não acabou.
+ */
+bool Reversi::checarVencedor()
 {
     int contadorX = 0;
     int contadorO = 0;
@@ -283,44 +338,28 @@ bool Reversi::checarVencedor(std::vector<std::pair<int, int>> &movimentos, Jogad
     if (contadorX == 0 || contadorO == 0 || semMovimentos)
     {
         std::cout << "Fim de jogo! X: " << contadorX << " | O: " << contadorO << std::endl;
+    
         if (contadorX > contadorO)
         {
             std::cout << "O jogador dos X ganhou!" << std::endl;
-            if (PrimeiroJogador)
-            {
-                std::cout << "O jogador " << jogador_1.getApelido() << " ganhou o jogo!" << std::endl;
-                jogador_1.registrarVitoria("REVERSI");
-                jogador_2.registrarDerrota("REVERSI");
-            }
-            else
-            {
-                std::cout << "O jogador " << jogador_2.getApelido() << " ganhou o jogo!" << std::endl;
-                jogador_2.registrarVitoria("REVERSI");
-                jogador_1.registrarDerrota("REVERSI");
-            }
+            std::cout << "O jogador " << JogadorX->getApelido() << " ganhou o jogo!" << std::endl;
+            JogadorX->registrarVitoria("REVERSI");
+            JogadorO->registrarDerrota("REVERSI");
         }
         else if (contadorO > contadorX)
         {
             std::cout << "O jogador dos O ganhou!" << std::endl;
-            if (PrimeiroJogador)
-            {
-                std::cout << "O jogador " << jogador_2.getApelido() << " ganhou o jogo!" << std::endl;
-                jogador_2.registrarVitoria("REVERSI");
-                jogador_1.registrarDerrota("REVERSI");
-            }
-            else
-            {
-                std::cout << "O jogador " << jogador_1.getApelido() << " ganhou o jogo!" << std::endl;
-                jogador_1.registrarVitoria("REVERSI");
-                jogador_2.registrarDerrota("REVERSI");
-            }
+            std::cout << "O jogador " << JogadorO->getApelido() << " ganhou o jogo!" << std::endl;
+            JogadorO->registrarVitoria("REVERSI");
+            JogadorX->registrarDerrota("REVERSI");
         }
         else
         {
             std::cout << "O jogo empatou!" << std::endl;
-            jogador_1.registrarEmpate("REVERSI");
-            jogador_2.registrarEmpate("REVERSI");
+            JogadorO->registrarEmpate("REVERSI");
+            JogadorX->registrarEmpate("REVERSI");
         }
+
         return true;
     }
     return false;

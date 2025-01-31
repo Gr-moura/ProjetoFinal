@@ -8,25 +8,25 @@
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_estatisticas_a7b0e9c4ea7b408c9cf3f4a26771172bf}{Estatisticas}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe \doxylink{class_estatisticas}{Estatisticas}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_estatisticas_ad353ed73cf21bf05f5250a2bc26b7788}{Estatisticas}} (int \mbox{\hyperlink{class_estatisticas_a0c9010c494d9a2ec11d8246246ed949e}{vitorias}}, int \mbox{\hyperlink{class_estatisticas_aec67b9e531350c4cd33548171fd44311}{derrotas}}, int \mbox{\hyperlink{class_estatisticas_aacef93a1673d782f3f91c4a9ee339294}{empates}})
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor parametrizado da classe \doxylink{class_estatisticas}{Estatisticas}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_estatisticas_abeac6560d5e46c650c165a7d04d42072}{registrar\+Vitoria}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Registra uma vitória. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_estatisticas_a5075d7cae6dd067f5ba6f3bfd1d1beb1}{registrar\+Derrota}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Registra uma derrota. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_estatisticas_ae228db02bc35d1dfcf1d04875c0133e9}{registrar\+Empate}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Registra um empate. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_estatisticas_a25d85ab639cd1602ac1f876d1ab64f2d}{get\+Vitorias}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retorna o número de vitórias. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_estatisticas_ab2439f2ed05decc559cd5868db8197ef}{get\+Derrotas}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retorna o número de derrotas. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_estatisticas_a6b089bf3d43c9ed2530c8957d1b7dac1}{get\+Empates}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Retorna o número de empates. \end{DoxyCompactList}\item 
 std\+::vector$<$ char $>$ \mbox{\hyperlink{class_estatisticas_a1a9fddf104b95f33b18f8391b70c1749}{get\+Historico}} () const
 \item 
 void \mbox{\hyperlink{class_estatisticas_a36b26c76b73f6cdd053625d8935c30d1}{mostrar\+Estatisticas}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Exibe as estatísticas formatadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Atributos Privados}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,12 +45,31 @@ int \mbox{\hyperlink{class_estatisticas_aacef93a1673d782f3f91c4a9ee339294}{empat
 {\footnotesize\ttfamily \label{class_estatisticas_a7b0e9c4ea7b408c9cf3f4a26771172bf} 
 Estatisticas\+::\+Estatisticas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_estatisticas_ad353ed73cf21bf05f5250a2bc26b7788}\index{Estatisticas@{Estatisticas}!Estatisticas@{Estatisticas}}
+
+
+Construtor padrão da classe \doxylink{class_estatisticas}{Estatisticas}. 
+
+Inicializa as estatísticas com zero vitórias, zero derrotas e zero empates. \Hypertarget{class_estatisticas_ad353ed73cf21bf05f5250a2bc26b7788}\index{Estatisticas@{Estatisticas}!Estatisticas@{Estatisticas}}
 \index{Estatisticas@{Estatisticas}!Estatisticas@{Estatisticas}}
 \doxysubsubsection{\texorpdfstring{Estatisticas()}{Estatisticas()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{class_estatisticas_ad353ed73cf21bf05f5250a2bc26b7788} 
 Estatisticas\+::\+Estatisticas (\begin{DoxyParamCaption}\item[{int}]{vitorias}{, }\item[{int}]{derrotas}{, }\item[{int}]{empates}{}\end{DoxyParamCaption})}
 
+
+
+Construtor parametrizado da classe \doxylink{class_estatisticas}{Estatisticas}. 
+
+Inicializa as estatísticas com os valores fornecidos para vitórias, derrotas e empates.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em vitorias} & Número inicial de vitórias. \\
+\hline
+{\em derrotas} & Número inicial de derrotas. \\
+\hline
+{\em empates} & Número inicial de empates. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Documentação das funções}
@@ -60,12 +79,26 @@ Estatisticas\+::\+Estatisticas (\begin{DoxyParamCaption}\item[{int}]{vitorias}{,
 {\footnotesize\ttfamily \label{class_estatisticas_ab2439f2ed05decc559cd5868db8197ef} 
 int Estatisticas\+::get\+Derrotas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
+
+
+Retorna o número de derrotas. 
+
+\begin{DoxyReturn}{Retorna}
+int Número de derrotas. 
+\end{DoxyReturn}
 \Hypertarget{class_estatisticas_a6b089bf3d43c9ed2530c8957d1b7dac1}\index{Estatisticas@{Estatisticas}!getEmpates@{getEmpates}}
 \index{getEmpates@{getEmpates}!Estatisticas@{Estatisticas}}
 \doxysubsubsection{\texorpdfstring{getEmpates()}{getEmpates()}}
 {\footnotesize\ttfamily \label{class_estatisticas_a6b089bf3d43c9ed2530c8957d1b7dac1} 
 int Estatisticas\+::get\+Empates (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
+
+
+Retorna o número de empates. 
+
+\begin{DoxyReturn}{Retorna}
+int Número de empates. 
+\end{DoxyReturn}
 \Hypertarget{class_estatisticas_a1a9fddf104b95f33b18f8391b70c1749}\index{Estatisticas@{Estatisticas}!getHistorico@{getHistorico}}
 \index{getHistorico@{getHistorico}!Estatisticas@{Estatisticas}}
 \doxysubsubsection{\texorpdfstring{getHistorico()}{getHistorico()}}
@@ -78,31 +111,57 @@ std\+::vector$<$ char $>$ Estatisticas\+::get\+Historico (\begin{DoxyParamCaptio
 {\footnotesize\ttfamily \label{class_estatisticas_a25d85ab639cd1602ac1f876d1ab64f2d} 
 int Estatisticas\+::get\+Vitorias (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
+
+
+Retorna o número de vitórias. 
+
+\begin{DoxyReturn}{Retorna}
+int Número de vitórias. 
+\end{DoxyReturn}
 \Hypertarget{class_estatisticas_a36b26c76b73f6cdd053625d8935c30d1}\index{Estatisticas@{Estatisticas}!mostrarEstatisticas@{mostrarEstatisticas}}
 \index{mostrarEstatisticas@{mostrarEstatisticas}!Estatisticas@{Estatisticas}}
 \doxysubsubsection{\texorpdfstring{mostrarEstatisticas()}{mostrarEstatisticas()}}
 {\footnotesize\ttfamily \label{class_estatisticas_a36b26c76b73f6cdd053625d8935c30d1} 
 void Estatisticas\+::mostrar\+Estatisticas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
-\Hypertarget{class_estatisticas_a5075d7cae6dd067f5ba6f3bfd1d1beb1}\index{Estatisticas@{Estatisticas}!registrarDerrota@{registrarDerrota}}
+
+
+Exibe as estatísticas formatadas. 
+
+Mostra o número de vitórias, derrotas e empates no formato\+:
+\begin{DoxyItemize}
+\item V\+: $<$vitórias$>$ D\+: $<$derrotas$>$ E\+: $<$empates$>$ 
+\end{DoxyItemize}\Hypertarget{class_estatisticas_a5075d7cae6dd067f5ba6f3bfd1d1beb1}\index{Estatisticas@{Estatisticas}!registrarDerrota@{registrarDerrota}}
 \index{registrarDerrota@{registrarDerrota}!Estatisticas@{Estatisticas}}
 \doxysubsubsection{\texorpdfstring{registrarDerrota()}{registrarDerrota()}}
 {\footnotesize\ttfamily \label{class_estatisticas_a5075d7cae6dd067f5ba6f3bfd1d1beb1} 
 void Estatisticas\+::registrar\+Derrota (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_estatisticas_ae228db02bc35d1dfcf1d04875c0133e9}\index{Estatisticas@{Estatisticas}!registrarEmpate@{registrarEmpate}}
+
+
+Registra uma derrota. 
+
+Incrementa o contador de derrotas. \Hypertarget{class_estatisticas_ae228db02bc35d1dfcf1d04875c0133e9}\index{Estatisticas@{Estatisticas}!registrarEmpate@{registrarEmpate}}
 \index{registrarEmpate@{registrarEmpate}!Estatisticas@{Estatisticas}}
 \doxysubsubsection{\texorpdfstring{registrarEmpate()}{registrarEmpate()}}
 {\footnotesize\ttfamily \label{class_estatisticas_ae228db02bc35d1dfcf1d04875c0133e9} 
 void Estatisticas\+::registrar\+Empate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_estatisticas_abeac6560d5e46c650c165a7d04d42072}\index{Estatisticas@{Estatisticas}!registrarVitoria@{registrarVitoria}}
+
+
+Registra um empate. 
+
+Incrementa o contador de empates. \Hypertarget{class_estatisticas_abeac6560d5e46c650c165a7d04d42072}\index{Estatisticas@{Estatisticas}!registrarVitoria@{registrarVitoria}}
 \index{registrarVitoria@{registrarVitoria}!Estatisticas@{Estatisticas}}
 \doxysubsubsection{\texorpdfstring{registrarVitoria()}{registrarVitoria()}}
 {\footnotesize\ttfamily \label{class_estatisticas_abeac6560d5e46c650c165a7d04d42072} 
 void Estatisticas\+::registrar\+Vitoria (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+
+Registra uma vitória. 
+
+Incrementa o contador de vitórias. 
 
 \doxysubsection{Atributos}
 \Hypertarget{class_estatisticas_aec67b9e531350c4cd33548171fd44311}\index{Estatisticas@{Estatisticas}!derrotas@{derrotas}}

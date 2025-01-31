@@ -7,24 +7,26 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_jogos_8hpp}{Jogos.hpp}}"{}}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lig4}{Lig4}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jogos}{Jogos}}}
-\DoxyCodeLine{00007\ \{}
-\DoxyCodeLine{00008\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_lig4_adffdeddf3d20829f752913801554126d}{Lig4}}(\textcolor{keywordtype}{int}\ tamanhoTabuleiro);}
-\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_lig4_adffdeddf3d20829f752913801554126d}{Lig4}}();}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lig4_a5d71a9d01cbf5ab82335adb54998b588}{anunciarInicioPartida}}(\mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador2,\ \textcolor{keywordtype}{bool}\ \&turno)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_a96798dc98180b887cca4f1c889fd74cb}{checarDiagonal}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_a4443ec53d0ce248ea17eb61fa76a32d5}{checarColunas}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_afe8d8e4c63dbfa3150bc713893525714}{checarLinhas}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_a7dfc0a42b198d42fa824830d940eae65}{checarVencedor}}(std::vector<std::pair<int,\ int>>\ \&jogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&vencedor,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&perdedor)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_aeb159bda8eaf80ca285f418c152fc6d6}{checarEmpate}}(\textcolor{keywordtype}{int}\ numeroJogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_01,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_02)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ std::pair<int,\ int>\ \mbox{\hyperlink{class_lig4_af2939a4da623687d92dbcd713737e98f}{lerJogada}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00022\ \};}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lig4}{Lig4}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jogos}{Jogos}}}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_lig4_adffdeddf3d20829f752913801554126d}{Lig4}}(\textcolor{keywordtype}{int}\ tamanhoTabuleiro);}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_lig4_adffdeddf3d20829f752913801554126d}{Lig4}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lig4_a5d71a9d01cbf5ab82335adb54998b588}{anunciarInicioPartida}}(\mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&Jogador2,\ \textcolor{keywordtype}{bool}\ \&turno)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_a96798dc98180b887cca4f1c889fd74cb}{checarDiagonal}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_a4443ec53d0ce248ea17eb61fa76a32d5}{checarColunas}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_afe8d8e4c63dbfa3150bc713893525714}{checarLinhas}}(std::vector<std::pair<int,\ int>>\ \&jogadas);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_a7dfc0a42b198d42fa824830d940eae65}{checarVencedor}}(std::vector<std::pair<int,\ int>>\ \&jogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&vencedor,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&perdedor)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lig4_aeb159bda8eaf80ca285f418c152fc6d6}{checarEmpate}}(\textcolor{keywordtype}{int}\ numeroJogadas,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_01,\ \mbox{\hyperlink{class_jogador}{Jogador}}\ \&jogador\_02)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::pair<int,\ int>\ \mbox{\hyperlink{class_lig4_af2939a4da623687d92dbcd713737e98f}{lerJogada}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lig4_a6f2cc2c64bf576d003ad34101f30cc52}{Lig4Testes}};}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

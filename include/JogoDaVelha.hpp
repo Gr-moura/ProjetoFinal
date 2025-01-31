@@ -41,6 +41,7 @@ class JogoDaVelha : public Jogos
     bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override;
 
     friend class JogoDaVelhaAi;
+    friend class JogoDaVelhaTests;
 };
 
 #endif

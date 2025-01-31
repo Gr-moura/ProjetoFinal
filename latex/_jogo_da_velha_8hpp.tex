@@ -1,8 +1,36 @@
 \doxysection{Referência do Arquivo include/\+Jogo\+Da\+Velha.hpp}
 \hypertarget{_jogo_da_velha_8hpp}{}\label{_jogo_da_velha_8hpp}\index{include/JogoDaVelha.hpp@{include/JogoDaVelha.hpp}}
+
+
+Definição da classe \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}.  
+
+
 {\ttfamily \#include "{}Jogos.\+hpp"{}}\newline
 \doxysubsubsection*{Componentes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_jogo_da_velha}{Jogo\+Da\+Velha}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Definição da classe \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}. 
+
+Esta classe representa o jogo da velha, um jogo de tabuleiro para dois jogadores. Ela herda da classe base {\ttfamily \doxylink{class_jogos}{Jogos}} e implementa as funcionalidades específicas do jogo da velha, como leitura de jogadas, verificação de vitória e empate, e anúncio do início da partida.\hypertarget{_jogo_da_velha_8hpp_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Funcionalidades Principais\+:}{Funcionalidades Principais\+:}}\label{_jogo_da_velha_8hpp_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Gerenciamento de partidas de jogo da velha.
+\item Verificação de vitória (linhas, colunas ou diagonais completas).
+\item Verificação de empate (tabuleiro cheio sem vencedor).
+\item Anúncio do início da partida e alternância de turnos entre os jogadores.
+\end{DoxyItemize}\hypertarget{_jogo_da_velha_8hpp_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{Integração com Outras Classes\+:}{Integração com Outras Classes\+:}}\label{_jogo_da_velha_8hpp_autotoc_md11}
+
+\begin{DoxyItemize}
+\item Herda da classe {\ttfamily \doxylink{class_jogos}{Jogos}}, que define a interface comum para todos os jogos.
+\item Utiliza a classe {\ttfamily \doxylink{class_jogador}{Jogador}} para representar os jogadores participantes.
+\item É amiga da classe {\ttfamily \doxylink{class_jogo_da_velha_ai}{Jogo\+Da\+Velha\+Ai}}, permitindo acesso a métodos protegidos para implementação de inteligência artificial.
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{Veja também}
+\doxylink{class_jogos}{Jogos}, \doxylink{class_jogador}{Jogador}, \doxylink{class_jogo_da_velha_ai}{Jogo\+Da\+Velha\+Ai} 
+\end{DoxySeeAlso}
