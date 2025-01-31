@@ -81,8 +81,8 @@ void Jogos::limparTabuleiro()
 /**
  * @brief Marca uma jogada no tabuleiro.
  *
- * @param jogada Coordenadas (linha, coluna) da jogada.
- * @param turno Indica o turno do jogador (true para jogador 1, false para jogador 2).
+ * @param jogada Coordenadas (linha, coluna) da jogada
+ * @param turno Indica o turno do jogador (true para jogador 1, false para jogador 2)
  */
 void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
 {
@@ -95,7 +95,7 @@ void Jogos::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
 /**
  * @brief Anuncia o turno do jogador atual.
  *
- * @param Jogador Referência para o jogador cujo turno será anunciado.
+ * @param Jogador Referência para o jogador cujo turno será anunciado
  */
 void Jogos::anunciarTurnoJogador(Jogador &Jogador)
 {
@@ -105,7 +105,8 @@ void Jogos::anunciarTurnoJogador(Jogador &Jogador)
 /**
  * @brief Sorteia qual jogador começa a partida.
  *
- * @return bool True se o jogador 1 começar, False se o jogador 2 começar.
+ * @return true Se o jogador 1 começar
+ * @return false Se o jogador 2 começar
  */
 bool Jogos::sorteioTurno()
 {
@@ -117,10 +118,12 @@ bool Jogos::sorteioTurno()
 /**
  * @brief Verifica se uma jogada já foi realizada.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @param linha Linha da jogada a ser verificada.
- * @param coluna Coluna da jogada a ser verificada.
- * @return bool True se a jogada já foi realizada, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ * @param linha Linha da jogada a ser verificada
+ * @param coluna Coluna da jogada a ser verificada
+ *
+ * @return true Se a jogada já foi realizada
+ * @return false Se a jogada não foi realizada
  */
 bool Jogos::checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int linha, int coluna)
 {
@@ -134,9 +137,11 @@ bool Jogos::checarJogadaExistente(std::vector<std::pair<int, int>> &jogadas, int
 /**
  * @brief Verifica se uma posição no tabuleiro é válida.
  *
- * @param linha Linha da posição a ser verificada.
- * @param coluna Coluna da posição a ser verificada.
- * @return bool True se a posição for válida, False caso contrário.
+ * @param linha Linha da posição a ser verificada
+ * @param coluna Coluna da posição a ser verificada
+ *
+ * @return true Se a posição for válida
+ * @return false Se a posição for inválida
  */
 bool Jogos::checarPosicaoValida(int linha, int coluna)
 {
@@ -171,8 +176,8 @@ bool Jogos::checarPosicaoValida(int linha, int coluna)
  * Gerencia o fluxo da partida, alternando turnos entre os jogadores, validando jogadas,
  * verificando vitórias e empates, e exibindo o tabuleiro.
  *
- * @param Jogador1 Referência para o primeiro jogador.
- * @param Jogador2 Referência para o segundo jogador.
+ * @param Jogador1 Referência para o primeiro jogador
+ * @param Jogador2 Referência para o segundo jogador
  */
 void Jogos::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
