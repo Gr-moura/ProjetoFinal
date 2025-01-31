@@ -50,6 +50,8 @@ class Lig4 : public Jogos
     bool checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02) override;
 
     std::pair<int, int> lerJogada() override;
+
+    friend class Lig4Testes;
 };
 
 #endif

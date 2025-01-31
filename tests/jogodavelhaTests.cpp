@@ -1,9 +1,6 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <algorithm>
-#include <limits>
-#include <utility>
 #include <string>
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
@@ -62,7 +59,7 @@ TEST_CASE("Testando o construtor parametrizado") {
     CHECK(testes.testRetornarTabuleiro(jogo).size() == 4);
     for (const auto& linha : testes.testRetornarTabuleiro(jogo)) {
         for (char celula : linha) {
-            CHECK(celula == ' '); // Verifica se todas as células estão vazias
+            CHECK(celula == ' ');
         }
     }
 }
@@ -71,46 +68,46 @@ TEST_CASE("Testando a função privada checarPosicaoValida") {
     JogoDaVelha jogo;
 
     // Testes para a função privada checarPosicaoValida
-    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, 0, 0) == true);  // Posição válida
-    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, 2, 2) == true);  // Posição válida
-    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, 3, 3) == false); // Posição inválida
-    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, -1, 0) == false); // Posição inválida
+    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, 0, 0) == true);  
+    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, 2, 2) == true);  
+    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, 3, 3) == false); 
+    CHECK(JogoDaVelhaTests::testChecarPosicaoValida(jogo, -1, 0) == false);
 }
 
 TEST_CASE("Testando a função privada checarDiagonal") {
     JogoDaVelha jogo;
     std::vector<std::pair<int, int>> jogadas = {{0, 0}, {1, 1}, {2, 2}};
-    CHECK(JogoDaVelhaTests::testChecarDiagonal(jogo, jogadas) == true); // Diagonal principal completa
+    CHECK(JogoDaVelhaTests::testChecarDiagonal(jogo, jogadas) == true); 
 
     jogadas = {{0, 2}, {1, 1}, {2, 0}};
-    CHECK(JogoDaVelhaTests::testChecarDiagonal(jogo, jogadas) == true); // Diagonal secundária completa
+    CHECK(JogoDaVelhaTests::testChecarDiagonal(jogo, jogadas) == true); 
 
     jogadas = {{0, 0}, {1, 1}, {2, 1}};
-    CHECK(JogoDaVelhaTests::testChecarDiagonal(jogo, jogadas) == false); // Diagonal não completa
+    CHECK(JogoDaVelhaTests::testChecarDiagonal(jogo, jogadas) == false);
 }
 
 TEST_CASE("Testando a função privada checarColunas") {
     JogoDaVelha jogo;
     std::vector<std::pair<int, int>> jogadas = {{0, 0}, {1, 0}, {2, 0}};
-    CHECK(JogoDaVelhaTests::testChecarColunas(jogo, jogadas) == true); // Coluna completa
+    CHECK(JogoDaVelhaTests::testChecarColunas(jogo, jogadas) == true);
 
     jogadas = {{0, 1}, {1, 1}, {2, 1}};
-    CHECK(JogoDaVelhaTests::testChecarColunas(jogo, jogadas) == true); // Coluna completa
+    CHECK(JogoDaVelhaTests::testChecarColunas(jogo, jogadas) == true);
 
     jogadas = {{0, 0}, {1, 1}, {2, 2}};
-    CHECK(JogoDaVelhaTests::testChecarColunas(jogo, jogadas) == false); // Coluna não completa
+    CHECK(JogoDaVelhaTests::testChecarColunas(jogo, jogadas) == false); 
 }
 
 TEST_CASE("Testando a função privada checarLinhas") {
     JogoDaVelha jogo;
     std::vector<std::pair<int, int>> jogadas = {{0, 0}, {0, 1}, {0, 2}};
-    CHECK(JogoDaVelhaTests::testChecarLinhas(jogo, jogadas) == true); // Linha completa
+    CHECK(JogoDaVelhaTests::testChecarLinhas(jogo, jogadas) == true);
 
     jogadas = {{1, 0}, {1, 1}, {1, 2}};
-    CHECK(JogoDaVelhaTests::testChecarLinhas(jogo, jogadas) == true); // Linha completa
+    CHECK(JogoDaVelhaTests::testChecarLinhas(jogo, jogadas) == true);
 
     jogadas = {{0, 0}, {1, 1}, {2, 2}};
-    CHECK(JogoDaVelhaTests::testChecarLinhas(jogo, jogadas) == false); // Linha não completa
+    CHECK(JogoDaVelhaTests::testChecarLinhas(jogo, jogadas) == false);
 }
 
 TEST_CASE("Testando a função lerJogada") {
@@ -119,7 +116,7 @@ TEST_CASE("Testando a função lerJogada") {
     std::istringstream inputValido("1 1\n");
     std::cin.rdbuf(inputValido.rdbuf());
     auto jogada = testes.testLerJogada(jogo);
-    CHECK(jogada == std::make_pair(0, 0)); // Verifica se a jogada foi registrada corretamente
+    CHECK(jogada == std::make_pair(0, 0));
     // Simula uma entrada inválida
     std::istringstream inputInvalido("4 4\n");
     std::cin.rdbuf(inputInvalido.rdbuf());
