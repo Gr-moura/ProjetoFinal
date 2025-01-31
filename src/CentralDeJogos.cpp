@@ -215,6 +215,7 @@ void CentralDeJogos::removerJogador(std::string &apelido)
     if (apelido == "AI")
     {
         std::cout << "ERRO: O jogador IA nao pode ser deletado" << std::endl;
+        return;
     }
     auto posicaoNoVetor = std::find_if(jogadoresCadastrados.begin(), jogadoresCadastrados.end(),
                                        [&apelido](const Jogador &jogador) { return jogador.getApelido() == apelido; });
