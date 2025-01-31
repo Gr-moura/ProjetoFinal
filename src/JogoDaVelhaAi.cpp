@@ -203,7 +203,7 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
 
-    std::cout << "Bem vindo ao Jogo da velha! Qual jogador deverá começar a partida?\n"
+    std::cout << "Bem vindo ao Jogo da velha! Qual jogador devera começar a partida?\n"
               << Jogador1.getApelido() << " (0)\nAI (1)" << std::endl;
 
     bool turno;
@@ -231,7 +231,7 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 
     int dificuldade = 0;
     std::cout << "Qual será a dificuldade da AI?\n"
-              << "Fácil (0)\nMédio (1)\nDifícil (2)" << std::endl;
+              << "Facil (0)\nMedio (1)\nDificil (2)" << std::endl;
 
     while (true)
     {
@@ -241,7 +241,7 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                throw std::invalid_argument("A entrada deve ser um número inteiro entre 0 e 2");
+                throw std::invalid_argument("A entrada deve ser um numero inteiro entre 0 e 2");
             }
             if (dificuldade < 0 || dificuldade > 2)
             {
