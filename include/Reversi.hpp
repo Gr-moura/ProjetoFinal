@@ -28,6 +28,7 @@ class Reversi : public Jogos
 
     Jogador *JogadorX = nullptr;
     Jogador *JogadorO = nullptr;
+    int ContadorTurnos = 0;
 };
 
 #endif

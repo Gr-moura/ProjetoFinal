@@ -51,15 +51,15 @@ void Reversi::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &
     {
         std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador1.getApelido()
                   << " comecara a partida com as pecas 'X'!" << std::endl;
-        *JogadorX = Jogador1;
-        *JogadorO = Jogador2;
+        JogadorX = &Jogador1;
+        JogadorO = &Jogador2;
     }
     else
     {
         std::cout << "Bem-vindo ao Reversi! O jogador " << Jogador2.getApelido()
-                  << " comecara a partida com as pecas 'O'!" << std::endl;
-        *JogadorX = Jogador2;
-        *JogadorO = Jogador1;
+                  << " comecara a partida com as pecas 'X'!" << std::endl;
+        JogadorX = &Jogador2;
+        JogadorO = &Jogador1;
     }
 }
 
@@ -88,7 +88,7 @@ std::pair<int, int> Reversi::lerJogada(bool turno)
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
-        char jogador = turno ? 'X' : 'O';
+        char jogador = (ContadorTurnos % 2 == 1) ? 'X' : 'O';
         std::vector<std::pair<int, int>> flips;
         std::pair<int, int> jogada = {linha - 1, coluna - 1};
 
@@ -116,18 +116,18 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
     bool turno = sorteioTurno();
-    int contadorTurnos = 0;
+    ContadorTurnos = 0;
     std::vector<std::pair<int, int>> movimentosJogador1;
     std::vector<std::pair<int, int>> movimentosJogador2;
 
     std::pair<int, int> jogada;
     anunciarInicioPartida(Jogador1, Jogador2, turno);
-    
+
     while (jogoEmAndamento)
     {
-        contadorTurnos++;
-        bool movimentosJogadorAtual = turno ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
-        bool movimentosOutroJogador = !turno ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
+        ContadorTurnos++;
+        bool movimentosJogadorAtual = (ContadorTurnos % 2 == 1) ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
+        bool movimentosOutroJogador = !(ContadorTurnos % 2 == 1)  ? haMovimentosDisponiveis('X') : haMovimentosDisponiveis('O');
 
         if (!movimentosJogadorAtual && !movimentosOutroJogador)
         {
@@ -139,18 +139,19 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 
         if (!movimentosJogadorAtual)
         {
-            std::cout << "Jogador " << (turno ? Jogador1.getApelido() : Jogador2.getApelido())
+            std::cout << "Jogador " << ((ContadorTurnos % 2 == 1)  ? Jogador1.getApelido() : Jogador2.getApelido())
                       << " nao tem movimentos validos. Turno passado para o proximo jogador." << std::endl;
             turno = !turno;
             continue;
         }
 
-        if (turno)
+        if ((ContadorTurnos % 2 == 1) )
         {
             anunciarTurnoJogador(Jogador1); // jogadorX no reversi
-            jogada = lerJogada(turno);
+            bool aux = (ContadorTurnos % 2 == 1);
+            jogada = lerJogada((ContadorTurnos % 2 == 1) );
 
-            marcarTabuleiro(jogada, turno);
+            marcarTabuleiro(jogada, aux);
             mostrarTabuleiro();
 
             movimentosJogador1.push_back(jogada);
@@ -159,16 +160,17 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
         else
         {
             anunciarTurnoJogador(Jogador2); // jogadorO no reversi
-            jogada = lerJogada(turno);
+            jogada = lerJogada((ContadorTurnos % 2 == 1) );
+            bool aux = (ContadorTurnos % 2 == 1);
 
-            marcarTabuleiro(jogada, turno);
+            marcarTabuleiro(jogada, aux);
             mostrarTabuleiro();
 
             movimentosJogador2.push_back(jogada);
             turno = not turno;
         }
 
-        if (checarEmpate(contadorTurnos, Jogador1, Jogador2))
+        if (checarEmpate(ContadorTurnos, Jogador1, Jogador2))
         {
             jogoEmAndamento = false;
             limparTabuleiro();
@@ -186,7 +188,7 @@ void Reversi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 void Reversi::marcarTabuleiro(std::pair<int, int> &jogada, bool &turno)
 {
     char jogador;
-    if (turno)
+    if (ContadorTurnos % 2 == 1)
     {
         jogador = 'X';
     }
@@ -298,6 +300,8 @@ void Reversi::limparTabuleiro()
     tabuleiro[3][4] = 'O';
     tabuleiro[4][3] = 'O';
     tabuleiro[4][4] = 'X';
+
+    ContadorTurnos = 0;
 }
 
 
