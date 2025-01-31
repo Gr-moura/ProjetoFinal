@@ -72,6 +72,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             jogada = lerJogada(tabuleiroJogadasJogador1);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador1, barcosJogador2);
+            std::cout << "Tabuleiro de Jogadas do Jogador: " << Jogador1.getApelido() << std::endl;
             mostrarTabuleiro(tabuleiroJogadasJogador1);
 
             movimentosJogador1.push_back(jogada);
@@ -91,6 +92,7 @@ void BatalhaNaval::Jogar(Jogador &Jogador1, Jogador &Jogador2)
             jogada = lerJogada(tabuleiroJogadasJogador2);
 
             marcarTabuleiro(jogada, turno, tabuleiroJogadasJogador2, barcosJogador1);
+            std::cout << "Tabuleiro de Jogadas do Jogador: " << Jogador2.getApelido() << std::endl;
             mostrarTabuleiro(tabuleiroJogadasJogador2);
 
             movimentosJogador2.push_back(jogada);
@@ -262,6 +264,63 @@ bool BatalhaNaval::verificarEntrada(char tipo, int linhaInicial, int colunaInici
 }
 
 /**
+ * @brief Verifica se o novo barco está sobrepondo outro barco já posicionado.
+ *
+ * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador.
+ * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
+ * @param linhaInicial Linha inicial do barco.
+ * @param colunaInicial Coluna inicial do barco.
+ * @param linhaFinal Linha final do barco.
+ * @param colunaFinal Coluna final do barco.
+ * @return `true` se houver sobreposição, `false` caso contrário.
+ */
+bool BatalhaNaval::verificarSobreposicao(const std::vector<std::pair<int, int>> &barcosJogador, char tipo,
+                                         int linhaInicial, int colunaInicial, int linhaFinal, int colunaFinal)
+{
+    if (colunaInicial > colunaFinal)
+    {
+        std::swap(colunaInicial, colunaFinal);
+    }
+    if (linhaInicial > linhaFinal)
+    {
+        std::swap(linhaInicial, linhaFinal);
+    }
+
+    bool barcoHorizontal = (linhaInicial == linhaFinal);
+    int tamanhoBarco = getTamanhoBarco(tipo);
+
+    if (tamanhoBarco == -1)
+    {
+        return false; // Tipo de barco inválido
+    }
+
+    if (barcoHorizontal)
+    {
+        for (int colunas = colunaInicial; colunas < colunaInicial + tamanhoBarco; ++colunas)
+        {
+            std::pair<int, int> posicao = {linhaInicial - 1, colunas - 1};
+            if (std::find(barcosJogador.begin(), barcosJogador.end(), posicao) != barcosJogador.end())
+            {
+                return true; // Há sobreposição
+            }
+        }
+    }
+    else
+    {
+        for (int linhas = linhaInicial; linhas < linhaInicial + tamanhoBarco; ++linhas)
+        {
+            std::pair<int, int> posicao = {linhas - 1, colunaInicial - 1};
+            if (std::find(barcosJogador.begin(), barcosJogador.end(), posicao) != barcosJogador.end())
+            {
+                return true; // Há sobreposição
+            }
+        }
+    }
+
+    return false; // Não há sobreposição
+}
+
+/**
  * @brief Retorna o tamanho de um barco com base no tipo usando um switch-case básico.
  *
  * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
@@ -311,8 +370,9 @@ void BatalhaNaval::lerBarcos(std::vector<std::pair<int, int>> &barcosJogador, Jo
     for (int barcosLidos = 0; barcosLidos < 10; barcosLidos++)
     {
         std::cin >> tipo >> linhaInicial >> colunaInicial >> linhaFinal >> colunaFinal;
-        if (verificarEntrada(tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal) and
-            quantidadeBarcosDisponiveis(countBarcos, tipo))
+        if (verificarEntrada(tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal) &&
+            quantidadeBarcosDisponiveis(countBarcos, tipo) &&
+            !verificarSobreposicao(barcosJogador, tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal))
         {
             inserirBarcos(barcosJogador, tipo, linhaInicial, colunaInicial, linhaFinal, colunaFinal);
             countBarcos[tipo]++;
@@ -320,7 +380,7 @@ void BatalhaNaval::lerBarcos(std::vector<std::pair<int, int>> &barcosJogador, Jo
         else
         {
             std::cout << "Insira novamente com parametros validos, atente-se tambem a quantidade especifica de cada "
-                         "tipo de barco."
+                         "tipo de barco e a nao sobreposicao de barcos."
                       << std::endl;
             barcosLidos--;
         }
@@ -399,7 +459,8 @@ bool BatalhaNaval::verificarTamanhodoBarco(char tipo, int linhaInicial, int colu
 /**
  * @brief Insere os barcos no vetor de barcos do jogador. Ele implementa o mesmo sistema de swap de Inicial e Final,
  * a inserção é feita percorrendo os limites superiores e inferiores obtidos na entrada do jogador, e introduz todas as
- * posições ocupadas por barcos no vector com o (-1), para garantir a correspondência entre o sistema do vector e a entrada.abort
+ * posições ocupadas por barcos no vector com o (-1), para garantir a correspondência entre o sistema do vector e a
+ * entrada.abort
  *
  * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador.
  * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
@@ -445,9 +506,9 @@ void BatalhaNaval::inserirBarcos(std::vector<std::pair<int, int>> &barcosJogador
 }
 
 /**
- * @brief Exibe o tabuleiro do jogador no console, e recebe um parâmetro tabuleiro, diferentemente da classe Pai Jogos, porque
- * há 2 tabuleiros durante a execução do jogo, e precisamos printar ambos a cada rodada, por isso, foi necessário sobrecarregar o
- * método para usar o parâmetro em questão.
+ * @brief Exibe o tabuleiro do jogador no console, e recebe um parâmetro tabuleiro, diferentemente da classe Pai Jogos,
+ * porque há 2 tabuleiros durante a execução do jogo, e precisamos printar ambos a cada rodada, por isso, foi necessário
+ * sobrecarregar o método para usar o parâmetro em questão.
  *
  * @param tabuleiroJogador Matriz de caracteres representando o tabuleiro do jogador.
  */
@@ -475,9 +536,9 @@ void BatalhaNaval::mostrarTabuleiro(const std::vector<std::vector<char>> &tabule
 }
 
 /**
- * @brief Marca o tabuleiro com a jogada realizada, indicando acerto ('X') ou erro ('O'). A função 
- * usa da iteração no vetor de posições barcos do inimigo e a comparação com a jogada da respectiva rodada. Caso a jogada
- * seja igual a alguma das posições, é sinalizado o acerto.
+ * @brief Marca o tabuleiro com a jogada realizada, indicando acerto ('X') ou erro ('O'). A função
+ * usa da iteração no vetor de posições barcos do inimigo e a comparação com a jogada da respectiva rodada. Caso a
+ * jogada seja igual a alguma das posições, é sinalizado o acerto.
  *
  * @param jogada Par de inteiros representando a jogada (linha, coluna).
  * @param turno Referência para a variável que controla o turno dos jogadores.
