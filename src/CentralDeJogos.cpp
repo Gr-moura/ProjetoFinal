@@ -70,7 +70,7 @@ CentralDeJogos::CentralDeJogos()
         jogadoresCadastrados.push_back(jogador);
     }
     auto posicaoAI = std::find_if(jogadoresCadastrados.begin(), jogadoresCadastrados.end(),
-                                            [&](const Jogador &jogador) { return jogador.getApelido() == "AI"; });
+                                  [&](const Jogador &jogador) { return jogador.getApelido() == "AI"; });
     if (posicaoAI == jogadoresCadastrados.end())
     {
         Jogador AI("AI", "AI");

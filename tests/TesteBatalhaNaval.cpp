@@ -1,11 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <algorithm>
-#include <limits>
-#include <utility>
 #include <string>
-#include <map>
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"

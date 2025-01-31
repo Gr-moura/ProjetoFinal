@@ -1,9 +1,6 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <algorithm>
-#include <limits>
-#include <utility>
 #include <string>
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
@@ -42,12 +39,6 @@ public:
 // Testes
 TEST_CASE("Testando o construtor padrão") {
     Lig4 lig4;
-    // Verifique se o tabuleiro foi inicializado corretamente
-}
-
-TEST_CASE("Testando o construtor parametrizado") {
-    Lig4 lig4(4); // Tabuleiro 4x4
-    // Verifique se o tabuleiro foi inicializado corretamente
 }
 
 TEST_CASE("Testando a função privada checarDiagonal") {
