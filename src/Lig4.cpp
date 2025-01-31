@@ -14,7 +14,7 @@
  *
  * Inicializa o tabuleiro com um tamanho personalizado.
  *
- * @param tamanhoTabuleiro Tamanho do tabuleiro (ex: 7 para um tabuleiro 7x6).
+ * @param tamanhoTabuleiro Tamanho do tabuleiro (ex: 7 para um tabuleiro 7x6)
  */
 Lig4::Lig4(int tamanhoTabuleiro)
 {
@@ -36,9 +36,9 @@ Lig4::Lig4()
  *
  * Exibe uma mensagem de boas-vindas e informa qual jogador começa a partida.
  *
- * @param Jogador1 Referência para o primeiro jogador.
- * @param Jogador2 Referência para o segundo jogador.
- * @param turno Referência para a variável que controla o turno dos jogadores.
+ * @param Jogador1 Referência para o primeiro jogador
+ * @param Jogador2 Referência para o segundo jogador
+ * @param turno Referência para a variável que controla o turno dos jogadores
  */
 void Lig4::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
@@ -58,7 +58,7 @@ void Lig4::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &tur
  *
  * Solicita ao jogador que insira a coluna onde deseja inserir a peça e valida a entrada.
  *
- * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada válida.
+ * @return std::pair<int, int> Coordenadas (linha, coluna) da jogada válida
  */
 std::pair<int, int> Lig4::lerJogada()
 {
@@ -101,8 +101,10 @@ std::pair<int, int> Lig4::lerJogada()
 /**
  * @brief Verifica se há um vencedor nas diagonais do tabuleiro.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ *
+ * @return true Se houver um vencedor
+ * @return false Se não houver um vencedor
  */
 bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas)
 {
@@ -180,8 +182,10 @@ bool Lig4::checarDiagonal(std::vector<std::pair<int, int>> &jogadas)
 /**
  * @brief Verifica se há um vencedor nas linhas do tabuleiro.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ *
+ * @return true Se houver um vencedor
+ * @return false Se não houver um vencedor
  */
 bool Lig4::checarLinhas(std::vector<std::pair<int, int>> &jogadas)
 {
@@ -228,8 +232,10 @@ bool Lig4::checarLinhas(std::vector<std::pair<int, int>> &jogadas)
 /**
  * @brief Verifica se há um vencedor nas colunas do tabuleiro.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ *
+ * @return true se houver um vencedor
+ * @return false Se não gouver um vencedor
  */
 bool Lig4::checarColunas(std::vector<std::pair<int, int>> &jogadas)
 {
@@ -275,10 +281,12 @@ bool Lig4::checarColunas(std::vector<std::pair<int, int>> &jogadas)
 /**
  * @brief Verifica se há um vencedor no jogo.
  *
- * @param jogadas Vetor de jogadas realizadas.
- * @param vencedor Referência para o jogador vencedor.
- * @param perdedor Referência para o jogador perdedor.
- * @return bool True se houver um vencedor, False caso contrário.
+ * @param jogadas Vetor de jogadas realizadas
+ * @param vencedor Referência para o jogador vencedor
+ * @param perdedor Referência para o jogador perdedor
+ *
+ * @return true Se houver um vencedor
+ * @return false Se não houver um vencedor
  */
 bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &vencedor, Jogador &perdedor)
 {
@@ -297,10 +305,12 @@ bool Lig4::checarVencedor(std::vector<std::pair<int, int>> &jogadas, Jogador &ve
 /**
  * @brief Verifica se o jogo terminou em empate.
  *
- * @param numeroJogadas Número total de jogadas realizadas.
- * @param jogador_01 Referência para o primeiro jogador.
- * @param jogador_02 Referência para o segundo jogador.
- * @return bool True se o jogo terminou em empate, False caso contrário.
+ * @param numeroJogadas Número total de jogadas realizadas
+ * @param jogador_01 Referência para o primeiro jogador
+ * @param jogador_02 Referência para o segundo jogador
+ *
+ * @return true Se o jogo empatou
+ * @return false Se o jogo não está empatado
  */
 bool Lig4::checarEmpate(int numeroJogadas, Jogador &jogador_01, Jogador &jogador_02)
 {
