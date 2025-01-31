@@ -1,5 +1,10 @@
 \doxysection{Referência do Arquivo include/\+Jogos.hpp}
 \hypertarget{_jogos_8hpp}{}\label{_jogos_8hpp}\index{include/Jogos.hpp@{include/Jogos.hpp}}
+
+
+Definição da classe \doxylink{class_jogos}{Jogos}.  
+
+
 {\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$ctime$>$}\newline
 {\ttfamily \#include $<$fstream$>$}\newline
@@ -15,3 +20,43 @@
 \item 
 class \mbox{\hyperlink{class_jogos}{Jogos}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Definição da classe \doxylink{class_jogos}{Jogos}. 
+
+Esta classe é uma classe base abstrata que define a interface comum para todos os jogos do sistema. Ela fornece métodos e atributos básicos para gerenciar partidas, como manipulação do tabuleiro, verificação de vitória e empate, e controle de turnos. Classes derivadas, como {\ttfamily \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}}, {\ttfamily \doxylink{class_lig4}{Lig4}}, {\ttfamily \doxylink{class_reversi}{Reversi}} e {\ttfamily \doxylink{class_batalha_naval}{Batalha\+Naval}}, implementam as funcionalidades específicas de cada jogo.\hypertarget{_jogos_8hpp_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{Funcionalidades Principais\+:}{Funcionalidades Principais\+:}}\label{_jogos_8hpp_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Gerenciamento de tabuleiros genéricos.
+\item Controle de turnos entre jogadores.
+\item Verificação de vitória e empate (a serem implementados pelas classes derivadas).
+\item Exibição do tabuleiro e anúncio de turnos.
+\item Sorteio de quem começa a partida.
+\end{DoxyItemize}\hypertarget{_jogos_8hpp_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{Métodos Virtuais Puros\+:}{Métodos Virtuais Puros\+:}}\label{_jogos_8hpp_autotoc_md13}
+
+\begin{DoxyItemize}
+\item {\ttfamily checar\+Vencedor}\+: Verifica se há um vencedor no jogo (deve ser implementado pelas classes derivadas).
+\item {\ttfamily checar\+Empate}\+: Verifica se o jogo terminou em empate (deve ser implementado pelas classes derivadas).
+\item {\ttfamily anunciar\+Inicio\+Partida}\+: Anuncia o início da partida e define o jogador que começa (deve ser implementado pelas classes derivadas).
+\end{DoxyItemize}\hypertarget{_jogos_8hpp_autotoc_md14}{}\doxysubsubsection{\texorpdfstring{Métodos Virtuais\+:}{Métodos Virtuais\+:}}\label{_jogos_8hpp_autotoc_md14}
+
+\begin{DoxyItemize}
+\item {\ttfamily marcar\+Tabuleiro}\+: Marca uma jogada no tabuleiro.
+\item {\ttfamily limpar\+Tabuleiro}\+: Limpa o tabuleiro para uma nova partida.
+\item {\ttfamily ler\+Jogada}\+: Lê a jogada do jogador (pode ser sobrescrito pelas classes derivadas).
+\end{DoxyItemize}\hypertarget{_jogos_8hpp_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{Métodos Públicos\+:}{Métodos Públicos\+:}}\label{_jogos_8hpp_autotoc_md15}
+
+\begin{DoxyItemize}
+\item {\ttfamily mostrar\+Tabuleiro}\+: Exibe o tabuleiro atual.
+\item {\ttfamily Jogar}\+: Inicia e gerencia uma partida entre dois jogadores.
+\end{DoxyItemize}\hypertarget{_jogos_8hpp_autotoc_md16}{}\doxysubsubsection{\texorpdfstring{Integração com Outras Classes\+:}{Integração com Outras Classes\+:}}\label{_jogos_8hpp_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Utiliza a classe {\ttfamily \doxylink{class_jogador}{Jogador}} para representar os participantes do jogo.
+\item Serve como base para classes de jogos específicos, como {\ttfamily \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}}, {\ttfamily \doxylink{class_lig4}{Lig4}}, {\ttfamily \doxylink{class_reversi}{Reversi}} e {\ttfamily \doxylink{class_batalha_naval}{Batalha\+Naval}}.
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{Veja também}
+\doxylink{class_jogador}{Jogador}, \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}, \doxylink{class_lig4}{Lig4}, \doxylink{class_reversi}{Reversi}, \doxylink{class_batalha_naval}{Batalha\+Naval} 
+\end{DoxySeeAlso}

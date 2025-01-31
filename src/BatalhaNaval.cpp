@@ -201,7 +201,8 @@ std::pair<int, int> BatalhaNaval::lerJogada(std::vector<std::vector<char>> &tabu
  * @param linhaFinal Inteiro representando a linha final do barco
  * @param colunaFinal Inteiro representando a coluna final do barco
  *
- * @return Retorna `true` se a entrada for válida, `false` caso contrário
+ * @return true Se a entrada for válida
+ * @return false Se a entrada não for válida
  */
 bool BatalhaNaval::verificarEntrada(char tipo, int linhaInicial, int colunaInicial, int linhaFinal, int colunaFinal)
 {
@@ -256,13 +257,15 @@ bool BatalhaNaval::verificarEntrada(char tipo, int linhaInicial, int colunaInici
 /**
  * @brief Verifica se o novo barco está sobrepondo outro barco já posicionado.
  *
- * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador.
- * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
- * @param linhaInicial Linha inicial do barco.
- * @param colunaInicial Coluna inicial do barco.
- * @param linhaFinal Linha final do barco.
- * @param colunaFinal Coluna final do barco.
- * @return `true` se houver sobreposição, `false` caso contrário.
+ * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador
+ * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S')
+ * @param linhaInicial Linha inicial do barco
+ * @param colunaInicial Coluna inicial do barco
+ * @param linhaFinal Linha final do barco
+ * @param colunaFinal Coluna final do barco
+ *
+ * @return true Se houver sobreposição
+ * @return false Se não houver sobreposição
  */
 bool BatalhaNaval::verificarSobreposicao(const std::vector<std::pair<int, int>> &barcosJogador, char tipo,
                                          int linhaInicial, int colunaInicial, int linhaFinal, int colunaFinal)
@@ -313,8 +316,10 @@ bool BatalhaNaval::verificarSobreposicao(const std::vector<std::pair<int, int>> 
 /**
  * @brief Retorna o tamanho de um barco com base no tipo usando um switch-case básico.
  *
- * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
- * @return Tamanho do barco. Retorna -1 se o tipo for inválido.
+ * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S')
+ *
+ * @return int Tamanho do barco, se for válido
+ * @return -1 Se o tipo for inválido
  */
 int BatalhaNaval::getTamanhoBarco(char tipo)
 {
@@ -342,8 +347,8 @@ int BatalhaNaval::getTamanhoBarco(char tipo)
  * controle de qualidade, analisando se eles podem ser introduzidos no vetor de barcos do respectivo jogador e caso não
  * possam, uma mensagem de erro aparece, o número de iterações é mantido e o loop continua.
  *
- * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador.
- * @param Jogador Referência para o jogador.
+ * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador
+ * @param Jogador Referência para o jogador
  */
 void BatalhaNaval::lerBarcos(std::vector<std::pair<int, int>> &barcosJogador, Jogador &Jogador)
 {
@@ -381,9 +386,11 @@ void BatalhaNaval::lerBarcos(std::vector<std::pair<int, int>> &barcosJogador, Jo
  * @brief Verifica se a quantidade de barcos disponíveis para um tipo específico é suficiente e serve como auxiliar para
  * a função de lerBarcos, impedindo que o número de barcos supere o permitido.
  *
- * @param countBarcos Mapa que conta a quantidade de barcos disponíveis por tipo.
- * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
- * @return `true` se houver barcos disponíveis, `false` caso contrário.
+ * @param countBarcos Mapa que conta a quantidade de barcos disponíveis por tipo
+ * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S')
+ *
+ * @return true Se houver barcos disponíveis
+ * @return false Se não houver barcos disponíveis
  */
 bool BatalhaNaval::quantidadeBarcosDisponiveis(std::map<char, int> &countBarcos, char tipo)
 {
@@ -407,12 +414,14 @@ bool BatalhaNaval::quantidadeBarcosDisponiveis(std::map<char, int> &countBarcos,
  * verificarEntrada() para garantir que o usuário não insira barcos com tamanhos além dos permitidos. O swap existe para
  * garantir que a Final seja sempre maior que a Incial, para garantir que não hajam números negativos.
  *
- * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').
- * @param linhaInicial Linha inicial do barco.
- * @param colunaInicial Coluna inicial do barco.
- * @param linhaFinal Linha final do barco.
- * @param colunaFinal Coluna final do barco.
- * @return `true` se o tamanho do barco for válido, `false` caso contrário.
+ * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S')
+ * @param linhaInicial Linha inicial do barco
+ * @param colunaInicial Coluna inicial do barco
+ * @param linhaFinal Linha final do barco
+ * @param colunaFinal Coluna final do barco
+ *
+ * @return true Se o tamanho do barco for válido
+ * @return false Se o tamanho do barco não for válido
  */
 bool BatalhaNaval::verificarTamanhodoBarco(char tipo, int linhaInicial, int colunaInicial, int linhaFinal,
                                            int colunaFinal)
@@ -450,7 +459,7 @@ bool BatalhaNaval::verificarTamanhodoBarco(char tipo, int linhaInicial, int colu
  * @brief Insere os barcos no vetor de barcos do jogador. Ele implementa o mesmo sistema de swap de Inicial e Final,
  * a inserção é feita percorrendo os limites superiores e inferiores obtidos na entrada do jogador, e introduz todas as
  * posições ocupadas por barcos no vector com o (-1), para garantir a correspondência entre o sistema do vector e a
- * entrada.abort
+ * entrada.
  *
  * @param barcosJogador Vetor de pares de inteiros representando as posições dos barcos do jogador.
  * @param tipo Caractere representando o tipo de barco ('P', 'E', 'C', 'S').

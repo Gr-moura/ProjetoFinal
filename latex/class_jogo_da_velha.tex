@@ -14,54 +14,56 @@ Diagrama de hierarquia da classe Jogo\+Da\+Velha\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_jogo_da_velha_a4cd8634f2b9f754fae92e2e6bc897c19}{Jogo\+Da\+Velha}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_jogo_da_velha_a9e69791576a58753ab84f87e3a54446c}{Jogo\+Da\+Velha}} (int tamanho\+Tabuleiro)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Construtor parametrizado da classe \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Membros Públicos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_jogos_a9fc8e1c2a4ec96ac074ccc75648e6611}{mostrar\+Tabuleiro}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Exibe o tabuleiro atual. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_jogos_a922f7294a2cb6961e9f6290edc438f3e}{Jogar}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador2)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa uma partida entre dois jogadores. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Membros protegidos}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_jogo_da_velha_ae681acb2ca98e100ce618de6751c796a}{anunciar\+Inicio\+Partida}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador2, bool \&turno) override
-\item 
+\begin{DoxyCompactList}\small\item\em Anuncia o início da partida e define o jogador que começa. \end{DoxyCompactList}\item 
 std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_jogo_da_velha_aa7cfae1cc53ed2b6a0c83aba57444509}{ler\+Jogada}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Lê a jogada do jogador atual. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_jogo_da_velha_a1a34673ea9a973dd7cf891def4be3051}{checar\+Diagonal}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se há um vencedor nas diagonais do tabuleiro. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_jogo_da_velha_a6a3f56c0d66d65b6ffb0cbbe776faeb0}{checar\+Colunas}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se há um vencedor nas colunas do tabuleiro. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_jogo_da_velha_a9d64a747bbdae76ea22850ec3c3441f9}{checar\+Linhas}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se há um vencedor nas linhas do tabuleiro. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_jogo_da_velha_ac21f8d08aeb4358128d264d22636ce55}{checar\+Vencedor}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&vencedor, \mbox{\hyperlink{class_jogador}{Jogador}} \&perdedor) override
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se há um vencedor no jogo. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_jogo_da_velha_ac5db8a3e172423c03264cec58d2a5fdd}{checar\+Empate}} (int numero\+Jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+01, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+02) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Verifica se o jogo terminou em empate. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Membros protegidos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_jogos_a8feefb43e61ada84aa118ede92ede15e}{marcar\+Tabuleiro}} (std\+::pair$<$ int, int $>$ \&jogada, bool \&turno)
-\item 
+\begin{DoxyCompactList}\small\item\em Marca uma jogada no tabuleiro. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_jogos_aed97204178108a0959574cace64dff0e}{limpar\+Tabuleiro}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Limpa o tabuleiro, preparando-\/o para uma nova partida. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_jogos_a039c8ce359a39ef11461ad95e0f9c393}{anunciar\+Turno\+Jogador}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&\mbox{\hyperlink{class_jogador}{Jogador}})
-\item 
+\begin{DoxyCompactList}\small\item\em Anuncia o turno do jogador atual. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_jogos_af73e4c7abfd789f998757b0643679f95}{sorteio\+Turno}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Sorteia qual jogador começa a partida. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_jogos_ac1b0ae22420d2e322a0d4f7eeadb7c7c}{checar\+Jogada\+Existente}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas, int linha, int coluna)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se uma jogada já foi realizada. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_jogos_acdae263574e320df5977849beda38fa8}{checar\+Posicao\+Valida}} (int linha, int coluna)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se uma posição no tabuleiro é válida. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_jogos_a015fee5d5c9c4348c3a3561e03a33a24}{gerar\+Divisoria\+Tabuleiro}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gera uma divisória para separar as linhas do tabuleiro. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Amigos}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_jogo_da_velha_a44d98af6888164cce3e5e6e976a0288b}{Jogo\+Da\+Velha\+Ai}}
+\item 
+class \mbox{\hyperlink{class_jogo_da_velha_a23a735b5447b1f1cc991b57296f69658}{Jogo\+Da\+Velha\+Tests}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Outros membros herdados}
 \doxysubsection*{Atributos Protegidos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
@@ -78,12 +80,27 @@ std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \mbox{\hyperlink{class_jogos_a68d
 {\footnotesize\ttfamily \label{class_jogo_da_velha_a4cd8634f2b9f754fae92e2e6bc897c19} 
 Jogo\+Da\+Velha\+::\+Jogo\+Da\+Velha (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_jogo_da_velha_a9e69791576a58753ab84f87e3a54446c}\index{JogoDaVelha@{JogoDaVelha}!JogoDaVelha@{JogoDaVelha}}
+
+
+Construtor padrão da classe \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}. 
+
+Inicializa o tabuleiro com tamanho 3x3 e todas as posições vazias. \Hypertarget{class_jogo_da_velha_a9e69791576a58753ab84f87e3a54446c}\index{JogoDaVelha@{JogoDaVelha}!JogoDaVelha@{JogoDaVelha}}
 \index{JogoDaVelha@{JogoDaVelha}!JogoDaVelha@{JogoDaVelha}}
 \doxysubsubsection{\texorpdfstring{JogoDaVelha()}{JogoDaVelha()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{class_jogo_da_velha_a9e69791576a58753ab84f87e3a54446c} 
 Jogo\+Da\+Velha\+::\+Jogo\+Da\+Velha (\begin{DoxyParamCaption}\item[{int}]{tamanho\+Tabuleiro}{}\end{DoxyParamCaption})}
 
+
+
+Construtor parametrizado da classe \doxylink{class_jogo_da_velha}{Jogo\+Da\+Velha}. 
+
+Inicializa o tabuleiro com um tamanho personalizado e todas as posições vazias.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tamanho\+Tabuleiro} & Tamanho do tabuleiro (ex\+: 3 para um tabuleiro 3x3). \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Documentação das funções}
@@ -95,6 +112,21 @@ void Jogo\+Da\+Velha\+::anunciar\+Inicio\+Partida (\begin{DoxyParamCaption}\item
 
 
 
+Anuncia o início da partida e define o jogador que começa. 
+
+Exibe uma mensagem de boas-\/vindas e informa qual jogador começa a partida.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em Jogador1} & Referência para o primeiro jogador \\
+\hline
+{\em Jogador2} & Referência para o segundo jogador \\
+\hline
+{\em turno} & Referência para a variável que controla o turno dos jogadores \\
+\hline
+\end{DoxyParams}
+
+
 Implementa \mbox{\hyperlink{class_jogos_a5d0ae196c41a3d29be5229ea4ea97daa}{Jogos}}.
 
 \Hypertarget{class_jogo_da_velha_a6a3f56c0d66d65b6ffb0cbbe776faeb0}\index{JogoDaVelha@{JogoDaVelha}!checarColunas@{checarColunas}}
@@ -103,18 +135,58 @@ Implementa \mbox{\hyperlink{class_jogos_a5d0ae196c41a3d29be5229ea4ea97daa}{Jogos
 {\footnotesize\ttfamily \label{class_jogo_da_velha_a6a3f56c0d66d65b6ffb0cbbe776faeb0} 
 bool Jogo\+Da\+Velha\+::checar\+Colunas (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{jogadas}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Verifica se há um vencedor nas colunas do tabuleiro. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em jogadas} & Vetor de jogadas realizadas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+bool True se houver um vencedor, False caso contrário. 
+\end{DoxyReturn}
 \Hypertarget{class_jogo_da_velha_a1a34673ea9a973dd7cf891def4be3051}\index{JogoDaVelha@{JogoDaVelha}!checarDiagonal@{checarDiagonal}}
 \index{checarDiagonal@{checarDiagonal}!JogoDaVelha@{JogoDaVelha}}
 \doxysubsubsection{\texorpdfstring{checarDiagonal()}{checarDiagonal()}}
 {\footnotesize\ttfamily \label{class_jogo_da_velha_a1a34673ea9a973dd7cf891def4be3051} 
 bool Jogo\+Da\+Velha\+::checar\+Diagonal (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{jogadas}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Verifica se há um vencedor nas diagonais do tabuleiro. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em jogadas} & Vetor de jogadas realizadas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+bool True se houver um vencedor, False caso contrário. 
+\end{DoxyReturn}
 \Hypertarget{class_jogo_da_velha_ac5db8a3e172423c03264cec58d2a5fdd}\index{JogoDaVelha@{JogoDaVelha}!checarEmpate@{checarEmpate}}
 \index{checarEmpate@{checarEmpate}!JogoDaVelha@{JogoDaVelha}}
 \doxysubsubsection{\texorpdfstring{checarEmpate()}{checarEmpate()}}
 {\footnotesize\ttfamily \label{class_jogo_da_velha_ac5db8a3e172423c03264cec58d2a5fdd} 
 bool Jogo\+Da\+Velha\+::checar\+Empate (\begin{DoxyParamCaption}\item[{int}]{numero\+Jogadas}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{jogador\+\_\+01}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{jogador\+\_\+02}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
+
+
+Verifica se o jogo terminou em empate. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em numero\+Jogadas} & Número total de jogadas realizadas. \\
+\hline
+{\em jogador\+\_\+01} & Referência para o primeiro jogador. \\
+\hline
+{\em jogador\+\_\+02} & Referência para o segundo jogador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+bool True se o jogo terminou em empate, False caso contrário. 
+\end{DoxyReturn}
 
 
 Implementa \mbox{\hyperlink{class_jogos_a922fabb4f9102c3bae8bcb94d5a60dae}{Jogos}}.
@@ -125,12 +197,40 @@ Implementa \mbox{\hyperlink{class_jogos_a922fabb4f9102c3bae8bcb94d5a60dae}{Jogos
 {\footnotesize\ttfamily \label{class_jogo_da_velha_a9d64a747bbdae76ea22850ec3c3441f9} 
 bool Jogo\+Da\+Velha\+::checar\+Linhas (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{jogadas}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Verifica se há um vencedor nas linhas do tabuleiro. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em jogadas} & Vetor de jogadas realizadas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+bool True se houver um vencedor, False caso contrário. 
+\end{DoxyReturn}
 \Hypertarget{class_jogo_da_velha_ac21f8d08aeb4358128d264d22636ce55}\index{JogoDaVelha@{JogoDaVelha}!checarVencedor@{checarVencedor}}
 \index{checarVencedor@{checarVencedor}!JogoDaVelha@{JogoDaVelha}}
 \doxysubsubsection{\texorpdfstring{checarVencedor()}{checarVencedor()}}
 {\footnotesize\ttfamily \label{class_jogo_da_velha_ac21f8d08aeb4358128d264d22636ce55} 
 bool Jogo\+Da\+Velha\+::checar\+Vencedor (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{jogadas}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{vencedor}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{perdedor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
+
+
+Verifica se há um vencedor no jogo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em jogadas} & Vetor de jogadas realizadas. \\
+\hline
+{\em vencedor} & Referência para o jogador vencedor. \\
+\hline
+{\em perdedor} & Referência para o jogador perdedor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+bool True se houver um vencedor, False caso contrário. 
+\end{DoxyReturn}
 
 
 Implementa \mbox{\hyperlink{class_jogos_af036c69cae94b358043c4f4b4242020f}{Jogos}}.
@@ -141,6 +241,15 @@ Implementa \mbox{\hyperlink{class_jogos_af036c69cae94b358043c4f4b4242020f}{Jogos
 {\footnotesize\ttfamily \label{class_jogo_da_velha_aa7cfae1cc53ed2b6a0c83aba57444509} 
 std\+::pair$<$ int, int $>$ Jogo\+Da\+Velha\+::ler\+Jogada (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
+
+
+Lê a jogada do jogador atual. 
+
+Solicita ao jogador que insira as coordenadas da jogada (linha e coluna) e valida a entrada.
+
+\begin{DoxyReturn}{Retorna}
+std\+::pair$<$int, int$>$ Coordenadas (linha, coluna) da jogada válida. 
+\end{DoxyReturn}
 
 
 Reimplementa \mbox{\hyperlink{class_jogos_a4006744fbb717ba9357b2a7bf95cef14}{Jogos}}.
@@ -154,9 +263,15 @@ Reimplementa \mbox{\hyperlink{class_jogos_a4006744fbb717ba9357b2a7bf95cef14}{Jog
 {\footnotesize\ttfamily \label{class_jogo_da_velha_a44d98af6888164cce3e5e6e976a0288b} 
 friend class \mbox{\hyperlink{class_jogo_da_velha_ai}{Jogo\+Da\+Velha\+Ai}}\hspace{0.3cm}{\ttfamily [friend]}}
 
+\Hypertarget{class_jogo_da_velha_a23a735b5447b1f1cc991b57296f69658}\index{JogoDaVelha@{JogoDaVelha}!JogoDaVelhaTests@{JogoDaVelhaTests}}
+\index{JogoDaVelhaTests@{JogoDaVelhaTests}!JogoDaVelha@{JogoDaVelha}}
+\doxysubsubsection{\texorpdfstring{JogoDaVelhaTests}{JogoDaVelhaTests}}
+{\footnotesize\ttfamily \label{class_jogo_da_velha_a23a735b5447b1f1cc991b57296f69658} 
+friend class Jogo\+Da\+Velha\+Tests\hspace{0.3cm}{\ttfamily [friend]}}
+
 
 
 A documentação para essa classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_jogo_da_velha_8hpp}{Jogo\+Da\+Velha.\+hpp}}\item 
-src/\mbox{\hyperlink{src_2_jogo_da_velha_8cpp}{Jogo\+Da\+Velha.\+cpp}}\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{_jogo_da_velha_8cpp}{Jogo\+Da\+Velha.\+cpp}}\end{DoxyCompactItemize}

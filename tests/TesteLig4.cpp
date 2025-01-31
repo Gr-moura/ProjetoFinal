@@ -109,8 +109,8 @@ TEST_CASE("Testando a função privada checarEmpate") {
     Jogador jogador1("Jogador1", "j1");
     Jogador jogador2("Jogador2", "j2");
 
-    CHECK(Lig4Testes::testChecarEmpate(lig4, 16, jogador1, jogador2) == true); 
-    CHECK(Lig4Testes::testChecarEmpate(lig4, 15, jogador1, jogador2) == false);
+    CHECK(Lig4Testes::testChecarEmpate(lig4, 6*7, jogador1, jogador2) == true); 
+    CHECK(Lig4Testes::testChecarEmpate(lig4, 6*7-1, jogador1, jogador2) == false);
 }
 
 TEST_CASE("Testando a função privada lerJogada") {
@@ -120,7 +120,7 @@ TEST_CASE("Testando a função privada lerJogada") {
     std::istringstream inputValido("1 1\n");
     std::cin.rdbuf(inputValido.rdbuf());
     auto jogada = Lig4Testes::testLerJogada(lig4);
-    CHECK(jogada == std::make_pair(0, 0));
+    CHECK(jogada == std::make_pair(6, 0));
 
     // Simula uma entrada inválida
     std::istringstream inputInvalido("5 5\n");

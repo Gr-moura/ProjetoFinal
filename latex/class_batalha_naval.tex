@@ -2,6 +2,11 @@
 \hypertarget{class_batalha_naval}{}\label{class_batalha_naval}\index{BatalhaNaval@{BatalhaNaval}}
 
 
+Classe que implementa o jogo de batalha naval.  
+
+
+
+
 {\ttfamily \#include $<$Batalha\+Naval.\+hpp$>$}
 
 Diagrama de hierarquia da classe Batalha\+Naval\+:\begin{figure}[H]
@@ -14,60 +19,64 @@ Diagrama de hierarquia da classe Batalha\+Naval\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_batalha_naval_abd37f9b78e4d8fc029bd22b43220c26b}{Batalha\+Naval}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_batalha_naval}{Batalha\+Naval}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_batalha_naval_a9940fb164f3e2261921997dd55e65664}{Jogar}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador2) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Método principal que controla o fluxo do jogo de batalha naval. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Membros Públicos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_jogos_a9fc8e1c2a4ec96ac074ccc75648e6611}{mostrar\+Tabuleiro}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Exibe o tabuleiro atual. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Membros protegidos}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_batalha_naval_aeffb870e01fb143c5517e5220bf82d0d}{anunciar\+Inicio\+Partida}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&Jogador2, bool \&turno) override
-\item 
-bool \mbox{\hyperlink{class_batalha_naval_a1c62e30e753ab26fbaf6cd077d48c5ea}{checar\+Vencedor}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&vencedor, \mbox{\hyperlink{class_jogador}{Jogador}} \&perdedor) override
+\begin{DoxyCompactList}\small\item\em Anuncia o início da partida de Batalha Naval entre dois jogadores e quem irá começar. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_batalha_naval_a59f6ad044c459087c9f6b7f859d37152}{checar\+Empate}} (int numero\+Jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+01, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+02) override
 \item 
 bool \mbox{\hyperlink{class_batalha_naval_a182f399247ff725add3b31c4727c3bd7}{checar\+Vencedor}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas\+Atacante, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Oponente, \mbox{\hyperlink{class_jogador}{Jogador}} \&vencedor, \mbox{\hyperlink{class_jogador}{Jogador}} \&perdedor)
+\begin{DoxyCompactList}\small\item\em Verifica se há um vencedor com base nas jogadas do atacante e nos barcos do oponente. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_batalha_naval_a1c62e30e753ab26fbaf6cd077d48c5ea}{checar\+Vencedor}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&vencedor, \mbox{\hyperlink{class_jogador}{Jogador}} \&perdedor) override
 \item 
 std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_batalha_naval_a96ae914d8d7ac973b180b18c118ebb72}{ler\+Jogada}} (std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&tabuleiro\+Jogador)
-\item 
-void \mbox{\hyperlink{class_batalha_naval_a0fd6de8a7b7480da023e8ffa1e655952}{ler\+Barcos}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador, \mbox{\hyperlink{class_jogador}{Jogador}} \&\mbox{\hyperlink{class_jogador}{Jogador}})
-\item 
-void \mbox{\hyperlink{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7}{inserir\+Barcos}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador, char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
-\item 
-bool \mbox{\hyperlink{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16}{quantidade\+Barcos\+Disponiveis}} (std\+::map$<$ char, int $>$ \&count\+Barcos, char tipo)
-\item 
+\begin{DoxyCompactList}\small\item\em Lê a jogada do jogador, verificando se a posição é válida e se o tipo de dado inserido é o desejado. A inserção é feita usando (-\/1) nas posições para corrigir o erro proporcionado pela entrada do usuário. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa}{verificar\+Entrada}} (char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
-\item 
-bool \mbox{\hyperlink{class_batalha_naval_af865000871bc6c88abd01644e3d6087d}{verificar\+Tamanhodo\+Barco}} (char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se a entrada para posicionar o barco é válida e serve como uma função auxiliar para ler\+Barcos e funciona com um sistema de try-\/catch-\/throw, usando também de exceptions personalizadas para deixar os erros mais evidentes no caso de que algum deles aconteça. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_batalha_naval_ab163d25b5e115f795104d57503604aa2}{checar\+Posicao\+Valida}} (std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&\mbox{\hyperlink{class_jogos_a68d2d3a0c403c75071bf21947cd6cf74}{tabuleiro}})
 \item 
-void \mbox{\hyperlink{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429}{marcar\+Tabuleiro}} (std\+::pair$<$ int, int $>$ \&jogada, bool \&turno, std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&tabuleiro\+Jogador, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador)
-\item 
+bool \mbox{\hyperlink{class_batalha_naval_af173dbe99fcdb1ce1ded22a12cd55ef7}{verificar\+Sobreposicao}} (const std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador, char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
+\begin{DoxyCompactList}\small\item\em Verifica se o novo barco está sobrepondo outro barco já posicionado. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_batalha_naval_a43f271d33631c8e74d294be4c4d59cb0}{get\+Tamanho\+Barco}} (char tipo)
+\begin{DoxyCompactList}\small\item\em Retorna o tamanho de um barco com base no tipo usando um switch-\/case básico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_batalha_naval_a0fd6de8a7b7480da023e8ffa1e655952}{ler\+Barcos}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador, \mbox{\hyperlink{class_jogador}{Jogador}} \&\mbox{\hyperlink{class_jogador}{Jogador}})
+\begin{DoxyCompactList}\small\item\em Lê e posiciona os barcos no tabuleiro do jogador, mantendo o controle sobre a quantidade de barcos específicos já inseridos, evitando que este limite estoure. Além disso, as mensagens deixam claro como a inserção deve ser feita e o sistema loop for itera até que os 10 barcos necessários tenham sido inseridos. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16}{quantidade\+Barcos\+Disponiveis}} (std\+::map$<$ char, int $>$ \&count\+Barcos, char tipo)
+\begin{DoxyCompactList}\small\item\em Verifica se a quantidade de barcos disponíveis para um tipo específico é suficiente e serve como auxiliar para a função de ler\+Barcos, impedindo que o número de barcos supere o permitido. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_batalha_naval_af865000871bc6c88abd01644e3d6087d}{verificar\+Tamanhodo\+Barco}} (char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
+\begin{DoxyCompactList}\small\item\em Verifica se o tamanho do barco corresponde ao tipo informado, e é uma fução auxiliar para \doxylink{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa}{verificar\+Entrada()} para garantir que o usuário não insira barcos com tamanhos além dos permitidos. O swap existe para garantir que a Final seja sempre maior que a Incial, para garantir que não hajam números negativos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7}{inserir\+Barcos}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador, char tipo, int linha\+Inicial, int coluna\+Inicial, int linha\+Final, int coluna\+Final)
+\begin{DoxyCompactList}\small\item\em Insere os barcos no vetor de barcos do jogador. Ele implementa o mesmo sistema de swap de Inicial e Final, a inserção é feita percorrendo os limites superiores e inferiores obtidos na entrada do jogador, e introduz todas as posições ocupadas por barcos no vector com o (-\/1), para garantir a correspondência entre o sistema do vector e a entrada.\+abort. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_batalha_naval_aa10477e8750bc32b5a992a8666506733}{mostrar\+Tabuleiro}} (const std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&tabuleiro\+Jogador)
-\item 
-bool \mbox{\hyperlink{class_batalha_naval_a59f6ad044c459087c9f6b7f859d37152}{checar\+Empate}} (int numero\+Jogadas, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+01, \mbox{\hyperlink{class_jogador}{Jogador}} \&jogador\+\_\+02) override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Exibe o tabuleiro do jogador no console, e recebe um parâmetro tabuleiro, diferentemente da classe Pai \doxylink{class_jogos}{Jogos}, porque há 2 tabuleiros durante a execução do jogo, e precisamos printar ambos a cada rodada, por isso, foi necessário sobrecarregar o método para usar o parâmetro em questão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429}{marcar\+Tabuleiro}} (std\+::pair$<$ int, int $>$ \&jogada, bool \&turno, std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&tabuleiro\+Jogador, std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&barcos\+Jogador)
+\begin{DoxyCompactList}\small\item\em Marca o tabuleiro com a jogada realizada, indicando acerto (\textquotesingle{}X\textquotesingle{}) ou erro (\textquotesingle{}O\textquotesingle{}). A função usa da iteração no vetor de posições barcos do inimigo e a comparação com a jogada da respectiva rodada. Caso a jogada seja igual a alguma das posições, é sinalizado o acerto. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Membros protegidos herdados de \mbox{\hyperlink{class_jogos}{Jogos}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual void \mbox{\hyperlink{class_jogos_a8feefb43e61ada84aa118ede92ede15e}{marcar\+Tabuleiro}} (std\+::pair$<$ int, int $>$ \&jogada, bool \&turno)
-\item 
+\begin{DoxyCompactList}\small\item\em Marca uma jogada no tabuleiro. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_jogos_aed97204178108a0959574cace64dff0e}{limpar\+Tabuleiro}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Limpa o tabuleiro, preparando-\/o para uma nova partida. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_jogos_a039c8ce359a39ef11461ad95e0f9c393}{anunciar\+Turno\+Jogador}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&\mbox{\hyperlink{class_jogador}{Jogador}})
-\item 
+\begin{DoxyCompactList}\small\item\em Anuncia o turno do jogador atual. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_jogos_af73e4c7abfd789f998757b0643679f95}{sorteio\+Turno}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Sorteia qual jogador começa a partida. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_jogos_ac1b0ae22420d2e322a0d4f7eeadb7c7c}{checar\+Jogada\+Existente}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&jogadas, int linha, int coluna)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se uma jogada já foi realizada. \end{DoxyCompactList}\item 
 virtual bool \mbox{\hyperlink{class_jogos_acdae263574e320df5977849beda38fa8}{checar\+Posicao\+Valida}} (int linha, int coluna)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifica se uma posição no tabuleiro é válida. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_jogos_a015fee5d5c9c4348c3a3561e03a33a24}{gerar\+Divisoria\+Tabuleiro}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Gera uma divisória para separar as linhas do tabuleiro. \end{DoxyCompactList}\item 
 virtual std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_jogos_a4006744fbb717ba9357b2a7bf95cef14}{ler\+Jogada}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Outros membros herdados}
@@ -78,6 +87,13 @@ std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \mbox{\hyperlink{class_jogos_a68d
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Descrição detalhada}
+Classe que implementa o jogo de batalha naval. 
+
+A classe {\ttfamily \doxylink{class_batalha_naval}{Batalha\+Naval}} herda da classe base {\ttfamily \doxylink{class_jogos}{Jogos}} e é responsável por gerenciar toda a lógica do jogo de batalha naval. Isso inclui a inicialização do jogo, o posicionamento dos barcos, a leitura das jogadas dos jogadores, a verificação de vencedores e a exibição do tabuleiro.
+
+A classe também lida com exceções específicas do jogo, como tipos de barcos inválidos e posicionamentos incorretos de barcos. 
+
 \doxysubsection{Construtores e Destrutores}
 \Hypertarget{class_batalha_naval_abd37f9b78e4d8fc029bd22b43220c26b}\index{BatalhaNaval@{BatalhaNaval}!BatalhaNaval@{BatalhaNaval}}
 \index{BatalhaNaval@{BatalhaNaval}!BatalhaNaval@{BatalhaNaval}}
@@ -87,6 +103,10 @@ Batalha\+Naval\+::\+Batalha\+Naval (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 
 
+Construtor da classe \doxylink{class_batalha_naval}{Batalha\+Naval}. 
+
+Inicializa o tabuleiro do jogo com um tamanho de 10x10, preenchendo todas as posições com o caractere \textquotesingle{}\texorpdfstring{$\sim$}{\string~}\textquotesingle{}, que representa água. Mesmo que o tabuleiro não seja usado durante o jogo, ele é importante para estabelecer o tamanho de cada um dos 2 tabuleiros que serão usados. 
+
 \doxysubsection{Documentação das funções}
 \Hypertarget{class_batalha_naval_aeffb870e01fb143c5517e5220bf82d0d}\index{BatalhaNaval@{BatalhaNaval}!anunciarInicioPartida@{anunciarInicioPartida}}
 \index{anunciarInicioPartida@{anunciarInicioPartida}!BatalhaNaval@{BatalhaNaval}}
@@ -94,6 +114,19 @@ Batalha\+Naval\+::\+Batalha\+Naval (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 {\footnotesize\ttfamily \label{class_batalha_naval_aeffb870e01fb143c5517e5220bf82d0d} 
 void Batalha\+Naval\+::anunciar\+Inicio\+Partida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador1}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador2}{, }\item[{bool \&}]{turno}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
+
+
+Anuncia o início da partida de Batalha Naval entre dois jogadores e quem irá começar. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em Jogador1} & Referência para o primeiro jogador \\
+\hline
+{\em Jogador2} & Referência para o segundo jogador \\
+\hline
+{\em turno} & Referência para a variável que controla o turno dos jogadores \\
+\hline
+\end{DoxyParams}
 
 
 Implementa \mbox{\hyperlink{class_jogos_a5d0ae196c41a3d29be5229ea4ea97daa}{Jogos}}.
@@ -130,12 +163,71 @@ Implementa \mbox{\hyperlink{class_jogos_af036c69cae94b358043c4f4b4242020f}{Jogos
 {\footnotesize\ttfamily \label{class_batalha_naval_a182f399247ff725add3b31c4727c3bd7} 
 bool Batalha\+Naval\+::checar\+Vencedor (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{jogadas\+Atacante}{, }\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Oponente}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{vencedor}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{perdedor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Verifica se há um vencedor com base nas jogadas do atacante e nos barcos do oponente. 
+
+Há um iterador que passa por todos os barcos do jogador inimigo e os compara com as jogadas do atacante, caso algum barco não seja encontrado, o retorno é falso e o jogo continua, caso contrário a vitória e a derrota são contabilizadas nos respectivos jogadores e o jogo termina com o print do vencedor.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em jogadas\+Atacante} & Vetor de pares de inteiros representando as jogadas do atacante \\
+\hline
+{\em barcos\+Oponente} & Vetor de pares de inteiros representando os barcos do oponente \\
+\hline
+{\em vencedor} & Referência para o jogador que venceu \\
+\hline
+{\em perdedor} & Referência para o jogador que perdeu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+true Se há um vencedor 
+
+false Se não há um vencedor 
+\end{DoxyReturn}
+\Hypertarget{class_batalha_naval_a43f271d33631c8e74d294be4c4d59cb0}\index{BatalhaNaval@{BatalhaNaval}!getTamanhoBarco@{getTamanhoBarco}}
+\index{getTamanhoBarco@{getTamanhoBarco}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{getTamanhoBarco()}{getTamanhoBarco()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_a43f271d33631c8e74d294be4c4d59cb0} 
+int Batalha\+Naval\+::get\+Tamanho\+Barco (\begin{DoxyParamCaption}\item[{char}]{tipo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Retorna o tamanho de um barco com base no tipo usando um switch-\/case básico. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tipo} & Caractere representando o tipo de barco (\textquotesingle{}P\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}S\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Tamanho do barco. Retorna -\/1 se o tipo for inválido. 
+\end{DoxyReturn}
 \Hypertarget{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7}\index{BatalhaNaval@{BatalhaNaval}!inserirBarcos@{inserirBarcos}}
 \index{inserirBarcos@{inserirBarcos}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{inserirBarcos()}{inserirBarcos()}}
 {\footnotesize\ttfamily \label{class_batalha_naval_a8e11d38220c0e8af3dafdde27409b3f7} 
 void Batalha\+Naval\+::inserir\+Barcos (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Jogador}{, }\item[{char}]{tipo}{, }\item[{int}]{linha\+Inicial}{, }\item[{int}]{coluna\+Inicial}{, }\item[{int}]{linha\+Final}{, }\item[{int}]{coluna\+Final}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Insere os barcos no vetor de barcos do jogador. Ele implementa o mesmo sistema de swap de Inicial e Final, a inserção é feita percorrendo os limites superiores e inferiores obtidos na entrada do jogador, e introduz todas as posições ocupadas por barcos no vector com o (-\/1), para garantir a correspondência entre o sistema do vector e a entrada.\+abort. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em barcos\+Jogador} & Vetor de pares de inteiros representando as posições dos barcos do jogador. \\
+\hline
+{\em tipo} & Caractere representando o tipo de barco (\textquotesingle{}P\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}S\textquotesingle{}). \\
+\hline
+{\em linha\+Inicial} & Linha inicial do barco. \\
+\hline
+{\em coluna\+Inicial} & Coluna inicial do barco. \\
+\hline
+{\em linha\+Final} & Linha final do barco. \\
+\hline
+{\em coluna\+Final} & Coluna final do barco. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_batalha_naval_a9940fb164f3e2261921997dd55e65664}\index{BatalhaNaval@{BatalhaNaval}!Jogar@{Jogar}}
 \index{Jogar@{Jogar}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{Jogar()}{Jogar()}}
@@ -143,6 +235,28 @@ void Batalha\+Naval\+::inserir\+Barcos (\begin{DoxyParamCaption}\item[{std\+::ve
 void Batalha\+Naval\+::\+Jogar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador1}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
+
+Método principal que controla o fluxo do jogo de batalha naval. 
+
+Este método é responsável por gerenciar todo o ciclo de vida do jogo, desde a inicialização até a determinação do vencedor. Ele coordena as ações dos dois jogadores, alternando seus turnos e verificando se algum deles atingiu a condição de vitória.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em Jogador1} & Referência para o primeiro jogador \\
+\hline
+{\em Jogador2} & Referência para o segundo jogador\\
+\hline
+\end{DoxyParams}
+O fluxo do jogo é o seguinte\+:
+\begin{DoxyEnumerate}
+\item Inicializa os tabuleiros de jogadas e os vetores de barcos para ambos os jogadores.
+\item Sorteia qual jogador começa a partida.
+\item Cada jogador posiciona seus barcos no tabuleiro, seguindo as regras do jogo.
+\item Alterna os turnos entre os jogadores, permitindo que cada um ataque o tabuleiro do oponente.
+\item Verifica, após cada jogada, se todos os barcos do oponente foram afundados.
+\item Declara o vencedor e registra o resultado no perfil dos jogadores.
+\item Encerra o jogo. 
+\end{DoxyEnumerate}
 
 Reimplementa \mbox{\hyperlink{class_jogos_a922f7294a2cb6961e9f6290edc438f3e}{Jogos}}.
 
@@ -152,42 +266,173 @@ Reimplementa \mbox{\hyperlink{class_jogos_a922f7294a2cb6961e9f6290edc438f3e}{Jog
 {\footnotesize\ttfamily \label{class_batalha_naval_a0fd6de8a7b7480da023e8ffa1e655952} 
 void Batalha\+Naval\+::ler\+Barcos (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Jogador}{, }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Lê e posiciona os barcos no tabuleiro do jogador, mantendo o controle sobre a quantidade de barcos específicos já inseridos, evitando que este limite estoure. Além disso, as mensagens deixam claro como a inserção deve ser feita e o sistema loop for itera até que os 10 barcos necessários tenham sido inseridos. 
+
+A cada iteração, os dados inseridos passam por 2 sistemas de controle de qualidade, analisando se eles podem ser introduzidos no vetor de barcos do respectivo jogador e caso não possam, uma mensagem de erro aparece, o número de iterações é mantido e o loop continua.
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em barcos\+Jogador} & Vetor de pares de inteiros representando as posições dos barcos do jogador. \\
+\hline
+{\em \doxylink{class_jogador}{Jogador}} & Referência para o jogador. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_batalha_naval_a96ae914d8d7ac973b180b18c118ebb72}\index{BatalhaNaval@{BatalhaNaval}!lerJogada@{lerJogada}}
 \index{lerJogada@{lerJogada}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{lerJogada()}{lerJogada()}}
 {\footnotesize\ttfamily \label{class_batalha_naval_a96ae914d8d7ac973b180b18c118ebb72} 
 std\+::pair$<$ int, int $>$ Batalha\+Naval\+::ler\+Jogada (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&}]{tabuleiro\+Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Lê a jogada do jogador, verificando se a posição é válida e se o tipo de dado inserido é o desejado. A inserção é feita usando (-\/1) nas posições para corrigir o erro proporcionado pela entrada do usuário. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tabuleiro\+Jogador} & Matriz de caracteres representando o tabuleiro do jogador \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Par de inteiros representando a jogada (linha, coluna) 
+\end{DoxyReturn}
 \Hypertarget{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429}\index{BatalhaNaval@{BatalhaNaval}!marcarTabuleiro@{marcarTabuleiro}}
 \index{marcarTabuleiro@{marcarTabuleiro}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{marcarTabuleiro()}{marcarTabuleiro()}}
 {\footnotesize\ttfamily \label{class_batalha_naval_aff4f5b827e0c2b27226a058d60959429} 
 void Batalha\+Naval\+::marcar\+Tabuleiro (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, int $>$ \&}]{jogada}{, }\item[{bool \&}]{turno}{, }\item[{std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&}]{tabuleiro\+Jogador}{, }\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Marca o tabuleiro com a jogada realizada, indicando acerto (\textquotesingle{}X\textquotesingle{}) ou erro (\textquotesingle{}O\textquotesingle{}). A função usa da iteração no vetor de posições barcos do inimigo e a comparação com a jogada da respectiva rodada. Caso a jogada seja igual a alguma das posições, é sinalizado o acerto. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em jogada} & Par de inteiros representando a jogada (linha, coluna). \\
+\hline
+{\em turno} & Referência para a variável que controla o turno dos jogadores. \\
+\hline
+{\em tabuleiro\+Jogador} & Matriz de caracteres representando o tabuleiro do jogador. \\
+\hline
+{\em barcos\+Jogador} & Vetor de pares de inteiros representando as posições dos barcos do jogador. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_batalha_naval_aa10477e8750bc32b5a992a8666506733}\index{BatalhaNaval@{BatalhaNaval}!mostrarTabuleiro@{mostrarTabuleiro}}
 \index{mostrarTabuleiro@{mostrarTabuleiro}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{mostrarTabuleiro()}{mostrarTabuleiro()}}
 {\footnotesize\ttfamily \label{class_batalha_naval_aa10477e8750bc32b5a992a8666506733} 
 void Batalha\+Naval\+::mostrar\+Tabuleiro (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ char $>$ $>$ \&}]{tabuleiro\+Jogador}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Exibe o tabuleiro do jogador no console, e recebe um parâmetro tabuleiro, diferentemente da classe Pai \doxylink{class_jogos}{Jogos}, porque há 2 tabuleiros durante a execução do jogo, e precisamos printar ambos a cada rodada, por isso, foi necessário sobrecarregar o método para usar o parâmetro em questão. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tabuleiro\+Jogador} & Matriz de caracteres representando o tabuleiro do jogador. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16}\index{BatalhaNaval@{BatalhaNaval}!quantidadeBarcosDisponiveis@{quantidadeBarcosDisponiveis}}
 \index{quantidadeBarcosDisponiveis@{quantidadeBarcosDisponiveis}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{quantidadeBarcosDisponiveis()}{quantidadeBarcosDisponiveis()}}
 {\footnotesize\ttfamily \label{class_batalha_naval_afd8225dac60f46a173407c86fbb4aa16} 
 bool Batalha\+Naval\+::quantidade\+Barcos\+Disponiveis (\begin{DoxyParamCaption}\item[{std\+::map$<$ char, int $>$ \&}]{count\+Barcos}{, }\item[{char}]{tipo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Verifica se a quantidade de barcos disponíveis para um tipo específico é suficiente e serve como auxiliar para a função de ler\+Barcos, impedindo que o número de barcos supere o permitido. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em count\+Barcos} & Mapa que conta a quantidade de barcos disponíveis por tipo. \\
+\hline
+{\em tipo} & Caractere representando o tipo de barco (\textquotesingle{}P\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}S\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+{\ttfamily true} se houver barcos disponíveis, {\ttfamily false} caso contrário. 
+\end{DoxyReturn}
 \Hypertarget{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa}\index{BatalhaNaval@{BatalhaNaval}!verificarEntrada@{verificarEntrada}}
 \index{verificarEntrada@{verificarEntrada}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{verificarEntrada()}{verificarEntrada()}}
 {\footnotesize\ttfamily \label{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa} 
 bool Batalha\+Naval\+::verificar\+Entrada (\begin{DoxyParamCaption}\item[{char}]{tipo}{, }\item[{int}]{linha\+Inicial}{, }\item[{int}]{coluna\+Inicial}{, }\item[{int}]{linha\+Final}{, }\item[{int}]{coluna\+Final}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Verifica se a entrada para posicionar o barco é válida e serve como uma função auxiliar para ler\+Barcos e funciona com um sistema de try-\/catch-\/throw, usando também de exceptions personalizadas para deixar os erros mais evidentes no caso de que algum deles aconteça. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tipo} & Caractere representando o tipo de barco \\
+\hline
+{\em linha\+Inicial} & Inteiro representando a linha inicial do barco \\
+\hline
+{\em coluna\+Inicial} & Inteiro representando a coluna inicial do barco \\
+\hline
+{\em linha\+Final} & Inteiro representando a linha final do barco \\
+\hline
+{\em coluna\+Final} & Inteiro representando a coluna final do barco\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Retorna {\ttfamily true} se a entrada for válida, {\ttfamily false} caso contrário 
+\end{DoxyReturn}
+\Hypertarget{class_batalha_naval_af173dbe99fcdb1ce1ded22a12cd55ef7}\index{BatalhaNaval@{BatalhaNaval}!verificarSobreposicao@{verificarSobreposicao}}
+\index{verificarSobreposicao@{verificarSobreposicao}!BatalhaNaval@{BatalhaNaval}}
+\doxysubsubsection{\texorpdfstring{verificarSobreposicao()}{verificarSobreposicao()}}
+{\footnotesize\ttfamily \label{class_batalha_naval_af173dbe99fcdb1ce1ded22a12cd55ef7} 
+bool Batalha\+Naval\+::verificar\+Sobreposicao (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \&}]{barcos\+Jogador}{, }\item[{char}]{tipo}{, }\item[{int}]{linha\+Inicial}{, }\item[{int}]{coluna\+Inicial}{, }\item[{int}]{linha\+Final}{, }\item[{int}]{coluna\+Final}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Verifica se o novo barco está sobrepondo outro barco já posicionado. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em barcos\+Jogador} & Vetor de pares de inteiros representando as posições dos barcos do jogador. \\
+\hline
+{\em tipo} & Caractere representando o tipo de barco (\textquotesingle{}P\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}S\textquotesingle{}). \\
+\hline
+{\em linha\+Inicial} & Linha inicial do barco. \\
+\hline
+{\em coluna\+Inicial} & Coluna inicial do barco. \\
+\hline
+{\em linha\+Final} & Linha final do barco. \\
+\hline
+{\em coluna\+Final} & Coluna final do barco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+{\ttfamily true} se houver sobreposição, {\ttfamily false} caso contrário. 
+\end{DoxyReturn}
 \Hypertarget{class_batalha_naval_af865000871bc6c88abd01644e3d6087d}\index{BatalhaNaval@{BatalhaNaval}!verificarTamanhodoBarco@{verificarTamanhodoBarco}}
 \index{verificarTamanhodoBarco@{verificarTamanhodoBarco}!BatalhaNaval@{BatalhaNaval}}
 \doxysubsubsection{\texorpdfstring{verificarTamanhodoBarco()}{verificarTamanhodoBarco()}}
 {\footnotesize\ttfamily \label{class_batalha_naval_af865000871bc6c88abd01644e3d6087d} 
 bool Batalha\+Naval\+::verificar\+Tamanhodo\+Barco (\begin{DoxyParamCaption}\item[{char}]{tipo}{, }\item[{int}]{linha\+Inicial}{, }\item[{int}]{coluna\+Inicial}{, }\item[{int}]{linha\+Final}{, }\item[{int}]{coluna\+Final}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+
+Verifica se o tamanho do barco corresponde ao tipo informado, e é uma fução auxiliar para \doxylink{class_batalha_naval_a2ddd53473220caffb539ebaf8107eefa}{verificar\+Entrada()} para garantir que o usuário não insira barcos com tamanhos além dos permitidos. O swap existe para garantir que a Final seja sempre maior que a Incial, para garantir que não hajam números negativos. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tipo} & Caractere representando o tipo de barco (\textquotesingle{}P\textquotesingle{}, \textquotesingle{}E\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}S\textquotesingle{}). \\
+\hline
+{\em linha\+Inicial} & Linha inicial do barco. \\
+\hline
+{\em coluna\+Inicial} & Coluna inicial do barco. \\
+\hline
+{\em linha\+Final} & Linha final do barco. \\
+\hline
+{\em coluna\+Final} & Coluna final do barco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+{\ttfamily true} se o tamanho do barco for válido, {\ttfamily false} caso contrário. 
+\end{DoxyReturn}
 
 
 A documentação para essa classe foi gerada a partir dos seguintes arquivos\+:\begin{DoxyCompactItemize}
