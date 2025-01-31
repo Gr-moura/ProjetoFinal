@@ -203,7 +203,7 @@ void JogoDaVelhaAi::Jogar(Jogador &Jogador1, Jogador &Jogador2)
 {
     bool jogoEmAndamento = true;
 
-    std::cout << "Bem vindo ao Jogo da velha! Qual jogador devera começar a partida?\n"
+    std::cout << "Bem vindo ao Jogo da velha! Qual jogador devera comecar a partida?\n"
               << Jogador1.getApelido() << " (0)\nAI (1)" << std::endl;
 
     bool turno;
