@@ -2,7 +2,7 @@
 
 
 ## Objetivo
-O objetivo da UI do projeto é melhorar a experiância do usuárioa ao interagir com o código em C++.  
+O objetivo da UI do projeto é melhorar a experiência do usuário ao interagir com o código em C++.  
 O código em C++ pode ser tanto rodado usando a UI como diretamente no terminal. Isso decorre do fato de que a integração foi feita usando arquivos WASM (pré-compilados a partir dos arquivos C++ modificados). Ou seja, de certa forma é como se o projeto com a UI seja um executável separado do projeto sem a UI.  
 Para executar o código com a UI, siga as instruções disponóveis mais a frente.  
 
