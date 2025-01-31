@@ -36,9 +36,9 @@ JogoDaVelha::JogoDaVelha(int tamanhoTabuleiro)
  *
  * Exibe uma mensagem de boas-vindas e informa qual jogador começa a partida.
  *
- * @param Jogador1 Referência para o primeiro jogador.
- * @param Jogador2 Referência para o segundo jogador.
- * @param turno Referência para a variável que controla o turno dos jogadores.
+ * @param Jogador1 Referência para o primeiro jogador
+ * @param Jogador2 Referência para o segundo jogador
+ * @param turno Referência para a variável que controla o turno dos jogadores
  */
 void JogoDaVelha::anunciarInicioPartida(Jogador &Jogador1, Jogador &Jogador2, bool &turno)
 {
