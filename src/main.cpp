@@ -29,7 +29,6 @@ void exibirMenu()
     return;
 }
 
-
 /**
  * @file main.cpp
  * @brief Função principal do sistema de gerenciamento de jogos.
